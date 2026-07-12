@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rezonate, Still To Do for Claude Design</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#2B2626;--muted:#8a807a;--line:#e7ded4;--paper:#FBF8F3;--open:#C64434;--done:#3d8a5f;--live:#9C83E7;}
+  *{box-sizing:border-box}
+  body{font-family:'Inter',-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);background:var(--paper);margin:0;line-height:1.55;font-size:14px}
+  .sheet{max-width:840px;margin:0 auto;padding:52px 44px 72px}
+  h1{font-family:'Newsreader',serif;font-weight:600;font-size:30px;margin:0 0 6px;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:22px}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;margin:0 0 26px;padding:12px 16px;background:#fff;border:1px solid var(--line);border-radius:12px}
+  .tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:5px;color:#fff;vertical-align:middle}
+  .t-open{background:var(--open)} .t-done{background:var(--done)} .t-live{background:var(--live)} .t-dec{background:#c98a2b}
+  h2{font-family:'Newsreader',serif;font-weight:600;font-size:20px;margin:30px 0 4px;padding-top:20px;border-top:1px solid var(--line)}
+  .pr{font-size:10.5px;font-weight:700;color:var(--muted);margin-right:6px}
+  ul{list-style:none;margin:8px 0 0;padding:0}
+  li{padding:8px 0 8px 0;border-bottom:1px dashed var(--line);font-size:13.5px}
+  li .tag{margin-right:8px}
+  li b{font-weight:600}
+  .note{color:var(--muted);font-size:12.5px;display:block;margin-top:3px;margin-left:2px}
+  .lead{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px 18px;font-size:13px;margin-bottom:8px}
+  .foot{margin-top:36px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#b6ada4}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <h1>Rezonate website, still to do</h1>
+  <div class="sub">Checked the current export (rezonate 8) line by line against all feedback: June 5 list plus the July 8 and 9 rounds from Matt, Micah, Callum, Jabelle, Jeff and Joette. Open items only, grouped by page, with priority preserved. Done items are listed at the end so you know what not to touch.</div>
+
+  <div class="legend">
+    <span><span class="tag t-open">Open</span> not done in current code</span>
+    <span><span class="tag t-live">Live</span> needs a running-build check, can't confirm in static code</span>
+    <span><span class="tag t-dec">Decision</span> needs a call before building</span>
+    <span class="pr" style="margin-left:auto">P0/P1/P2 = reviewer priority</span>
+  </div>
+
+  <div class="lead"><b>Top of the pile.</b> The three that keep slipping: Finance headline still wrong, Healthcare no-show stat contradicts itself, and every live demo/agent is reported broken. Plus one P0: any Flamengo reference. Flamengo is already out of the code, confirm it is out of the live build too.</div>
+
+  <h2>Global and navigation</h2>
+  <ul>
+    <li><span class="tag t-open">Open</span><span class="pr">P1</span><b>Industries menu floats below on every page.</b> It stays pinned even on Solutions, Customers, About. Should only show in the Solutions context. <span class="note">Matt</span></li>
+    <li><span class="tag t-open">Open</span><span class="pr">P2</span><b>"yrs" font looks compressed</b> in that number treatment. Low priority. <span class="note">Matt, seen in Safari</span></li>
+    <li><span class="tag t-live">Live</span><span class="pr">P2</span><b>Consistency:</b> "conversations handled" on site vs "interactions" in the press release, and Kira caps vs lowercase kira. Pick one of each and apply everywhere. <span class="note">Jeff, Jabelle</span></li>
+  </ul>
+
+  <h2>Homepage</h2>
+  <ul>
+    <li><span class="tag t-live">Live</span><span class="pr">P2</span><b>"Join Them" reads like joining a faction.</b> Change to "Contact them" (or similar). Confirm the current wording on the live build. <span class="note">Micah. Not clearly found in code, verify.</span></li>
+    <li><span class="tag t-open">Open</span><span class="pr">P1</span><b>Customer stories block feels too small / may not be needed here.</b> Decide keep, resize, or cut. <span class="note">Matt</span></li>
+    <li><span class="tag t-live">Live</span><span class="pr">P2</span><b>Woman in the "indoor jungle" photo</b> reads as an odd choice. Swap. <span class="note">Jeff</span></li>
+    <li><span class="tag t-live">Live</span><span class="pr">P2</span><b>Footer:</b> can the tagline line be dynamic? <span class="note">Jeff</span></li>
+  </ul>
+
+  <h2>Solutions</h2>
+  <ul>
+    <li><span class="tag t-open">Open</span><span class="pr">P1</span><b>Hero copy.</b> Jeff wants "Don't read about it. Talk to it." or "Stop reading. Start talking." Current hero is not this. <span class="note">Jeff</span></li>
+    <li><span class="tag t-open">Open</span><span class="pr">P1</span><b>Section retitles not applied.</b> "The results speak." for the results section, and "Proven in production. Live in weeks." for the small break. Current still reads "Proven in production", "Results that land", "Proof, not promises". <span class="note">Jeff</span></li>
+    <li><span class="tag t-open">Open</span><span class="pr">P2</span><b>Consolidate repeated sections.</b> Three proof blocks ("What the clinic gets", "Proven in production", "Proof, not promises") and two channel blocks still run. Merge to one proof block and one channel block. <span class="note">Jeff. Not urgent for launch.</span></li>
+    <li><span class="tag t-open">Open</span><span class="pr">P1</span><b>Space the down arrow off the "4"</b> so they aren't touching. <span class="note">Jeff</span></li>
+    <li><span class="tag t-live">Live</span><span class="pr">P1</span><b>Financial and Business recorded calls play healthcare scenarios.</b> Swap in industry-specific recordings. <span class="note">Jabelle</span></li>
+    <li><span class="tag t-live">Live</span><span class="pr">P2</span><b>Standardize the live agents:</b> some have names or say "Assistant", some don't. <span class="note">Jabelle</span></li>
+    <li><span class="tag t-done">Done</span> How Kira works retitle, and the 49% figure now appears once. <span class="note">confirmed in code</span></li>
+  </ul>
+
+  <h2>Healthcare</h2>
+  <ul>
+    <li><span class="tag t-open">Open</span><span class="pr">P1</span><b>No-show stat contradicts itself. Standardize on 49%.</b> Hero says 70% (unsourced, once), the ticker and proof block say 49% (ties to KKH). Use 49% everywhere and drop the 70%, unless 70% belongs to a named customer, then label it to them. <span class="note">decided, see Decisions. Jeff, Jabelle</span></li>
+    <li><span class="tag t-open">Open</span><span class="pr">P1</span><b>Mayo block: white Rezonate logo, bigger, blue fixed, asterisk added; line becomes "Partnering with Mayo Clinic."</b> Replaces the weak "A qualified solution." Gated until Mayo and legal clear it. <span class="note">decided, see Decisions. Eric, Jeff, Micah</span></li>
+    <li><span class="tag t-live">Live</span><span class="pr">P2</span><b>"60+ languages" appears twice on this page.</b> Once. <span class="note">Jeff, Jabelle. Verify on live build.</span></li>
+    <li><span class="tag t-dec">Decision</span><span class="pr">P2</span><b>Healthcare bottom cards</b> layout note ("please make the bottom...") was cut off in the doc. Confirm the exact ask with the team. <span class="note">July 8</span></li>
+  </ul>
+
+  <h2>Finance</h2>
+  <ul>
+    <li><span class="tag t-open">Open</span><span class="pr">P1</span><b>Headline still wrong.</b> Reads "Banking that always answers." Should be <b>"When customers can bank on your every answer."</b> <span class="note">June 5, still not changed across two exports.</span></li>
+    <li><span class="tag t-open">Open</span><span class="pr">P2</span><b>Hero video graphic</b> should be a person at a register / checking out, not the current shot. <span class="note">Micah</span></li>
+    <li><span class="tag t-open">Open</span><span class="pr">P2</span><b>"80% faster than what?"</b> Add the comparator or cut the stat. <span class="note">Micah</span></li>
+    <li><span class="tag t-open">Open</span><span class="pr">P2</span><b>Spell out "KYC"</b> or explain it. Still abbreviated in code. <span class="note">Micah</span></li>
+    <li><span class="tag t-live">Live</span><span class="pr">P2</span><b>"Onboards & Verifies / Client retention"</b> pairing reads as unrelated. Revisit. <span class="note">Micah</span></li>
+  </ul>
+
+  <h2>Business</h2>
+  <ul>
+    <li><span class="tag t-open">Open</span><span class="pr">P2</span><b>Closing CTA image still generic.</b> Change the graphic to someone in an office with an IT issue. The IT help desk moment made it into the demo, but not this end-of-page visual (still cta-business-call). <span class="note">Micah</span></li>
+    <li><span class="tag t-done">Done</span> Demo now includes an IT help desk scenario (Teams, "locked out / reset link on its way"), plus enterprise orders, sales follow-up, HR leave. Old "Refund" scenario replaced. <span class="note">confirmed in code</span></li>
+  </ul>
+
+  <h2>Sports</h2>
+  <ul>
+    <li><span class="tag t-open">Open</span><span class="pr">P1</span><b>Hero video is wrong intent.</b> It shows a kid throwing a football through the uprights, no fan-engagement feel. Needs an arena with fans, like the basketball reference. <span class="note">Micah. This overrides the earlier "ball through the posts" direction.</span></li>
+    <li><span class="tag t-done">Decided</span><span class="pr">P1</span><b>Keep "Fan Engagement" as the vertical name.</b> "Fan Services" was only a generic swap for the real team "Islanders" in a demo. Action: no real team names in any demo. <span class="note">see Decisions</span></li>
+    <li><span class="tag t-open">Open</span><span class="pr">P1</span><b>Reconcile 20M+ with 83M+.</b> A 20M+ figure still appears on the page while the hero now uses 83M+. If 20M is sports-specific, label it that way, otherwise remove. <span class="note">Jeff</span></li>
+    <li><span class="tag t-open">Open</span><span class="pr">P1</span><b>Demo area headline + color.</b> "Pick an industry" is out (good), but the replacement should read like "Don't read about it. Hear it. Talk to it." (Micah's alt: "Don't read about, Engage with it.") and use Rezonate brand colors, not the grayed treatment. Confirm the current headline. <span class="note">June 5, Micah</span></li>
+    <li><span class="tag t-open">Open</span><span class="pr">P1</span><b>Chart needs X and Y axes.</b> Show "Calls handled" vs "required staff", interactions rising while staff stays flat. Currently reads as blank space. <span class="note">June 5. No axis labels found in code.</span></li>
+    <li><span class="tag t-live">Live</span><span class="pr">P2</span><b>Data point should not be "refunds".</b> Use something real and positive (e.g. abandoned carts). <span class="note">Micah</span></li>
+    <li><span class="tag t-dec">Decision</span><span class="pr">P2</span><b>Different sports numbers</b> per the sports deck (proposal.keyreply.com/fan-engagement). Pull the real figures. <span class="note">June 5. Needs the deck's numbers.</span></li>
+    <li><span class="tag t-done">Done</span> "or additional staff" added; realistic "Gates open at 5:30" convo; no-show holdover subhead rewritten to "renewal rates measured live"; membership sales now framed as 3x historical; "built for" redundancy fixed (one instance); headline uses "fans" not "customers". <span class="note">confirmed in code</span></li>
+  </ul>
+
+  <h2>Customers and case studies</h2>
+  <ul>
+    <li><span class="tag t-live">Live</span><span class="pr">P1</span><b>Flamengo card links to the KKH case study.</b> Fix the link. Flamengo copy is out of the code, confirm the card/link is fixed on the live build. <span class="note">Jabelle, Joette</span></li>
+    <li><span class="tag t-open">Open</span><span class="pr">P2</span><b>Align case-study categories.</b> Rest of site uses Healthcare, Finance, Business, Sports. Case filters currently read All / Healthcare / Finance / Consumer goods. Reconcile. <span class="note">Jabelle</span></li>
+    <li><span class="tag t-live">Live</span><span class="pr">P2</span><b>Asahi logo looks bigger than the others.</b> Match sizes visually. <span class="note">Joette</span></li>
+    <li><span class="tag t-done">Done</span> Logos now in full color (not grayscale); removed the old set, added SingHealth generic, MOM, NHG, Asahi; Asahi added to stories with Suresh's quote and title; Consumer goods category added. <span class="note">confirmed in code</span></li>
+  </ul>
+
+  <h2>About</h2>
+  <ul>
+    <li><span class="tag t-done">Done</span> "Engagement Intelligence" is in; FAQ rebrand year corrected to 2025 to match the About timeline. <span class="note">confirmed in code</span></li>
+  </ul>
+
+  <h2>Live-build items (can't verify in static code, test on the running site)</h2>
+  <ul>
+    <li><span class="tag t-live">Live</span><span class="pr">P1</span><b>All live-agent demos are broken</b> across the site. <span class="note">Micah, Jabelle</span></li>
+    <li><span class="tag t-live">Live</span><span class="pr">P1</span><b>Book-a-demo chatbot loops.</b> Every question routes back to "book a demo". <span class="note">Jabelle</span></li>
+    <li><span class="tag t-live">Live</span><span class="pr">P1</span><b>"Call Kira Live" opens a FaceTime sign-in window.</b> <span class="note">Micah</span></li>
+    <li><span class="tag t-live">Live</span><span class="pr">P1</span><b>"Request a Demo" button just jumps to the top of the page.</b> <span class="note">Micah</span></li>
+    <li><span class="tag t-live">Live</span><span class="pr">P2</span><b>reCAPTCHA button isn't clickable</b> on the request form. And confirm who receives form submissions. <span class="note">Micah</span></li>
+  </ul>
+
+  <h2>Decisions, made from the feedback</h2>
+  <ul>
+    <li><span class="tag t-dec">Decided</span> <b>Sports label: keep "Fan Engagement."</b> "Fan Services" was only a generic replacement for the real team name "Islanders" in one demo. The vertical is "Fan Engagement", which is what KeyReply's own sports proposal is called. Keep the vertical name, just make sure no real team appears in any demo. <span class="note">reconciles June 5 with the sports deck</span></li>
+    <li><span class="tag t-dec">Decided</span> <b>Sports hero: arena with fans. Throw / posts dropped.</b> Micah (P1, arena with fans) and Jeff (the spiral throw is "terrible") point the same way. <span class="note">Micah, Jeff</span></li>
+    <li><span class="tag t-dec">Decided</span> <b>Healthcare no-show: standardize on 49%.</b> 49% is substantiated, ties to KKH, and appears in Solutions, the ticker and the proof block. 70% shows up once in the hero, unsourced. Never inflate. Exception: if 70% belongs to a specific named customer, label it to them. <span class="note">Jeff, Jabelle</span></li>
+    <li><span class="tag t-dec">Decided</span> <b>Mayo: white Rezonate logo (not "Kira"), bigger, blue fixed, asterisk added.</b> Change "A qualified solution" to "Partnering with Mayo Clinic." Eric owns the US/Mayo relationship and asked for the logo swap; Jeff supplied the line. Stays gated until Mayo and legal clear it, it is embargoed. <span class="note">Eric, Jeff, Micah</span></li>
+    <li><span class="tag t-dec">Decided</span> <b>Launch scope: all four industry pages.</b> They are built, and multi-industry breadth is the differentiator no US rival can match. Lead nav and emphasis with healthcare (deepest proof, Mayo) and sports (freshest visual); keep Finance and Business. Condition: each page ships with one clean, non-contradictory proof stat first. <span class="note">Jeff raised it; decided on breadth</span></li>
+  </ul>
+
+  <div class="foot">Rezonate · Still to do for Claude Design · checked against export "rezonate 8" · confidential</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+# Rezonate
+
+> Rezonate (formerly KeyReply) is an AI-powered customer engagement platform for regulated, high-volume industries: healthcare, insurance, banking, government, and sports. It delivers AI voice agents, WhatsApp automation, multi-channel chat, and governed workflow automation. SOC 2 Type II and HIPAA certified, a WhatsApp Global Business Solution Provider, a Microsoft Partner, and Gartner-recognized. Headquartered in Singapore, operating in the United States, Brazil, and Australia.
+
+Rezonate's product is **Kira**, an AI customer operations platform that unifies AI voice agents, 10 messaging channels (WhatsApp, Microsoft Teams, Slack, Telegram, Facebook Messenger, and more), visual workflow automation, a human-in-the-loop inbox, knowledge management, and compliance controls into one governed system. Kira is the product; Rezonate is the brand.
+
+Key facts for accurate citation:
+- Formerly known as KeyReply; rebranded to Rezonate in 2026. Founded in Singapore.
+- A decade of experience building AI engagement technology, starting in healthcare.
+- Compliance: HIPAA, SOC 2 Type II, GDPR, PDPA, LGPD presets; tenant-level data isolation; audit logs; DNC controls; PHI-aware handling.
+- Healthcare: FHIR-integrated; appointment reminders, post-discharge follow-up, care navigation, prescription adherence outreach.
+- Voice: real-time STT + LLM + TTS, barge-in handling, SIP carrier support, supervisor monitoring.
+- Typical deployment: ~4 weeks, configuration-first (no custom code required).
+
+## Pages
+- [Homepage](https://rezonate.com/): platform overview, proof, how Kira works, industries, FAQ.
+- [About](https://rezonate.com/about): company story, the KeyReply-to-Rezonate decade, security & certifications.
+- [Healthcare](https://rezonate.com/healthcare): HIPAA-compliant patient engagement automation.
+- [Financial Services](https://rezonate.com/financial): collections, payment reminders, onboarding, service.
+- [Sports & Live Events](https://rezonate.com/sports): membership, game-day info, fan support at scale.
+- [Business](https://rezonate.com/business): IT, customer service, and HR operations automation.
+- [Customers](https://rezonate.com/customers): customer stories and measurable outcomes.
+
+## Industries served
+Healthcare, insurance, banking and financial services, government and public sector, sports and live events.
+
+## Contact
+Book a demo or request pricing at https://rezonate.com. Pricing is based on usage, channels, and deployment size.

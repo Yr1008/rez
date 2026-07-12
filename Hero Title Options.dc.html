@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;background:#0b0c0e;color:#fff}
+.badge{display:inline-flex;font-size:12px;font-weight:700;color:#0e0d0c;background:#EFA12E;border-radius:999px;padding:5px 12px;margin-bottom:9px}
+.bl{color:rgba(255,255,255,.58);font-size:13px;line-height:1.45;max-width:56ch;margin:0 0 16px}
+.wlabel{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#A79E92;margin:0 0 10px}
+.stage{position:relative;border-radius:22px;overflow:hidden;background:#06070a center 30%/cover no-repeat;background-image:url(rz/poster-home.webp);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:44px 24px}
+.stage::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,7,10,.32),rgba(6,7,10,.5))}
+.stage>*{position:relative;z-index:1}
+.d{height:360px}.m{height:440px;width:380px}
+.gr{background:linear-gradient(112deg,#C6B2F0,#E8837C 46%,#F2C173);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.si{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.wave{display:inline-flex;align-items:center;gap:3px;height:20px;margin-top:20px}
+.wave i{width:3px;border-radius:9px;background:rgba(255,255,255,.85);display:block}
+.row{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start}
+.col{flex:0 0 auto}
+</style>
+</helmet>
+
+<div style="min-height:100vh;padding:52px 44px 96px">
+  <div style="max-width:1180px;margin:0 auto 30px">
+    <h1 style="margin:0;font-size:38px;font-weight:600;letter-spacing:-.03em">Hero title — options (desktop + mobile)</h1>
+    <p style="margin:12px 0 0;max-width:80ch;color:rgba(255,255,255,.6);font-size:16px;line-height:1.5">Three headline treatments over the hero still. Tell me <b style="color:#fff">11a</b>, <b style="color:#fff">11b</b> or <b style="color:#fff">11c</b>.</p>
+  </div>
+
+  <div style="max-width:1180px;margin:0 auto;display:flex;flex-direction:column;gap:40px">
+
+    <!-- 11a -->
+    <section id="11a">
+      <span class="badge">11a · Statement-led</span>
+      <p class="bl">Kicker shrinks, the gradient line becomes the hero. Confident, less busy — the payoff carries it.</p>
+      <div class="row">
+        <div class="col"><div class="wlabel">Desktop</div><div class="stage d" style="width:620px">
+          <p style="margin:0;font-size:19px;font-weight:500;color:rgba(255,255,255,.9);letter-spacing:-.01em">When AI comes with people skills.</p>
+          <h2 style="margin:8px 0 0;font-size:60px;font-weight:600;letter-spacing:-.04em;line-height:.98" class="gr">Now we&rsquo;re talking.</h2>
+          <span class="wave"><i style="height:34%"></i><i style="height:70%"></i><i style="height:100%"></i><i style="height:56%"></i><i style="height:82%"></i><i style="height:40%"></i><i style="height:64%"></i><i style="height:30%"></i></span>
+        </div></div>
+        <div class="col"><div class="wlabel">Mobile</div><div class="stage m">
+          <p style="margin:0;font-size:15px;font-weight:500;color:rgba(255,255,255,.9)">When AI comes with people skills.</p>
+          <h2 style="margin:8px 0 0;font-size:40px;font-weight:600;letter-spacing:-.04em;line-height:.98" class="gr">Now we&rsquo;re talking.</h2>
+          <span class="wave"><i style="height:34%"></i><i style="height:70%"></i><i style="height:100%"></i><i style="height:56%"></i><i style="height:82%"></i><i style="height:40%"></i></span>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- 11b -->
+    <section id="11b">
+      <span class="badge">11b · Editorial serif accent</span>
+      <p class="bl">&ldquo;talking&rdquo; set in Instrument Serif italic for a human, premium touch — the rest stays clean sans.</p>
+      <div class="row">
+        <div class="col"><div class="wlabel">Desktop</div><div class="stage d" style="width:620px">
+          <h2 style="margin:0;font-size:54px;font-weight:600;letter-spacing:-.035em;line-height:1.04;color:#fff;max-width:16ch">When AI comes with people skills. Now we&rsquo;re <span class="si gr" style="font-size:64px">talking.</span></h2>
+          <span class="wave"><i style="height:34%"></i><i style="height:70%"></i><i style="height:100%"></i><i style="height:56%"></i><i style="height:82%"></i><i style="height:40%"></i><i style="height:64%"></i><i style="height:30%"></i></span>
+        </div></div>
+        <div class="col"><div class="wlabel">Mobile</div><div class="stage m">
+          <h2 style="margin:0;font-size:34px;font-weight:600;letter-spacing:-.035em;line-height:1.06;color:#fff">When AI comes with people skills. Now we&rsquo;re <span class="si gr" style="font-size:42px">talking.</span></h2>
+          <span class="wave"><i style="height:34%"></i><i style="height:70%"></i><i style="height:100%"></i><i style="height:56%"></i><i style="height:82%"></i><i style="height:40%"></i></span>
+        </div></div>
+      </div>
+    </section>
+
+    <!-- 11c -->
+    <section id="11c">
+      <span class="badge">11c · Bold two-line, no waveform</span>
+      <p class="bl">Both lines heavy and equal weight, gradient only on the payoff, waveform removed for a cleaner, quieter hero.</p>
+      <div class="row">
+        <div class="col"><div class="wlabel">Desktop</div><div class="stage d" style="width:620px">
+          <h2 style="margin:0;font-size:52px;font-weight:600;letter-spacing:-.04em;line-height:1.02;color:#fff">When AI comes<br>with people skills.</h2>
+          <h2 style="margin:10px 0 0;font-size:52px;font-weight:600;letter-spacing:-.04em;line-height:1.02" class="gr">Now we&rsquo;re talking.</h2>
+        </div></div>
+        <div class="col"><div class="wlabel">Mobile</div><div class="stage m">
+          <h2 style="margin:0;font-size:32px;font-weight:600;letter-spacing:-.04em;line-height:1.05;color:#fff">When AI comes with people skills.</h2>
+          <h2 style="margin:10px 0 0;font-size:32px;font-weight:600;letter-spacing:-.04em;line-height:1.05" class="gr">Now we&rsquo;re talking.</h2>
+        </div></div>
+      </div>
+    </section>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

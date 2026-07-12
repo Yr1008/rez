@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#F7F5F2;}
+body{font-family:'Open Sans',ui-sans-serif,system-ui,sans-serif;color:#2B2626;line-height:1.5;-webkit-font-smoothing:antialiased;}
+a{color:#9C83E7;text-decoration-color:rgba(156,131,231,.45);}
+a:hover{color:#7E63C9;}
+summary::-webkit-details-marker{display:none;}
+</style>
+</helmet>
+
+<header data-screen-label="Header" style="background:#2B2626;color:#FFFFFF;padding:38px 24px 30px">
+  <div style="max-width:1180px;margin:0 auto">
+    <span style="display:inline-block;font-family:'Open Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2B2626;background:#CAB9FF;padding:4px 10px;border-radius:20px">Website QA · Review round 2</span>
+    <h1 style="font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-size:32px;font-weight:700;letter-spacing:-.01em;color:#FFFFFF;max-width:840px;margin:14px 0 0">Rezonate website, review feedback tracker</h1>
+    <p style="color:#D8D2CC;max-width:780px;font-size:15px;margin:10px 0 0">Every note from the 7 July review pass, anchored to the exact page and section it refers to. Tick items off as fixes land, ticks are saved in this browser. Round 1 notes (5 Jun) sit at the bottom for cross-reference.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:22px;margin-top:22px;font-size:13px;color:#CFC8C1">
+      <span><strong style="color:#FFFFFF;font-weight:600">Today:</strong> Tue 7 Jul 2026</span>
+      <span><strong style="color:#FFFFFF;font-weight:600">Launch target:</strong> Fri 10 Jul 2026</span>
+      <span><strong style="color:#FFFFFF;font-weight:600">Notes:</strong> 18 items · 11 highlighted by the reviewer</span>
+      <span><strong style="color:#FFFFFF;font-weight:600">Site fixes land with:</strong> Yash</span>
+    </div>
+  </div>
+</header>
+
+<main data-screen-label="Feedback board" style="max-width:1180px;margin:0 auto;padding:34px 24px 10px">
+
+  <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px">
+    <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-right:14px;border-right:1px solid #E4DFDA">
+      <span style="font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#6E6660;font-weight:700;margin-right:2px">Page</span>
+      <sc-for list="{{ pageChips }}" as="ch" hint-placeholder-count="5">
+        <button onClick="{{ ch.onClick }}" style="font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:20px;cursor:pointer;border:1px solid {{ ch.bd }};background:{{ ch.bg }};color:{{ ch.fg }}">{{ ch.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding-right:14px;border-right:1px solid #E4DFDA">
+      <span style="font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#6E6660;font-weight:700;margin-right:2px">Type</span>
+      <sc-for list="{{ typeChips }}" as="ch" hint-placeholder-count="5">
+        <button onClick="{{ ch.onClick }}" style="font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:20px;cursor:pointer;border:1px solid {{ ch.bd }};background:{{ ch.bg }};color:{{ ch.fg }}">{{ ch.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:6px;align-items:center">
+      <span style="font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#6E6660;font-weight:700;margin-right:2px">Show</span>
+      <sc-for list="{{ statusChips }}" as="ch" hint-placeholder-count="3">
+        <button onClick="{{ ch.onClick }}" style="font-family:'Open Sans',sans-serif;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:20px;cursor:pointer;border:1px solid {{ ch.bd }};background:{{ ch.bg }};color:{{ ch.fg }}">{{ ch.label }}</button>
+      </sc-for>
+    </div>
+    <span onClick="{{ reset }}" style="font-size:12.5px;color:#9C83E7;cursor:pointer;text-decoration:underline;margin-left:auto">Reset filters</span>
+  </div>
+
+  <div style="display:flex;gap:14px;flex-wrap:wrap;margin:10px 0 14px;font-size:13px;color:#6E6660">
+    <span><strong style="color:#2B2626">{{ shown }}</strong> shown</span>
+    <span><strong style="color:#2B2626">{{ doneCount }}</strong> ticked done</span>
+    <span><strong style="color:#2B2626">{{ total }}</strong> total notes</span>
+    <span style="margin-left:auto"><span style="color:#EA3D23">●</span> = highlighted in the reviewer's notes</span>
+  </div>
+
+  <div style="background:#FFFFFF;border-radius:10px;overflow:hidden;box-shadow:0 1px 0 #E4DFDA">
+    <div style="display:grid;grid-template-columns:44px 158px 1fr 92px 112px;gap:0 12px;align-items:center;background:#F0EDE8;padding:10px 14px;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#6E6660;font-weight:700">
+      <span>Done</span><span>Where</span><span>Feedback</span><span>Type</span><span>Owner</span>
+    </div>
+    <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="text-align:center;color:#6E6660;padding:26px;font-style:italic;font-size:13.5px">No notes match this filter combination.</div>
+    </sc-if>
+    <sc-for list="{{ items }}" as="it" hint-placeholder-count="8">
+      <div style="display:grid;grid-template-columns:44px 158px 1fr 92px 112px;gap:0 12px;align-items:start;padding:12px 14px;border-top:1px solid #E4DFDA;opacity:{{ it.rowOpacity }}">
+        <div style="padding-top:2px"><input type="checkbox" checked="{{ it.done }}" onChange="{{ it.toggle }}" style="width:17px;height:17px;accent-color:#9C83E7;cursor:pointer"></div>
+        <div>
+          <div style="font-size:12.5px;font-weight:700;color:#2B2626">{{ it.page }}</div>
+          <a href="{{ it.href }}" style="font-size:12px;line-height:1.35;display:inline-block;margin-top:2px">{{ it.section }} ↗</a>
+        </div>
+        <div>
+          <div style="font-size:13.8px;font-weight:600;color:#2B2626;text-decoration:{{ it.deco }}"><sc-if value="{{ it.hl }}" hint-placeholder-val="{{ false }}"><span title="Highlighted in the reviewer's notes" style="color:#EA3D23;margin-right:5px">●</span></sc-if>{{ it.quote }}</div>
+          <sc-if value="{{ showNotes }}" hint-placeholder-val="{{ true }}">
+            <div style="font-size:12.3px;color:#6E6660;margin-top:3px">{{ it.note }}</div>
+          </sc-if>
+        </div>
+        <div><span style="display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:6px;white-space:nowrap;background:{{ it.tBg }};color:{{ it.tFg }}">{{ it.type }}</span></div>
+        <div><span style="display:inline-block;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:20px;background:#2B2626;color:#FFFFFF">{{ it.owner }}</span></div>
+      </div>
+    </sc-for>
+  </div>
+</main>
+
+<sc-if value="{{ showRound1 }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="Round 1 reference" style="max-width:1180px;margin:0 auto;padding:28px 24px 40px">
+  <details style="background:#FFFFFF;border:1px solid #E4DFDA;border-radius:12px;padding:16px 20px">
+    <summary style="cursor:pointer;list-style:none;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+      <span style="font-family:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;font-size:17px;font-weight:700">Round 1 · 5 Jun notes</span>
+      <span style="font-size:12.5px;color:#6E6660">reference only, re-verify each before launch · click to expand</span>
+    </summary>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:16px">
+      <div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#9C83E7;margin-bottom:6px">Site-wide</div>
+        <ul style="margin:0;padding-left:18px;font-size:12.8px;color:#2B2626;display:grid;gap:5px">
+          <li>"Islanders" → call it "Fan Services"</li>
+          <li>Change Asahi demo → Consumer Goods</li>
+          <li>American English, not British</li>
+          <li>Add WhatsApp and RCS as channels</li>
+          <li>"Maria Tan" → "Emma Smith"</li>
+          <li>Names + titles in customer stories (Asahi, Suresh Bhaskaran, Head of Data &amp; Analytics)</li>
+          <li>Logos: Asahi Beverages, NHS, Somma, 13Sick, Nest Health (+ sports to come)</li>
+          <li>Different numbers for sports, per the sports deck</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#9C83E7;margin-bottom:6px">Videos</div>
+        <ul style="margin:0;padding-left:18px;font-size:12.8px;color:#2B2626;display:grid;gap:5px">
+          <li>Finance: debt collection, fraud protection, mortgage or credit services</li>
+          <li>Business: someone at a desk calling helpdesk support</li>
+          <li>Healthcare: mom or dad with sick kid in a bedroom</li>
+          <li>Sports: touchdown throw or home run, camera follows the ball</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#9C83E7;margin-bottom:6px">Sports page</div>
+        <ul style="margin:0;padding-left:18px;font-size:12.8px;color:#2B2626;display:grid;gap:5px">
+          <li>Demo headline: "Don't read about it. Hear it. Talk to it.", not "Pick an industry"; use brand colors, bring it forward</li>
+          <li>Grayed-out wording → branded coloring</li>
+          <li>Add "or additional staff" after "without a queue"</li>
+          <li>Make the sample conversation realistic ("What time do gates open?" → "Gates open at 5:30")</li>
+          <li>Chart needs axes: calls handled up, required staff constant</li>
+          <li>Use-case cards for sports</li>
+          <li>Incorporate more from the sports deck</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#9C83E7;margin-bottom:6px">Finance page</div>
+        <ul style="margin:0;padding-left:18px;font-size:12.8px;color:#2B2626;display:grid;gap:5px">
+          <li>Headline: "When customers can bank on your every answer", not "When customers can bank on your every answer"</li>
+        </ul>
+      </div>
+    </div>
+  </details>
+</section>
+</sc-if>
+
+<footer style="padding:10px 24px 34px;text-align:center;color:#6E6660;font-size:12.5px">Round 2 notes received 7 Jul 2026 · section links open the live pages in this project · ticks persist in this browser only.</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;showFixNotes&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Display&quot; },
+  &quot;showRound1&quot;: { &quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Display&quot; }
+}">
+class Component extends DCLogic {
+  state = { page: null, type: null, status: null, done: {} };
+
+  componentDidMount() {
+    try {
+      const d = JSON.parse(localStorage.getItem('rz-fb-r2-done') || '{}');
+      if (d && typeof d === 'object') this.setState({ done: d });
+    } catch (e) {}
+  }
+
+  DATA() {
+    return [
+      { id: 'r2-01', page: 'Home', section: 'Live demo · hero CTA', href: 'Rezonate.dc.html#live-demo', type: 'Decide', owner: 'Peiru + Yash', hl: false,
+        quote: '\u201CIs it weird if we say \u2018talk to Kira\u2019 and it\u2019s a male voice? Should we say \u2018speak to our agents\u2019?\u201D',
+        note: 'All four live-demo agents are male voices (Nic, Marty, David, Eddie) behind the female-named Kira brand. Either lead each demo with a Kira-branded voice, or shift CTA copy toward \u201Cour agents.\u201D' },
+      { id: 'r2-02', page: 'Home', section: 'Platform story · site-wide', href: 'Rezonate.dc.html#capabilities', type: 'Decide', owner: 'Peiru + Yash', hl: true,
+        quote: '\u201CWhere is our competitive advantage around the Kira Edge Platform? Why is it just about voice? It should be: Kira Platform, a comprehensive way to build, manage and run agents, so you don\u2019t have to.\u201D',
+        note: 'Home currently sells voice moments (Capabilities, Kira voice); no section makes the build\u2013manage\u2013run platform case. Pairs with \u201Cmove What Kira does to home\u201D below.' },
+      { id: 'r2-03', page: 'Home', section: 'The difference', href: 'Rezonate.dc.html#speedrace', type: 'Design', owner: 'Yash', hl: true,
+        quote: '\u201C\u2018The difference\u2019 section \u2014 what\u2019s the graphic actually telling us? The why should be: Kira agents are 14\u00D7 faster.\u201D',
+        note: 'Make the race graphic pay off one headline takeaway \u2014 speed vs hold time \u2014 instead of leaving the comparison implicit.' },
+      { id: 'r2-04', page: 'Home', section: 'The difference', href: 'Rezonate.dc.html#speedrace', type: 'Design', owner: 'Yash', hl: true,
+        quote: '\u201CI don\u2019t understand \u2018resolve\u2019 without a \u2018human vs hold time\u2019 graphic.\u201D',
+        note: 'Add the human-queue comparison the resolve row implies, or cut that row.' },
+      { id: 'r2-05', page: 'Home', section: 'Capabilities + By the numbers', href: 'Rezonate.dc.html#capabilities', type: 'Design', owner: 'Yash', hl: true,
+        quote: '\u201C\u2018Kira is built different\u2019 already talks about 60+ languages and resolves calls without a human \u2014 so why do we need guy in the crowd? We either need to combine them together or get rid of one.\u201D',
+        note: 'The crowd-photo stats section repeats the capability cards\u2019 claims. Merge into one proof moment, or differentiate what each says.' },
+      { id: 'r2-06', page: 'Home', section: 'Capabilities · stat cards', href: 'Rezonate.dc.html#capabilities', type: 'Bug', owner: 'Yash', hl: true,
+        quote: '\u201CSpacing between down arrow and 49%.\u201D',
+        note: 'The \u201349% figure appears in three spots \u2014 Capabilities card, Kira voice panel, and the Solutions proof column. Fix the glyph spacing in all three.' },
+      { id: 'r2-07', page: 'Home', section: 'Capabilities cards', href: 'Rezonate.dc.html#capabilities', type: 'Content', owner: 'Yash', hl: false,
+        quote: '\u201CNeed to show going from chat UI to call = multi-modal, multi-channel.\u201D',
+        note: 'Cards currently show chat bubbles only; add a chat-to-voice handoff moment so the multi-channel claim is visible.' },
+      { id: 'r2-08', page: 'Home', section: 'By the numbers', href: 'Rezonate.dc.html', type: 'Decide', owner: 'Peiru + Yash', hl: true,
+        quote: '\u201CIs \u2018by the numbers\u2019 just listing capability? Or supposed to distinguish difference?\u201D',
+        note: 'If it\u2019s differentiation, restate each stat as a comparison; if capability, fold it into the cards (see the combine note above).' },
+      { id: 'r2-09', page: 'Home', section: 'FAQ', href: 'Rezonate.dc.html#faq', type: 'Copy', owner: 'Yash', hl: true,
+        quote: '\u201CMaybe don\u2019t start off with such a negative Q \u2014 start positively with: this is how we handle data, this is how we are ISO certified, etc.\u201D',
+        note: 'First question is currently \u201CWhat will Kira never do?\u201D. Trust answers (HIPAA, SOC 2, data handling) already exist further down \u2014 reorder them to the front.' },
+      { id: 'r2-10', page: 'Home', section: 'Closing CTA', href: 'Rezonate.dc.html#demo', type: 'Copy', owner: 'Yash', hl: true,
+        quote: '\u201C\u2018For every call that can\u2019t wait\u2019 \u2014 start wherever it hurts most? Not sure that\u2019s the right tag line\u2026\u201D',
+        note: 'Revisit the headline + \u201CStart wherever it hurts most\u201D kicker pairing on the closing CTA.' },
+      { id: 'r2-11', page: 'Solutions', section: 'Live demo · industry tabs', href: 'Solutions.dc.html', type: 'Bug', owner: 'Yash', hl: true,
+        quote: '\u201CSolutions page \u2014 has Tigers suite in Healthcare tab.\u201D',
+        note: '\u201CMarty \u00B7 Tigers Suite Recovery\u201D is filed under Healthcare in the demo picker \u2014 it\u2019s a sports scenario. The same picker is reused on the home page.' },
+      { id: 'r2-12', page: 'Solutions', section: 'Live demo · industry tabs', href: 'Solutions.dc.html', type: 'Content', owner: 'Yash', hl: false,
+        quote: '\u201CWe need 3 demos for each industry \u2014 looks lacklustre only having one in sports and finance.\u201D',
+        note: 'Current counts: Healthcare 3 \u00B7 Business 3 \u00B7 Financial 1 \u00B7 Sports 1.' },
+      { id: 'r2-13', page: 'Solutions', section: 'What Kira does', href: 'Solutions.dc.html', type: 'Decide', owner: 'Peiru + Yash', hl: false,
+        quote: '\u201CMove the \u2018What Kira does\u2019 to home page?\u201D',
+        note: 'The grid lives on each industry page today. Pairs with the platform-story note \u2014 moving it home could carry the build\u2013manage\u2013run message.' },
+      { id: 'r2-14', page: 'Solutions', section: 'Plugs into your stack', href: 'Solutions.dc.html', type: 'Bug', owner: 'Yash', hl: false,
+        quote: '\u201C\u2018Plugs in your stack\u2019 \u2014 need to find right logo without white background, and also wrong Dynamics logo.\u201D',
+        note: 'Swap the flagged files in rz/integrations \u2014 the Microsoft Dynamics mark is incorrect.' },
+      { id: 'r2-15', page: 'Healthcare', section: 'Triage scenario', href: 'Industry-Healthcare.dc.html', type: 'Decide', owner: 'Peiru + Yash', hl: true,
+        quote: '\u201CChest pain = immediate assistance, not likely to go through our channel \u2014 change?\u201D',
+        note: '\u201CBecause chest symptoms can be serious\u2026\u201D runs on the home Capabilities card and the Solutions triage use case. Swap for a likelier after-hours call (rebooking, referral, billing).' },
+      { id: 'r2-16', page: 'Finance', section: 'Hero · chat card', href: 'Industry-Financial.dc.html', type: 'Copy', owner: 'Yash', hl: false,
+        quote: '\u201CChange \u2018in app\u2019 to something more use-case specific, i.e. \u2018Would you like to learn more about our services?\u2019\u201D',
+        note: 'The hero card is labelled \u201CCustomer \u00B7 In-app\u201D \u2014 replace with a concrete service moment.' },
+      { id: 'r2-17', page: 'Business', section: 'Hero headline', href: 'Industry-Business.dc.html', type: 'Copy', owner: 'Yash', hl: true,
+        quote: '\u201CSpelling mistake \u2014 separate \u2018busywork\u2019.\u201D',
+        note: 'Hero reads \u201CWhen AI takes the busywork out of business.\u201D \u2192 \u201Cbusy work\u201D.' },
+      { id: 'r2-18', page: 'Business', section: 'Closing CTA video', href: 'Industry-Business.dc.html', type: 'Content', owner: 'Yash', hl: false,
+        quote: '\u201C\u2018Put Kira to work\u2019 needs to be a more business-focused video \u2014 i.e. IT helpdesk.\u201D',
+        note: 'CTA imagery should show a helpdesk-style scene rather than the current generic shot.' }
+    ];
+  }
+
+  toggle(id) {
+    this.setState(s => {
+      const d = Object.assign({}, s.done);
+      d[id] = !d[id];
+      try { localStorage.setItem('rz-fb-r2-done', JSON.stringify(d)); } catch (e) {}
+      return { done: d };
+    });
+  }
+
+  renderVals() {
+    const TYPES = {
+      Copy:    { bg: '#EDE7FB', fg: '#7E63C9' },
+      Design:  { bg: '#F0EDE8', fg: '#6E6660' },
+      Content: { bg: '#E3F0E7', fg: '#3E8E5A' },
+      Bug:     { bg: '#FBDFDA', fg: '#C33A22' },
+      Decide:  { bg: '#FDECD2', fg: '#9B5E0B' }
+    };
+    const all = this.DATA().map(it => {
+      const done = !!this.state.done[it.id];
+      return Object.assign({}, it, {
+        done,
+        toggle: () => this.toggle(it.id),
+        tBg: TYPES[it.type].bg,
+        tFg: TYPES[it.type].fg,
+        rowOpacity: done ? 0.5 : 1,
+        deco: done ? 'line-through' : 'none'
+      });
+    });
+    const st = this.state;
+    const items = all.filter(it =>
+      (!st.page || it.page === st.page) &&
+      (!st.type || it.type === st.type) &&
+      (st.status == null || (st.status === 'Flagged' ? it.hl : (st.status === 'Done') === it.done))
+    );
+    const mkChips = (list, key, colorFor) => list.map(l => {
+      const active = st[key] === l;
+      const c = colorFor ? colorFor(l) : '#2B2626';
+      return {
+        label: l,
+        onClick: () => this.setState(s => { const o = {}; o[key] = s[key] === l ? null : l; return o; }),
+        bg: active ? c : '#FFFFFF',
+        fg: active ? '#FFFFFF' : '#2B2626',
+        bd: active ? c : '#E4DFDA'
+      };
+    });
+    return {
+      items,
+      isEmpty: items.length === 0,
+      shown: items.length,
+      doneCount: all.filter(i => i.done).length,
+      total: all.length,
+      pageChips: mkChips(['Home', 'Solutions', 'Healthcare', 'Finance', 'Business'], 'page'),
+      typeChips: mkChips(['Copy', 'Design', 'Content', 'Bug', 'Decide'], 'type', l => TYPES[l].fg),
+      statusChips: mkChips(['Open', 'Done', 'Flagged'], 'status', l => l === 'Flagged' ? '#EA3D23' : '#2B2626'),
+      reset: () => this.setState({ page: null, type: null, status: null }),
+      showNotes: this.props.showFixNotes ?? true,
+      showRound1: this.props.showRound1 ?? true
+    };
+  }
+}
+</script>
+</body>
+</html>

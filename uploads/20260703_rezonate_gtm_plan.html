@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rezonate GTM Plan — Rebrand, Mayo, Fundraise</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --offblack:#2B2626;
+    --lavender:#CAB9FF;
+    --dark-lavender:#9C83E7;
+    --red-orange:#EA3D23;
+    --orange-yellow:#F89F34;
+    --paper:#F7F5F2;
+    --card:#FFFFFF;
+    --line:#E4DFDA;
+    --muted:#6E6660;
+    --green:#3E8E5A;
+    --display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+    --body: 'Open Sans', ui-sans-serif, system-ui, sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:var(--body);
+    background:var(--paper);
+    color:var(--offblack);
+    line-height:1.5;
+  }
+  h1,h2,h3,h4{font-family:var(--display); margin:0 0 8px 0; letter-spacing:-0.01em;}
+  a{color:var(--dark-lavender);}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px 80px;}
+
+  header.top{
+    background:var(--offblack);
+    color:#fff;
+    padding:36px 24px 28px;
+  }
+  header.top .wrap{padding-bottom:0;}
+  .eyebrow{
+    display:inline-block;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--offblack);
+    background:var(--lavender);
+    padding:4px 10px;
+    border-radius:20px;
+    margin-bottom:14px;
+  }
+  header.top h1{font-size:32px; font-weight:700; color:#fff; max-width:820px;}
+  header.top p.sub{color:#D8D2CC; max-width:760px; font-size:15px; margin-top:10px;}
+  .meta-row{display:flex; flex-wrap:wrap; gap:22px; margin-top:22px; font-size:13px; color:#CFC8C1;}
+  .meta-row strong{color:#fff; font-weight:600;}
+
+  section{padding:38px 0; border-bottom:1px solid var(--line);}
+  section:last-child{border-bottom:none;}
+  .section-head{margin-bottom:18px;}
+  .section-head h2{font-size:22px;}
+  .section-head p{color:var(--muted); font-size:14.5px; max-width:820px; margin:6px 0 0;}
+
+  /* Narrative arc */
+  .arc{display:flex; gap:10px; overflow-x:auto; padding-bottom:8px;}
+  .arc-step{
+    min-width:190px;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:14px 14px 16px;
+    position:relative;
+    flex:1;
+  }
+  .arc-step + .arc-step::before{
+    content:"→";
+    position:absolute;
+    left:-18px; top:44%;
+    color:var(--muted);
+    font-size:16px;
+  }
+  .arc-step .tag{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--dark-lavender);}
+  .arc-step h4{font-size:14.5px; margin:6px 0 4px;}
+  .arc-step .when{font-size:12px; color:var(--muted); margin-bottom:6px;}
+  .status-pill{
+    display:inline-block; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:20px; text-transform:uppercase; letter-spacing:.03em;
+  }
+  .status-confirmed{background:#E3F0E7; color:var(--green);}
+  .status-tentative{background:#FDECD2; color:#9B5E0B;}
+  .status-urgent{background:#FBDFDA; color:var(--red-orange);}
+
+  /* Timeline */
+  .timeline{position:relative; padding-left:26px; margin-top:10px;}
+  .timeline::before{content:""; position:absolute; left:8px; top:4px; bottom:4px; width:2px; background:var(--line);}
+  .tl-item{position:relative; padding-bottom:26px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-item::before{
+    content:""; position:absolute; left:-26px; top:3px; width:14px; height:14px; border-radius:50%;
+    background:var(--lavender); border:2px solid var(--offblack);
+  }
+  .tl-item.tentative::before{background:var(--orange-yellow);}
+  .tl-item.urgent::before{background:var(--red-orange);}
+  .tl-item .dates{font-size:12.5px; font-weight:700; color:var(--dark-lavender); text-transform:uppercase; letter-spacing:.03em;}
+  .tl-item h4{font-size:16px; margin:3px 0 4px;}
+  .tl-item p{margin:0; font-size:14px; color:var(--muted); max-width:760px;}
+
+  /* Filters */
+  .filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; align-items:center;}
+  .filters .group{display:flex; flex-wrap:wrap; gap:6px; padding-right:14px; border-right:1px solid var(--line);}
+  .filters .group:last-child{border-right:none;}
+  .filters .label{font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:700; align-self:center; margin-right:2px;}
+  .chip{
+    font-family:var(--body);
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--offblack);
+    font-size:12.5px;
+    font-weight:600;
+    padding:6px 12px;
+    border-radius:20px;
+    cursor:pointer;
+    transition:all .12s ease;
+  }
+  .chip:hover{border-color:var(--dark-lavender);}
+  .chip.active{background:var(--offblack); color:#fff; border-color:var(--offblack);}
+  .chip.active.owned{background:var(--dark-lavender); border-color:var(--dark-lavender);}
+  .chip.active.earned{background:var(--green); border-color:var(--green);}
+  .chip.active.paid{background:var(--red-orange); border-color:var(--red-orange);}
+  .reset-link{font-size:12.5px; color:var(--dark-lavender); cursor:pointer; text-decoration:underline; margin-left:auto;}
+
+  .progress-strip{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:14px; font-size:13px; color:var(--muted);}
+  .progress-strip span strong{color:var(--offblack);}
+
+  table.tasks{width:100%; border-collapse:collapse; background:var(--card); border-radius:10px; overflow:hidden; box-shadow:0 1px 0 var(--line);}
+  table.tasks thead th{
+    text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted);
+    background:#F0EDE8; padding:10px 12px; font-weight:700;
+  }
+  table.tasks tbody td{padding:11px 12px; font-size:13.8px; border-top:1px solid var(--line); vertical-align:top;}
+  table.tasks tbody tr.done td{color:#A79E97;}
+  table.tasks tbody tr.done .task-title{text-decoration:line-through;}
+  table.tasks tbody tr:hover{background:#FBFAF8;}
+  .task-title{font-weight:600;}
+  .task-notes{font-size:12.3px; color:var(--muted); margin-top:2px;}
+  .badge{display:inline-block; font-size:11px; font-weight:700; padding:2px 8px; border-radius:6px; white-space:nowrap;}
+  .badge.owned{background:#EDE7FB; color:var(--dark-lavender);}
+  .badge.earned{background:#E3F0E7; color:var(--green);}
+  .badge.paid{background:#FBDFDA; color:var(--red-orange);}
+  .badge.internal{background:#F0EDE8; color:var(--muted);}
+  .owner-pill{
+    display:inline-block; font-size:12px; font-weight:700; padding:3px 9px; border-radius:20px; background:var(--offblack); color:#fff;
+  }
+  input[type=checkbox]{width:17px; height:17px; accent-color:var(--dark-lavender); cursor:pointer;}
+  .phase-tag{font-size:11.5px; font-weight:700; color:var(--muted);}
+  .empty-row td{text-align:center; color:var(--muted); padding:26px; font-style:italic;}
+
+  /* Matrix */
+  .matrix{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .matrix .col{border-radius:12px; padding:18px; border:1px solid var(--line); background:var(--card);}
+  .matrix .col.owned{border-top:4px solid var(--dark-lavender);}
+  .matrix .col.earned{border-top:4px solid var(--green);}
+  .matrix .col.paid{border-top:4px solid var(--red-orange);}
+  .matrix h3{font-size:16px;}
+  .matrix .col p.desc{font-size:13px; color:var(--muted); margin:4px 0 12px;}
+  .matrix ul{margin:0; padding-left:18px; font-size:13.6px;}
+  .matrix li{margin-bottom:7px;}
+
+  /* Budget */
+  table.budget{width:100%; border-collapse:collapse; background:var(--card); border-radius:10px; overflow:hidden;}
+  table.budget th{text-align:left; background:#F0EDE8; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--muted); padding:10px 12px;}
+  table.budget td{padding:11px 12px; font-size:13.8px; border-top:1px solid var(--line);}
+  table.budget tr.total td{font-weight:700; background:#F7F4FF; border-top:2px solid var(--dark-lavender);}
+  .caveat{font-size:12.5px; color:var(--muted); margin-top:10px; font-style:italic;}
+
+  /* Risk / decisions */
+  .callout{border-radius:12px; padding:18px 20px; border:1px solid var(--line); background:var(--card); margin-bottom:14px;}
+  .callout.risk{border-left:4px solid var(--red-orange);}
+  .callout.decision{border-left:4px solid var(--orange-yellow);}
+  .callout h4{font-size:15px; margin-bottom:6px;}
+  .callout p{margin:0 0 8px; font-size:14px; color:var(--offblack);}
+  .callout .rec{font-size:13.5px; color:var(--muted);}
+  .decision-list{list-style:none; margin:0; padding:0;}
+  .decision-list li{display:flex; gap:10px; padding:10px 0; border-top:1px solid var(--line);}
+  .decision-list li:first-child{border-top:none;}
+  .decision-list .who{min-width:150px; font-weight:700; font-size:13px;}
+  .decision-list .what{font-size:13.8px;}
+  .decision-list .when{font-size:12px; color:var(--muted); white-space:nowrap; margin-left:auto; align-self:center;}
+
+  footer{padding:26px 24px; text-align:center; color:var(--muted); font-size:12.5px;}
+
+  @media (max-width:820px){
+    .matrix{grid-template-columns:1fr;}
+    table.tasks thead{display:none;}
+    table.tasks, table.tasks tbody, table.tasks tr, table.tasks td{display:block; width:100%;}
+    table.tasks tbody tr{border-top:2px solid var(--line); padding:10px 0;}
+    table.tasks tbody td{border-top:none; padding:4px 12px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <span class="eyebrow">Marketing &amp; Comms Execution Plan</span>
+    <h1>Rezonate: Rebrand, Mayo Announcement &amp; Fundraise Go-to-Market Plan</h1>
+    <p class="sub">Built from the 3 July 2026 marketing strategy planning meeting (Peiru, Jeff Angus/PR, Yash Gupta/Growth &amp; Creative, Joette/Marketing Ops) and the 6 July 2026 Peiru–Yash marketing/ads planning call. Website-specific discussion points from the 6 July call (hero design, copy, feedback workflow) are tracked separately and excluded here. Covers website launch through the active fundraise window.</p>
+    <div class="meta-row">
+      <span><strong>Today:</strong> Friday, 3 July 2026</span>
+      <span><strong>Website live target:</strong> Friday, 10 July 2026</span>
+      <span><strong>Planning window:</strong> July – September 2026</span>
+      <span><strong>Owner of this plan:</strong> Peiru</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section id="narrative">
+    <div class="section-head">
+      <h2>The narrative arc</h2>
+      <p>Jeff's core PR logic: each release should read like the next chapter of one story, not a string of disconnected announcements. Sequence below is designed so each step sets up the next and supports the fundraise narrative running underneath.</p>
+    </div>
+    <div class="arc">
+      <div class="arc-step">
+        <div class="tag">Step 1</div>
+        <h4>Website live</h4>
+        <div class="when">Fri 10 Jul</div>
+        <span class="status-pill status-confirmed">On track</span>
+      </div>
+      <div class="arc-step">
+        <div class="tag">Step 2</div>
+        <h4>Rebrand announcement</h4>
+        <div class="when">Tue 14 Jul</div>
+        <span class="status-pill status-confirmed">Date locked</span>
+      </div>
+      <div class="arc-step">
+        <div class="tag">Step 3</div>
+        <h4>Mayo Clinic partnership reveal</h4>
+        <div class="when">~Tue 28 Jul</div>
+        <span class="status-pill status-urgent">Needs Mayo approval</span>
+      </div>
+      <div class="arc-step">
+        <div class="tag">Step 4</div>
+        <h4>Sports vertical / partner story</h4>
+        <div class="when">August (tentative)</div>
+        <span class="status-pill status-tentative">Sequencing TBD</span>
+      </div>
+      <div class="arc-step">
+        <div class="tag">Underneath it all</div>
+        <h4>Fundraise: warm-up → roadshow</h4>
+        <div class="when">Jul (warm intros) → Aug–Sep (active raise)</div>
+        <span class="status-pill status-confirmed">Running in parallel</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="timeline">
+    <div class="section-head">
+      <h2>Master timeline</h2>
+      <p>Anchored to today, 3 July 2026. Tentative items depend on approvals or decisions flagged in the Open Decisions section below.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="dates">Fri 3 – Thu 9 Jul</div>
+        <h4>Website freeze and final fixes</h4>
+        <p>Live demo button, About/Customer page copy and structure, homepage hero image, imagery representation review. Jeff sends copy notes same day (3 Jul).</p>
+      </div>
+      <div class="tl-item">
+        <div class="dates">Fri 10 Jul</div>
+        <h4>Website goes live</h4>
+        <p>Ship the strong pages now; roll out weaker sections (customer stories, deeper about content) over the following weeks rather than delaying launch.</p>
+      </div>
+      <div class="tl-item">
+        <div class="dates">Tue 14 Jul</div>
+        <h4>Rebrand: press release + brand/culture article</h4>
+        <p>Two pieces released together: a market/investor-facing wire release and a softer, team-facing brand story. Date is locked to 14 July.</p>
+      </div>
+      <div class="tl-item">
+        <div class="dates">Ongoing from 14 Jul</div>
+        <h4>Owned-channel amplification of rebrand</h4>
+        <p>Multi-post social rollout (stretched ~2 weeks), founder thought leadership from Peiru and Eric, sales/BD outbound briefing.</p>
+      </div>
+      <div class="tl-item">
+        <div class="dates">Wed 15 – Thu 16 Jul</div>
+        <h4>Mass email to the full database</h4>
+        <p>One send to existing clients, prospects, and partners across the database, segmented sports vs healthcare. List organized by Jasmine ahead of time.</p>
+      </div>
+      <div class="tl-item">
+        <div class="dates">Jul 3 – 31</div>
+        <h4>Fundraise warm-up</h4>
+        <p>Say hellos, make warm introductions, line up the investor list. PR calendar is deliberately synced to this — press credibility shortens fundraise conversations, it doesn't replace them.</p>
+      </div>
+      <div class="tl-item urgent">
+        <div class="dates">By 14 Jul</div>
+        <h4>Confirm Mayo approval timeline</h4>
+        <p>Micah to confirm whether Mayo has signed off on the release copy. This gates the entire Step 3 date below.</p>
+      </div>
+      <div class="tl-item tentative">
+        <div class="dates">~Tue 28 Jul (2 weeks after rebrand)</div>
+        <h4>Mayo Clinic partnership announcement</h4>
+        <p>Kept deliberately separate from the rebrand release so each story lands clean: rebrand explains the "why," Mayo delivers the credibility proof point. Full owned-channel amplification (email, social, sales enablement) mirrors the rebrand playbook.</p>
+      </div>
+      <div class="tl-item">
+        <div class="dates">Jul – Aug</div>
+        <h4>Proof engine: testimonials and thought leadership</h4>
+        <p>Use post-Mayo client goodwill to secure 2–4 video testimonials/case studies. Continue founder thought leadership. Start building the longer-horizon podcast/conference pipeline.</p>
+      </div>
+      <div class="tl-item tentative">
+        <div class="dates">August (tentative)</div>
+        <h4>Sports vertical / partner expansion story</h4>
+        <p>Either a standalone "Rezonate expands into sports" release or bundled with a signed commercial deal, sequenced with Eric's commercial timeline. Continues the narrative: rebrand → Mayo → sports expansion.</p>
+      </div>
+      <div class="tl-item">
+        <div class="dates">Aug – Sep</div>
+        <h4>Active fundraise roadshow</h4>
+        <p>Heavier PR/comms cadence through the raise, per Jeff's ebb-and-flow model. After close, shift marketing emphasis to case studies and customer success.</p>
+      </div>
+      <div class="tl-item tentative">
+        <div class="dates">No earlier than August</div>
+        <h4>Paid media phase 2 (conditional)</h4>
+        <p>Only after owned foundations (press distribution, content, thought leadership, media pitching, outbound) are live and a landing page exists to convert against. Not required for the Mayo release itself.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="board">
+    <div class="section-head">
+      <h2>Task board — filter by owner, channel or phase</h2>
+      <p>Tick items off as they're done (this resets if you close the page — treat it as a working session view, not the system of record). Use this to divide and conquer and see where the team is over- or under-resourced. Total task count shown below updates automatically.</p>
+    </div>
+
+    <div class="filters">
+      <div class="group" id="phase-filters"><span class="label">Phase</span></div>
+      <div class="group" id="owner-filters"><span class="label">Owner</span></div>
+      <div class="group" id="channel-filters"><span class="label">Channel</span></div>
+      <span class="reset-link" onclick="resetFilters()">Reset filters</span>
+    </div>
+
+    <div class="progress-strip" id="progress-strip"></div>
+
+    <table class="tasks">
+      <thead>
+        <tr>
+          <th style="width:34px;">Done</th>
+          <th style="width:26%;">Task</th>
+          <th style="width:11%;">Owner</th>
+          <th style="width:10%;">Channel</th>
+          <th style="width:13%;">Phase</th>
+          <th style="width:11%;">Target date</th>
+        </tr>
+      </thead>
+      <tbody id="task-body"></tbody>
+    </table>
+  </section>
+
+  <section id="matrix">
+    <div class="section-head">
+      <h2>Owned vs earned vs paid</h2>
+      <p>What's fully within our control, what's unpaid but relationship-dependent, and what costs money. Jeff's philosophy: max out owned and earned first, add paid once there's a converting experience to point it at.</p>
+    </div>
+    <div class="matrix">
+      <div class="col owned">
+        <h3>Owned</h3>
+        <p class="desc">We control timing, content and distribution completely.</p>
+        <ul>
+          <li>Website (homepage, Mayo section, customer/about pages)</li>
+          <li>Email to existing + past client database, segmented sports vs healthcare</li>
+          <li>Organic social media (LinkedIn primary, multi-post rollout per announcement)</li>
+          <li>Founder thought leadership (Peiru, Eric)</li>
+          <li>Sales/BD outbound talking points and collateral</li>
+          <li>Brand/culture article (published to owned blog/LinkedIn)</li>
+        </ul>
+      </div>
+      <div class="col earned">
+        <h3>Earned / unpaid</h3>
+        <p class="desc">No media spend, but depends on relationships and story quality, not fully in our control.</p>
+        <ul>
+          <li>Press release pickup (US wire, healthcare + sports trade press)</li>
+          <li>Journalist relationships and direct pitching (Jeff's rolodex)</li>
+          <li>AI/AEO search visibility building over ~6 months from press coverage</li>
+          <li>Customer testimonial/video amplification and organic reach</li>
+          <li>Partner co-marketing and reposting (Mayo, future sports partners)</li>
+          <li>Podcast guesting and conference speaking (longer horizon)</li>
+        </ul>
+      </div>
+      <div class="col paid">
+        <h3>Paid (phase 2)</h3>
+        <p class="desc">Held back until owned/earned foundations are live and there's a landing page to convert against.</p>
+        <ul>
+          <li>Paid social, primarily LinkedIn (B2B healthcare/sports audience)</li>
+          <li>Paid search, brand-term defense during announcement weeks + category terms</li>
+          <li>Retargeting against announcement landing pages</li>
+          <li>Optional wire "extra distribution" boost on top of base circuit</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="budget">
+    <div class="section-head">
+      <h2>Budget — TENTATIVE, pending Jeff and Yash review</h2>
+      <p>No budget figures were set in either meeting. These are Peiru's planning-level ranges based on typical 2026 US market rates for wire distribution and freelance video production, not vendor quotes. Jeff and Yash to comment on their respective lines (PR distribution, and video/ads) before this is treated as a working budget.</p>
+    </div>
+    <table class="budget">
+      <thead>
+        <tr><th>Item</th><th>Estimated range (USD)</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Rebrand press release — US national wire distribution</td><td>$800 – $1,500</td><td>Jeff to select wire vendor and confirm quote</td></tr>
+        <tr><td>Mayo release — national wire + healthcare trade add-on</td><td>$1,100 – $2,100</td><td>Higher due to trade circuit; timing contingent on Mayo approval</td></tr>
+        <tr><td>Sports/partner release (if standalone) — national + sports trade</td><td>$1,100 – $2,100</td><td>Tentative, August/September</td></tr>
+        <tr><td>Customer testimonial videos (2–4 videos)</td><td>$1,500 – $4,000 per video ($6,000 – $16,000 total)</td><td>Scope with Yash; freelance vs agency changes this a lot</td></tr>
+        <tr><td>Leadership videos and 15-second demand-gen video</td><td>$0 – TBD</td><td>Yash producing in-house — flag if this needs tools/freelance budget on top of his time</td></tr>
+        <tr><td>Ying's 2-week bridge coverage (17-31 Jul) and Yash's transition</td><td>$0 – TBD</td><td>Depends on whether Ying's time is billed separately or covered under the existing agency retainer, confirm with the agency; Yash absorbing permanently from 1 Aug is a time cost, not new cash spend, but may warrant a scope/comp conversation</td></tr>
+        <tr><td>Contingency (tools, small sponsorships, ad-hoc creative)</td><td>$1,000 – $2,000</td><td>Buffer</td></tr>
+        <tr class="total"><td>Subtotal, July – September (excludes paid media and TBD lines)</td><td>$10,000 – $23,700</td><td>Wide range mainly driven by video choices; excludes the two $0-TBD lines above</td></tr>
+        <tr><td>Paid media pilot (Phase 2, conditional, from August)</td><td>$3,000 – $6,000 / month</td><td>Only triggers once owned foundation + landing page are live</td></tr>
+      </tbody>
+    </table>
+    <p class="caveat">Tentative. These are Peiru's estimates for planning purposes only, not vendor quotes or numbers Jeff and Yash have signed off on. Jeff to confirm PR distribution costs; Yash to confirm video/ads and the Ying/Yash transition line before this budget is finalized.</p>
+  </section>
+
+  <section id="risk">
+    <div class="section-head">
+      <h2>Resourcing risk</h2>
+    </div>
+    <div class="callout risk">
+      <h4>Three-way handover: Joette to Ying (17-31 Jul bridge) to Yash (from 1 Aug) — spans the Mayo window</h4>
+      <p>The chain is now set: Joette covers until ~17 July, Ying (the agency lead she has been standing in for, returning from medical leave) comes back for a two-week bridge through end of July, then Yash takes over coordination and social execution permanently from 1 August. Meri now writes the social copy directly, so the "who" for content is resolved. The remaining risk is a two-step handover landing right on top of the Mayo announcement (~28 Jul) and the tail of the rebrand rollout.</p>
+      <p class="rec"><strong>Recommendation:</strong> Joette documents a full handover playbook (content calendar, posting workflow, the HubSpot list process run with Jasmine) before 17 July, and runs at least one live task alongside Ying before the bridge starts. Yash should review the agency's scope of work and the handover materials well before 1 August rather than absorbing everything cold on day one.</p>
+    </div>
+  </section>
+
+  <section id="decisions">
+    <div class="section-head">
+      <h2>Open decisions needed</h2>
+      <p>Things this plan cannot resolve on its own — need a call from the named person by the date shown.</p>
+    </div>
+    <ul class="decision-list">
+      <li><span class="who">Micah</span><span class="what">Confirm Mayo's approval status and timeline on the release copy — this gates the entire Mayo announcement date.</span><span class="when">By 14 Jul</span></li>
+      <li><span class="who">Peiru + Joette</span><span class="what">Confirm Ying's exact working days/scope during the 17-31 Jul bridge, and brief Yash ahead of taking over 1 Aug.</span><span class="when">By 15 Jul</span></li>
+      <li><span class="who">Peiru + Jeff</span><span class="what">Set the go/no-go trigger for paid media (needs a live landing page and a converting experience first, per Jeff's framework).</span><span class="when">By 28 Jul</span></li>
+    </ul>
+  </section>
+
+</div>
+
+<footer>Built from the 3 July 2026 marketing strategy planning meeting and the 6 July 2026 Peiru–Yash marketing/ads call. Working document — update as dates and approvals firm up.</footer>
+
+<script>
+const tasks = [
+  // Phase 0 — Pre-launch fixes
+  {phase:'P0', phaseLabel:'P0 · Pre-launch fixes (3–10 Jul)', title:'Fix live demo button', owner:'Max', channel:'owned', due:'8 Jul', notes:'Blocking issue flagged by Yash'},
+  {phase:'P0', phaseLabel:'P0 · Pre-launch fixes (3–10 Jul)', title:'QA that AI-generated company avatars are fully replaced with gradients on Customer page', owner:'Yash', channel:'owned', due:'7 Jul', notes:'Compliance/legal risk — cannot associate an AI persona with a real company'},
+  {phase:'P0', phaseLabel:'P0 · Pre-launch fixes (3–10 Jul)', title:'Strengthen Customer page proof points beyond case studies', owner:'Peiru', channel:'owned', due:'8 Jul', notes:'Metrics currently not convincing enough on their own'},
+  {phase:'P0', phaseLabel:'P0 · Pre-launch fixes (3–10 Jul)', title:'Rewrite About page for storytelling structure, cut text density, add expand-for-detail', owner:'Jeff', channel:'owned', due:'9 Jul', notes:'Currently scattered and text-heavy'},
+  {phase:'P0', phaseLabel:'P0 · Pre-launch fixes (3–10 Jul)', title:'Send copy notes on Customer + About pages', owner:'Jeff', channel:'owned', due:'3 Jul', notes:'Same-day turnaround committed in the meeting'},
+  {phase:'P0', phaseLabel:'P0 · Pre-launch fixes (3–10 Jul)', title:'Resolve homepage hero image (currently reads as distressed, not intended)', owner:'Yash', channel:'owned', due:'8 Jul', notes:'Consider before/after narrative once testimonial imagery exists'},
+  {phase:'P0', phaseLabel:'P0 · Pre-launch fixes (3–10 Jul)', title:'Review age/ethnicity representation across site imagery and video', owner:'Jeff', channel:'owned', due:'8 Jul', notes:'Currently skews all-female; can be a v2 fix if time-constrained'},
+  {phase:'P0', phaseLabel:'P0 · Pre-launch fixes (3–10 Jul)', title:'Reconcile website copy: merge Joette\'s brand-guide draft with Jeff\'s edits', owner:'Joette', channel:'owned', due:'9 Jul', notes:'Keep voice consistent since this copy is what the rebrand release points to'},
+  {phase:'P0', phaseLabel:'P0 · Pre-launch fixes (3–10 Jul)', title:'Final QA pass; freeze scope, defer non-critical pages to post-launch', owner:'Yash', channel:'owned', due:'10 Jul', notes:'Homepage carries most traffic — ship strong pages now, roll out the rest later'},
+
+  // Phase 1 — Website launch
+  {phase:'P1', phaseLabel:'P1 · Website launch (10 Jul)', title:'Go live: publish website', owner:'Yash', channel:'owned', due:'10 Jul', notes:''},
+  {phase:'P1', phaseLabel:'P1 · Website launch (10 Jul)', title:'Install Google Analytics (GA4) and Google Tag Manager', owner:'Yash', channel:'internal', due:'8 Jul', notes:'Foundation for all tracking below'},
+  {phase:'P1', phaseLabel:'P1 · Website launch (10 Jul)', title:'Set up conversion/goal tracking (demo requests, contact form, key CTAs)', owner:'Yash', channel:'internal', due:'8 Jul', notes:'Via GTM; need this live before layering paid media later'},
+  {phase:'P1', phaseLabel:'P1 · Website launch (10 Jul)', title:'Add Google Ads conversion tracking tags and tracking links', owner:'Yash', channel:'internal', due:'9 Jul', notes:'Not switching on spend yet — just wiring it up so Phase 2 paid media has data from day one'},
+  {phase:'P1', phaseLabel:'P1 · Website launch (10 Jul)', title:'Set up Google Search Console and submit sitemap', owner:'Yash', channel:'internal', due:'10 Jul', notes:'Supports the AEO/search-visibility goal behind the press strategy'},
+  {phase:'P1', phaseLabel:'P1 · Website launch (10 Jul)', title:'Soft internal note to close stakeholders that the site is live', owner:'Peiru', channel:'owned', due:'10 Jul', notes:'Not a press moment — just a heads up ahead of the rebrand release'},
+
+  // Phase 2 — Rebrand announcement
+  {phase:'P2', phaseLabel:'P2 · Rebrand announcement (14 Jul)', title:'Finalize press release copy (investor/market-facing)', owner:'Jeff', channel:'earned', due:'11 Jul', notes:''},
+  {phase:'P2', phaseLabel:'P2 · Rebrand announcement (14 Jul)', title:'Finalize brand/culture article (softer, team-facing story)', owner:'Jeff', channel:'earned', due:'11 Jul', notes:'Co-write with Peiru for founder voice'},
+  {phase:'P2', phaseLabel:'P2 · Rebrand announcement (14 Jul)', title:'Confirm distribution list (US-first, reuse for APAC pitch)', owner:'Jeff', channel:'internal', due:'10 Jul', notes:'Release date is locked to 14 Jul; no need for dual US/APAC wire distribution — pitch APAC outlets off the US release'},
+  {phase:'P2', phaseLabel:'P2 · Rebrand announcement (14 Jul)', title:'Distribute press release via US wire', owner:'Jeff', channel:'earned', due:'14 Jul', notes:'Date locked to Tuesday 14 Jul'},
+  {phase:'P2', phaseLabel:'P2 · Rebrand announcement (14 Jul)', title:'Publish brand/culture article to owned blog + LinkedIn', owner:'Joette', channel:'owned', due:'14 Jul', notes:''},
+  {phase:'P2', phaseLabel:'P2 · Rebrand announcement (14 Jul)', title:'Multi-post social rollout stretched over ~2 weeks', owner:'Meri', channel:'owned', due:'14–28 Jul', notes:'Written by Meri; Joette schedules through 17 Jul, then Ying (17–31 Jul bridge), then Yash from 1 Aug'},
+  {phase:'P2', phaseLabel:'P2 · Rebrand announcement (14 Jul)', title:'Organize and segment the HubSpot contact list', owner:'Jasmine', channel:'internal', due:'13 Jul', notes:'Jasmine does most of the list work; Joette flags timing so segmented email messaging can be prepped in time for the 15–16 Jul send'},
+  {phase:'P2', phaseLabel:'P2 · Rebrand announcement (14 Jul)', title:'Mass email to existing clients, prospects, and partners across the database, segmented sports vs healthcare', owner:'Joette', channel:'owned', due:'15–16 Jul', notes:'Include soft demo CTA; list prepared by Jasmine'},
+  {phase:'P2', phaseLabel:'P2 · Rebrand announcement (14 Jul)', title:'Founder thought leadership post — Peiru', owner:'Peiru', channel:'owned', due:'15 Jul', notes:''},
+  {phase:'P2', phaseLabel:'P2 · Rebrand announcement (14 Jul)', title:'Founder thought leadership post — Eric', owner:'Eric', channel:'owned', due:'15 Jul', notes:''},
+  {phase:'P2', phaseLabel:'P2 · Rebrand announcement (14 Jul)', title:'Brief sales/BD on outbound talking points using the release', owner:'Peiru', channel:'owned', due:'14 Jul', notes:'What is the release, how to use it in active conversations'},
+  {phase:'P2', phaseLabel:'P2 · Rebrand announcement (14 Jul)', title:'Pitch rebrand story to APAC journalists using the US release', owner:'Jeff', channel:'earned', due:'15–16 Jul', notes:''},
+  {phase:'P2', phaseLabel:'P2 · Rebrand announcement (14 Jul)', title:'Update LinkedIn company page and all leadership/employee profiles and banners to new branding', owner:'Peiru', channel:'owned', due:'13 Jul', notes:'Free organic reach, and Yash flagged this should be locked before paid campaigns start — coordinate with each leader individually'},
+
+  // Phase 3 — Fundraise warm-up
+  {phase:'P3', phaseLabel:'P3 · Fundraise warm-up (Jul)', title:'Compile and prioritize warm investor contact list', owner:'Peiru', channel:'internal', due:'10 Jul', notes:'Joint with Eric'},
+  {phase:'P3', phaseLabel:'P3 · Fundraise warm-up (Jul)', title:'Begin outreach and intro requests through network', owner:'Peiru', channel:'internal', due:'Ongoing Jul', notes:'Joint with Eric'},
+  {phase:'P3', phaseLabel:'P3 · Fundraise warm-up (Jul)', title:'Sync PR calendar with investor conversation calendar', owner:'Jeff', channel:'internal', due:'11 Jul', notes:'Press credibility shortens conversations, does not replace them'},
+  {phase:'P3', phaseLabel:'P3 · Fundraise warm-up (Jul)', title:'Update fundraise narrative materials with "young company, decade of credibility" framing', owner:'Peiru', channel:'internal', due:'18 Jul', notes:'Joint with Eric; retire this framing post-raise'},
+
+  // Phase 4 — Mayo announcement
+  {phase:'P4', phaseLabel:'P4 · Mayo announcement (~28 Jul)', title:'Confirm Mayo approval status and timeline on release copy', owner:'Micah', channel:'internal', due:'14 Jul', notes:'URGENT — gates the whole phase'},
+  {phase:'P4', phaseLabel:'P4 · Mayo announcement (~28 Jul)', title:'Finalize Mayo press release copy', owner:'Jeff', channel:'earned', due:'Pending approval', notes:''},
+  {phase:'P4', phaseLabel:'P4 · Mayo announcement (~28 Jul)', title:'Schedule Mayo release date (Tue/Wed, ~2 weeks after rebrand)', owner:'Jeff', channel:'internal', due:'~28 Jul', notes:''},
+  {phase:'P4', phaseLabel:'P4 · Mayo announcement (~28 Jul)', title:'Distribute Mayo release — US wire + healthcare trade, reuse for APAC pitch', owner:'Jeff', channel:'earned', due:'~28 Jul', notes:''},
+  {phase:'P4', phaseLabel:'P4 · Mayo announcement (~28 Jul)', title:'Confirm Mayo section on website is live and polished', owner:'Yash', channel:'owned', due:'Before release', notes:'Already designed — needs final QA'},
+  {phase:'P4', phaseLabel:'P4 · Mayo announcement (~28 Jul)', title:'Social multi-post campaign for Mayo announcement', owner:'Meri', channel:'owned', due:'28 Jul – 11 Aug', notes:'"Get sick of the Mayo logo" — repeat visibility is the goal. Written by Meri; Ying (through 31 Jul) then Yash schedule and publish'},
+  {phase:'P4', phaseLabel:'P4 · Mayo announcement (~28 Jul)', title:'Email database announcing Mayo partnership, segmented messaging', owner:'Joette', channel:'owned', due:'28 Jul', notes:'Existing clients are already warming up on the news — capitalize on it; list prepared by Jasmine'},
+  {phase:'P4', phaseLabel:'P4 · Mayo announcement (~28 Jul)', title:'Equip sales/outbound with Mayo talking points and collateral', owner:'Peiru', channel:'owned', due:'26 Jul', notes:''},
+  {phase:'P4', phaseLabel:'P4 · Mayo announcement (~28 Jul)', title:'Pitch Mayo story to healthcare and sports trade journalists', owner:'Jeff', channel:'earned', due:'26–28 Jul', notes:'Sports angle: introduce Rezonate via the Mayo credibility halo, not a direct Mayo story'},
+  {phase:'P4', phaseLabel:'P4 · Mayo announcement (~28 Jul)', title:'Decide go/no-go on paid ads tied to the Mayo release', owner:'Peiru', channel:'internal', due:'28 Jul', notes:'Only if owned/earned foundation is fully in place first'},
+
+  // Phase 5 — Proof engine
+  {phase:'P5', phaseLabel:'P5 · Proof engine (Jul–Aug, ongoing)', title:'Identify 2–4 warm clients for testimonial/video case study', owner:'Peiru', channel:'earned', due:'14 Jul', notes:'Use post-Mayo client goodwill to ask now'},
+  {phase:'P5', phaseLabel:'P5 · Proof engine (Jul–Aug, ongoing)', title:'Build a testimonial/case-study deck and circulate to the team', owner:'Peiru', channel:'internal', due:'14 Jul', notes:'Compile existing customer proof points into one reference deck so the whole team uses consistent case studies in outreach and investor conversations'},
+  {phase:'P5', phaseLabel:'P5 · Proof engine (Jul–Aug, ongoing)', title:'Produce 3 short leadership videos (CEO, tech, sales perspectives) for credibility content', owner:'Peiru', channel:'owned', due:'14 Jul', notes:'Peiru posting the ask to the team for Eric and Max to commit; more effective than text-heavy content, especially on mobile'},
+  {phase:'P5', phaseLabel:'P5 · Proof engine (Jul–Aug, ongoing)', title:'Produce a 15-second demand-generation video for Google and LinkedIn ads', owner:'Yash', channel:'owned', due:'10 Jul', notes:'Quick version, ~3–4 day turnaround; reused across Google, LinkedIn, and future paid placements'},
+  {phase:'P5', phaseLabel:'P5 · Proof engine (Jul–Aug, ongoing)', title:'Develop a longer, higher-production flagship product video', owner:'Yash', channel:'owned', due:'August (after leadership videos and footage exist)', notes:'Higher production value than the quick demand-gen cut, built once there is footage to work with'},
+  {phase:'P5', phaseLabel:'P5 · Proof engine (Jul–Aug, ongoing)', title:'Scope and select vendor/freelancer for video production', owner:'Joette', channel:'internal', due:'15 Jul', notes:''},
+  {phase:'P5', phaseLabel:'P5 · Proof engine (Jul–Aug, ongoing)', title:'Provide guidelines on what makes a good video testimonial', owner:'Yash', channel:'internal', due:'15 Jul', notes:'Brief for the video vendor and for clients being asked — length, focus on outcomes not features, format'},
+  {phase:'P5', phaseLabel:'P5 · Proof engine (Jul–Aug, ongoing)', title:'Produce first customer testimonial video(s)', owner:'Yash', channel:'earned', due:'15 Aug', notes:'Gold standard reference: customer-first, product second (per Jeff and Ambience Healthcare example)'},
+  {phase:'P5', phaseLabel:'P5 · Proof engine (Jul–Aug, ongoing)', title:'Build testimonial/case-study clause into future partnership agreements', owner:'Eric', channel:'internal', due:'Ongoing', notes:'E.g. 6-month check-in video baked into the commercial deal. Draft clause below — business team to insert into contract templates, confirm with counsel first'},
+  {phase:'P5', phaseLabel:'P5 · Proof engine (Jul–Aug, ongoing)', title:'Define "wins-first" creative approach for future paid/social content', owner:'Yash', channel:'internal', due:'1 Aug', notes:'Lead with customer outcome, pitch product second'},
+  {phase:'P5', phaseLabel:'P5 · Proof engine (Jul–Aug, ongoing)', title:'Start podcast and conference speaking pipeline', owner:'Jeff', channel:'earned', due:'Ongoing Jul–Sep', notes:'Longer horizon, not a fundraise-window priority but worth seeding now'},
+
+  // Phase 6 — Sports vertical
+  {phase:'P6', phaseLabel:'P6 · Sports vertical story (Aug, tentative)', title:'Draft sports-vertical narrative/release', owner:'Jeff', channel:'earned', due:'August', notes:'If standalone route is chosen'},
+  {phase:'P6', phaseLabel:'P6 · Sports vertical story (Aug, tentative)', title:'Align with commercial team on deal-close timing to sequence announcement', owner:'Eric', channel:'internal', due:'Ongoing', notes:''},
+  {phase:'P6', phaseLabel:'P6 · Sports vertical story (Aug, tentative)', title:'Pitch to sports trade press (e.g. Sport Business Journal)', owner:'Jeff', channel:'earned', due:'Aug–Sep', notes:''},
+
+  // Phase 7 — Active roadshow
+  {phase:'P7', phaseLabel:'P7 · Active fundraise roadshow (Aug–Sep)', title:'Kick off roadshow / active investor meetings', owner:'Peiru', channel:'internal', due:'August', notes:'Joint with Eric'},
+  {phase:'P7', phaseLabel:'P7 · Active fundraise roadshow (Aug–Sep)', title:'Maintain elevated PR/comms cadence through the raise window', owner:'Jeff', channel:'earned', due:'Aug–Sep', notes:'Ebb and flow: busier PR during active raise'},
+  {phase:'P7', phaseLabel:'P7 · Active fundraise roadshow (Aug–Sep)', title:'Post-raise: shift content focus to case studies and customer success', owner:'Peiru', channel:'owned', due:'Post-close', notes:''},
+
+  // Phase 8 — Paid media
+  {phase:'P8', phaseLabel:'P8 · Paid media, phase 2 (conditional, from Aug)', title:'Prepare business registration and tax ID documents for Google Ads/Analytics verification', owner:'Peiru', channel:'internal', due:'10 Jul', notes:'Verification can take weeks without this ready — start now regardless of when spend actually begins'},
+  {phase:'P8', phaseLabel:'P8 · Paid media, phase 2 (conditional, from Aug)', title:'Set up fresh Google Workspace/Gmail accounts on the getresonate.com domain', owner:'Yash', channel:'internal', due:'10 Jul', notes:'Peiru and Max to confirm who needs an account; starting fresh rather than reusing old KeyReply Google accounts for cleaner ad account verification and analytics signal'},
+  {phase:'P8', phaseLabel:'P8 · Paid media, phase 2 (conditional, from Aug)', title:'Check whether the marketing agency can help expedite Google Ads account setup', owner:'Peiru', channel:'internal', due:'8 Jul', notes:'Account setup is manual and compliance-heavy; worth asking before doing it all in-house'},
+  {phase:'P8', phaseLabel:'P8 · Paid media, phase 2 (conditional, from Aug)', title:'Update Google Business Profile to new Rezonate branding', owner:'Yash', channel:'owned', due:'15 Jul', notes:'Needs to be sorted before running ads — GBP is connected into the wider Google ads ecosystem'},
+  {phase:'P8', phaseLabel:'P8 · Paid media, phase 2 (conditional, from Aug)', title:'Finalize target personas, titles, and geographies for ad targeting', owner:'Yash', channel:'paid', due:'15 Jul', notes:'Builds on the client personas already shared; needed before campaign structuring'},
+  {phase:'P8', phaseLabel:'P8 · Paid media, phase 2 (conditional, from Aug)', title:'Structure paid campaigns by industry vertical (sports, tech, finance) with tailored creative and messaging', owner:'Yash', channel:'paid', due:'1 Aug', notes:'Avoids a finance prospect seeing sports creative and vice versa'},
+  {phase:'P8', phaseLabel:'P8 · Paid media, phase 2 (conditional, from Aug)', title:'Build landing pages for paid campaigns', owner:'Yash', channel:'owned', due:'Pre-req', notes:'Required before any paid spend'},
+  {phase:'P8', phaseLabel:'P8 · Paid media, phase 2 (conditional, from Aug)', title:'Define paid test budget and channels (LinkedIn + Google)', owner:'Jeff', channel:'paid', due:'August', notes:''},
+  {phase:'P8', phaseLabel:'P8 · Paid media, phase 2 (conditional, from Aug)', title:'Explore collaboration with large AI/tech community pages (Instagram/Twitter) using product and customer content', owner:'Yash', channel:'paid', due:'August (exploratory)', notes:'Brand-awareness play, not a direct-response channel; budget/terms not yet scoped — could end up organic rather than paid'},
+  {phase:'P8', phaseLabel:'P8 · Paid media, phase 2 (conditional, from Aug)', title:'Launch paid pilot tied to Mayo/rebrand proof content', owner:'Yash', channel:'paid', due:'August', notes:'Conditional on P0–P4 foundation being solid'},
+
+  // Resourcing
+  {phase:'P9', phaseLabel:'P9 · Resourcing (urgent)', title:'Confirm the handover chain: Joette to Ying (17-31 Jul bridge) to Yash (from 1 Aug)', owner:'Peiru', channel:'internal', due:'11 Jul', notes:'Ying is the agency lead Joette has been covering for, back for a 2-week bridge before Yash takes over coordination/social execution permanently'},
+  {phase:'P9', phaseLabel:'P9 · Resourcing (urgent)', title:'Joette to document handover playbook (content calendar, posting workflow, contact list management)', owner:'Joette', channel:'internal', due:'Before 17 Jul', notes:'Handover goes to Ying first for the bridge, then fully to Yash from 1 Aug — include the HubSpot list process run with Jasmine'},
+  {phase:'P9', phaseLabel:'P9 · Resourcing (urgent)', title:'Ying to shadow/co-run a live task with Joette before the bridge starts', owner:'Ying', channel:'internal', due:'Before 17 Jul', notes:'De-risks the handover beyond documentation alone'},
+  {phase:'P9', phaseLabel:'P9 · Resourcing (urgent)', title:'Share the marketing agency scope of work with Yash for review', owner:'Peiru', channel:'internal', due:'7 Jul', notes:'Yash is the confirmed permanent owner from 1 Aug, absorbing fractional-CMO-level scope currently sitting with the agency'},
+  {phase:'P9', phaseLabel:'P9 · Resourcing (urgent)', title:'Yash to review agency scope of work and Joette/Ying handover materials ahead of taking over 1 Aug', owner:'Yash', channel:'internal', due:'31 Jul', notes:'Full ownership starts once Ying\'s 2-week bridge ends'}
+];
+
+const phaseOrder = ['P0','P1','P2','P3','P4','P5','P6','P7','P8','P9'];
+const owners = [...new Set(tasks.map(t=>t.owner))];
+const channels = ['owned','earned','paid','internal'];
+
+let activeFilters = {phase:null, owner:null, channel:null};
+
+function buildFilterChips(){
+  const phaseWrap = document.getElementById('phase-filters');
+  phaseOrder.forEach(p=>{
+    const label = tasks.find(t=>t.phase===p).phaseLabel.split(' · ')[0];
+    const btn = document.createElement('button');
+    btn.className='chip'; btn.textContent=label; btn.dataset.phase=p;
+    btn.onclick=()=>{ activeFilters.phase = activeFilters.phase===p ? null : p; render(); };
+    phaseWrap.appendChild(btn);
+  });
+  const ownerWrap = document.getElementById('owner-filters');
+  owners.forEach(o=>{
+    const btn = document.createElement('button');
+    btn.className='chip'; btn.textContent=o; btn.dataset.owner=o;
+    btn.onclick=()=>{ activeFilters.owner = activeFilters.owner===o ? null : o; render(); };
+    ownerWrap.appendChild(btn);
+  });
+  const chanWrap = document.getElementById('channel-filters');
+  channels.forEach(c=>{
+    const btn = document.createElement('button');
+    btn.className='chip'; btn.textContent=c.charAt(0).toUpperCase()+c.slice(1); btn.dataset.channel=c;
+    btn.onclick=()=>{ activeFilters.channel = activeFilters.channel===c ? null : c; render(); };
+    chanWrap.appendChild(btn);
+  });
+}
+
+function resetFilters(){
+  activeFilters = {phase:null, owner:null, channel:null};
+  render();
+}
+
+function updateChipStates(){
+  document.querySelectorAll('#phase-filters .chip').forEach(b=>b.classList.toggle('active', b.dataset.phase===activeFilters.phase));
+  document.querySelectorAll('#owner-filters .chip').forEach(b=>b.classList.toggle('active', b.dataset.owner===activeFilters.owner));
+  document.querySelectorAll('#channel-filters .chip').forEach(b=>{
+    const isActive = b.dataset.channel===activeFilters.channel;
+    b.classList.toggle('active', isActive);
+    b.classList.toggle(b.dataset.channel, isActive);
+  });
+}
+
+function render(){
+  updateChipStates();
+  const body = document.getElementById('task-body');
+  body.innerHTML='';
+  const filtered = tasks.filter(t=>
+    (!activeFilters.phase || t.phase===activeFilters.phase) &&
+    (!activeFilters.owner || t.owner===activeFilters.owner) &&
+    (!activeFilters.channel || t.channel===activeFilters.channel)
+  );
+  if(filtered.length===0){
+    body.innerHTML = '<tr class="empty-row"><td colspan="6">No tasks match this filter combination.</td></tr>';
+  } else {
+    filtered.forEach((t,i)=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td><input type="checkbox" onchange="this.closest('tr').classList.toggle('done', this.checked); updateProgress();"></td>
+        <td><div class="task-title">${t.title}</div>${t.notes?`<div class="task-notes">${t.notes}</div>`:''}</td>
+        <td><span class="owner-pill">${t.owner}</span></td>
+        <td><span class="badge ${t.channel}">${t.channel}</span></td>
+        <td><span class="phase-tag">${t.phaseLabel.split(' · ')[0]}</span></td>
+        <td>${t.due}</td>
+      `;
+      body.appendChild(tr);
+    });
+  }
+  updateProgress(filtered.length);
+}
+
+function updateProgress(count){
+  const strip = document.getElementById('progress-strip');
+  const total = count !== undefined ? count : document.querySelectorAll('#task-body tr').length;
+  const done = document.querySelectorAll('#task-body tr.done').length;
+  const byPhase = {};
+  phaseOrder.forEach(p=>{
+    const inPhase = tasks.filter(t=>t.phase===p).length;
+    byPhase[p]=inPhase;
+  });
+  strip.innerHTML = `<span><strong>${total}</strong> tasks shown</span><span><strong>${done}</strong> marked done in this session</span><span><strong>${tasks.length}</strong> total tasks across the plan</span><span><strong>${owners.length}</strong> named owners</span>`;
+}
+
+buildFilterChips();
+render();
+</script>
+
+</body>
+</html>

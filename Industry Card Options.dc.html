@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;background:#0b0c0e;color:#fff}
+.badge{display:inline-flex;font-size:12px;font-weight:700;color:#0e0d0c;background:#EFA12E;border-radius:999px;padding:5px 12px;margin-bottom:9px}
+.bl{color:rgba(255,255,255,.58);font-size:13px;line-height:1.45;max-width:32ch;margin:0 0 15px}
+.tile{position:relative;width:372px;height:316px;border-radius:22px;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:20px}
+.tile>.bgimg{position:absolute;inset:0;background-size:cover}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,6,10,.26),rgba(4,6,10,.52))}
+.col{flex:0 0 auto}
+/* minimal transparent glass shell (liked) + rezonate accent */
+.mc{position:relative;z-index:1;width:312px;border-radius:24px;padding:17px 18px;background:rgba(10,10,14,.3);backdrop-filter:blur(30px) saturate(135%);-webkit-backdrop-filter:blur(30px) saturate(135%);border:1px solid rgba(255,255,255,.14);box-shadow:0 40px 90px -50px rgba(0,0,0,.85)}
+.mc>*{position:relative;z-index:1}
+.hd{display:flex;align-items:center;gap:10px;margin-bottom:13px}
+.ic{flex:0 0 auto;width:32px;height:32px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center}
+.cat{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;line-height:1.1}
+.sub{font-size:10.5px;color:rgba(255,255,255,.55);letter-spacing:.02em;margin-top:2px}
+.chan{margin-left:auto;font-size:10.5px;color:rgba(255,255,255,.6);white-space:nowrap;align-self:flex-start}
+.bub{font-size:13.5px;line-height:1.42;padding:10px 13px;border-radius:15px 15px 15px 5px;background:rgba(255,255,255,.13);color:#fff}
+.acts{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}
+.chip{font-size:12px;font-weight:600;padding:7px 13px;border-radius:999px;color:#fff;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16)}
+.chip-p{position:relative;border:none;color:#fff;background:linear-gradient(120deg,rgba(183,157,232,.32),rgba(217,96,90,.32) 55%,rgba(239,161,46,.32))}
+.chip-p::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(120deg,#B79DE8,#D9605A 55%,#EFA12E);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.foot{display:flex;align-items:center;gap:7px;margin-top:13px;padding-top:11px;border-top:1px solid rgba(255,255,255,.1)}
+.kdot{width:6px;height:6px;border-radius:99px;background:linear-gradient(135deg,#B79DE8,#D9605A 55%,#EFA12E);box-shadow:0 0 0 3px rgba(217,96,90,.2)}
+.kby{font-size:11px;color:rgba(255,255,255,.62);font-weight:500}
+.link{margin-top:11px;font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:3px;background:linear-gradient(115deg,#B79DE8,#D9605A 50%,#EFA12E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+h2.sec{font-size:15px;font-weight:600;letter-spacing:-.01em;color:rgba(255,255,255,.5);margin:0 0 16px;text-transform:uppercase;letter-spacing:.14em;font-size:12px}
+</style>
+</helmet>
+
+<div style="min-height:100vh;padding:52px 44px 96px">
+  <div style="max-width:1300px;margin:0 auto 30px">
+    <h1 style="margin:0;font-size:38px;font-weight:600;letter-spacing:-.03em">Industry-relatable hero cards</h1>
+    <p style="margin:12px 0 0;max-width:76ch;color:rgba(255,255,255,.6);font-size:16px;line-height:1.5">Your minimal transparent glass — kept identical across every industry — but each card now shows a real scenario for its category, with a category icon, and every action carries the Rezonate gradient + a &ldquo;Secured / handled by Kira&rdquo; footer. One system, four voices. Tell me if this direction works and I&rsquo;ll roll it into each hero.</p>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:30px;max-width:1300px;margin:0 auto;align-items:flex-start">
+
+    <!-- FINANCE -->
+    <section class="col" id="7fin">
+      <span class="badge">Finance</span>
+      <p class="bl">Fraud &amp; account actions — trust and verification lead.</p>
+      <div class="tile"><div class="bgimg" style="background-image:url(rz/poster-finance3.jpg);background-position:center 15%"></div>
+        <div class="mc">
+          <div class="hd">
+            <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B79DE8"/><stop offset=".55" stop-color="#D9605A"/><stop offset="1" stop-color="#EFA12E"/></linearGradient></defs><path d="M12 3l7 3v5c0 4.2-2.8 7.5-7 9-4.2-1.5-7-4.8-7-9V6l7-3z" stroke="url(#gf)" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="url(#gf)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><div class="cat">Fraud alert</div><div class="sub">Account security</div></div>
+            <span class="chan">Voice &middot; verified</span>
+          </div>
+          <div class="bub">We paused a $482 charge in Lisbon. Was this you?</div>
+          <div class="acts"><span class="chip chip-p">Yes, it&rsquo;s me</span><span class="chip">Freeze card</span></div>
+          <div class="foot"><span class="kdot"></span><span class="kby">Identity verified &middot; secured by Kira</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HEALTHCARE -->
+    <section class="col" id="7hc">
+      <span class="badge">Healthcare</span>
+      <p class="bl">Triage &amp; scheduling — calm, careful, always-on.</p>
+      <div class="tile"><div class="bgimg" style="background-image:url(rz/poster-healthcare3.jpg);background-position:center 20%"></div>
+        <div class="mc">
+          <div class="hd">
+            <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B79DE8"/><stop offset=".55" stop-color="#D9605A"/><stop offset="1" stop-color="#EFA12E"/></linearGradient></defs><path d="M3 12h4l2-5 3 10 2-5h4" stroke="url(#gh)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><div class="cat">Care navigation</div><div class="sub">After-hours triage</div></div>
+            <span class="chan">Chat &middot; 24/7</span>
+          </div>
+          <div class="bub">A fever over 39&deg;C in a 2-year-old — let&rsquo;s get you seen now. I&rsquo;ll find the nearest clinic.</div>
+          <div class="acts"><span class="chip chip-p">See clinics near me</span><span class="chip">Talk to a nurse</span></div>
+          <div class="foot"><span class="kdot"></span><span class="kby">Clinician-reviewed flow &middot; guided by Kira</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPORTS -->
+    <section class="col" id="7sp">
+      <span class="badge">Sports</span>
+      <p class="bl">Matchday &amp; membership — in the club&rsquo;s own voice.</p>
+      <div class="tile"><div class="bgimg" style="background-image:url(rz/poster-sports2.jpg);background-position:center 30%"></div>
+        <div class="mc">
+          <div class="hd">
+            <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gs" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B79DE8"/><stop offset=".55" stop-color="#D9605A"/><stop offset="1" stop-color="#EFA12E"/></linearGradient></defs><path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2 2 2 0 0 0 0 4 2 2 0 0 1-2 2H6a2 2 0 0 1-2-2 2 2 0 0 0 0-4z" stroke="url(#gs)" stroke-width="1.6" stroke-linejoin="round"/><path d="M13 6v12" stroke="url(#gs)" stroke-width="1.6" stroke-dasharray="1.5 2.4" stroke-linecap="round"/></svg></span>
+            <div><div class="cat">Matchday</div><div class="sub">Members &amp; ticketing</div></div>
+            <span class="chan">WhatsApp &middot; live</span>
+          </div>
+          <div class="bub">Gates open at 6pm. You&rsquo;re in Block 114, Row F — see you there, Red.</div>
+          <div class="acts"><span class="chip chip-p">Get directions</span><span class="chip">Add to wallet</span></div>
+          <div class="foot"><span class="kdot"></span><span class="kby">Speaking in your club&rsquo;s voice &middot; by Kira</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BUSINESS -->
+    <section class="col" id="7biz">
+      <span class="badge">Business</span>
+      <p class="bl">Support &amp; operations — resolved, on the record.</p>
+      <div class="tile"><div class="bgimg" style="background-image:url(rz/poster-business3.jpg);background-position:center 20%"></div>
+        <div class="mc">
+          <div class="hd">
+            <span class="ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="gb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B79DE8"/><stop offset=".55" stop-color="#D9605A"/><stop offset="1" stop-color="#EFA12E"/></linearGradient></defs><path d="M5 12a7 7 0 0 1 14 0v4a2 2 0 0 1-2 2h-1v-6h3M5 12v4a2 2 0 0 0 2 2h1v-6H5" stroke="url(#gb)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><div class="cat">IT helpdesk</div><div class="sub">Employee support</div></div>
+            <span class="chan">Teams &middot; resolved</span>
+          </div>
+          <div class="bub">Password reset done — you&rsquo;re back in. Ticket #4471 closed. Anything else?</div>
+          <div class="acts"><span class="chip chip-p">All good, thanks</span><span class="chip">Open a ticket</span></div>
+          <div class="foot"><span class="kdot"></span><span class="kby">Logged &amp; audit-ready &middot; handled by Kira</span></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

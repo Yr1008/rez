@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;background:#0b0c0e;color:#fff}
+.badge{display:inline-flex;font-size:12px;font-weight:700;color:#0e0d0c;background:#EFA12E;border-radius:999px;padding:5px 12px;margin-bottom:9px}
+.bl{color:rgba(255,255,255,.58);font-size:13px;line-height:1.45;max-width:56ch;margin:0 0 16px}
+.panel{position:relative;height:300px;border-radius:26px;overflow:hidden;background:linear-gradient(180deg,#F8F6F2,#F1EEE8);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px;box-shadow:inset 0 0 0 1px rgba(20,16,11,.06),inset 0 40px 90px -50px rgba(255,255,255,.7),0 34px 64px -46px rgba(20,16,11,.32)}
+.panel::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:soft-light;opacity:.5}
+.panel .eyb{position:relative;z-index:2;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A8378}
+.panel h3{position:relative;z-index:2;margin:12px 0 0;font-size:clamp(24px,3vw,40px);font-weight:600;letter-spacing:-.03em;color:#191512}
+.gr{background:linear-gradient(115deg,#B79DE8,#D9605A 46%,#EFA12E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* 10a Aurora drift */
+.a-l{position:absolute;border-radius:50%;filter:blur(56px);opacity:.8;will-change:transform}
+.a1{width:60%;height:120%;left:-10%;top:-30%;background:radial-gradient(circle,#C6B2F0,transparent 66%);animation:drift1 24s ease-in-out infinite}
+.a2{width:55%;height:120%;right:-8%;bottom:-30%;background:radial-gradient(circle,#E8837C,transparent 65%);animation:drift2 30s ease-in-out infinite}
+.a3{width:45%;height:100%;left:35%;top:10%;background:radial-gradient(circle,#F2C173,transparent 66%);opacity:.6;animation:drift3 34s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(18%,12%) scale(1.15)}}
+@keyframes drift2{0%,100%{transform:translate(0,0) scale(1.05)}50%{transform:translate(-16%,-14%) scale(.9)}}
+@keyframes drift3{0%,100%{transform:translate(0,0)}50%{transform:translate(-12%,16%)}}
+
+/* 10b Mesh pan */
+.b-bg{position:absolute;inset:-40%;background:conic-gradient(from 0deg,#C6B2F0,#E8837C,#EC8659,#F2C173,#C6B2F0);filter:blur(72px);opacity:.62;animation:spin 42s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* 10c Breathing orbs */
+.c-l{position:absolute;border-radius:50%;filter:blur(50px);will-change:transform,opacity}
+.c1{width:340px;height:340px;left:8%;top:-30%;background:radial-gradient(circle,#C6B2F0,transparent 62%);animation:breathe 11s ease-in-out infinite}
+.c2{width:300px;height:300px;right:12%;top:20%;background:radial-gradient(circle,#E8837C,transparent 62%);animation:breathe 13s ease-in-out infinite 1.2s}
+.c3{width:260px;height:260px;left:44%;bottom:-30%;background:radial-gradient(circle,#F2C173,transparent 62%);animation:breathe 12s ease-in-out infinite .6s}
+@keyframes breathe{0%,100%{transform:scale(.9);opacity:.5}50%{transform:scale(1.15);opacity:.82}}
+
+/* 10d Sweep */
+.d-bg{position:absolute;inset:0;background:radial-gradient(80% 120% at 20% 20%,rgba(183,157,232,.72),transparent 62%),radial-gradient(80% 120% at 82% 80%,rgba(226,104,62,.66),transparent 62%);filter:blur(28px)}
+.d-sweep{position:absolute;top:-60%;left:-40%;width:50%;height:220%;transform:rotate(16deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);animation:sweep 9s ease-in-out infinite}
+@keyframes sweep{0%{left:-40%}60%,100%{left:130%}}
+
+@media(prefers-reduced-motion:reduce){.a-l,.b-bg,.c-l,.d-sweep{animation:none !important}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;padding:52px 44px 96px">
+  <div style="max-width:1120px;margin:0 auto 30px">
+    <h1 style="margin:0;font-size:38px;font-weight:600;letter-spacing:-.03em">Platform section — animated gradient backgrounds</h1>
+    <p style="margin:12px 0 0;max-width:80ch;color:rgba(255,255,255,.6);font-size:16px;line-height:1.5">Four looping treatments for the dark &ldquo;Kira Platform&rdquo; band, all in the brand gradient. Tell me <b style="color:#fff">10a</b>, <b style="color:#fff">10b</b>, <b style="color:#fff">10c</b> or <b style="color:#fff">10d</b>.</p>
+  </div>
+
+  <div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:30px">
+
+    <section id="10a"><span class="badge">10a · Aurora drift</span><p class="bl">Big soft blooms drift and swell slowly, like an aurora. Calm, premium, always moving but never busy.</p>
+      <div class="panel"><div class="a-l a1"></div><div class="a-l a2"></div><div class="a-l a3"></div><span class="eyb">The Kira Platform</span><h3>Every channel, <span class="gr">one front line.</span></h3></div>
+    </section>
+
+    <section id="10b"><span class="badge">10b · Mesh rotation</span><p class="bl">A blurred conic mesh rotates behind the content — subtle, continuous color movement with no visible seam.</p>
+      <div class="panel"><div class="b-bg"></div><span class="eyb">The Kira Platform</span><h3>Every channel, <span class="gr">one front line.</span></h3></div>
+    </section>
+
+    <section id="10c"><span class="badge">10c · Breathing orbs</span><p class="bl">Distinct color orbs pulse gently in and out of phase. More energy and depth, still soft.</p>
+      <div class="panel"><div class="c-l c1"></div><div class="c-l c2"></div><div class="c-l c3"></div><span class="eyb">The Kira Platform</span><h3>Every channel, <span class="gr">one front line.</span></h3></div>
+    </section>
+
+    <section id="10d"><span class="badge">10d · Static bloom + light sweep</span><p class="bl">A fixed brand bloom with a slow specular sweep passing across — quietest option, a hint of life.</p>
+      <div class="panel"><div class="d-bg"></div><div class="d-sweep"></div><span class="eyb">The Kira Platform</span><h3>Every channel, <span class="gr">one front line.</span></h3></div>
+    </section>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

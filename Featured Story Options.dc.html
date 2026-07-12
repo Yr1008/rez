@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;background:#0e0d0c;color:#fff}
+.wlabel{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#A79E92;margin:0 0 12px}
+.badge{display:inline-flex;font-size:12px;font-weight:700;color:#0e0d0c;background:#EFA12E;border-radius:999px;padding:5px 12px;margin-bottom:9px}
+.bl{color:rgba(255,255,255,.6);font-size:13.5px;line-height:1.45;max-width:34ch;margin:0 0 18px}
+.eyb{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.gr{background:linear-gradient(115deg,#B79DE8,#D9605A 42%,#E2683E 70%,#EFA12E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.si{font-family:'Instrument Serif',serif;font-weight:400;font-style:italic;letter-spacing:0}
+.col{flex:1 1 300px;min-width:290px}
+.stack{display:flex;flex-direction:column;gap:16px}
+/* liquid glass (from site .lqcard) */
+.glass{position:relative;background:linear-gradient(160deg,rgba(10,9,13,.62),rgba(10,9,13,.42));backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.16),0 30px 60px -42px rgba(0,0,0,.7)}
+.av{flex:0 0 auto;width:40px;height:40px;border-radius:50%;background:url(rz/grad-sunset3.jpg) center/cover;box-shadow:0 6px 16px -8px rgba(0,0,0,.6)}
+/* 5a cinematic */
+.ca{position:relative;border-radius:30px;overflow:hidden;background:#141216;box-shadow:0 34px 70px -44px rgba(0,0,0,.7)}
+.ca .bg{position:absolute;inset:0;background:url(rz/grad-sunset3.jpg) center/cover}
+.ca .sc{position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,7,12,.12),rgba(8,7,12,.1) 40%,rgba(8,7,12,.66))}
+/* 5b light editorial */
+.cb{position:relative;overflow:hidden;border-radius:28px;background:#F7F5F1;box-shadow:0 30px 60px -44px rgba(0,0,0,.5)}
+.cb .tex{position:absolute;inset:0;background:url(rz/grad-sunset3.jpg) center/cover;opacity:.09;pointer-events:none}
+.cb .q{position:relative;font-weight:500;color:#1A1510;letter-spacing:-.02em;line-height:1.26}
+/* 5c portrait split */
+.cc{border-radius:28px;overflow:hidden;display:flex;background:#141216;box-shadow:0 30px 60px -44px rgba(0,0,0,.7)}
+.cc .por{position:relative;flex:0 0 40%;background:url(rz/grad-galaxy3.jpg) center/cover;min-height:250px;display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+.cc .por::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,7,12,.08),rgba(8,7,12,.6))}
+.cc .bd{flex:1;min-width:0;padding:30px}
+</style>
+</helmet>
+
+<div style="min-height:100vh;padding:52px 44px 96px">
+  <div style="max-width:1220px;margin:0 auto 34px">
+    <h1 style="margin:0;font-size:38px;font-weight:600;letter-spacing:-.03em">Featured story card — premium, on-theme</h1>
+    <p style="margin:12px 0 0;max-width:66ch;color:rgba(255,255,255,.6);font-size:16px;line-height:1.5">Rebuilt in the site's own language — liquid glass over the grainy brand gradients, the purple-coral-amber accent, Instrument Serif touches. Each at desktop + mobile, real 13Sick story. Tell me <b style="color:#fff">5a</b>, <b style="color:#fff">5b</b>, or <b style="color:#fff">5c</b>.</p>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:30px;max-width:1220px;margin:0 auto;align-items:flex-start">
+
+    <!-- 5a cinematic glass -->
+    <section id="5a" class="col">
+      <span class="badge">5a · Cinematic glass</span>
+      <p class="bl">Full grainy-gradient field with one liquid-glass quote panel. Today's idea, refined: clearer hierarchy, no pill clutter.</p>
+      <div class="stack">
+        <div><div class="wlabel">Desktop</div>
+          <div class="ca" style="min-height:340px;display:flex;align-items:flex-end;padding:20px"><div class="bg"></div><div class="sc"></div>
+            <div class="glass" style="position:relative;width:100%;border-radius:22px;padding:26px">
+              <span class="eyb" style="color:rgba(255,255,255,.7)">Customer story · 13Sick</span>
+              <p style="font-weight:500;font-size:24px;line-height:1.28;letter-spacing:-.02em;color:#fff;margin:12px 0 0"><span class="si gr" style="font-size:30px">“</span>Almost perfect. The voice, responses and intonation are gold standards by which all should be measured.</p>
+              <div style="display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.16)"><div class="av"></div><div style="min-width:0"><div style="font-weight:700;font-size:14px">Dr. James Liang</div><div style="font-size:12.5px;color:rgba(255,255,255,.72)">CEO &amp; Founder, 13Sick</div></div><div style="margin-left:auto;text-align:right"><div class="gr" style="font-weight:600;font-size:28px;letter-spacing:-.03em">#1</div><div style="font-size:11.5px;color:rgba(255,255,255,.66)">after-hours line</div></div></div>
+            </div>
+          </div>
+        </div>
+        <div><div class="wlabel">Mobile</div>
+          <div class="ca" style="width:330px;min-height:420px;display:flex;align-items:flex-end;padding:12px"><div class="bg"></div><div class="sc"></div>
+            <div class="glass" style="position:relative;width:100%;border-radius:18px;padding:20px">
+              <span class="eyb" style="color:rgba(255,255,255,.7);font-size:10px">13Sick</span>
+              <p style="font-weight:500;font-size:19px;line-height:1.3;letter-spacing:-.02em;color:#fff;margin:8px 0 0"><span class="si gr" style="font-size:26px">“</span>Almost perfect. The voice and intonation are gold standards by which all should be measured.</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.16)"><div class="av" style="width:34px;height:34px"></div><div style="min-width:0"><div style="font-weight:700;font-size:13px">Dr. James Liang</div><div style="font-size:12px;color:rgba(255,255,255,.72)">CEO, 13Sick</div></div><div style="margin-left:auto" class="gr"><span style="font-weight:600;font-size:22px">#1</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5b light editorial -->
+    <section id="5b" class="col">
+      <span class="badge">5b · Light editorial</span>
+      <p class="bl">A calm cream card with a whisper of gradient grain, a serif quote mark and the gradient stat. Bright, premium, ultra-legible.</p>
+      <div class="stack">
+        <div><div class="wlabel">Desktop</div>
+          <div class="cb" style="padding:30px"><div class="tex"></div>
+            <div style="position:relative;display:flex;justify-content:space-between;align-items:flex-start"><span class="eyb" style="color:#A79E92">Customer story · 13Sick</span><span class="gr" style="font-weight:600;font-size:27px;letter-spacing:-.03em">#1</span></div>
+            <div style="position:relative;font-family:'Instrument Serif',serif;font-style:italic;font-size:52px;line-height:.5;color:#E2683E;margin-top:16px">“</div>
+            <p class="q" style="font-size:25px;margin-top:-6px">Almost perfect. The voice, responses and intonation are gold standards by which all should be measured.</p>
+            <div style="position:relative;display:flex;align-items:center;gap:12px;margin-top:22px;padding-top:18px;border-top:1px solid rgba(20,16,11,.12)"><div class="av"></div><div><div style="font-weight:700;font-size:14px;color:#1A1510">Dr. James Liang</div><div style="font-size:12.5px;color:#6F665B">CEO &amp; Founder, 13Sick</div></div><div style="margin-left:auto;font-size:12px;color:#8B8378">after-hours line</div></div>
+          </div>
+        </div>
+        <div><div class="wlabel">Mobile</div>
+          <div class="cb" style="width:330px;padding:22px"><div class="tex"></div>
+            <div style="position:relative;display:flex;justify-content:space-between;align-items:flex-start"><span class="eyb" style="color:#A79E92;font-size:10px">13Sick</span><span class="gr" style="font-weight:600;font-size:22px">#1</span></div>
+            <div style="position:relative;font-family:'Instrument Serif',serif;font-style:italic;font-size:42px;line-height:.5;color:#E2683E;margin-top:12px">“</div>
+            <p class="q" style="font-size:19px;margin-top:-4px">Almost perfect. The voice and intonation are gold standards by which all should be measured.</p>
+            <div style="position:relative;display:flex;align-items:center;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(20,16,11,.12)"><div class="av" style="width:34px;height:34px"></div><div><div style="font-weight:700;font-size:13px;color:#1A1510">Dr. James Liang</div><div style="font-size:12px;color:#6F665B">CEO, 13Sick</div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5c portrait split -->
+    <section id="5c" class="col">
+      <span class="badge">5c · Portrait split</span>
+      <p class="bl">A grainy-gradient panel carries the name + headline stat; a glass column holds the quote. Editorial and structured.</p>
+      <div class="stack">
+        <div><div class="wlabel">Desktop</div>
+          <div class="cc">
+            <div class="por"><span style="position:relative;font-weight:700;font-size:34px;letter-spacing:-.03em;color:#fff">#1</span><span style="position:relative;font-size:12.5px;color:rgba(255,255,255,.85);margin-top:2px">after-hours line</span></div>
+            <div class="bd"><span class="eyb" style="color:rgba(255,255,255,.6)">13Sick · Healthcare</span>
+              <p style="font-weight:500;font-size:22px;line-height:1.3;letter-spacing:-.02em;color:#fff;margin:12px 0 0"><span class="si gr" style="font-size:28px">“</span>Almost perfect. The voice, responses and intonation are gold standards by which all should be measured.</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:22px"><div class="av" style="width:34px;height:34px"></div><div><div style="font-weight:700;font-size:13.5px">Dr. James Liang</div><div style="font-size:12px;color:rgba(255,255,255,.7)">CEO &amp; Founder</div></div></div>
+            </div>
+          </div>
+        </div>
+        <div><div class="wlabel">Mobile</div>
+          <div class="cc" style="width:330px;flex-direction:column">
+            <div class="por" style="flex:0 0 auto;min-height:130px;flex-direction:row;align-items:flex-end;gap:8px"><span style="position:relative;font-weight:700;font-size:28px;letter-spacing:-.03em;color:#fff">#1</span><span style="position:relative;font-size:12px;color:rgba(255,255,255,.85);padding-bottom:4px">after-hours line</span></div>
+            <div class="bd" style="padding:22px"><span class="eyb" style="color:rgba(255,255,255,.6);font-size:10px">13Sick · Healthcare</span>
+              <p style="font-weight:500;font-size:18px;line-height:1.32;letter-spacing:-.02em;color:#fff;margin:10px 0 0"><span class="si gr" style="font-size:24px">“</span>Almost perfect. The voice and intonation are gold standards by which all should be measured.</p>
+              <div style="display:flex;align-items:center;gap:10px;margin-top:16px"><div class="av" style="width:32px;height:32px"></div><div><div style="font-weight:700;font-size:13px">Dr. James Liang</div><div style="font-size:12px;color:rgba(255,255,255,.7)">CEO, 13Sick</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;background:#0b0c0e;color:#fff}
+.badge{display:inline-flex;font-size:12px;font-weight:700;color:#0e0d0c;background:#EFA12E;border-radius:999px;padding:5px 12px;margin-bottom:9px}
+.bl{color:rgba(255,255,255,.6);font-size:13.5px;line-height:1.45;max-width:34ch;margin:0 0 16px}
+.tile{position:relative;width:360px;height:300px;border-radius:22px;overflow:hidden;background:#04060a center/cover no-repeat;display:flex;align-items:center;justify-content:center;padding:20px}
+.tile::before{content:"";position:absolute;inset:0;background-image:url(rz/poster-finance3.jpg);background-size:cover;background-position:center 15%}
+.tile::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(4,6,10,.28),rgba(4,6,10,.5))}
+.card{position:relative;z-index:1;width:300px}
+.lbl{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#fff}
+.dot{width:7px;height:7px;border-radius:99px;background:linear-gradient(135deg,#B79DE8,#D9605A 55%,#E2683E);box-shadow:0 0 0 4px rgba(217,96,90,.22)}
+.chan{font-size:11px;color:rgba(255,255,255,.62)}
+.hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px}
+.bub{max-width:94%;font-size:13.5px;line-height:1.4;padding:10px 13px;border-radius:16px 16px 16px 5px}
+.cont{font-size:12px;margin-top:12px}
+.link{margin-top:4px;font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.col{flex:0 0 auto}
+/* ===== baseline (current) ===== */
+.c-cur{position:relative;overflow:hidden;border-radius:24px;padding:18px 20px;background:linear-gradient(160deg,rgba(9,9,12,.64),rgba(9,9,12,.48));backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%);box-shadow:0 60px 120px -54px rgba(0,0,0,.9)}
+.c-cur::before{content:"";position:absolute;top:-14px;right:-14px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(217,96,90,.42),rgba(183,157,232,.2) 55%,transparent 74%);filter:blur(8px);pointer-events:none}
+.c-cur>*{position:relative;z-index:1}
+/* ===== 6a frosted light ===== */
+.c-a{position:relative;overflow:hidden;border-radius:24px;padding:18px 20px;background:linear-gradient(160deg,rgba(255,255,255,.9),rgba(255,255,255,.78));backdrop-filter:blur(20px) saturate(150%);-webkit-backdrop-filter:blur(20px) saturate(150%);box-shadow:0 40px 90px -46px rgba(0,0,0,.7)}
+/* ===== 6b hairline gradient border ===== */
+.c-b{position:relative;overflow:hidden;border-radius:22px;padding:18px 20px;background:linear-gradient(160deg,rgba(12,12,16,.72),rgba(12,12,16,.55));backdrop-filter:blur(24px) saturate(140%);-webkit-backdrop-filter:blur(24px) saturate(140%);box-shadow:0 50px 100px -50px rgba(0,0,0,.85)}
+.c-b::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(150deg,rgba(183,157,232,.9),rgba(217,96,90,.5) 45%,rgba(255,255,255,.08) 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.c-b>*{position:relative;z-index:1}
+/* ===== 6c elevated solid + top accent ===== */
+.c-c{position:relative;overflow:hidden;border-radius:22px;padding:19px 20px 18px;background:#141216;border:1px solid rgba(255,255,255,.08);box-shadow:0 50px 100px -48px rgba(0,0,0,.9)}
+.c-c::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#B79DE8,#D9605A 50%,#EFA12E)}
+.c-c>*{position:relative;z-index:1}
+/* ===== 6d ultra-minimal ===== */
+.c-d{position:relative;overflow:hidden;border-radius:26px;padding:18px 20px;background:rgba(10,10,14,.28);backdrop-filter:blur(30px) saturate(130%);-webkit-backdrop-filter:blur(30px) saturate(130%);border:1px solid rgba(255,255,255,.14);box-shadow:0 40px 90px -50px rgba(0,0,0,.8)}
+.c-d>*{position:relative;z-index:1}
+</style>
+</helmet>
+
+<div style="min-height:100vh;padding:52px 44px 96px">
+  <div style="max-width:1280px;margin:0 auto 34px">
+    <h1 style="margin:0;font-size:38px;font-weight:600;letter-spacing:-.03em">Finance hero card — design options</h1>
+    <p style="margin:12px 0 0;max-width:70ch;color:rgba(255,255,255,.6);font-size:16px;line-height:1.5">All built on the current card content, shown over the finance hero backdrop so the glass reads true. <b style="color:#fff">Current</b> is today's design; <b style="color:#fff">6a–6d</b> are alternatives. Tell me which (mix welcome — e.g. "6b border on the current dark glass").</p>
+  </div>
+
+  <div style="display:flex;flex-wrap:wrap;gap:30px;max-width:1280px;margin:0 auto;align-items:flex-start">
+
+    <section class="col">
+      <span class="badge" style="background:#75726D;color:#fff">Current</span>
+      <p class="bl">Dark liquid glass with a soft coral corner glow. Warm, cinematic.</p>
+      <div class="tile"><div class="card c-cur">
+        <div class="hd"><span class="lbl"><span class="dot"></span>Payment reminders</span><span class="chan">SMS</span></div>
+        <div class="bub" style="background:rgba(255,255,255,.09);color:#fff">Hey! Just a friendly heads up, your payment&rsquo;s due Friday.</div>
+        <div class="cont" style="color:rgba(255,255,255,.62)">Tap below to continue</div>
+        <div class="link" style="color:#F0908A">pay.rezonate.com/inv-2291</div>
+      </div></div>
+    </section>
+
+    <section id="6a" class="col">
+      <span class="badge">6a · Frosted light</span>
+      <p class="bl">Bright frosted-white glass, like an iOS notification. High contrast, feels crisp and modern over dark video.</p>
+      <div class="tile"><div class="card c-a">
+        <div class="hd"><span class="lbl" style="color:#1A1510"><span class="dot"></span>Payment reminders</span><span class="chan" style="color:#8a8378">SMS</span></div>
+        <div class="bub" style="background:rgba(20,16,12,.06);color:#1A1510">Hey! Just a friendly heads up, your payment&rsquo;s due Friday.</div>
+        <div class="cont" style="color:#8a8378">Tap below to continue</div>
+        <div class="link" style="color:#D9605A">pay.rezonate.com/inv-2291</div>
+      </div></div>
+    </section>
+
+    <section id="6b" class="col">
+      <span class="badge">6b · Gradient hairline</span>
+      <p class="bl">Same dark glass, coral glow swapped for a refined 1px gradient border. Cleaner, more premium/Linear-like.</p>
+      <div class="tile"><div class="card c-b">
+        <div class="hd"><span class="lbl"><span class="dot"></span>Payment reminders</span><span class="chan">SMS</span></div>
+        <div class="bub" style="background:rgba(255,255,255,.09);color:#fff">Hey! Just a friendly heads up, your payment&rsquo;s due Friday.</div>
+        <div class="cont" style="color:rgba(255,255,255,.62)">Tap below to continue</div>
+        <div class="link" style="color:#F0908A">pay.rezonate.com/inv-2291</div>
+      </div></div>
+    </section>
+
+    <section id="6c" class="col">
+      <span class="badge">6c · Elevated + accent</span>
+      <p class="bl">Solid near-black card with a thin brand-gradient bar on top. Maximum legibility, product-UI feel.</p>
+      <div class="tile"><div class="card c-c">
+        <div class="hd"><span class="lbl"><span class="dot"></span>Payment reminders</span><span class="chan">SMS</span></div>
+        <div class="bub" style="background:rgba(255,255,255,.07);color:#fff">Hey! Just a friendly heads up, your payment&rsquo;s due Friday.</div>
+        <div class="cont" style="color:rgba(255,255,255,.6)">Tap below to continue</div>
+        <div class="link" style="color:#F0908A">pay.rezonate.com/inv-2291</div>
+      </div></div>
+    </section>
+
+    <section id="6d" class="col">
+      <span class="badge">6d · Ultra-minimal</span>
+      <p class="bl">Barely-there fill, heavy blur, thin light border. The video shows through most — airy and understated.</p>
+      <div class="tile"><div class="card c-d">
+        <div class="hd"><span class="lbl"><span class="dot"></span>Payment reminders</span><span class="chan">SMS</span></div>
+        <div class="bub" style="background:rgba(255,255,255,.12);color:#fff">Hey! Just a friendly heads up, your payment&rsquo;s due Friday.</div>
+        <div class="cont" style="color:rgba(255,255,255,.7)">Tap below to continue</div>
+        <div class="link" style="color:#FBB;">pay.rezonate.com/inv-2291</div>
+      </div></div>
+    </section>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

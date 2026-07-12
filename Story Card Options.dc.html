@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;background:#0b0c0e;color:#fff}
+.badge{display:inline-flex;font-size:12px;font-weight:700;color:#0e0d0c;background:#EFA12E;border-radius:999px;padding:5px 12px;margin-bottom:9px}
+.bl{color:rgba(255,255,255,.58);font-size:13px;line-height:1.45;max-width:52ch;margin:0 0 18px}
+.ink{color:#191512}.ink2{color:#8A8378}
+.eyb{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#B0ABA3}
+.gr{background:linear-gradient(115deg,#B79DE8,#D9605A 44%,#E2683E 72%,#EFA12E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+/* premium card */
+.pc{position:relative;display:grid;grid-template-columns:minmax(280px,42%) 1fr;background:#FBFAF8;border-radius:30px;overflow:hidden;box-shadow:0 40px 80px -50px rgba(20,16,11,.55),inset 0 0 0 1px rgba(20,16,11,.05)}
+.pc-photo{position:relative;min-height:400px;background-size:cover;background-position:center 16%}
+.pc-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(0,0,0,0) 60%,rgba(251,250,248,.9) 99%)}
+.pc-org{position:absolute;left:22px;top:22px;z-index:2;display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:rgba(10,9,12,.42);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff}
+.pc-org .d{width:6px;height:6px;border-radius:99px;background:linear-gradient(135deg,#B79DE8,#D9605A 55%,#EFA12E)}
+.pc-body{padding:clamp(30px,3vw,46px);display:flex;flex-direction:column}
+.pc-qm{font-family:'Instrument Serif',serif;font-style:italic;font-size:58px;line-height:.4;color:#E2683E;height:26px}
+.pc-quote{font-weight:500;font-size:clamp(19px,1.55vw,23px);line-height:1.42;letter-spacing:-.02em;color:#191512;margin:0;max-width:40ch;text-wrap:pretty}
+.pc-foot{margin-top:auto;padding-top:26px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-top:1px solid rgba(20,16,11,.1)}
+.pc-name{font-weight:700;font-size:14.5px;color:#191512}
+.pc-role{font-size:12.5px;color:#8A8378;margin-top:3px;max-width:30ch}
+.pc-stat{flex:0 0 auto;text-align:right}
+.pc-statnum{font-weight:600;font-size:clamp(30px,2.6vw,40px);letter-spacing:-.04em;line-height:.9}
+.pc-statlbl{font-size:11px;color:#8A8378;margin-top:5px}
+.dots{display:flex;gap:7px;margin-top:22px}
+.dots i{width:24px;height:5px;border-radius:99px;background:rgba(20,16,11,.14)}
+.dots i.on{width:30px;background:linear-gradient(90deg,#B79DE8,#D9605A,#EFA12E)}
+@media(max-width:720px){.pc{grid-template-columns:1fr}.pc-photo{min-height:260px}.pc-photo::after{background:linear-gradient(180deg,rgba(0,0,0,0) 62%,rgba(251,250,248,.92) 99%)}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;padding:52px 44px 96px">
+  <div style="max-width:1120px;margin:0 auto 30px">
+    <h1 style="margin:0;font-size:38px;font-weight:600;letter-spacing:-.03em">Story card — refined photo-forward</h1>
+    <p style="margin:12px 0 0;max-width:80ch;color:rgba(255,255,255,.6);font-size:16px;line-height:1.5">9a rebuilt properly: cleaner crop with a soft seam into the card, calmer type, a real divider, an elegant stat, and slim progress dots instead of pill-buttons. Shown desktop + mobile. If this lands I&rsquo;ll wire it to the live carousel (photo + quote rotate through NHG, AIA, Asahi).</p>
+  </div>
+
+  <div style="max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:34px">
+
+    <div>
+      <span class="badge">Desktop</span>
+      <div class="pc">
+        <div class="pc-photo" style="background-image:url(rz/team/nhg-kevinkok.jpg)"><span class="pc-org"><span class="d"></span>NHG Health</span></div>
+        <div class="pc-body">
+          <span class="eyb">Customer story</span>
+          <div class="pc-qm" aria-hidden="true">&ldquo;</div>
+          <blockquote class="pc-quote">What we needed was not just a chatbot, but a platform that could grow with us. Working with Rezonate, we added new services and functions as our needs evolved, without compromising on the governance standards healthcare demands.</blockquote>
+          <div class="pc-foot">
+            <div>
+              <div class="pc-name">Dr Kevin Kok</div>
+              <div class="pc-role">Deputy Director (Digital Services), NHG Population Health</div>
+              <div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+            </div>
+            <div class="pc-stat"><div class="pc-statnum gr">24%</div><div class="pc-statlbl">lower workload</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="max-width:420px">
+      <span class="badge">Mobile</span>
+      <div class="pc">
+        <div class="pc-photo" style="background-image:url(rz/team/nhg-kevinkok.jpg);background-position:center 14%"><span class="pc-org"><span class="d"></span>NHG Health</span></div>
+        <div class="pc-body" style="padding:24px">
+          <span class="eyb">Customer story</span>
+          <div class="pc-qm" aria-hidden="true" style="font-size:46px;height:20px">&ldquo;</div>
+          <blockquote class="pc-quote" style="font-size:18px">What we needed was not just a chatbot, but a platform that could grow with us — new services as our needs evolved, without compromising the governance healthcare demands.</blockquote>
+          <div class="pc-foot" style="padding-top:20px">
+            <div><div class="pc-name">Dr Kevin Kok</div><div class="pc-role">Deputy Director (Digital Services), NHG</div><div class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></div></div>
+            <div class="pc-stat"><div class="pc-statnum gr" style="font-size:28px">24%</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

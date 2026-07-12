@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;background:#0e0d0c}
+.frame{background:#EEEDE9;border-radius:22px;padding:44px 16px 34px;display:flex;flex-direction:column;align-items:center;min-height:260px;justify-content:center}
+.o{width:150px;aspect-ratio:1;border-radius:50%;background:url(rz/grad-spray2.webp) center/cover;box-shadow:0 30px 60px -38px rgba(20,16,12,.5);position:relative}
+.stack{position:relative;width:150px;aspect-ratio:1}
+.stack .l{position:absolute;inset:0;border-radius:50%;background-size:cover;background-position:center;box-shadow:0 30px 60px -38px rgba(20,16,12,.5)}
+.stack .a{background-image:url(rz/grad-spray2.webp)}
+.stack .b{background-image:url(rz/grad-mick2.webp)}
+/* motion 2a crossfade */
+@keyframes xf{0%,38%{opacity:1}50%,88%{opacity:0}100%{opacity:1}}
+.m-xf .b{animation:xf 3s ease-in-out infinite}
+/* motion 2b scale-pop */
+@keyframes pop{0%,30%{transform:scale(1);opacity:1}44%{transform:scale(.86);opacity:.5}60%,100%{transform:scale(1);opacity:1}}
+.m-pop{animation:pop 2.8s cubic-bezier(.2,.8,.3,1) infinite}
+/* motion 2c flip */
+@keyframes flip{0%,30%{transform:perspective(500px) rotateY(0);opacity:1}46%{transform:perspective(500px) rotateY(-42deg);opacity:.55}62%,100%{transform:perspective(500px) rotateY(0);opacity:1}}
+.m-flip{animation:flip 3s cubic-bezier(.2,.8,.3,1) infinite}
+/* style 3b glossy */
+.s-gloss::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 32% 26%,rgba(255,255,255,.6),rgba(255,255,255,0) 46%);box-shadow:inset 0 -14px 30px -10px rgba(20,16,12,.5),inset 0 6px 14px -4px rgba(255,255,255,.5)}
+/* style 3c halo */
+.s-halo::before{content:"";position:absolute;inset:-16%;border-radius:50%;background:url(rz/grad-spray2.webp) center/cover;filter:blur(18px);opacity:.55;z-index:-1}
+.badge{display:inline-flex;font-size:12px;font-weight:700;color:#0e0d0c;background:#EFA12E;border-radius:999px;padding:5px 12px;margin-bottom:9px}
+.bl{color:rgba(255,255,255,.6);font-size:13px;line-height:1.45;max-width:26ch;margin:0 0 16px}
+.col{flex:1 1 250px;min-width:240px}
+.hd{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#EFA12E;margin:0 0 4px}
+.side{width:70px;aspect-ratio:1;border-radius:50%;background-size:cover;background-position:center;opacity:.4;filter:saturate(.9) blur(.4px);flex:0 0 auto}
+.row{display:flex;align-items:center;justify-content:center;gap:12px}
+</style>
+</helmet>
+
+<div style="min-height:100vh;padding:52px 44px 90px;color:#fff">
+  <div style="max-width:1180px;margin:0 auto 30px">
+    <h1 style="margin:0;font-size:38px;font-weight:600;letter-spacing:-.03em">Switch animation &amp; orb style</h1>
+    <p style="margin:12px 0 0;max-width:60ch;color:rgba(255,255,255,.6);font-size:16px;line-height:1.5">Spacing is locked to 1c (spread). Below: how the orb transitions when you switch industry, and how the orb itself looks. Tell me a motion (<b style="color:#fff">2a/2b/2c</b>) and a style (<b style="color:#fff">3a/3b/3c</b>).</p>
+  </div>
+
+  <p class="hd" style="max-width:1180px;margin:0 auto 12px">Switch animation</p>
+  <div style="display:flex;flex-wrap:wrap;gap:22px;max-width:1180px;margin:0 auto 40px">
+    <section id="2a" class="col"><span class="badge">2a · Crossfade</span><p class="bl">The current agent dissolves into the next. Calm, premium.</p>
+      <div class="frame"><div class="stack m-xf"><div class="l a"></div><div class="l b"></div></div></div></section>
+    <section id="2b" class="col"><span class="badge">2b · Scale-pop</span><p class="bl">Shrinks and fades out, then pops back in. Playful, energetic.</p>
+      <div class="frame"><div class="o m-pop"></div></div></section>
+    <section id="2c" class="col"><span class="badge">2c · Flip</span><p class="bl">A subtle 3D turn as the agent changes. Dimensional.</p>
+      <div class="frame"><div class="o m-flip"></div></div></section>
+  </div>
+
+  <p class="hd" style="max-width:1180px;margin:0 auto 12px">Orb style</p>
+  <div style="display:flex;flex-wrap:wrap;gap:22px;max-width:1180px;margin:0 auto">
+    <section id="3a" class="col"><span class="badge">3a · Soft</span><p class="bl">Flat grainy gradient (current). Understated.</p>
+      <div class="frame"><div class="row"><div class="side" style="background-image:url(rz/grad-lime2.webp)"></div><div class="o"></div><div class="side" style="background-image:url(rz/grad-mick2.webp)"></div></div></div></section>
+    <section id="3b" class="col"><span class="badge">3b · Glossy</span><p class="bl">A lit sphere — highlight top-left, soft depth. Tactile, Apple-like.</p>
+      <div class="frame"><div class="row"><div class="side" style="background-image:url(rz/grad-lime2.webp)"></div><div class="o s-gloss"></div><div class="side" style="background-image:url(rz/grad-mick2.webp)"></div></div></div></section>
+    <section id="3c" class="col"><span class="badge">3c · Halo</span><p class="bl">A soft glow blooms behind the orb. Alive, radiant.</p>
+      <div class="frame"><div class="row"><div class="side" style="background-image:url(rz/grad-lime2.webp)"></div><div class="o s-halo"></div><div class="side" style="background-image:url(rz/grad-mick2.webp)"></div></div></div></section>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

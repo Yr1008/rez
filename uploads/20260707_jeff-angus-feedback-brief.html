@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Jeff Angus Feedback Brief — Customers &amp; About Pages</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Arial, sans-serif; max-width: 900px; margin: 0 auto; padding: 40px 24px 100px; color: #1a1a1a; line-height: 1.55; background:#fff; }
+  h1 { font-size: 25px; margin-bottom: 4px; }
+  .meta { color: #666; font-size: 14px; margin-bottom: 24px; }
+  h2 { font-size: 19px; margin-top: 44px; border-bottom: 2px solid #7c5cff; padding-bottom: 6px; }
+  h3 { font-size: 15px; margin-top: 22px; color: #333; }
+  ul { padding-left: 22px; }
+  li { margin-bottom: 8px; }
+  .flag { background:#fdeeee; border-left: 4px solid #d64545; padding: 12px 16px; margin: 14px 0; border-radius: 4px; font-size: 13.5px; }
+  .flag b { color:#a92b2b; }
+  .note { background:#f3f1ff; border-left: 4px solid #7c5cff; padding: 12px 16px; margin: 10px 0; border-radius: 4px; font-size: 13.5px; }
+  .note b { color:#4b32c3; }
+  .open { background:#fff6e5; border-left: 4px solid #e0a30c; padding: 10px 14px; margin: 8px 0; border-radius: 4px; font-size: 13.5px; }
+  .open b { color:#8a6300; }
+  .copy-block { background:#fafafa; border:1px solid #eee; border-radius:6px; padding:14px 18px; margin:10px 0; font-size:14px; }
+  .copy-block .label { font-size:11px; text-transform:uppercase; letter-spacing:.03em; color:#888; margin-bottom:6px; display:block; }
+  table { border-collapse: collapse; width: 100%; margin: 12px 0; font-size: 13.5px; }
+  th, td { border: 1px solid #ddd; padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: #f7f7f7; }
+  code { background:#f2f2f2; padding:1px 5px; border-radius:3px; font-size:13px; }
+</style>
+</head>
+<body>
+
+<h1>Jeff Angus Feedback Brief</h1>
+<div class="meta">
+  Jeff Angus, PR consultant (US) &nbsp;·&nbsp; Compiled 7 Jul 2026 &nbsp;·&nbsp; Priority rule: where any of this conflicts with Peiru's 7 Jul transcript answers (see <code>20260707_rezonate-website-change-requests.html</code>), Jeff's feedback wins.
+</div>
+
+<div class="flag">
+  <b>URL flag before anything else:</b> both blocks of feedback were sent under <code>https://rez-hazel.vercel.app/Customers.dc.html</code>, but only the first block is actually about the Customers page. The second block — the hero line "When better understanding drives better outcomes," the KeyReply → Rezonate origin timeline, the stakeholder quote cards (COO/CMIO/Head of Patient Access/Head of Fan Experience/CIO-CISO), and the team bios for Peiru, Max and Eric — matches the <b>About page</b> structure exactly (confirmed against the live About.dc.html content fetched earlier in this project). I've filed it under About below. Worth double-checking with Jeff whether he meant to send About page notes, or whether he's proposing this content actually move to Customers.
+</div>
+
+<h2>Customers page (rez-hazel.vercel.app/Customers.dc.html)</h2>
+
+<h3>High-level direction</h3>
+<ul>
+  <li>The page needs a clearer story arc: who trusts us → what changed → the proof, in that order.</li>
+  <li>Hero sets the frame; logos are good as-is; stories, quotes and numbers should sit together rather than in separate silos.</li>
+  <li>Pick 3–4 anchor customers, each with its own card: a human quote, the headline stat, and an expandable section that opens the fuller narrative inline.</li>
+  <li>Named attribution (name, title, organization) wherever clearance exists; organization-level attribution as the fallback when it doesn't.</li>
+  <li>Reduce text density overall.</li>
+  <li>Below the anchor cards, the full case study library becomes a filterable grid.</li>
+  <li>The standalone "by the numbers" section either compresses into a single thin stat strip, or — Jeff's stated preference — disappears entirely, with the numbers folded into the cards/case studies instead. His reasoning: numbers persuade better attached to a name and a story than floating on their own.</li>
+</ul>
+
+<div class="note"><b>Connects to earlier work:</b> this is the same direction as the fix already made to the repeated "94%" stat (keep client retention rate, drop the duplicate onboarding figure) — Jeff's preference here reinforces putting that number inside a card/story rather than as a bare stat.</div>
+
+<h3>Hero copy</h3>
+<div class="copy-block">
+  <span class="label">Headline</span>
+  "When every conversation gets equal care" — "Now we're talking."
+  <span class="label" style="margin-top:10px;">Subhead</span>
+  "National health systems, insurers, banks, and sports clubs around the world trust Kira with their most important moments."
+</div>
+
+<h3>Section 3 — Featured stories</h3>
+<p>Pick the four best case studies for this section; the full library sits two sections below. Collapsed state: one line, one stat, one attributed quote where cleared. Expanded state: a short paragraph.</p>
+<div class="copy-block">
+  <span class="label">Example card (KKH)</span>
+  <b>KK Women's and Children's Hospital · Healthcare</b><br>
+  "When a worried parent calls at 2am, the first answer matters most."<br>
+  <b>98.3%</b> of families routed to the right care, around the clock.<br><br>
+  <i>Expanded:</i> KKH is Singapore's largest pediatric hospital, and the families calling it are rarely calm. UPAL, built on Kira, triages every inbound call 24/7, asks the questions a nurse would ask, and routes 98.3% of families to the right level of care without a human in the loop. Clinical staff spend their time on the calls that need clinical judgment. Parents get an answer at the moment they need one.<br>
+  [Read the full case study →]
+</div>
+
+<h3>Section 5 — Case study library (filterable grid)</h3>
+<p>Filters: All · Healthcare · Sports · Insurance · Real Estate — whatever's actually live. Section header: "The receipts, in full."</p>
+<table>
+  <tr><th>Customer</th><th>Category</th><th>Headline</th><th>Stat</th></tr>
+  <tr><td>KKH · UPAL</td><td>Healthcare</td><td>How KKH routed 98.3% of families to the right care with UPAL.</td><td>98.3% routed correctly</td></tr>
+  <tr><td>NHG Health</td><td>Healthcare</td><td>How NHG Health cut general enquiry workload by 24%.</td><td>24% less workload</td></tr>
+  <tr><td>CR Flamengo</td><td>Sports</td><td>How Flamengo reached 45 million fans in the voices of club legends.</td><td>3.2x member conversion</td></tr>
+  <tr><td>AIA</td><td>Insurance</td><td>How AIA cut average wait time by 40%.</td><td>40% shorter waits</td></tr>
+  <tr><td>Naluri</td><td>Mental health</td><td>How Naluri tripled monthly active users in a year.</td><td>3x monthly active users</td></tr>
+  <tr><td>Leading Indonesian Bank</td><td>Banking</td><td>How a leading Indonesian bank cut call-center workload by 35%.</td><td>35% less call-center load</td></tr>
+  <tr><td>ZeroStunting</td><td>Public health</td><td>Engaging 1,000+ parents in the fight against child malnutrition.</td><td>1,000+ families reached</td></tr>
+</table>
+<div class="flag"><b>Before this goes live:</b> every named customer and stat here needs clearance from the account owner — this is true even for the ones already implied elsewhere on the site. AIA, the banks, and the hospitals are all regulated entities; using their name and a specific performance number without sign-off is a real legal exposure, not just a nice-to-have. Also worth reconciling the Flamengo stat here (3.2x member conversion) against the sports deck's own Flamengo numbers (45M+ fans worldwide, 3 live use cases) — they're different metrics, not necessarily conflicting, but check they're both accurate and citable.</div>
+
+<h2>About page (sent as Customers.dc.html — see URL flag above)</h2>
+
+<h3>General note</h3>
+<div class="note">Jeff's framing question, worth answering directly rather than skipping past: <i>"How much to use AI? 'Agents' as a word accomplishes what we want — I feel the site is strong with little to no AI references — but I am very new here of course."</i> This is consistent with, not in conflict with, Peiru's 7 Jul decision to lean on "our agents" over "talk to Kira" — both point the same direction. Worth a direct answer back to Jeff on whether Rezonate is intentionally minimizing "AI" as a word sitewide, since he's flagging it as a question rather than stating it as known.</div>
+
+<h3>Hero copy</h3>
+<div class="copy-block">
+  <span class="label">Headline</span>
+  "When better understanding drives better outcomes" — "Now we're talking."
+  <span class="label" style="margin-top:10px;">Subhead</span>
+  "Rezonate is an engagement platform forged over a decade inside healthcare's hardest conversations, and built for every industry where the conversation matters."
+</div>
+<p style="font-size:13px; color:#666;">Note: "When better understanding drives better outcomes. Now we're talking." already exists as a line in the homepage footer today — Jeff is proposing it move up to become the About page's actual hero headline, with this new subhead attached.</p>
+
+<h3>Section 2</h3>
+<div class="copy-block">
+  <b>"Most systems were built to process. We were built to connect."</b><br><br>
+  "To resonate is to connect in a way that's felt, understood and remembered, not just heard. The gap between a message that's sent and one that actually lands is where relationships are won or lost, and it's the only gap we've ever cared about closing."<br><br>
+  10 yrs inside regulated healthcare conversations<br>
+  83M+ interactions handled across four continents<br>
+  60+ languages Kira speaks natively
+</div>
+
+<h3>Section 3 — Origin timeline</h3>
+<div class="copy-block">
+  <b>"A decade in the hardest room. Then everywhere."</b><br><br>
+  <b>2015–2024 — KeyReply:</b> "For ten years we lived inside healthcare's front door, where a clumsy answer isn't a bug, it's a patient left waiting. Every public hospital in Singapore ran on what we built."<br><br>
+  <i>Middle section:</i> "That environment doesn't forgive shortcuts, and it taught us exactly what safe, high-stakes automation demands."<br><br>
+  <b>2025 → Rezonate:</b> "Everything the hard years taught us, rebuilt as agents that hold real conversations. A new name for the same conviction: that people deserve to feel understood by the systems they talk to, whether they're rescheduling a procedure or renewing season tickets."
+</div>
+<div class="flag"><b>Factual claim to verify:</b> "Every public hospital in Singapore ran on what we built" is a strong, specific, checkable claim. Confirm this is accurate before it goes live — it reads as a factual statement, not marketing color, and would need to hold up if a journalist or prospect pushed on it.</div>
+
+<div class="open"><b>Open item from Jeff:</b> "Next section — perhaps add something that speaks to sports?" No specific copy proposed. The stakeholder card section right after already includes a "Head of Fan Experience" quote, so this may already be addressed — worth confirming with Jeff whether he wants something additional beyond that card, and if so, where.</div>
+
+<h3>Stakeholder quote cards</h3>
+<table>
+  <tr><th>Role</th><th>Question</th><th>Answer</th></tr>
+  <tr><td>COO</td><td>"Can we do more without hiring more?"</td><td>Reduce admin load and missed appointments. Capacity without headcount.</td></tr>
+  <tr><td>CMIO</td><td>"Is it safe for patients?"</td><td>Clinically reviewed workflows, with a human in the loop where it counts.</td></tr>
+  <tr><td>Head of Patient Access</td><td>"Will every patient get through?"</td><td>Every call answered, every appointment loop closed, day or night.</td></tr>
+  <tr><td>Head of Fan Experience</td><td>"Will it sound like us?"</td><td>Your voice, your tone, your moments, at a scale no phone bank ever reached.</td></tr>
+  <tr><td>CIO / CISO</td><td>"Will it pass security review?"</td><td>Secure deployment, full auditability, integrations into your existing stack.</td></tr>
+</table>
+<p style="font-size:13px; color:#666;">Note: "Head of Fan Experience" is a new card — it isn't on the live About page today (currently COO, CMIO, Head of Patient Access, CIO/CISO only). This is the sports-facing addition.</p>
+
+<h3>Team bios — cleanup</h3>
+<table>
+  <tr><th>Person</th><th>Current (live site)</th><th>Jeff's proposed rewrite</th></tr>
+  <tr>
+    <td>Peiru Teo<br>Co-founder &amp; CEO</td>
+    <td>"A proven entrepreneur and thought leader with a decade of experience. With a background in engineering and finance, she has led projects worth over $4 billion at Citibank and in private equity. She now drives innovation at Rezonate."</td>
+    <td>"Peiru spent her early career in engineering and finance, leading projects worth over $4 billion at Citibank and in private equity, before spending the last decade building the platform now trusted by every public hospital in Singapore. She leads Rezonate's expansion from healthcare into the wider world of high-stakes engagement."</td>
+  </tr>
+  <tr>
+    <td>Max Xu<br>Co-founder &amp; CTO</td>
+    <td>"Dedicated to advancing machine intelligence for human benefit. He holds a Master's in Advanced Information Systems from SMU and has won multiple awards, including first place in the APAC Facebook Hackathon."</td>
+    <td>"Max has spent ten years building conversational systems that survive contact with regulated healthcare, where accuracy and safety aren't features, they're the floor. He holds a Master's in Advanced Information Systems from SMU and took first place at the APAC Facebook Hackathon."</td>
+  </tr>
+  <tr>
+    <td>Eric Pallay<br><b>Chief Strategy Officer</b> (current title, live site)</td>
+    <td>"A seasoned executive with over 25 years in strategy, consulting, and digital transformation. Former Managing Director at Accenture's Microsoft Business Group, and a founder who has exited health-tech startups."</td>
+    <td>Title changes to <b>"Chief Growth Officer"</b> in Jeff's version: "Eric brings 25 years in strategy and consulting, including as Managing Director in Accenture's Microsoft Business Group, and has founded and exited health-tech companies of his own. He leads Rezonate's growth globally."</td>
+  </tr>
+</table>
+<div class="flag"><b>Confirm before publishing:</b> Jeff's bio rewrite changes Eric's title from "Chief Strategy Officer" to "Chief Growth Officer." That's a title change, not a copy edit — confirm with Eric and update it consistently everywhere his title appears (LinkedIn, email signatures, other collateral) if it's intentional, rather than just on this one page.</div>
+
+</body>
+</html>

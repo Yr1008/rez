@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;background:#0e0d0c}
+.frame{background:#EEEDE9;border-radius:22px;padding:40px 0;display:flex;align-items:center;justify-content:center;min-height:230px}
+.vp{width:264px;height:150px;overflow:hidden;position:relative;-webkit-mask:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent);mask:linear-gradient(90deg,transparent,#000 16%,#000 84%,transparent)}
+.trk{display:flex;gap:24px;align-items:center;height:100%;width:max-content;padding-left:72px}
+.trk i{display:block;width:120px;height:120px;border-radius:50%;background-size:cover;background-position:center;flex:0 0 auto;box-shadow:0 22px 46px -30px rgba(20,16,12,.5)}
+.g1{animation:glide 13s linear infinite}
+@keyframes glide{to{transform:translateX(-576px)}}
+.g2{animation:stepx 8.5s cubic-bezier(.5,0,.18,1) infinite}
+@keyframes stepx{0%,14%{transform:translateX(0)}25%,39%{transform:translateX(-144px)}50%,64%{transform:translateX(-288px)}75%,90%{transform:translateX(-432px)}100%{transform:translateX(-576px)}}
+.fs{position:relative;width:120px;height:120px}
+.fs .l{position:absolute;inset:0;border-radius:50%;background-size:cover;background-position:center;box-shadow:0 22px 46px -30px rgba(20,16,12,.5)}
+.fs .a{animation:fsa 3.4s ease-in-out infinite}
+.fs .b{animation:fsb 3.4s ease-in-out infinite}
+@keyframes fsa{0%,40%{opacity:1}56%,100%{opacity:0}}
+@keyframes fsb{0%,40%{opacity:0;transform:translateX(38px) scale(.96)}56%,100%{opacity:1;transform:translateX(0) scale(1)}}
+.badge{display:inline-flex;font-size:12px;font-weight:700;color:#0e0d0c;background:#EFA12E;border-radius:999px;padding:5px 12px;margin-bottom:9px}
+.bl{color:rgba(255,255,255,.6);font-size:13px;line-height:1.45;max-width:28ch;margin:0 0 16px}
+.col{flex:1 1 260px;min-width:250px}
+</style>
+</helmet>
+
+<div style="min-height:100vh;padding:52px 44px 90px;color:#fff">
+  <div style="max-width:1180px;margin:0 auto 34px">
+    <h1 style="margin:0;font-size:38px;font-weight:600;letter-spacing:-.03em">Sliding switch — options</h1>
+    <p style="margin:12px 0 0;max-width:64ch;color:rgba(255,255,255,.6);font-size:16px;line-height:1.5">Three ways the agents can slide when you move to the next/previous industry. These previews loop; in the real demo the slide fires on your tap, so it lands clean with no repeat. Tell me <b style="color:#fff">4a</b>, <b style="color:#fff">4b</b>, or <b style="color:#fff">4c</b>.</p>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:24px;max-width:1180px;margin:0 auto">
+
+    <section id="4a" class="col">
+      <span class="badge">4a · Continuous glide</span>
+      <p class="bl">Agents drift by in a slow, seamless carousel. Calm and premium.</p>
+      <div class="frame"><div class="vp"><div class="trk g1">
+        <i style="background-image:url(rz/grad-spray2.webp)"></i><i style="background-image:url(rz/grad-mick2.webp)"></i><i style="background-image:url(rz/grad-vivid2.webp)"></i><i style="background-image:url(rz/grad-lime2.webp)"></i><i style="background-image:url(rz/grad-spray2.webp)"></i><i style="background-image:url(rz/grad-mick2.webp)"></i><i style="background-image:url(rz/grad-vivid2.webp)"></i><i style="background-image:url(rz/grad-lime2.webp)"></i>
+      </div></div></div>
+    </section>
+
+    <section id="4b" class="col">
+      <span class="badge">4b · Step &amp; settle</span>
+      <p class="bl">Slides one agent at a time, eases in and rests. Deliberate, in control.</p>
+      <div class="frame"><div class="vp"><div class="trk g2">
+        <i style="background-image:url(rz/grad-spray2.webp)"></i><i style="background-image:url(rz/grad-mick2.webp)"></i><i style="background-image:url(rz/grad-vivid2.webp)"></i><i style="background-image:url(rz/grad-lime2.webp)"></i><i style="background-image:url(rz/grad-spray2.webp)"></i>
+      </div></div></div>
+    </section>
+
+    <section id="4c" class="col">
+      <span class="badge">4c · Slide &amp; fade</span>
+      <p class="bl">The next agent slips in from the side while the last fades out. Soft, elegant.</p>
+      <div class="frame"><div class="fs"><div class="l a" style="background-image:url(rz/grad-spray2.webp)"></div><div class="l b" style="background-image:url(rz/grad-mick2.webp)"></div></div></div>
+    </section>
+
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

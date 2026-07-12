@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+:root{--sans:'Bricolage Grotesque',system-ui,sans-serif;--ink:#1A1510;--ink-2:#75726D;--ink-3:#A9A7A2}
+#fstorycard .fs-dot{position:relative;overflow:hidden;cursor:pointer;border:none;padding:0;height:4px;width:34px;border-radius:99px;background:rgba(20,16,11,.16);transition:background .4s,width .4s}
+#fstorycard .fs-dot[data-on="1"]{width:48px;background:rgba(20,16,11,.2)}
+@keyframes fsswap{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+#fs-fade.fsswap{animation:fsswap .8s cubic-bezier(.22,.9,.28,1)}
+@media(max-width:760px){
+  #fstorycard{grid-template-columns:1fr !important;padding:20px !important;gap:16px !important}
+  #fstorycard .fs-photo{order:-1;width:100% !important;height:150px !important;border-radius:16px !important}
+  #fstorycard .fs-quote{font-size:15px !important;line-height:1.4 !important}
+  #fstorycard img{height:30px !important;max-width:132px !important}
+  #fstorycard .fs-name-role{margin-top:16px !important}
+}
+</style>
+</helmet>
+
+  <div class="sec-pad" data-py="0.09" style="position:relative;z-index:1;max-width:1180px;margin:0 auto">
+    <div class="two" style="display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,56px);align-items:end;margin-bottom:40px">
+      <div data-rv=""><span class="eyebrow">Customer stories</span></div>
+      <h2 data-rv="" data-d="1" style="font-family:var(--sans);font-weight:600;letter-spacing:-.04em;font-size:clamp(28px,4.2vw,55px);max-width:15ch;line-height:1.0;color:var(--ink)">Trusted by the teams on the <span style="white-space:nowrap;background:linear-gradient(115deg,#B79DE8,#D9605A 46%,#E2683E 72%,#EFA12E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#D9605A">front line.</span></h2>
+    </div>
+
+    <div data-rv="" data-d="2" style="position:relative">
+      <div aria-hidden="true" style="position:absolute;inset:-5% -2%;z-index:0;pointer-events:none;border-radius:36px;background:radial-gradient(58% 82% at 18% 24%,rgba(183,157,232,.55),transparent 62%),radial-gradient(56% 84% at 86% 80%,rgba(226,104,62,.46),transparent 64%),radial-gradient(52% 72% at 62% 6%,rgba(239,161,46,.4),transparent 64%);filter:blur(48px);opacity:.66"></div>
+      <div id="fstorycard" style="position:relative;z-index:1;display:grid;grid-template-columns:1fr minmax(300px,392px);gap:clamp(28px,4vw,64px);align-items:stretch;border-radius:30px;background:linear-gradient(150deg,rgba(203,165,255,.16),rgba(255,255,255,.5) 44%,rgba(255,178,77,.14));backdrop-filter:blur(26px) saturate(160%);-webkit-backdrop-filter:blur(26px) saturate(160%);box-shadow:0 40px 90px -52px rgba(20,16,11,.3),inset 0 1px 0 rgba(255,255,255,.82),inset 0 0 0 1px rgba(255,255,255,.44);padding:clamp(34px,4vw,56px)">
+        <div id="fs-fade" style="display:flex;flex-direction:column;min-width:0;height:100%">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:clamp(26px,3vw,40px);min-height:44px">
+            <sc-if value="{{ hasLogo }}" hint-placeholder-val="{{ true }}"><img src="{{ storyLogo }}" alt="{{ storyOrg }}" style="height:{{ storyLogoH }};max-width:180px;object-fit:contain;object-position:left center;filter:brightness(0);opacity:.86"></sc-if>
+            <sc-if value="{{ noLogo }}" hint-placeholder-val="{{ false }}"><span style="font-family:var(--sans);font-weight:700;font-size:21px;letter-spacing:-.015em;color:#191512">{{ storyOrg }}</span></sc-if>
+          </div>
+          <blockquote class="fs-quote" style="margin:0;font-family:var(--sans);font-weight:500;font-size:clamp(20px,2vw,28px);line-height:1.36;letter-spacing:-.02em;color:#191512;max-width:38ch;text-wrap:pretty">&ldquo;{{ storyQuote }}&rdquo;</blockquote>
+          <div style="margin-top:auto;padding-top:clamp(24px,3vw,36px)">
+            <div style="font-weight:700;font-size:15px;color:#191512">{{ storyName }}</div>
+            <div style="font-size:13px;color:#75726D;margin-top:3px">{{ storyRole }}</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:26px">
+            <sc-for list="{{ storyDots }}" as="d" hint-placeholder-count="3">
+              <button class="fs-dot" data-on="{{ d.on }}" onClick="{{ d.onClick }}" aria-label="Show story"><span data-fill style="position:absolute;left:0;top:0;bottom:0;width:0%;background:#fff;border-radius:99px"></span></button>
+            </sc-for>
+          </div>
+        </div>
+        <div class="fs-photo" style="width:100%;height:clamp(320px,30vw,392px);border-radius:20px;background-image:url({{ storyAv }});background-size:cover;background-position:{{ storyAvPos }};box-shadow:0 24px 50px -30px rgba(20,16,11,.4),inset 0 0 0 1px rgba(20,16,11,.08)"></div>
+      </div>
+    </div>
+
+    <div data-rv="" data-d="5" style="margin-top:30px;display:flex;justify-content:center">
+      <a href="Customers.dc.html" class="btn" style="height:46px;padding:0 24px;font-size:14.5px;background:#fff;color:var(--ink)">See more customer stories <span class="c">&rarr;</span></a>
+    </div>
+  </div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { story: 0 };
+  stories(){return [
+    {av:'rz/team/asahi-suresh.jpg', avPos:'center 30%', org:'Asahi Beverages', logo:'rz/clogos/asahi.png', logoH:'26px', quote:'Nothing came close on voice quality \u2013 natural, human-like conversations with near-instant response times that genuinely surprised us. Honestly, we wouldn\u2019t be moving this fast, or this confidently, with anyone else.', name:'Suresh Bhaskaran', role:'Head of Data & Analytics, Asahi Beverages'},
+    {av:'rz/team/nhg-kevinkok.jpg', avPos:'center 18%', org:'NHG Health', logo:'rz/clogos/nhg.png', logoH:'56px', quote:'What we needed was not just a chatbot, but a platform that could grow with us. Working with Rezonate, we were able to add new services and functions as our needs evolved, without compromising on the governance standards that healthcare demands.', name:'Dr Kevin Kok', role:'Deputy Director (Digital Services), NHG Population Health'},
+    {av:'rz/team/aia-chiakimgeok.jpg', avPos:'center 20%', org:'AIA Group', quote:'Rezonate\u2019s AI platform is a scalable, multi-domain engagement intelligence platform to serve many different customers and stakeholders. They are a growth partner for long-term success.', name:'Chia Kim Geok', role:'Sr. Manager, Policy Servicing, AIA Group'},
+  ];}
+  goStory(i){const n=this.stories().length;this.setState({story:((i%n)+n)%n});this._restart();}
+  _restart(){this._t0=performance.now();this._dur=6500;cancelAnimationFrame(this._raf);var tick=(now)=>{var p=Math.min(1,(now-this._t0)/this._dur);var fl=document.querySelectorAll('#fstorycard [data-fill]');for(var i=0;i<fl.length;i++){fl[i].style.width=(i===this.state.story?(p*100):0)+'%';}if(p>=1){this.setState(s=>({story:(s.story+1)%this.stories().length}));this._t0=now;}this._raf=requestAnimationFrame(tick);};this._raf=requestAnimationFrame(tick);}
+  componentDidMount(){ this._pfi=this.state.story; this._restart(); }
+  componentDidUpdate(){ if(this._pfi!==this.state.story){ this._pfi=this.state.story; var el=document.getElementById('fs-fade'); if(el){ el.classList.remove('fsswap'); void el.offsetWidth; el.classList.add('fsswap'); } } }
+  componentWillUnmount(){ if (this._raf) cancelAnimationFrame(this._raf); }
+  renderVals(){
+    const cur=this.stories()[this.state.story]||{};
+    return {
+      storyOrg:cur.org, storyQuote:cur.quote, storyName:cur.name, storyRole:cur.role,
+      storyAv:cur.av, storyAvPos:cur.avPos||'center 20%',
+      storyLogo:cur.logo||'', hasLogo:!!cur.logo, noLogo:!cur.logo, storyLogoH:cur.logoH||'30px',
+      storyDots:this.stories().map((s,i)=>({on:i===this.state.story?'1':'0',onClick:()=>this.goStory(i)}))
+    };
+  }
+}
+</script>
+</body>
+</html>
