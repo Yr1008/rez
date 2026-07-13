@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Rezonate Website — Change Requests (from tracker + Peiru's answers)</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Arial, sans-serif; max-width: 1100px; margin: 0 auto; padding: 40px 24px 100px; color: #1a1a1a; line-height: 1.5; background:#fff; }
+  h1 { font-size: 25px; margin-bottom: 4px; }
+  .meta { color: #666; font-size: 14px; margin-bottom: 28px; }
+  h2 { font-size: 18px; margin-top: 40px; border-bottom: 2px solid #7c5cff; padding-bottom: 6px; }
+  table { border-collapse: collapse; width: 100%; margin: 10px 0 20px; font-size: 13px; }
+  th, td { border: 1px solid #ddd; padding: 8px 9px; text-align: left; vertical-align: top; }
+  th { background: #f7f7f7; font-size: 11px; text-transform:uppercase; letter-spacing:.03em; color:#666; }
+  td.where { font-weight:600; white-space:nowrap; }
+  .pill { display:inline-block; font-size:10px; text-transform:uppercase; letter-spacing:.03em; padding:2px 7px; border-radius:10px; font-weight:600; }
+  .decide { background:#fbe7c6; color:#8a5a00; }
+  .design { background:#e6e6e6; color:#444; }
+  .bug { background:#fddede; color:#a12b2b; }
+  .content { background:#dcf3e3; color:#1f7a37; }
+  .copy { background:#e7e2fb; color:#4b32c3; }
+  .owner { display:inline-block; background:#1a1a1a; color:#fff; font-size:11px; padding:2px 9px; border-radius:10px; }
+  .status { font-size:10px; text-transform:uppercase; font-weight:700; padding:2px 7px; border-radius:3px; }
+  .status-ready { background:#eefaf0; color:#1f7a37; }
+  .status-yash { background:#f3f1ff; color:#4b32c3; }
+  .status-open { background:#fff6e5; color:#8a6300; }
+  .status-ack { background:#eef4fb; color:#2a5d8f; }
+  .flag { background:#fdeeee; border-left: 4px solid #d64545; padding: 10px 14px; margin: 12px 0; border-radius: 4px; font-size: 13.5px; }
+  .flag b { color:#a92b2b; }
+  .note { color:#666; font-size:12.5px; }
+</style>
+</head>
+<body>
+
+<h1>Rezonate Website — Change Requests</h1>
+<div class="meta">
+  Source: the feedback tracker screenshot (18 items, Home/Solutions/Healthcare/Finance/Business) + Peiru's Otter.ai voice answers, 7 Jul 2026. This document supersedes all earlier feedback docs — it's a fresh list built only from these two sources.
+</div>
+
+<div class="flag"><b>Not addressed in the recording:</b> two tracker items didn't get a direct answer in the transcript — row 7 (multi-modal chat-to-voice content, owned solely by Yash) and row 12 (three demos per industry). Both are marked <span class="status status-open">open</span> below rather than guessed at.</div>
+
+<h2>Home</h2>
+<table>
+<tr><th>Where</th><th>Feedback</th><th>Decision</th><th>Type</th><th>Owner</th><th>Status</th></tr>
+<tr>
+  <td class="where">Live demo · hero CTA</td>
+  <td>Is it weird to say "talk to Kira" when it's a male voice? Should we say "speak to our agents"?</td>
+  <td><b>Go with "speak to our agents."</b> Shift CTA copy in this direction rather than leading with the Kira-branded voice.</td>
+  <td><span class="pill decide">Decide</span></td>
+  <td><span class="owner">Peiru + Yash</span></td>
+  <td><span class="status status-ready">Decided</span></td>
+</tr>
+<tr>
+  <td class="where">Platform story · site-wide</td>
+  <td>Where's the competitive edge of the Kira Edge Platform? Site currently reads voice-first.</td>
+  <td>Use this line: <i>"Kira Platform, a comprehensive way to build, manage and run agents, so you don't have to."</i> Add it wherever it fits naturally on the site. If there's no good fit anywhere, drop it rather than forcing it in.</td>
+  <td><span class="pill decide">Decide</span></td>
+  <td><span class="owner">Peiru + Yash</span></td>
+  <td><span class="status status-ready">Decided</span></td>
+</tr>
+<tr>
+  <td class="where">The difference</td>
+  <td>Graphic (phone tree vs. old chatbot vs. Kira) doesn't communicate the "why." Suggested: "Kira agents are 14× faster."</td>
+  <td>Design call — Yash to update the graphic/element as needed.</td>
+  <td><span class="pill design">Design</span></td>
+  <td><span class="owner">Yash</span></td>
+  <td><span class="status status-yash">Yash's call</span></td>
+</tr>
+<tr>
+  <td class="where">The difference</td>
+  <td>"Resolved without a human" doesn't make sense without a "human vs. hold time" comparison graphic.</td>
+  <td>Design call — Yash to update the element as needed.</td>
+  <td><span class="pill design">Design</span></td>
+  <td><span class="owner">Yash</span></td>
+  <td><span class="status status-yash">Yash's call</span></td>
+</tr>
+<tr>
+  <td class="where">Capabilities + By the numbers</td>
+  <td>"Kira is built different" already states 60+ languages and human-free resolution — is the crowd-photo section redundant?</td>
+  <td>It's capability content, not a differentiation claim — <b>fold it into the capability cards</b> rather than keeping it as a separate section (this pairs with the "By the numbers" decision below).</td>
+  <td><span class="pill design">Design</span></td>
+  <td><span class="owner">Yash</span></td>
+  <td><span class="status status-ready">Decided</span></td>
+</tr>
+<tr>
+  <td class="where">Capabilities · stat cards</td>
+  <td>Spacing issue between the down-arrow icon and the "49%" stat (appears in three places).</td>
+  <td>Straight bug fix — Yash to correct spacing in all three spots.</td>
+  <td><span class="pill bug">Bug</span></td>
+  <td><span class="owner">Yash</span></td>
+  <td><span class="status status-yash">Yash's call</span></td>
+</tr>
+<tr>
+  <td class="where">Capabilities cards</td>
+  <td>Need to visually show the chat-to-voice handoff to make the multi-modal/multi-channel claim visible.</td>
+  <td>Not addressed in the recording.</td>
+  <td><span class="pill content">Content</span></td>
+  <td><span class="owner">Yash</span></td>
+  <td><span class="status status-open">Open</span></td>
+</tr>
+<tr>
+  <td class="where">By the numbers</td>
+  <td>Is this section meant to list raw capability, or to prove differentiation vs. competitors?</td>
+  <td><b>It's about capability.</b> Fold it into the cards (same decision as the "Capabilities + By the numbers" row above).</td>
+  <td><span class="pill decide">Decide</span></td>
+  <td><span class="owner">Peiru + Yash</span></td>
+  <td><span class="status status-ready">Decided</span></td>
+</tr>
+<tr>
+  <td class="where">FAQ</td>
+  <td>Opens with a negative-framed question ("What will Kira never do?").</td>
+  <td><b>Rewrite.</b> Don't open with a negative or "what will Kira never do" framing — lead with trust answers instead (data handling, ISO/SOC 2 certification), or rephrase the opening question to a more positive angle.</td>
+  <td><span class="pill copy">Copy</span></td>
+  <td><span class="owner">Yash</span></td>
+  <td><span class="status status-ready">Decided</span></td>
+</tr>
+<tr>
+  <td class="where">Closing CTA</td>
+  <td>"For every call that can't wait" / "Start wherever it hurts most" — tagline pairing feels off.</td>
+  <td><b>Ignore this comment.</b> Keep the tagline as-is, no change.</td>
+  <td><span class="pill copy">Copy</span></td>
+  <td><span class="owner">Yash</span></td>
+  <td><span class="status status-ready">Decided — no change</span></td>
+</tr>
+</table>
+
+<h2>Solutions</h2>
+<table>
+<tr><th>Where</th><th>Feedback</th><th>Decision</th><th>Type</th><th>Owner</th><th>Status</th></tr>
+<tr>
+  <td class="where">Live demo · industry tabs</td>
+  <td>"Marty · Tigers Suite Recovery" is filed under Healthcare in the demo picker — it's a sports scenario. Same picker is reused on the homepage.</td>
+  <td><b>Remove it</b> from the Healthcare tab.</td>
+  <td><span class="pill bug">Bug</span></td>
+  <td><span class="owner">Yash</span></td>
+  <td><span class="status status-ready">Decided</span></td>
+</tr>
+<tr>
+  <td class="where">Live demo · industry tabs</td>
+  <td>Need three demos per industry — currently Healthcare 3, Business 3, Financial 1, Sports 1.</td>
+  <td>Not addressed in the recording.</td>
+  <td><span class="pill content">Content</span></td>
+  <td><span class="owner">Yash</span></td>
+  <td><span class="status status-open">Open</span></td>
+</tr>
+<tr>
+  <td class="where">What Kira does</td>
+  <td>Currently lives on each industry page — move to the homepage?</td>
+  <td><b>Yes — move it to the homepage.</b> (Ties into the platform-story line above; this is likely where that line gets a home.)</td>
+  <td><span class="pill decide">Decide</span></td>
+  <td><span class="owner">Peiru + Yash</span></td>
+  <td><span class="status status-ready">Decided</span></td>
+</tr>
+<tr>
+  <td class="where">Plugs into your stack</td>
+  <td>Logo grid needs a version without a white background box; the Microsoft Dynamics logo shown is wrong.</td>
+  <td>Acknowledged — Peiru will source/confirm the current, correct Microsoft Dynamics logo asset for Yash to swap in.</td>
+  <td><span class="pill bug">Bug</span></td>
+  <td><span class="owner">Yash</span></td>
+  <td><span class="status status-ack">Awaiting asset from Peiru</span></td>
+</tr>
+</table>
+
+<h2>Healthcare</h2>
+<table>
+<tr><th>Where</th><th>Feedback</th><th>Decision</th><th>Type</th><th>Owner</th><th>Status</th></tr>
+<tr>
+  <td class="where">Triage scenario</td>
+  <td>"Because chest symptoms can be serious..." runs on both the home Capabilities card and the Solutions triage use case — chest pain isn't realistically routed through a chat/messaging channel.</td>
+  <td><b>Already resolved</b> in the 6 Jul designer copy spec: the chest-pain card is replaced with a "send my medical report" example, the booking card's tag changes to "Mobile app," and a new medication-reminder card (Amlodipine) was added — see <code>20260706_rezonate-designer-copy-changes.html</code> for the exact copy.</td>
+  <td><span class="pill decide">Decide</span></td>
+  <td><span class="owner">Peiru + Yash</span></td>
+  <td><span class="status status-ready">Decided (prior doc)</span></td>
+</tr>
+</table>
+
+<h2>Finance</h2>
+<table>
+<tr><th>Where</th><th>Feedback</th><th>Decision</th><th>Type</th><th>Owner</th><th>Status</th></tr>
+<tr>
+  <td class="where">Hero · chat card</td>
+  <td>The hero card labeled "Customer · In-app" should be a more concrete, use-case-specific moment.</td>
+  <td>Confirmed: <i>"Would you like to learn more about our services?"</i> (matches the 6 Jul copy spec).</td>
+  <td><span class="pill copy">Copy</span></td>
+  <td><span class="owner">Yash</span></td>
+  <td><span class="status status-ready">Decided</span></td>
+</tr>
+</table>
+
+<h2>Business</h2>
+<table>
+<tr><th>Where</th><th>Feedback</th><th>Decision</th><th>Type</th><th>Owner</th><th>Status</th></tr>
+<tr>
+  <td class="where">Hero headline</td>
+  <td>Hero reads "When AI takes the busywork out of business" — spelling: should "busywork" be split to "busy work"?</td>
+  <td><b>Keep "busywork" as one word.</b> No change.</td>
+  <td><span class="pill copy">Copy</span></td>
+  <td><span class="owner">Yash</span></td>
+  <td><span class="status status-ready">Decided — no change</span></td>
+</tr>
+<tr>
+  <td class="where">Closing CTA video</td>
+  <td>"Put Kira to work" CTA imagery should be more business-focused — e.g. IT helpdesk — rather than the current generic shot.</td>
+  <td><b>Confirmed.</b> CTA imagery should show a helpdesk-style scene.</td>
+  <td><span class="pill content">Content</span></td>
+  <td><span class="owner">Yash</span></td>
+  <td><span class="status status-ready">Decided</span></td>
+</tr>
+</table>
+
+<p class="note">14 of 18 items now have a clear decision. Two design-only items (rows 3 &amp; 4 above) are left to Yash's judgment rather than a specific directive. Two remain open with no answer yet: the multi-modal chat-to-voice visual on the homepage, and the "three demos per industry" content gap on Solutions.</p>
+
+</body>
+</html>

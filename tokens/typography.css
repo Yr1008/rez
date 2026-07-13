@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&display=swap');
+@font-face{font-family:'Bricolage Fallback';src:local('Arial');size-adjust:104%;ascent-override:89%;descent-override:24%;line-gap-override:0%}
+:root{
+  /* one family carries everything; weights 400–700 only (never 800) */
+  --sans:'Bricolage Grotesque','Bricolage Fallback',system-ui,sans-serif;
+  --font-display:var(--sans); --font-body:var(--sans);
+  /* scale */
+  --fs-display:clamp(38px,4.6vw,64px);  /* w600, ls -.03em, lh .98-1.04 */
+  --fs-h2:clamp(28px,4.2vw,55px);
+  --fs-h3:clamp(19px,2.3vw,30px);
+  --fs-body-lg:clamp(16px,1.4vw,19px);
+  --fs-body:15px; --fs-small:13.5px;
+  --fs-eyebrow:13px;                    /* w500-700; pill eyebrows are 13/500, uppercase kickers 12/700/.14em */
+  --ls-display:-.035em; --lh-display:.98;
+}

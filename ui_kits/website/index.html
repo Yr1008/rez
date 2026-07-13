@@ -1,0 +1,211 @@
+<!-- @dsCard group="Website" viewport="1440x860" subtitle="Marketing site — hero, platform, capabilities, FAQ, CTA" name="Marketing site" -->
+<!-- @startingPoint section="Website" subtitle="Rezonate marketing-site screen" viewport="1440x860" -->
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>
+body{margin:0;font-family:var(--sans);background:var(--dark);-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;font-weight:600;letter-spacing:-.035em;line-height:.98;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+details summary{list-style:none;cursor:pointer}details summary::-webkit-details-marker{display:none}
+a{color:inherit;text-decoration:none}
+</style></head><body><div id="root"></div>
+<script>
+window.__dsReady = new Promise(function(res){ var s = document.createElement('script'); s.src = '../../_ds_bundle.js'; s.onload = res; s.onerror = res; document.head.appendChild(s); });
+</script>
+<script type="text/plain" id="__appsrc">
+const NSREF = { cur: {} };
+class EB extends React.Component{ constructor(p){ super(p); this.state={e:null}; } static getDerivedStateFromError(e){ return {e}; } render(){ return this.state.e ? React.createElement('pre',{style:{color:'#fff',padding:24,font:'12px monospace',whiteSpace:'pre-wrap'}}, 'RENDER ERROR: '+String(this.state.e && this.state.e.message)) : this.props.children; } }
+const getC = name => (props) => {
+  const C = NSREF.cur[name];
+  return C ? React.createElement(C, props) : null;
+};
+const Button = getC('Button'), Eyebrow = getC('Eyebrow'), Chip = getC('Chip'), Stat = getC('Stat'), Waveform = getC('Waveform'), Orb = getC('Orb'), GlassCard = getC('GlassCard');
+
+const Section = ({ bg = 'var(--paper)', children, style }) => (
+  <section style={{ position: 'relative', marginTop: -44, borderRadius: '44px 44px 0 0', boxShadow: 'var(--shadow-section)', background: bg, padding: 'clamp(64px,7vw,110px) 24px', ...style }}>
+    <div style={{ maxWidth: 1180, margin: '0 auto' }}>{children}</div>
+  </section>
+);
+
+function Nav(){
+  return (
+    <nav style={{ position: 'sticky', top: 15, zIndex: 50, margin: '15px auto 0', width: 'calc(100% - 28px)', maxWidth: 660,
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, padding: '8px 8px 8px 18px',
+      borderRadius: 999, background: 'rgba(13,14,17,.62)', backdropFilter: 'blur(30px) saturate(160%)', border: '1px solid rgba(255,255,255,.09)' }}>
+      <img src="../../assets/wordmark-white-nav.webp" style={{ height: 20 }} alt="Rezonate" />
+      <div style={{ display: 'flex', alignItems: 'center', gap: 2, color: 'rgba(255,255,255,.82)', fontSize: 13.5, fontWeight: 500 }}>
+        {['Solutions','Industries','Customers','About'].map(l => <span key={l} style={{ padding: '6px 12px', borderRadius: 999, cursor: 'pointer' }}>{l}</span>)}
+      </div>
+      <Button variant="white" size="sm">Request a demo</Button>
+    </nav>
+  );
+}
+
+function Hero(){
+  return (
+    <header style={{ position: 'relative', minHeight: 640, marginTop: -71, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', background: 'var(--dark)' }}>
+      <img src="../../rz-poster-fallback.jpg" onError={e => { e.target.src = '../../assets/og-image.jpg'; e.target.onerror = null; }} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: .9 }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(6,7,10,.4),rgba(6,7,10,.18) 40%,rgba(6,7,10,.6))' }} />
+      <GlassCard label="Business loans" meta="Voice · live" width={280} style={{ position: 'absolute', left: '6%', top: '30%' }}>
+        <div style={{ fontSize: 13.5, lineHeight: 1.5, fontWeight: 500 }}>“Following up on your inquiry — you may prequalify for a business loan up to $50K.”</div>
+      </GlassCard>
+      <GlassCard label="Activation" meta="In-app" width={280} style={{ position: 'absolute', right: '6%', top: '38%' }}>
+        <div style={{ fontSize: 13.5, lineHeight: 1.5, fontWeight: 500 }}>Our Rewards card could earn you 2x points on flights. Activate your offer?</div>
+      </GlassCard>
+      <div style={{ position: 'relative', textAlign: 'center', padding: '120px 24px 90px' }}>
+        <h1 style={{ color: '#fff', fontWeight: 500, fontSize: 26, textShadow: '0 2px 26px rgba(6,7,10,.4)' }}>When AI comes with people skills.</h1>
+        <div style={{ marginTop: 10, fontWeight: 600, fontSize: 46, letterSpacing: '-.04em', color: 'rgba(255,255,255,.85)', textShadow: '0 2px 20px rgba(6,7,10,.42)' }}>Now we're talking.</div>
+        <div style={{ marginTop: 26, display: 'flex', justifyContent: 'center' }}><Waveform bars={17} height={30} /></div>
+        <div style={{ display: 'flex', gap: 13, justifyContent: 'center', marginTop: 34 }}>
+          <Button variant="glow" size="hero">Request a demo</Button>
+          <Button variant="glass" size="hero" arrow>Meet Kira</Button>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+function Platform(){
+  return (
+    <Section bg="var(--paper)">
+      <Eyebrow>The Kira Platform</Eyebrow>
+      <h2 style={{ fontSize: 'clamp(30px,4vw,52px)', color: 'var(--ink)', maxWidth: '18ch', marginTop: 18 }}>Every channel, every hour, one front line.</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 30, marginTop: 48 }}>
+        <Stat value="82%" label="resolved without a human" />
+        <Stat value="49%" label="fewer no-shows" />
+        <Stat value="60+" label="languages from day one" />
+      </div>
+    </Section>
+  );
+}
+
+function Capabilities(){
+  const cards = [
+    { chip: 'Triages with care', num: '82%', sub: 'resolved without a human, never a diagnosis', orb: '../../assets/orb-spray.webp' },
+    { chip: 'Books & reschedules', num: '49%', sub: 'fewer no-shows, booked in a 12-second call', orb: '../../assets/orb-prism.webp' },
+    { chip: 'Speaks every channel', num: '60+', sub: 'languages from day one, on voice and text', orb: '../../assets/orb-navy.webp' }
+  ];
+  const [hover, setHover] = React.useState(-1);
+  return (
+    <Section bg="var(--cream)">
+      <Eyebrow>Capabilities</Eyebrow>
+      <div style={{ display: 'grid', gridTemplateColumns: '.85fr 1.5fr', gap: 48, alignItems: 'start', marginTop: 18 }}>
+        <div>
+          <h2 style={{ fontSize: 'clamp(28px,3vw,40px)', color: 'var(--ink)' }}>Kira is built for engagement</h2>
+          <p style={{ marginTop: 16, fontSize: 15, lineHeight: 1.6, color: 'var(--ink-2)' }}>Full context carried between channels, enabling a seamless user experience.</p>
+          <div style={{ display: 'flex', gap: 10, marginTop: 22 }}>
+            <Button variant="dark" size="sm">Meet Kira</Button>
+            <Button variant="white" size="sm">Request a demo</Button>
+          </div>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 14, perspective: 1100 }}>
+          {cards.map((c, i) => (
+            <div key={i} onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(-1)}
+              style={{ position: 'relative', borderRadius: 22, overflow: 'hidden', minHeight: 350, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 20,
+                background: 'url(' + c.orb + ') center/cover', color: '#fff',
+                transition: 'transform .45s cubic-bezier(.2,.8,.3,1), box-shadow .45s ease',
+                transform: hover === i ? 'translateY(-10px) rotateX(2.5deg) scale(1.02)' : 'none',
+                boxShadow: hover === i ? '0 38px 64px -32px rgba(20,16,12,.5)' : '0 20px 44px -30px rgba(20,16,12,.4)' }}>
+              <span style={{ alignSelf: 'flex-start', fontSize: 12, fontWeight: 600, background: 'rgba(0,0,0,.22)', backdropFilter: 'blur(8px)', padding: '7px 12px', borderRadius: 999 }}>{c.chip}</span>
+              <div>
+                <div style={{ fontSize: 34, fontWeight: 600, letterSpacing: '-.03em', textShadow: '0 1px 14px rgba(0,0,0,.3)' }}>{c.num}</div>
+                <div style={{ fontSize: 13.5, lineHeight: 1.45, marginTop: 5, color: 'rgba(255,255,255,.94)' }}>{c.sub}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function Story(){
+  return (
+    <Section bg="#FAF9F7">
+      <Eyebrow>Customer stories</Eyebrow>
+      <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 40, alignItems: 'center', marginTop: 18 }}>
+        <div>
+          <div style={{ fontSize: 'clamp(20px,2vw,26px)', lineHeight: 1.35, fontWeight: 500, color: 'var(--ink)', letterSpacing: '-.015em' }}>
+            “We are excited to leverage generative AI to improve accessibility of health information for our residents, and to receive it in the community.”
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 13, marginTop: 26 }}>
+            <span style={{ width: 54, height: 54, borderRadius: 99, background: 'url(../../assets/orb-violet.webp) center/cover' }} />
+            <div>
+              <div style={{ fontWeight: 700, fontSize: 15, color: '#191512' }}>Health system leader</div>
+              <div style={{ fontSize: 13, color: 'var(--ink-2)', marginTop: 3 }}>National health cluster · Singapore</div>
+            </div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', alignContent: 'center' }}>
+          {['All','Healthcare','Insurance','Banking','Sports'].map((t, i) => <Chip key={t} on={i === 0}>{t}</Chip>)}
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function Faq(){
+  const qs = [
+    ['How do you protect our data?', 'Tenant-level isolation, audit logs, and compliance presets for HIPAA, GDPR, PDPA and LGPD — governance is built in, not bolted on.'],
+    ['How fast can we go live?', 'Standard deployments are configuration-first and typically live in about four weeks.'],
+    ["What happens when Kira isn't sure?", 'Kira escalates to a human with full context. Human-in-the-loop is the default, not an add-on.']
+  ];
+  const [open, setOpen] = React.useState(0);
+  return (
+    <Section bg="var(--stone)">
+      <Eyebrow>FAQ</Eyebrow>
+      <h2 style={{ fontSize: 'clamp(26px,2.6vw,34px)', color: 'var(--ink)', marginTop: 18, maxWidth: '22ch' }}>Questions, answered.</h2>
+      <div style={{ marginTop: 30, maxWidth: 780 }}>
+        {qs.map(([q, a], i) => (
+          <div key={i} style={{ borderRadius: 22, background: 'rgba(0,0,0,.04)', border: '1px solid rgba(0,0,0,.03)', marginBottom: 12, overflow: 'hidden' }}>
+            <div onClick={() => setOpen(open === i ? -1 : i)} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, padding: '22px 26px', fontWeight: 600, fontSize: 17, color: 'var(--ink)', cursor: 'pointer' }}>
+              {q}
+              <span style={{ width: 30, height: 30, borderRadius: 99, background: 'rgba(0,0,0,.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform .3s', transform: open === i ? 'rotate(180deg)' : 'none', fontSize: 12 }}>▾</span>
+            </div>
+            {open === i && <div style={{ padding: '0 26px 24px', maxWidth: '64ch', color: 'var(--ink-2)', fontSize: 15.5, lineHeight: 1.62 }}>{a}</div>}
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+}
+
+function Cta(){
+  return (
+    <Section bg="var(--dark)" style={{ borderRadius: '44px 44px 0 0' }}>
+      <div style={{ textAlign: 'center', padding: '30px 0 10px' }}>
+        <Eyebrow onDark>From hello to handled</Eyebrow>
+        <h2 style={{ color: '#fff', fontSize: 'clamp(34px,4vw,54px)', marginTop: 20 }}>For every call that can't wait.</h2>
+        <div style={{ display: 'flex', gap: 13, justifyContent: 'center', marginTop: 34 }}>
+          <Button variant="glow" size="hero">Request a demo</Button>
+          <Button variant="glass" size="hero" arrow>Meet Kira</Button>
+        </div>
+      </div>
+    </Section>
+  );
+}
+
+function App(){
+  try { if (window.Rezonate && window.Rezonate.Button) NSREF.cur = window.Rezonate; else { for (const k in window){ try { const v = window[k]; if (v && typeof v === 'object' && v.Button && v.Orb) { NSREF.cur = v; break; } } catch(e){} } } } catch(e){}
+  if (!NSREF.cur.Button) return <div style={{ color: '#fff', padding: 40, fontFamily: 'var(--sans)' }}>Bundle not built yet — open in the Design System tab.</div>;
+  return <div style={{ background: 'var(--dark)' }}><Nav /><Hero /><Platform /><Capabilities /><Story /><Faq /><Cta /></div>;
+}
+const __root = ReactDOM.createRoot(document.getElementById('root'));
+const __paint = () => __root.render(<EB><App/></EB>);
+__paint();
+if (window.__dsReady && window.__dsReady.then) window.__dsReady.then(__paint);
+</script>
+<script>
+(function(){
+  var src = document.getElementById('__appsrc').textContent;
+  try {
+    var code = Babel.transform(src, { presets: [['react', { runtime: 'classic' }]] }).code;
+    (0, eval)(code);
+  } catch (e) {
+    document.getElementById('root').innerHTML = '<pre style="color:#fff;padding:24px;font:12px monospace;white-space:pre-wrap">BOOTSTRAP ERROR: ' + (e && e.message) + '</pre>';
+  }
+})();
+</script></body></html>
