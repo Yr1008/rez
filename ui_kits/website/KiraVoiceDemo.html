@@ -1,0 +1,176 @@
+<!-- @dsCard group="Website" viewport="1180x780" subtitle="Live voice demo — industry tabs, live-agent vs recorded call, green-when-live call button" name="Kira voice demo" -->
+<!-- @startingPoint section="Website" subtitle="Rezonate live voice-demo section" viewport="1180x780" -->
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<style>
+  body{margin:0;font-family:var(--sans);background:var(--cream);color:var(--ink)}
+  *{box-sizing:border-box}
+  .kvx{padding:clamp(40px,4.6vw,64px) clamp(10px,1.6vw,20px)}
+  .panel{position:relative;max-width:1180px;margin:0 auto;padding:clamp(10px,1.6vw,20px) clamp(16px,2.4vw,32px)}
+  .head{text-align:center}
+  .head h2{font-weight:600;font-size:clamp(28px,4.2vw,52px);margin:0;line-height:1.04;letter-spacing:-.035em}
+  .grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--coral)}
+  .head p{margin:12px auto 0;max-width:46ch;font-size:clamp(14px,1.2vw,16.5px);line-height:1.5;color:#6F665B}
+  /* mode toggle + tabs */
+  .mode{position:relative;display:inline-flex;gap:2px;padding:4px;border-radius:999px;background:rgba(20,16,12,.045)}
+  .mode button{position:relative;z-index:1;border:0;cursor:pointer;font-family:var(--sans);font-weight:600;font-size:13.5px;color:#8B8378;background:transparent;padding:9px 18px;border-radius:999px;transition:all .25s}
+  .mode button[data-on="1"]{background:#fff;color:var(--ink);box-shadow:0 4px 14px -6px rgba(20,16,12,.25)}
+  .mode button[data-dis="1"]{opacity:.38;cursor:not-allowed}
+  .tabs{display:inline-flex;gap:6px;padding:4px;border-radius:999px;background:rgba(20,16,12,.045)}
+  .tab{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font-family:var(--sans);font-weight:600;font-size:14px;color:#8B8378;background:transparent;padding:10px 20px;border-radius:999px;transition:all .25s}
+  .tab .dot{width:10px;height:10px;border-radius:50%;background-size:cover;background-position:center;flex:0 0 auto}
+  .tab[data-on="1"]{background:#fff;color:var(--ink);box-shadow:0 4px 14px -6px rgba(20,16,12,.25)}
+  /* live stage */
+  .stage{display:flex;flex-direction:column;align-items:center;padding:clamp(20px,2.6vw,38px) 12px clamp(14px,2vw,24px)}
+  .orbrow{display:flex;align-items:center;justify-content:center;gap:clamp(8px,1.4vw,16px)}
+  .sideorb{flex:0 0 auto;width:clamp(78px,11vw,120px);aspect-ratio:1;border-radius:50%;background-size:cover;background-position:center;border:none;cursor:pointer;opacity:.4;filter:saturate(.9);box-shadow:0 24px 52px -34px rgba(20,16,12,.5);transition:opacity .45s cubic-bezier(.2,.8,.3,1),transform .55s cubic-bezier(.2,.8,.3,1)}
+  .sideorb:hover{opacity:.72;transform:scale(1.05)}
+  .orb{position:relative;width:clamp(168px,20vw,236px);aspect-ratio:1;border-radius:50%;background-size:cover;background-position:center;box-shadow:0 30px 60px -38px rgba(20,16,12,.42);animation:breath 6s ease-in-out infinite}
+  @keyframes breath{0%,100%{transform:scale(1)}50%{transform:scale(1.018)}}
+  .orb::before,.orb::after{content:"";position:absolute;left:50%;top:50%;width:100%;height:100%;border-radius:50%;transform:translate(-50%,-50%) scale(.9);border:1.5px solid rgba(62,210,126,.5);opacity:0;pointer-events:none}
+  .orb[data-live="1"]::before{animation:ripple 2.9s ease-out infinite}
+  .orb[data-live="1"]::after{animation:ripple 2.9s ease-out infinite 1.45s}
+  @keyframes ripple{0%{opacity:.5;transform:translate(-50%,-50%) scale(.88)}70%{opacity:.1}100%{opacity:0;transform:translate(-50%,-50%) scale(1.55)}}
+  .call{position:absolute;left:50%;bottom:-16px;transform:translateX(-50%);width:50px;height:50px;border-radius:50%;display:grid;place-items:center;padding:3px;cursor:pointer;border:none;box-shadow:0 10px 24px -8px rgba(20,16,12,.35);background:conic-gradient(from 0deg,#B79DE8,#D9605A,#E2683E,#EFA12E,#B79DE8);transition:transform .3s,box-shadow .4s}
+  .call:hover{transform:translateX(-50%) scale(1.07)}
+  .call .ctr{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;background:#141210;color:#fff;transition:background .4s}
+  .orb[data-live="1"] .call{box-shadow:0 0 24px 4px rgba(62,210,126,.5)}
+  .orb[data-live="1"] .call .ctr{background:radial-gradient(circle at 50% 36%,#25C873,#11934E)}
+  .name{margin-top:26px;font-weight:600;font-size:clamp(16px,1.5vw,20px);letter-spacing:-.02em}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:14px}
+  .chip{font-family:var(--sans);font-weight:500;font-size:13px;color:#6F665B;background:rgba(20,16,12,.05);border:none;padding:8px 15px;border-radius:999px;cursor:pointer;transition:all .2s}
+  .chip:hover{color:var(--ink);background:rgba(20,16,12,.09)}
+  .chip[data-on="1"]{background:rgba(20,16,12,.08);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(20,16,12,.16)}
+  .hint{margin:18px 0 0;font-size:12px;color:#A79E92}
+  /* recorded */
+  .recs{display:flex;gap:clamp(18px,3vw,44px);justify-content:center;align-items:flex-start;padding:clamp(20px,2.6vw,38px) 12px}
+  .rec{position:relative;border:0;background:transparent;cursor:pointer;width:clamp(150px,17vw,210px);font-family:var(--sans);padding:0}
+  .rec .rorb{position:relative;display:block;width:100%;aspect-ratio:1;border-radius:50%;background-size:cover;background-position:center;box-shadow:0 26px 55px -34px rgba(20,16,12,.45);transition:transform .35s}
+  .rec:hover .rorb{transform:scale(1.04)}
+  .pb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:52px;height:52px;border-radius:50%;background:#fff;display:grid;place-items:center;color:#141210;box-shadow:0 6px 18px rgba(20,16,12,.3);transition:transform .3s,box-shadow .3s}
+  .rec:hover .pb{transform:translate(-50%,-50%) scale(1.12);box-shadow:0 0 20px 2px rgba(62,210,126,.45)}
+  .rec[data-playing="1"] .pb{box-shadow:0 0 20px 2px rgba(62,210,126,.45)}
+  .eqbars{display:flex;align-items:center;gap:2.5px;height:18px}
+  .eqbars i{display:block;width:3px;height:100%;border-radius:9px;background:currentColor;transform-origin:center;transform:scaleY(.3);animation:eq 1s ease-in-out infinite}
+  .eqbars i:nth-child(2){animation-delay:.22s}.eqbars i:nth-child(3){animation-delay:.44s}.eqbars i:nth-child(4){animation-delay:.66s}
+  @keyframes eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+  .rec .t{display:block;margin-top:16px;font-weight:600;font-size:15px;letter-spacing:-.01em}
+  .rec .d{display:block;margin-top:6px;font-size:12.5px;line-height:1.45;color:#8B8378}
+  /* foot */
+  .foot{display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin-top:6px;padding:12px 6px 2px}
+  .btn-glow{display:inline-flex;align-items:center;height:46px;padding:0 24px;border-radius:999px;color:#fff;font-weight:600;font-size:14.5px;text-decoration:none;border:1.5px solid transparent;background:linear-gradient(var(--ink),var(--ink)) padding-box,conic-gradient(from 140deg,#EFA12E,#E2683E,#D9605A,#B79DE8,#EFA12E) border-box;box-shadow:0 8px 26px -14px rgba(240,140,60,.5)}
+  .cta2{display:inline-flex;align-items:center;height:44px;padding:0 22px;border-radius:999px;background:rgba(20,16,12,.07);color:var(--ink);font-weight:600;font-size:14px;text-decoration:none}
+  .row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:14px}
+</style></head>
+<body>
+<div class="kvx">
+  <div class="panel">
+    <div class="head">
+      <h2>Don't read about it. <span class="grad">Talk to it.</span></h2>
+      <p id="sub">Pick an industry, then speak to an agent live, or listen to real recorded calls.</p>
+    </div>
+
+    <div class="row">
+      <div class="mode" id="mode">
+        <button data-on="1" data-mode="live">Live agent</button>
+        <button data-on="0" data-mode="rec">Hear a recorded call</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="tabs" id="tabs"></div>
+    </div>
+
+    <div class="stage" id="stage">
+      <div class="orbrow">
+        <button class="sideorb" id="sideL" aria-label="Previous industry"></button>
+        <div class="orb" id="orb" data-live="0">
+          <button class="call" id="call" aria-label="Speak to an agent live">
+            <span class="ctr"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg></span>
+          </button>
+        </div>
+        <button class="sideorb" id="sideR" aria-label="Next industry"></button>
+      </div>
+      <div class="name" id="name">Nic · Heart Care Post-Discharge</div>
+      <div class="chips" id="chips"></div>
+      <p class="hint" id="hint">Tap the call button, the live call runs right here in your browser. Mic stays on your device.</p>
+    </div>
+
+    <div class="recs" id="recs" style="display:none"></div>
+
+    <div class="foot">
+      <a href="#" class="btn-glow">Request a demo</a>
+      <a href="#" class="cta2">Customer stories</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var A = '../../assets/';
+  var ORDER = ['Healthcare','Financial','Business','Sports'];
+  var ORBS = { Healthcare:A+'orb-spray.webp', Financial:A+'orb-mick.webp', Business:A+'orb-vivid.webp', Sports:A+'orb-lime.webp' };
+  var DATA = {
+    Healthcare:{ name:'Nic · Heart Care Post-Discharge', chips:['Post-discharge care','Appointment Booking'],
+      recs:[{orb:A+'orb-prism.webp',t:'Nic · Heart Care Post-Discharge',d:'A real heart-care post-discharge check-in.'},
+            {orb:A+'orb-violet.webp',t:'Appointment Booking Assistant',d:'An outbound call to book or reschedule an appointment.'}] },
+    Financial:{ name:'Utility Billing Assistant', chips:['Utility billing'], recs:[] },
+    Business:{ name:'David · Asahi Beverages', chips:['Consumer goods · Asahi','Restaurant reservations','Education recruitment'], recs:[] },
+    Sports:{ name:'Ernie · Fan Engagement', chips:['Fan engagement','Suite recovery'],
+      recs:[{orb:A+'orb-navy.webp',t:'Ernie · Fan Engagement',d:'A fan asking about events and seating.'}] }
+  };
+  var ind = 0, uc = 0, mode = 'live', live = false, playing = -1;
+
+  var tabsEl=document.getElementById('tabs'), chipsEl=document.getElementById('chips'), recsEl=document.getElementById('recs');
+  var orbEl=document.getElementById('orb'), nameEl=document.getElementById('name'), sideL=document.getElementById('sideL'), sideR=document.getElementById('sideR');
+  var stageEl=document.getElementById('stage'), hintEl=document.getElementById('hint'), callEl=document.getElementById('call');
+
+  function key(){ return ORDER[ind]; }
+  function hasRecs(){ return DATA[key()].recs.length>0; }
+
+  function render(){
+    // tabs
+    tabsEl.innerHTML = ORDER.map(function(k,i){
+      return '<button class="tab" data-on="'+(i===ind?1:0)+'" data-i="'+i+'"><span class="dot" style="background-image:url('+ORBS[k]+')"></span>'+k+'</button>';
+    }).join('');
+    // mode toggle: disable recorded when none
+    var recBtn = document.querySelector('#mode [data-mode="rec"]');
+    recBtn.setAttribute('data-dis', hasRecs()?'0':'1');
+    document.querySelector('#mode [data-mode="live"]').setAttribute('data-on', mode==='live'?'1':'0');
+    recBtn.setAttribute('data-on', mode==='rec'?'1':'0');
+    // orbs
+    orbEl.style.backgroundImage='url('+ORBS[key()]+')';
+    orbEl.setAttribute('data-live', live?'1':'0');
+    sideL.style.backgroundImage='url('+ORBS[ORDER[(ind+ORDER.length-1)%ORDER.length]]+')';
+    sideR.style.backgroundImage='url('+ORBS[ORDER[(ind+1)%ORDER.length]]+')';
+    nameEl.textContent = DATA[key()].name;
+    // chips
+    chipsEl.innerHTML = DATA[key()].chips.map(function(c,i){ return '<button class="chip" data-on="'+(i===uc?1:0)+'" data-i="'+i+'">'+c+'</button>'; }).join('');
+    hintEl.textContent = live ? 'Calling agent… connecting can take a few seconds. Mic stays on your device.' : 'Tap the call button, the live call runs right here in your browser. Mic stays on your device.';
+    // recorded cards
+    recsEl.innerHTML = DATA[key()].recs.map(function(r,i){
+      var on = playing===i;
+      var inner = on ? '<span class="eqbars"><i></i><i></i><i></i><i></i></span>' : '<svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" style="margin-left:3px"><path d="M8 5v14l11-7z"/></svg>';
+      return '<button class="rec" data-i="'+i+'" data-playing="'+(on?1:0)+'"><span class="rorb" style="background-image:url('+r.orb+')"><span class="pb">'+inner+'</span></span><span class="t">'+r.t+'</span><span class="d">'+r.d+'</span></button>';
+    }).join('');
+    // mode visibility
+    stageEl.style.display = mode==='live' ? 'flex' : 'none';
+    recsEl.style.display  = mode==='rec'  ? 'flex' : 'none';
+  }
+
+  document.getElementById('mode').addEventListener('click', function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    var m=b.getAttribute('data-mode');
+    if(m==='rec' && !hasRecs()) return;
+    mode=m; if(m!=='rec'){ live=false; } playing=-1; render();
+  });
+  tabsEl.addEventListener('click', function(e){ var b=e.target.closest('.tab'); if(!b) return; ind=+b.getAttribute('data-i'); uc=0; live=false; playing=-1; if(mode==='rec'&&!hasRecs())mode='live'; render(); });
+  chipsEl.addEventListener('click', function(e){ var b=e.target.closest('.chip'); if(!b) return; uc=+b.getAttribute('data-i'); render(); });
+  sideL.addEventListener('click', function(){ ind=(ind+ORDER.length-1)%ORDER.length; uc=0; live=false; if(mode==='rec'&&!hasRecs())mode='live'; render(); });
+  sideR.addEventListener('click', function(){ ind=(ind+1)%ORDER.length; uc=0; live=false; if(mode==='rec'&&!hasRecs())mode='live'; render(); });
+  callEl.addEventListener('click', function(){ live=!live; render(); });
+  recsEl.addEventListener('click', function(e){ var b=e.target.closest('.rec'); if(!b) return; var i=+b.getAttribute('data-i'); playing = playing===i?-1:i; render(); });
+
+  render();
+})();
+</script>
+</body></html>

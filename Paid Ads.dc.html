@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&amp;family=Open+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  body{margin:0;background:#DED8CF;font-family:'Open Sans',system-ui,sans-serif;color:#1A1510}
+  a{color:#B5613B;text-decoration:none}a:hover{color:#8f4a2e}
+  @keyframes adpulse{0%{box-shadow:0 0 0 0 rgba(239,161,46,.55)}70%{box-shadow:0 0 0 9px rgba(239,161,46,0)}100%{box-shadow:0 0 0 0 rgba(239,161,46,0)}}
+</style>
+</helmet>
+<section style="padding:56px 48px 80px;display:flex;flex-direction:column;gap:10px">
+  <div style="max-width:1240px;margin:0 auto;width:100%">
+    <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:26px;letter-spacing:-.02em">Paid ad statics - Rezonate &amp; Kira</div>
+    <p style="margin:6px 0 0;color:#75726D;font-size:14px;max-width:78ch;line-height:1.55">Two ad types: <strong style="color:#4A433B">try the live demo</strong> (zero-friction proof - competitors gate demos behind sales calls) and <strong style="color:#4A433B">book a 1:1 demo</strong> (completion stats + governance proof for regulated buyers). Drop licensed people shots into the photo slots - each slot states its casting spec. Reference by id (e.g. <a href="#1a">1a</a>).</p>
+  </div>
+
+  <!-- ══ A · TRY THE LIVE DEMO ══ -->
+  <div style="max-width:1240px;margin:26px auto 0;width:100%;font-size:12px;font-weight:700;color:#75726D;letter-spacing:.3px;text-transform:uppercase">A &middot; Try the live demo &middot; 1200&times;628</div>
+  <div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:center;margin-top:8px">
+
+    <!-- 1a -->
+    <div id="1a" data-screen-label="Ad 1a live-demo flagship" style="position:relative;flex:0 0 auto;padding-top:16px">
+      <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1a</div>
+      <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">Flagship &middot; tactic: proof headline + zero-friction promise</div>
+      <div style="width:1200px;height:628px;background:#FCFBF9;display:grid;grid-template-columns:1fr 460px;overflow:hidden;box-shadow:0 26px 60px -42px rgba(20,16,11,.5)">
+        <div style="display:flex;flex-direction:column;justify-content:center;padding:60px 56px 60px 64px">
+          <div style="display:inline-flex;align-items:center;gap:9px;color:#75726D;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span style="width:9px;height:9px;border-radius:50%;background:#EFA12E;animation:adpulse 2s infinite"></span>Live demo</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:63px;line-height:1.02;letter-spacing:-.03em;margin-top:18px;max-width:11ch">Hear the agent 45+ enterprises trust.</div>
+          <p style="color:#75726D;font-size:19px;line-height:1.5;margin:18px 0 0;max-width:34ch">Kira picks up in your browser - a real conversation, not a recording.</p>
+          <div style="display:flex;align-items:center;gap:16px;margin-top:30px">
+            <span style="display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 30px;border-radius:999px;background:#1A1510;color:#fff;font-weight:700;font-size:17px">Try the live demo <span>&rarr;</span></span>
+            <span style="color:#75726D;font-size:14px;font-weight:600">No form. No sales call.<br>60 seconds.</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:26px">
+            <span style="color:#A79E92;font-size:13.5px;font-weight:600">13M+ conversations a year &middot; 60+ languages &middot; since 2014</span>
+            <span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/mark-gradient.png" alt="" style="height:22px"><span style="font-size:13.5px;font-weight:700;color:#4A433B">getrezonate.com</span></span>
+          </div>
+        </div>
+        <div style="position:relative"><image-slot id="s1a" shape="rect" placeholder="Woman, 60s, on the phone at home - relieved smile, warm light, candid"></image-slot></div>
+      </div>
+    </div>
+
+    <!-- 1b -->
+    <div id="1b" data-screen-label="Ad 1b live-demo dark" style="position:relative;flex:0 0 auto;padding-top:16px">
+      <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1b</div>
+      <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">Dark &middot; tactic: pattern interrupt - names the category&rsquo;s gated-demo habit</div>
+      <div style="width:1200px;height:628px;background:#0E0D0B;display:grid;grid-template-columns:1fr 430px;overflow:hidden;box-shadow:0 26px 60px -42px rgba(20,16,11,.6)">
+        <div style="display:flex;flex-direction:column;justify-content:center;padding:56px 40px 56px 64px">
+          <img src="assets/wordmark-cream.png" alt="Rezonate" style="height:26px;width:auto;align-self:flex-start">
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:66px;line-height:1.02;letter-spacing:-.03em;color:#FCFBF9;margin-top:34px">This is not a video demo.</div>
+          <p style="color:rgba(252,251,249,.62);font-size:19px;line-height:1.5;margin:16px 0 0;max-width:36ch">It&rsquo;s Kira, live. Ask anything a caller would ask.</p>
+          <div style="display:flex;align-items:center;gap:16px;margin-top:30px">
+            <span style="display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 30px;border-radius:999px;background:#FCFBF9;color:#1A1510;font-weight:700;font-size:17px">Talk to Kira now <span>&rarr;</span></span>
+            <span style="color:rgba(252,251,249,.55);font-size:14px;font-weight:600">In your browser &middot; no signup.</span>
+          </div>
+          <div style="margin-top:auto;padding-top:26px;color:rgba(252,251,249,.42);font-size:13.5px;font-weight:600">45+ enterprise clients &middot; 93% client retention</div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center">
+          <div style="width:330px;height:330px;border-radius:50%;padding:3px;background:linear-gradient(115deg,#B79DE8,#D9605A 55%,#E2683E)">
+            <div style="width:100%;height:100%;border-radius:50%;overflow:hidden;background:#1A1510"><image-slot id="s1b" shape="circle" placeholder="Man, 30s, mid-call - genuine relieved laugh, candid"></image-slot></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1c -->
+    <div id="1c" data-screen-label="Ad 1c live-demo quote" style="position:relative;flex:0 0 auto;padding-top:16px">
+      <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1c</div>
+      <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">Quote &middot; tactic: borrowed credibility + &ldquo;judge it yourself&rdquo; dare</div>
+      <div style="width:1200px;height:628px;background:#F4F2ED;display:grid;grid-template-columns:1fr 400px;overflow:hidden;box-shadow:0 26px 60px -42px rgba(20,16,11,.5)">
+        <div style="display:flex;flex-direction:column;justify-content:center;padding:60px 48px 60px 64px">
+          <img src="assets/mark-gradient.png" alt="" style="height:26px;width:auto;align-self:flex-start">
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:44px;line-height:1.14;letter-spacing:-.025em;margin-top:28px;max-width:24ch">&ldquo;Nothing came close on voice quality: natural, human-like, with near-instant response times.&rdquo;</div>
+          <div style="color:#75726D;font-size:16px;font-weight:600;margin-top:18px">Suresh Bhaskaran &middot; Head of Data &amp; Analytics, Asahi Beverages</div>
+          <div style="display:flex;align-items:center;gap:16px;margin-top:30px">
+            <span style="display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 28px;border-radius:999px;background:#1A1510;color:#fff;font-weight:700;font-size:16.5px">Judge it yourself - try the live demo</span>
+            <span style="color:#75726D;font-size:14px;font-weight:600">getrezonate.com</span>
+          </div>
+        </div>
+        <div style="position:relative"><image-slot id="s1c" shape="rect" placeholder="Executive listening on a call - thoughtful, office, natural light"></image-slot></div>
+      </div>
+    </div>
+
+    <!-- 1d -->
+    <div id="1d" data-screen-label="Ad 1d live-demo mirrored" style="position:relative;flex:0 0 auto;padding-top:16px">
+      <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1d</div>
+      <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">Scale proof &middot; tactic: big number + &ldquo;hear one live&rdquo; curiosity gap</div>
+      <div style="width:1200px;height:628px;background:#FCFBF9;display:grid;grid-template-columns:460px 1fr;overflow:hidden;box-shadow:0 26px 60px -42px rgba(20,16,11,.5)">
+        <div style="position:relative"><image-slot id="s1d" shape="rect" placeholder="Older man on mobile outdoors - laughing with relief, candid"></image-slot></div>
+        <div style="display:flex;flex-direction:column;justify-content:center;padding:60px 64px 60px 56px">
+          <div style="display:inline-flex;align-items:center;gap:9px;color:#75726D;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span style="width:9px;height:9px;border-radius:50%;background:#EFA12E;animation:adpulse 2s infinite"></span>Live demo</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:60px;line-height:1.03;letter-spacing:-.03em;margin-top:18px;max-width:13ch">13M+ conversations a year. Hear one live.</div>
+          <p style="color:#75726D;font-size:19px;line-height:1.5;margin:16px 0 0;max-width:36ch">Talk to Kira the way a customer would - book, reschedule, dispute, renew.</p>
+          <div style="display:flex;align-items:center;gap:16px;margin-top:30px">
+            <span style="display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 30px;border-radius:999px;background:#1A1510;color:#fff;font-weight:700;font-size:17px">Try the live demo <span>&rarr;</span></span>
+            <span style="color:#75726D;font-size:14px;font-weight:600">Takes about 60 seconds.</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:flex-end;margin-top:auto;padding-top:26px"><span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/mark-gradient.png" alt="" style="height:22px"><span style="font-size:13.5px;font-weight:700;color:#4A433B">getrezonate.com</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ B · LEAD FORM ══ -->
+  <div style="max-width:1240px;margin:40px auto 0;width:100%;font-size:12px;font-weight:700;color:#75726D;letter-spacing:.3px;text-transform:uppercase">B &middot; Lead form - book a 1:1 demo &middot; 1200&times;628</div>
+  <div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:center;margin-top:8px">
+
+    <!-- 1e -->
+    <div id="1e" data-screen-label="Ad 1e form healthcare stat" style="position:relative;flex:0 0 auto;padding-top:16px">
+      <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1e</div>
+      <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">Healthcare stat &middot; tactic: completion metric + certs to de-risk the click</div>
+      <div style="width:1200px;height:628px;background:#FCFBF9;display:grid;grid-template-columns:1fr 460px;overflow:hidden;box-shadow:0 26px 60px -42px rgba(20,16,11,.5)">
+        <div style="display:flex;flex-direction:column;justify-content:center;padding:60px 56px 60px 64px">
+          <div style="color:#75726D;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Healthcare</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:88px;line-height:.98;letter-spacing:-.035em;margin-top:16px">49% fewer<br>no-shows<span style="color:#EFA12E">.</span></div>
+          <p style="color:#75726D;font-size:19px;line-height:1.5;margin:18px 0 0;max-width:36ch">Kira calls, confirms, and rebooks patients - completion you can audit.</p>
+          <div style="display:flex;align-items:center;gap:16px;margin-top:28px">
+            <span style="display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 30px;border-radius:999px;background:#1A1510;color:#fff;font-weight:700;font-size:17px">Book a 1:1 demo <span>&rarr;</span></span>
+            <span style="color:#75726D;font-size:14px;font-weight:600">30 minutes &middot; your use case<br>&middot; a live agent on the call.</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:24px">
+            <span style="color:#A79E92;font-size:13.5px;font-weight:700">HIPAA &middot; SOC 2 Type II &middot; ISO 27001</span>
+            <span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/mark-gradient.png" alt="" style="height:22px"><span style="font-size:13.5px;font-weight:700;color:#4A433B">getrezonate.com</span></span>
+          </div>
+        </div>
+        <div style="position:relative"><image-slot id="s1e" shape="rect" placeholder="Clinic coordinator on the phone at front desk - warm smile"></image-slot></div>
+      </div>
+    </div>
+
+    <!-- 1f -->
+    <div id="1f" data-screen-label="Ad 1f form resolution stat" style="position:relative;flex:0 0 auto;padding-top:16px">
+      <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1f</div>
+      <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">Resolution stat &middot; tactic: giant number stops the scroll, scale line backs it</div>
+      <div style="width:1200px;height:628px;background:#F4F2ED;display:grid;grid-template-columns:440px 1fr;overflow:hidden;box-shadow:0 26px 60px -42px rgba(20,16,11,.5)">
+        <div style="position:relative"><image-slot id="s1f" shape="rect" placeholder="Patient checking phone, reassured - soft daylight"></image-slot></div>
+        <div style="display:flex;flex-direction:column;justify-content:center;padding:56px 64px 56px 56px">
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:170px;line-height:.9;letter-spacing:-.04em">82<span style="color:#EFA12E">%</span></div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:37px;line-height:1.12;letter-spacing:-.02em;margin-top:14px;max-width:19ch">of conversations resolved without a human.</div>
+          <p style="color:#75726D;font-size:17px;line-height:1.5;margin:14px 0 0">Measured across 13M+ interactions a year.</p>
+          <div style="display:flex;align-items:center;gap:16px;margin-top:26px">
+            <span style="display:inline-flex;align-items:center;gap:10px;height:56px;padding:0 28px;border-radius:999px;background:#1A1510;color:#fff;font-weight:700;font-size:16.5px">Book a 1:1 demo <span>&rarr;</span></span>
+            <span style="color:#A79E92;font-size:13.5px;font-weight:700">HIPAA &middot; SOC 2 &middot; ISO 27001</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1g -->
+    <div id="1g" data-screen-label="Ad 1g form governance" style="position:relative;flex:0 0 auto;padding-top:16px">
+      <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1g</div>
+      <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">Governance &middot; tactic: the objection IS the headline - regulated buyers&rsquo; real blocker</div>
+      <div style="width:1200px;height:628px;background:#0E0D0B;display:grid;grid-template-columns:1fr 430px;overflow:hidden;box-shadow:0 26px 60px -42px rgba(20,16,11,.6)">
+        <div style="display:flex;flex-direction:column;justify-content:center;padding:56px 40px 56px 64px">
+          <div style="color:rgba(252,251,249,.5);font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">For regulated industries</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:62px;line-height:1.02;letter-spacing:-.03em;color:#FCFBF9;margin-top:16px;max-width:13ch">Sounds human. Governed like an employee.</div>
+          <p style="color:rgba(252,251,249,.62);font-size:18px;line-height:1.55;margin:16px 0 0;max-width:40ch">Approved knowledge only. Tamper-resistant audit trails. Human escalation with full context.</p>
+          <div style="display:flex;align-items:center;gap:16px;margin-top:28px">
+            <span style="display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 30px;border-radius:999px;background:#FCFBF9;color:#1A1510;font-weight:700;font-size:17px">Book a 1:1 demo <span>&rarr;</span></span>
+          </div>
+          <div style="margin-top:auto;padding-top:24px;display:flex;align-items:center;justify-content:space-between">
+            <span style="color:rgba(252,251,249,.42);font-size:13.5px;font-weight:700">HIPAA &middot; SOC 2 Type II &middot; ISO 27001 &middot; GDPR &middot; PDPA</span>
+            <img src="assets/wordmark-cream.png" alt="Rezonate" style="height:20px;width:auto;opacity:.9">
+          </div>
+        </div>
+        <div style="position:relative"><image-slot id="s1g" shape="rect" placeholder="Hospital administrator mid-conversation - calm, assured, corridor light"></image-slot></div>
+      </div>
+    </div>
+
+    <!-- 1h -->
+    <div id="1h" data-screen-label="Ad 1h form category triadic" style="position:relative;flex:0 0 auto;padding-top:16px">
+      <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1h</div>
+      <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">Category &middot; tactic: triadic contrast positions everyone else as incomplete</div>
+      <div style="box-sizing:border-box;width:1200px;height:628px;background:#FCFBF9;position:relative;overflow:hidden;box-shadow:0 26px 60px -42px rgba(20,16,11,.5);display:flex;flex-direction:column;justify-content:center;padding:60px 72px">
+        <div style="position:absolute;top:44px;right:72px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:19px;letter-spacing:-.02em;color:#4A433B">Now we&rsquo;re talking<span style="color:#EFA12E">.</span></div>
+        <div style="display:flex;align-items:center;gap:12px"><img src="assets/mark-gradient.png" alt="" style="height:30px"></div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:74px;line-height:1.04;letter-spacing:-.033em;margin-top:26px;max-width:16ch"><span style="color:#A79E92">Bots answer. CRMs record.</span><br>Rezonate completes.</div>
+        <p style="color:#75726D;font-size:19px;line-height:1.5;margin:18px 0 0;max-width:52ch">AI agents that finish the workflow: appointment kept, loan repaid, membership renewed.</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-top:34px">
+          <div style="display:flex;align-items:center;gap:16px">
+            <span style="display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 30px;border-radius:999px;background:#1A1510;color:#fff;font-weight:700;font-size:17px">Book a 1:1 demo <span>&rarr;</span></span>
+            <span style="color:#75726D;font-size:14px;font-weight:600">Rezonate, formerly KeyReply &middot; since 2014.</span>
+          </div>
+          <div style="width:130px;height:130px;border-radius:50%;overflow:hidden"><image-slot id="s1h" shape="circle" placeholder="Portrait - person mid-call, bright relief"></image-slot></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ C · VERTICALS ══ -->
+  <div style="max-width:1240px;margin:40px auto 0;width:100%;font-size:12px;font-weight:700;color:#75726D;letter-spacing:.3px;text-transform:uppercase">C &middot; Vertical adaptations of <a href="#1a" style="text-transform:none">1a</a>&rsquo;s layout &middot; 1200&times;628</div>
+  <div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:center;margin-top:8px">
+
+    <!-- 1i -->
+    <div id="1i" data-screen-label="Ad 1i financial" style="position:relative;flex:0 0 auto;padding-top:16px">
+      <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1i</div>
+      <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">Financial services</div>
+      <div style="width:1200px;height:628px;background:#FCFBF9;display:grid;grid-template-columns:1fr 460px;overflow:hidden;box-shadow:0 26px 60px -42px rgba(20,16,11,.5)">
+        <div style="display:flex;flex-direction:column;justify-content:center;padding:60px 56px 60px 64px">
+          <div style="color:#75726D;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Financial services</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:63px;line-height:1.02;letter-spacing:-.03em;margin-top:18px;max-width:13ch">A 25% lift in on-time loan repayments.</div>
+          <p style="color:#75726D;font-size:19px;line-height:1.5;margin:18px 0 0;max-width:36ch">Kira reminds, reschedules, and completes payment plans - in 60+ languages.</p>
+          <div style="display:flex;align-items:center;gap:16px;margin-top:30px">
+            <span style="display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 30px;border-radius:999px;background:#1A1510;color:#fff;font-weight:700;font-size:17px">Book a 1:1 demo <span>&rarr;</span></span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:26px">
+            <span style="color:#A79E92;font-size:13.5px;font-weight:700">SOC 2 Type II &middot; ISO 27001 &middot; GDPR &middot; PDPA</span>
+            <span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/mark-gradient.png" alt="" style="height:22px"><span style="font-size:13.5px;font-weight:700;color:#4A433B">getrezonate.com</span></span>
+          </div>
+        </div>
+        <div style="position:relative"><image-slot id="s1i" shape="rect" placeholder="Woman settling a bill on her phone - relieved, kitchen table"></image-slot></div>
+      </div>
+    </div>
+
+    <!-- 1j -->
+    <div id="1j" data-screen-label="Ad 1j business" style="position:relative;flex:0 0 auto;padding-top:16px">
+      <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1j</div>
+      <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">Business / enterprise</div>
+      <div style="width:1200px;height:628px;background:#FCFBF9;display:grid;grid-template-columns:1fr 460px;overflow:hidden;box-shadow:0 26px 60px -42px rgba(20,16,11,.5)">
+        <div style="display:flex;flex-direction:column;justify-content:center;padding:60px 56px 60px 64px">
+          <div style="color:#75726D;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Enterprise</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:56px;line-height:1.06;letter-spacing:-.028em;margin-top:18px;max-width:17ch">&ldquo;Nothing came close on voice quality.&rdquo;</div>
+          <p style="color:#75726D;font-size:19px;line-height:1.5;margin:18px 0 0;max-width:38ch">Asahi Beverages runs its 24/7 AI helpdesk on Rezonate.</p>
+          <div style="display:flex;align-items:center;gap:16px;margin-top:30px">
+            <span style="display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 30px;border-radius:999px;background:#1A1510;color:#fff;font-weight:700;font-size:17px">Book a 1:1 demo <span>&rarr;</span></span>
+            <span style="color:#75726D;font-size:14px;font-weight:600">Head of Data &amp; Analytics,<br>Asahi Beverages.</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:26px">
+            <span style="color:#A79E92;font-size:13.5px;font-weight:600">Teams &middot; SharePoint &middot; Dynamics 365 &middot; built on Azure AI Foundry</span>
+            <span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/mark-gradient.png" alt="" style="height:22px"><span style="font-size:13.5px;font-weight:700;color:#4A433B">getrezonate.com</span></span>
+          </div>
+        </div>
+        <div style="position:relative"><image-slot id="s1j" shape="rect" placeholder="IT lead mid-call at a standing desk - at ease, modern office"></image-slot></div>
+      </div>
+    </div>
+
+    <!-- 1k -->
+    <div id="1k" data-screen-label="Ad 1k sports" style="position:relative;flex:0 0 auto;padding-top:16px">
+      <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1k</div>
+      <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">Sports &amp; live events &middot; client kept anonymous per guardrail</div>
+      <div style="width:1200px;height:628px;background:#FCFBF9;display:grid;grid-template-columns:1fr 460px;overflow:hidden;box-shadow:0 26px 60px -42px rgba(20,16,11,.5)">
+        <div style="display:flex;flex-direction:column;justify-content:center;padding:60px 56px 60px 64px">
+          <div style="color:#75726D;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase">Sports &amp; live events</div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:63px;line-height:1.02;letter-spacing:-.03em;margin-top:18px;max-width:13ch">Renewals fans pick up the phone for.</div>
+          <p style="color:#75726D;font-size:19px;line-height:1.5;margin:18px 0 0;max-width:37ch">Outbound voice agents that renew memberships and win back fans - for one of world football&rsquo;s biggest clubs.</p>
+          <div style="display:flex;align-items:center;gap:16px;margin-top:30px">
+            <span style="display:inline-flex;align-items:center;gap:10px;height:58px;padding:0 30px;border-radius:999px;background:#1A1510;color:#fff;font-weight:700;font-size:17px">Book a 1:1 demo <span>&rarr;</span></span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-top:auto;padding-top:26px">
+            <span style="color:#A79E92;font-size:13.5px;font-weight:600">45M+ fans reached &middot; natural voice &middot; 60+ languages</span>
+            <span style="display:inline-flex;align-items:center;gap:8px"><img src="assets/mark-gradient.png" alt="" style="height:22px"><span style="font-size:13.5px;font-weight:700;color:#4A433B">getrezonate.com</span></span>
+          </div>
+        </div>
+        <div style="position:relative"><image-slot id="s1k" shape="rect" placeholder="Fan on phone in stadium concourse - delighted, no club marks visible"></image-slot></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ D · SIZES ══ -->
+  <div style="max-width:1240px;margin:40px auto 0;width:100%;font-size:12px;font-weight:700;color:#75726D;letter-spacing:.3px;text-transform:uppercase">D &middot; Size adaptations of <a href="#1a" style="text-transform:none">1a</a> &middot; square + story shown at 50%</div>
+  <div style="display:flex;flex-wrap:wrap;gap:40px;justify-content:center;align-items:flex-start;margin-top:8px">
+
+    <!-- 1l square -->
+    <div id="1l" data-screen-label="Ad 1l square" style="position:relative;flex:0 0 auto;padding-top:16px">
+      <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1l</div>
+      <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">Meta / IG square &middot; 1080&times;1080</div>
+      <div style="width:540px;height:540px;overflow:hidden;box-shadow:0 26px 60px -42px rgba(20,16,11,.5)">
+        <div style="width:1080px;height:1080px;transform:scale(.5);transform-origin:top left;background:#FCFBF9;display:flex;flex-direction:column">
+          <div style="position:relative;height:470px;flex:0 0 auto"><image-slot id="s1l" shape="rect" placeholder="Woman, 60s, on the phone at home - relieved smile, warm light"></image-slot><span style="position:absolute;top:28px;left:28px;display:inline-flex;align-items:center;gap:9px;background:rgba(14,13,11,.82);color:#fff;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:10px 18px;border-radius:999px;pointer-events:none"><span style="width:9px;height:9px;border-radius:50%;background:#EFA12E"></span>Live demo</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:44px 56px 48px">
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:64px;line-height:1.02;letter-spacing:-.03em;max-width:14ch">Hear the agent 45+ enterprises trust.</div>
+            <p style="color:#75726D;font-size:24px;line-height:1.45;margin:16px 0 0">Kira picks up in your browser - live, not a recording.</p>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:30px">
+              <span style="display:inline-flex;align-items:center;gap:10px;height:66px;padding:0 34px;border-radius:999px;background:#1A1510;color:#fff;font-weight:700;font-size:21px">Try the live demo <span>&rarr;</span></span>
+              <span style="display:inline-flex;align-items:center;gap:9px"><img src="assets/mark-gradient.png" alt="" style="height:26px"><span style="font-size:16px;font-weight:700;color:#4A433B">getrezonate.com</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1m story -->
+    <div id="1m" data-screen-label="Ad 1m story" style="position:relative;flex:0 0 auto;padding-top:16px">
+      <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1m</div>
+      <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">IG story &middot; 1080&times;1920</div>
+      <div style="width:540px;height:960px;overflow:hidden;box-shadow:0 26px 60px -42px rgba(20,16,11,.5)">
+        <div style="width:1080px;height:1920px;transform:scale(.5);transform-origin:top left;background:#0E0D0B;display:flex;flex-direction:column">
+          <div style="position:relative;height:1010px;flex:0 0 auto"><image-slot id="s1m" shape="rect" placeholder="Vertical - man mid-call, relieved laugh, street at dusk"></image-slot><span style="position:absolute;top:120px;left:48px;display:inline-flex;align-items:center;gap:10px;background:rgba(14,13,11,.82);color:#fff;font-size:17px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:12px 20px;border-radius:999px;pointer-events:none"><span style="width:10px;height:10px;border-radius:50%;background:#EFA12E"></span>Live demo</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;justify-content:center;padding:56px 64px 96px">
+            <img src="assets/wordmark-cream.png" alt="Rezonate" style="height:30px;width:auto;align-self:flex-start">
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:76px;line-height:1.02;letter-spacing:-.03em;color:#FCFBF9;margin-top:30px">Hear the agent 45+ enterprises trust.</div>
+            <p style="color:rgba(252,251,249,.62);font-size:28px;line-height:1.45;margin:20px 0 0">Kira picks up in your browser - live, not a recording.</p>
+            <span style="display:inline-flex;align-items:center;justify-content:center;gap:12px;height:88px;border-radius:999px;background:#FCFBF9;color:#1A1510;font-weight:700;font-size:27px;margin-top:44px">Try the live demo <span>&uarr;</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:40px">
+      <!-- 1n mrec -->
+      <div id="1n" data-screen-label="Ad 1n mrec" style="position:relative;flex:0 0 auto;padding-top:16px">
+        <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1n</div>
+        <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">Google Display &middot; 300&times;250</div>
+        <div style="box-sizing:border-box;width:300px;height:250px;background:#FCFBF9;box-shadow:0 20px 44px -34px rgba(20,16,11,.5);display:flex;flex-direction:column;justify-content:center;padding:24px 24px 22px;overflow:hidden">
+          <div style="display:flex;align-items:center;justify-content:space-between"><img src="assets/mark-gradient.png" alt="" style="height:20px"><span style="display:inline-flex;align-items:center;gap:6px;color:#75726D;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase"><span style="width:7px;height:7px;border-radius:50%;background:#EFA12E;animation:adpulse 2s infinite"></span>Live demo</span></div>
+          <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:25px;line-height:1.08;letter-spacing:-.02em;margin-top:14px">Hear the agent 45+ enterprises trust.</div>
+          <p style="color:#75726D;font-size:12.5px;line-height:1.4;margin:8px 0 0">Live in your browser. No form.</p>
+          <span style="display:inline-flex;align-items:center;justify-content:center;gap:8px;height:40px;border-radius:999px;background:#1A1510;color:#fff;font-weight:700;font-size:13.5px;margin-top:14px">Try the live demo <span>&rarr;</span></span>
+        </div>
+      </div>
+
+      <!-- 1o leaderboard -->
+      <div id="1o" data-screen-label="Ad 1o leaderboard" style="position:relative;flex:0 0 auto;padding-top:16px">
+        <div style="position:absolute;top:0;left:14px;z-index:2;background:#1A1510;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;font-family:'Bricolage Grotesque',sans-serif">1o</div>
+        <div style="font-size:11px;color:#75726D;margin:0 0 10px 4px;font-weight:600">Google Display &middot; 728&times;90</div>
+        <div style="box-sizing:border-box;width:728px;height:90px;background:#FCFBF9;box-shadow:0 18px 40px -32px rgba(20,16,11,.5);display:flex;align-items:center;gap:18px;padding:0 20px;overflow:hidden">
+          <img src="assets/mark-gradient.png" alt="" style="height:26px;flex:0 0 auto">
+          <div style="flex:1;min-width:0">
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:19px;letter-spacing:-.02em;line-height:1.1">Hear the agent 45+ enterprises trust.</div>
+            <div style="color:#75726D;font-size:12px;font-weight:600;margin-top:3px">Kira answers live in your browser - no form, no sales call.</div>
+          </div>
+          <span style="flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;height:44px;padding:0 20px;border-radius:999px;background:#1A1510;color:#fff;font-weight:700;font-size:13.5px">Try the live demo <span>&rarr;</span></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow"><!-- internal tool, not public content -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="canonical" href="https://getrezonate.com/Email-Signature.dc">
+<title>Rezonate Email Signature Generator</title>
+<style>
+  :root{--ink:#2B2626;--muted:#777;--accent:#9C83E7;--red:#C64434;--line:#e5e1dc;--bg:#f7f5f2}
+  *{box-sizing:border-box}
+  body{margin:0;padding:32px;background:var(--bg);color:var(--ink);font-family:"Open Sans",Arial,sans-serif}
+  .wrap{max-width:980px;margin:0 auto}
+  h1{margin:0 0 8px;font-size:26px;letter-spacing:-.02em}
+  p{line-height:1.5}
+  .intro{margin:0 0 24px;color:#5f5752}
+  .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,.9fr);gap:18px;align-items:start}
+  .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:22px;box-shadow:0 12px 34px -28px rgba(43,38,38,.35)}
+  .card+ .card{margin-top:18px}
+  h2{font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 16px;color:#6a625c}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .field{margin-bottom:13px}
+  label{display:block;font-size:12px;font-weight:700;color:#5e5752;margin:0 0 6px}
+  input{width:100%;border:1px solid #d8d2cb;border-radius:7px;padding:10px 11px;font:14px Arial,sans-serif;color:var(--ink);background:#fff}
+  input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(156,131,231,.18)}
+  .check{display:flex;align-items:center;gap:8px;margin:7px 0 13px;font-size:13px;color:#534d49}
+  .check input{width:auto}
+  button{border:0;border-radius:7px;padding:10px 14px;font-weight:700;cursor:pointer}
+  .primary{background:var(--ink);color:#fff}
+  .secondary{background:#ece7e1;color:var(--ink)}
+  .ghost{background:transparent;color:var(--red);padding:6px 0}
+  .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .preview-box{padding:26px;background:#fff;border:1px dashed #d8d2cb;border-radius:8px;overflow:auto}
+  textarea{width:100%;min-height:220px;border:1px solid #d8d2cb;border-radius:7px;padding:12px;font:12px Menlo,Consolas,monospace;color:#333}
+  .link-item{display:grid;grid-template-columns:1fr 1.4fr auto;gap:8px;align-items:end;margin-bottom:10px}
+  .note{font-size:13px;color:#665f59;background:#faf8f5;border-left:3px solid var(--accent);padding:10px 12px;border-radius:5px;margin-top:12px}
+  .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1f1b18;color:#fff;border-radius:7px;padding:10px 16px;font-size:13px;opacity:0;transition:opacity .2s;pointer-events:none}
+  .toast.show{opacity:1}
+  @media(max-width:860px){body{padding:18px}.grid{grid-template-columns:1fr}.row,.link-item{grid-template-columns:1fr}.link-item button{justify-self:start}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1>Rezonate Email Signature Generator</h1>
+  <p class="intro">Create an email-safe Rezonate signature for Outlook, Gmail, and admin-managed templates.</p>
+
+  <div class="grid">
+    <section>
+      <div class="card">
+        <h2>Required Details</h2>
+        <div class="row">
+          <div class="field"><label for="name">Full name</label><input id="name" value="Jane Doe"></div>
+          <div class="field"><label for="title">Title / designation</label><input id="title" value="Senior Project Manager"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="phone1">Primary phone</label><input id="phone1" value="+65 8123 4567"></div>
+          <div class="field"><label for="phone1Label">Primary label</label><input id="phone1Label" placeholder="WhatsApp, Singapore, etc."></div>
+        </div>
+        <label class="check"><input id="phone1Wa" type="checkbox"> Link primary phone to WhatsApp</label>
+      </div>
+
+      <div class="card">
+        <h2>Optional Details</h2>
+        <label class="check"><input id="showPhone2" type="checkbox"> Add a second phone number</label>
+        <div id="phone2Fields">
+          <div class="row">
+            <div class="field"><label for="phone2">Second phone</label><input id="phone2" value="+1 415 555 0172"></div>
+            <div class="field"><label for="phone2Label">Second label</label><input id="phone2Label" value="United States"></div>
+          </div>
+          <label class="check"><input id="phone2Wa" type="checkbox"> Link second phone to WhatsApp</label>
+        </div>
+        <label class="check"><input id="showEmail" type="checkbox" checked> Add email address</label>
+        <div class="field"><label for="email">Email</label><input id="email" value="jane.doe@rezonate.com"></div>
+      </div>
+
+      <div class="card">
+        <h2>Custom Links</h2>
+        <div id="links"></div>
+        <button id="addLink" class="secondary" type="button">Add link</button>
+        <div class="note">Separators are inserted only between active links, so there is no dangling dot when one link is used.</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h2>Preview</h2>
+        <div id="preview" class="preview-box"></div>
+        <div class="actions">
+          <button id="copyRendered" class="primary" type="button">Copy signature</button>
+          <button id="copyHtml" class="secondary" type="button">Copy raw HTML</button>
+        </div>
+        <div class="note">Use "Copy signature" for normal signature editors. Use raw HTML for admin templates or Outlook Windows file replacement.</div>
+      </div>
+      <div class="card">
+        <h2>Raw HTML</h2>
+        <textarea id="source" readonly></textarea>
+      </div>
+    </section>
+  </div>
+</main>
+<div id="toast" class="toast">Copied</div>
+
+<script>
+const ids = ["name","title","phone1","phone1Label","phone1Wa","showPhone2","phone2","phone2Label","phone2Wa","showEmail","email"];
+const el = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
+const linkWrap = document.getElementById("links");
+let linkCount = 0;
+
+function esc(value) {
+  return String(value || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+}
+
+function digits(value) {
+  return String(value || "").replace(/\D/g, "");
+}
+
+function linkHref(url) {
+  if (!url) return "";
+  return /^https?:\/\//i.test(url) ? url : "https://" + url;
+}
+
+function phoneLine(number, label, whatsapp) {
+  const text = esc(number + (label ? " (" + label + ")" : ""));
+  if (!number) return "";
+  if (!whatsapp) return `<div style="font-size:14px;font-weight:400;color:#2B2626;line-height:1.5;margin:0;">${text}</div>`;
+  return `<div style="font-size:14px;line-height:1.5;margin:0;"><a href="https://wa.me/${digits(number)}" style="font-weight:600;color:#C64434;text-decoration:none;">${text}</a></div>`;
+}
+
+function activeLinks() {
+  return Array.from(linkWrap.querySelectorAll("[data-link]")).map(row => {
+    const label = row.querySelector("[data-label]").value.trim();
+    const url = row.querySelector("[data-url]").value.trim();
+    return label && url ? { label, url } : null;
+  }).filter(Boolean);
+}
+
+function buildSignature() {
+  const custom = activeLinks().map(item => `<a href="${esc(linkHref(item.url))}" style="font-size:14px;font-weight:600;color:#C64434;text-decoration:none;">${esc(item.label)}</a>`).join(`<span style="font-size:14px;font-weight:600;color:#C64434;"> &middot; </span>`);
+  const phone2 = el.showPhone2.checked ? phoneLine(el.phone2.value.trim(), el.phone2Label.value.trim(), el.phone2Wa.checked) : "";
+  const email = el.showEmail.checked && el.email.value.trim() ? `<div style="font-size:14px;font-weight:400;color:#2B2626;line-height:1.5;margin:0;"><a href="mailto:${esc(el.email.value.trim())}" style="color:#2B2626;text-decoration:none;">${esc(el.email.value.trim())}</a></div>` : "";
+  return `<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:'Open Sans',Arial,sans-serif;color:#2B2626;line-height:1.5;">
+  <tr>
+    <td style="padding:0;">
+      <div style="font-size:16px;font-weight:700;color:#2B2626;line-height:1.5;margin:0;">${esc(el.name.value.trim())}</div>
+      <div style="font-size:14px;font-weight:400;color:#2B2626;line-height:1.5;margin:2px 0 8px;">${esc(el.title.value.trim())}</div>
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="60" style="width:60px;border-collapse:collapse;margin:0 0 8px;mso-table-lspace:0;mso-table-rspace:0;">
+        <tr><td width="60" height="2" style="width:60px;height:2px;background:#9C83E7;font-size:0;line-height:2px;mso-line-height-rule:exactly;">&nbsp;</td></tr>
+      </table>
+      ${phoneLine(el.phone1.value.trim(), el.phone1Label.value.trim(), el.phone1Wa.checked)}
+      ${phone2}
+      ${email}
+      <div style="font-size:12px;font-weight:400;color:#777777;line-height:1.5;margin:6px 0 0;">Rezonate (formerly KeyReply) | <a href="https://getrezonate.com" style="font-size:12px;font-weight:400;color:#777777;text-decoration:underline;">getrezonate.com</a></div>
+      ${custom ? `<div style="font-size:14px;line-height:1.5;margin:4px 0 0;">${custom}</div>` : ""}
+      <div style="margin:28px 0 0;"><a href="https://getrezonate.com" style="display:inline-block;text-decoration:none;"><img src="https://getrezonate.com/rz/email-signature/rezonate-logo-black-gradient.png" width="160" alt="Rezonate" style="display:block;width:160px;height:auto;border:0;"></a></div>
+    </td>
+  </tr>
+</table>`;
+}
+
+function render() {
+  const html = buildSignature();
+  const template = document.createElement("template");
+  template.innerHTML = html;
+  template.content.querySelectorAll("[style]").forEach(node => {
+    const css = node.getAttribute("style");
+    node.removeAttribute("style");
+    node.style.cssText = css;
+  });
+  document.getElementById("preview").replaceChildren(template.content);
+  document.getElementById("source").value = html;
+  document.getElementById("phone2Fields").style.display = el.showPhone2.checked ? "block" : "none";
+  el.email.parentElement.style.display = el.showEmail.checked ? "block" : "none";
+}
+
+function addLink(label = "", url = "") {
+  const row = document.createElement("div");
+  row.className = "link-item";
+  row.dataset.link = String(++linkCount);
+  row.innerHTML = `<div class="field"><label>Label</label><input data-label value="${esc(label)}" placeholder="LinkedIn"></div><div class="field"><label>URL</label><input data-url value="${esc(url)}" placeholder="https://..."></div><button class="ghost" type="button">Remove</button>`;
+  row.querySelector("button").addEventListener("click", () => { row.remove(); render(); });
+  row.querySelectorAll("input").forEach(input => input.addEventListener("input", render));
+  linkWrap.appendChild(row);
+  render();
+}
+
+function copyRendered() {
+  const range = document.createRange();
+  range.selectNodeContents(document.getElementById("preview"));
+  const sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+  document.execCommand("copy");
+  sel.removeAllRanges();
+  toast("Signature copied.");
+}
+
+function copyHtml() {
+  const src = document.getElementById("source");
+  src.select();
+  document.execCommand("copy");
+  toast("HTML copied.");
+}
+
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 1600);
+}
+
+ids.forEach(id => el[id].addEventListener("input", render));
+ids.forEach(id => el[id].addEventListener("change", render));
+document.getElementById("addLink").addEventListener("click", () => addLink());
+document.getElementById("copyRendered").addEventListener("click", copyRendered);
+document.getElementById("copyHtml").addEventListener("click", copyHtml);
+addLink("LinkedIn", "");
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+# The clean URLs every page used to name as its canonical (/about, /solutions,
+# /industries/healthcare …) were never served - they returned 404, which told
+# search engines the real copy of each page lived at a dead address. The
+# canonicals now point at the URLs that serve, and these redirects keep the
+# clean paths working for anyone who already has one.
+/about              /About.dc                     301
+/solutions          /Solutions.dc                 301
+/customers          /Customers.dc                 301
+/case-studies       /CaseStudy.dc                 301
+/careers            /Careers.dc                   301
+/privacy            /Privacy.dc                   301
+/terms              /Terms.dc                     301
+/demo               /Rezonate.dc                  301
+/industries/healthcare          /Industry-Healthcare.dc   301
+/industries/financial-services  /Industry-Financial.dc    301
+/industries/sports              /Industry-Sports.dc       301
+/industries/business            /Industry-Business.dc     301

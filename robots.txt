@@ -1,0 +1,49 @@
+User-agent: *
+Allow: /
+
+# Assistant and answer-engine crawlers are welcome on the whole site. Listed
+# explicitly so the permission is unambiguous rather than inherited from *.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# The form fragment is not a page: it holds only the embedded HubSpot form and
+# redirects to the site if opened directly.
+Disallow: /embed/
+
+Sitemap: https://getrezonate.com/sitemap.xml
+
+# Curated summary of the site for assistants: https://llmstxt.org
+# LLM-Content: https://getrezonate.com/llms.txt
