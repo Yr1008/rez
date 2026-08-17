@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+@keyframes eisheen{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes eibreathe{0%,100%{opacity:.5;transform:scale(1)}50%{opacity:.8;transform:scale(1.06)}}
+</style>
+</helmet>
+<section id="engagement-intelligence" data-screen-label="Engagement Intelligence" style="position:relative;background:#000;border-radius:44px 44px 0 0;box-shadow:0 -24px 46px -30px rgba(0,0,0,.4);padding:clamp(60px,9vw,124px) 24px clamp(40px,4.5vw,64px);overflow:hidden;font-family:'Open Sans',sans-serif">
+  <style>@media(max-width:600px){#engagement-intelligence{border-radius:28px 28px 0 0 !important}#engagement-intelligence .ei-cap-h{font-size:17px !important}#engagement-intelligence .ei-lede{font-size:14px !important}}</style>
+  <div aria-hidden="true" style="position:absolute;inset:0;background:radial-gradient(130% 100% at 50% 42%,transparent 55%,rgba(0,0,0,.32) 100%);pointer-events:none"></div>
+  <div style="position:relative;max-width:1080px;margin:0 auto;text-align:center">
+    <span style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55)">The layer behind Kira</span>
+    <div ref="{{ refHead }}" style="position:relative;margin:18px auto 0;width:fit-content;max-width:100%;will-change:transform">
+      <span aria-hidden="true" style="position:absolute;inset:0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(28px,5.4vw,76px);letter-spacing:-.04em;line-height:.97;background:linear-gradient(115deg,#B79DE8,#D9605A 45%,#E2683E 70%,#B79DE8);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#D9605A;filter:blur(26px) saturate(1.7) brightness(1.25);opacity:.8;animation:eisheen 8s linear infinite,eibreathe 6.5s ease-in-out infinite;pointer-events:none;user-select:none">Engagement Intelligence</span>
+      <h2 style="position:relative;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(28px,5.4vw,76px);letter-spacing:-.04em;line-height:.97;margin:0;background:linear-gradient(115deg,#FFFFFF,#F0E6FF 30%,#FFDCD6 55%,#FFE9DC 75%,#FFFFFF);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#FCFBF9;animation:eisheen 8s linear infinite">Engagement Intelligence</h2>
+    </div>
+    <p class="ei-lede" style="color:rgba(255,255,255,.72);font-size:clamp(15px,1.3vw,17.5px);line-height:1.6;max-width:60ch;margin:22px auto 0;text-wrap:pretty">Our proprietary Engagement Intelligence layer informs our agents how to best engage with your customers by understanding who it is speaking to, deciding on the engagement strategy, and learning from the result.</p>
+
+    <div ref="{{ refDiag }}" style="position:relative;max-width:880px;margin:clamp(24px,3vw,40px) auto 0;will-change:transform">
+      <canvas ref="{{ refCanvas }}" style="display:block;width:100%;aspect-ratio:2/1"></canvas>
+      <div aria-hidden="true" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;pointer-events:none">
+        <span style="display:block;width:clamp(40px,6vw,56px);height:clamp(40px,6vw,56px);border-radius:50%;background:#FCFBF9;margin:0 auto;box-shadow:0 0 44px rgba(183,157,232,.5),0 0 12px rgba(252,251,249,.35);display:grid;place-items:center"><span style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(5.5px,.8vw,7.5px);letter-spacing:.05em;color:#0E0D0B;line-height:1.3">EI<br>LAYER</span></span>
+      </div>
+      <sc-for list="{{ chips }}" as="c" hint-placeholder-count="6">
+        <button onClick="{{ c.pick }}" style="position:absolute;left:{{ c.x }};top:{{ c.y }};transform:translate(-50%,-50%);background:{{ c.bg }};border:0;color:{{ c.fg }};border-radius:999px;padding:clamp(5px,.9vw,8px) clamp(9px,1.8vw,16px);font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(10px,1.4vw,15px);letter-spacing:-.01em;cursor:pointer;transition:background .45s,color .45s,box-shadow .45s;backdrop-filter:blur(8px);box-shadow:{{ c.glow }};white-space:nowrap">{{ c.name }}</button>
+      </sc-for>
+    </div>
+      </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { active:0, on:true };
+  DATA(){ return [
+    {n:'Step 1, before the conversation',t:'Assess, before anyone is contacted',p:'Score who is worth reaching and set the approach most likely to work. Read from what they have done, not who they are.',name:'Assess'},
+    {n:'Step A, inside the conversation',t:'Understand what is really in the way',p:'Someone says they are busy. They mean the effort is too high, the value is unclear, or last time went badly. Found in the conversation, not assumed before it.',name:'Understand'},
+    {n:'Step B, inside the conversation',t:'Act with the approach that fits',p:'Tone, voice, channel and timing chosen for this person, in wording you approved. If the barrier shifts, the approach shifts with it.',name:'Act'},
+    {n:'Step C, inside the conversation',t:'Complete the task, not the call',p:'The action completed, the form finished, the payment taken, written back to your systems while they are still there.',name:'Complete'},
+    {n:'Step 2, after the conversation',t:'Measure whether it helped',p:'Not the answered call. Whether the action was actually completed, and whether it stuck.',name:'Measure'},
+    {n:'Step 3, across every conversation',t:'Learn, for the next person like them',p:'What worked becomes the starting point next time. A sharper read on everyone in the same situation.',name:'Learn'}
+  ];}
+  componentDidMount(){
+    this._t=0; this._last=performance.now();
+    const loop=(now)=>{ this._raf=requestAnimationFrame(loop);
+      if(document.hidden) return;
+      const dt=Math.min(50,now-this._last); this._last=now;
+      const sp=0.00024+0.00012*Math.abs(Math.cos(this._t));
+      this._t=(this._t+dt*sp)%(Math.PI*2);
+      this._draw(this._cv);
+      const deg=(this._t*180/Math.PI+30)%360;
+      const idx=[2,3,4,5,0,1][Math.floor(deg/60)%6];
+      if(idx!==this.state.active){ this.setState({on:false}); clearTimeout(this._sw);
+        this._sw=setTimeout(()=>this.setState({active:idx,on:true}),200); }
+    };
+    this._raf=requestAnimationFrame(loop);
+    this._onScroll=()=>{ if(this._sraf) return; this._sraf=requestAnimationFrame(()=>{ this._sraf=0;
+      const sec=this._cv&&this._cv.closest('section'); if(!sec) return;
+      const r=sec.getBoundingClientRect(), vh=innerHeight||1;
+      const p=Math.max(-1,Math.min(1,(r.top+r.height/2-vh/2)/(vh/2+r.height/2)));
+      if(this._refHead) this._refHead.style.transform='translateY('+(p*22).toFixed(1)+'px)';
+      if(this._refDiag) this._refDiag.style.transform='translateY('+(p*-14).toFixed(1)+'px)';
+    });};
+    addEventListener('scroll',this._onScroll,{passive:true});
+  }
+  componentWillUnmount(){ cancelAnimationFrame(this._raf); clearTimeout(this._sw); removeEventListener('scroll',this._onScroll); cancelAnimationFrame(this._sraf); }
+  _pt(t,W,H){ const a=W*0.46, s=Math.sin(t), c=Math.cos(t), d=1+s*s;
+    return [W/2 + a*c/d, H/2 + a*s*c/d*1.28]; }
+  _draw(cv){
+    if(!cv) return;
+    const dpr=Math.min(2,devicePixelRatio||1);
+    const w=cv.clientWidth, h=cv.clientHeight; if(!w) return;
+    if(cv.width!==w*dpr){ cv.width=w*dpr; cv.height=h*dpr; }
+    const x=cv.getContext('2d'); x.setTransform(dpr,0,0,dpr,0,0);
+    x.fillStyle='rgba(0,0,0,.085)'; x.fillRect(0,0,w,h);
+    x.globalCompositeOperation='lighter';
+    const TAU=Math.PI*2, head=this._t;
+    x.strokeStyle='rgba(252,251,249,.09)'; x.lineWidth=1; x.beginPath();
+    for(let i=0;i<=140;i++){ const p=this._pt(i/140*TAU,w,h); i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1]); }
+    x.closePath(); x.stroke();
+    for(let i=0;i<44;i++){
+      const t=head - i*0.032; const p=this._pt(t,w,h);
+      const cos=Math.cos(((t%TAU)+TAU)%TAU);
+      const col = cos>0 ? '226,104,62' : '183,157,232';
+      const fade=Math.pow(1-i/44,1.6), r=(i===0?4.6:2.5*fade+.4);
+      const g=x.createRadialGradient(p[0],p[1],0,p[0],p[1],r*3.6);
+      g.addColorStop(0,'rgba('+col+','+(0.6*fade+(i===0?0.35:0))+')');
+      g.addColorStop(.55,'rgba('+col+','+(0.18*fade)+')');
+      g.addColorStop(1,'rgba('+col+',0)');
+      x.fillStyle=g; x.beginPath(); x.arc(p[0],p[1],r*3.6,0,TAU); x.fill();
+    }
+    x.globalCompositeOperation='source-over';
+  }
+  ANG(){ return [240,300,0,60,120,180].map(d=>d*Math.PI/180); }
+  _pick(i){ this._t=this.ANG()[i]; this.setState({active:i,on:true}); }
+  renderVals(){
+    const a=this.state.active, d=this.DATA();
+    const pos=this.ANG().map(t=>{ const s=Math.sin(t), c=Math.cos(t), dd=1+s*s;
+      return { x:((0.5+0.46*c/dd)*100).toFixed(1)+'%', y:((0.5+1.1776*s*c/dd)*100).toFixed(1)+'%' }; });
+    const chips=d.map((s,i)=>({ name:s.name, pick:()=>this._pick(i), x:pos[i].x, y:pos[i].y,
+      bg:i===a?'#FCFBF9':'rgba(252,251,249,.045)',
+      ring:i===a?'#FCFBF9':'rgba(252,251,249,.14)',
+      fg:i===a?'#0E0D0B':'rgba(252,251,249,.68)',
+      glow:i===a?'0 0 30px rgba(183,157,232,.55),0 0 8px rgba(252,251,249,.4)':'none' }));
+    return { chips, stepN:d[a].n, stepT:d[a].t, stepP:d[a].p, capO:this.state.on?1:0,
+      refCanvas:(el)=>{this._cv=el;}, refHead:(el)=>{this._refHead=el;}, refDiag:(el)=>{this._refDiag=el;} };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>EI · people + numbers · A dark console</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>html,body{margin:0;padding:0;background:#000;font-family:'Open Sans',sans-serif;-webkit-font-smoothing:antialiased}a{color:#fff}a:hover{color:#B79DE8}</style>
+</helmet>
+<section id="ei-people" data-screen-label="EI profiles and results" style="position:relative;background:#000;padding:clamp(56px,7vw,96px) 24px clamp(96px,11vw,140px);font-family:'Open Sans',sans-serif">
+  <div style="max-width:1080px;margin:0 auto">
+    <div style="text-align:center;max-width:760px;margin:0 auto">
+      <span style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55)">Every person</span>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;color:#FCFBF9;font-size:clamp(24px,3vw,40px);letter-spacing:-.03em;line-height:1.05;margin:14px 0 0">One engine. <span style="background:linear-gradient(115deg,#B79DE8,#D9605A 55%,#E2683E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#D9605A;padding-bottom:.12em;margin-bottom:-.12em">A different plan for every person.</span></h2>
+      <p style="color:rgba(255,255,255,.66);font-size:clamp(14.5px,1.25vw,17px);line-height:1.6;margin:16px auto 0;max-width:66ch;text-wrap:pretty">People follow through when they feel understood, and that is about far more than clearing an obstacle. A voice that sounds like theirs. A pace that suits them. An hour that fits their day. A channel they already use, and an approach that earns their trust before it asks anything of them.</p>
+    </div>
+
+    <div ref="{{ refPanel }}" onMouseEnter="{{ pPause }}" onMouseLeave="{{ pResume }}" style="will-change:transform;margin-top:clamp(30px,4vw,48px);border-radius:22px;background:rgba(252,251,249,.04);box-shadow:inset 0 0 0 1px rgba(252,251,249,.1);overflow:hidden;display:flex;flex-wrap:wrap">
+      <div style="flex:1 1 250px;background:rgba(252,251,249,.03);border-right:1px solid rgba(252,251,249,.08);padding:16px 12px;display:flex;flex-direction:column">
+        <span style="font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45);padding:2px 8px 10px">In play right now</span>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <sc-for list="{{ rows }}" as="r" hint-placeholder-count="7">
+            <button onClick="{{ r.pick }}" style="display:flex;align-items:center;gap:10px;text-align:left;background:{{ r.bg }};border:0;border-radius:12px;padding:9px 10px;cursor:pointer;font-family:inherit;transition:background .3s;position:relative;overflow:hidden">
+              <span style="flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:rgba(183,157,232,.16);color:#B79DE8;display:grid;place-items:center;font-size:10.5px;font-weight:700">{{ r.ini }}</span>
+              <span style="flex:1;min-width:0;font-size:12.5px;font-weight:600;color:{{ r.fg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ r.row }}</span>
+              <span style="flex:0 0 auto;font-size:10.5px;font-weight:700;color:rgba(255,255,255,.45)">{{ r.rs }}</span>
+              <span aria-hidden="true" style="position:absolute;left:0;bottom:0;height:2px;background:linear-gradient(90deg,#B79DE8,#D9605A);width:{{ r.prog }};transition:{{ r.progT }}"></span>
+            </button>
+          </sc-for>
+        </div>
+      </div>
+      <div style="flex:999 1 440px;padding:clamp(20px,2.6vw,30px)">
+        <div style="display:flex;gap:18px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap">
+          <div style="min-width:0">
+            <span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45)">Profile</span><span style="font-size:10.5px;font-weight:700;letter-spacing:.06em;color:#B79DE8;background:rgba(183,157,232,.14);border-radius:99px;padding:3px 9px">{{ dir }}</span></span>
+            <h4 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;color:#FCFBF9;font-size:clamp(19px,2vw,25px);letter-spacing:-.02em;margin:8px 0 0">{{ title }}</h4>
+            <p style="color:rgba(255,255,255,.55);font-size:13.5px;margin:5px 0 0">{{ obj }}</p>
+          </div>
+          <div style="flex:0 0 auto;text-align:center;max-width:120px">
+            <svg viewBox="0 0 80 80" style="width:76px;height:76px" role="img" aria-label="Likelihood of completing the objective">
+              <defs><linearGradient id="ggd" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#B79DE8"></stop><stop offset="100%" stop-color="#E2683E"></stop></linearGradient></defs>
+              <circle cx="40" cy="40" r="31" fill="none" stroke="rgba(252,251,249,.12)" stroke-width="6"></circle>
+              <circle cx="40" cy="40" r="31" fill="none" stroke="url(#ggd)" stroke-width="6" stroke-linecap="round" transform="rotate(-90 40 40)" stroke-dasharray="194.8" stroke-dashoffset="{{ gOff }}" style="transition:stroke-dashoffset .9s cubic-bezier(.2,.7,.2,1)"></circle>
+              <text x="40" y="47" text-anchor="middle" style="font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:600" fill="#FCFBF9">{{ score }}</text>
+            </svg>
+            <span style="display:block;font-size:10px;line-height:1.35;color:rgba(255,255,255,.4);margin-top:2px">Likelihood of completing the objective, out of 100</span>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:16px">
+          <sc-for list="{{ sigs }}" as="s" hint-placeholder-count="4">
+            <div style="background:rgba(252,251,249,.05);border-radius:12px;padding:10px 12px"><b style="display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.4)">{{ s.k }}</b><span style="display:block;font-size:13px;font-weight:600;color:rgba(255,255,255,.86);margin-top:3px">{{ s.v }}</span></div>
+          </sc-for>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:18px;padding-top:18px;border-top:1px solid rgba(252,251,249,.09)">
+          <div>
+            <span style="font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45)">Barrier detected</span>
+            <span style="display:inline-block;margin-left:8px;font-size:11.5px;font-weight:700;color:#E2683E;background:rgba(226,104,62,.14);border-radius:99px;padding:3px 10px">{{ barrier }}</span>
+            <p style="font-family:'Bricolage Grotesque',sans-serif;color:rgba(255,255,255,.85);font-size:clamp(15px,1.5vw,18px);font-weight:500;letter-spacing:-.01em;line-height:1.4;margin:10px 0 0">{{ quote }}</p>
+          </div>
+          <div>
+            <span style="font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45)">The plan for this interaction</span>
+            <dl style="display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:10px 0 0">
+              <dt style="font-size:12px;font-weight:700;color:rgba(255,255,255,.4)">Channel</dt><dd style="margin:0;font-size:13px;font-weight:600;color:rgba(255,255,255,.88)">{{ ch }}</dd>
+              <dt style="font-size:12px;font-weight:700;color:rgba(255,255,255,.4)">Time</dt><dd style="margin:0;font-size:13px;font-weight:600;color:rgba(255,255,255,.88)">{{ tm }}</dd>
+              <dt style="font-size:12px;font-weight:700;color:rgba(255,255,255,.4)">Tone</dt><dd style="margin:0;font-size:13px;font-weight:600;color:rgba(255,255,255,.88)">{{ tn }}</dd>
+              <dt style="font-size:12px;font-weight:700;color:rgba(255,255,255,.4)">Approach</dt><dd style="margin:0;font-size:13px;font-weight:600;color:rgba(255,255,255,.88)">{{ ap }}</dd>
+            </dl>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;margin-top:18px;padding-top:16px;border-top:1px solid rgba(252,251,249,.09)">
+          <div><span style="font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.45)">Outcome</span><span style="display:block;font-size:14.5px;font-weight:600;color:#FCFBF9;margin-top:4px">{{ out }}</span></div>
+          <div style="text-align:right"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(20px,2.2vw,26px);font-weight:600;background:linear-gradient(115deg,#B79DE8,#D9605A 55%,#E2683E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#D9605A">{{ up }}</span><span style="display:block;font-size:11px;color:rgba(255,255,255,.4);max-width:26ch">conversion of this objective, against a held-back group</span></div>
+        </div>
+        <p style="font-size:11px;color:rgba(255,255,255,.35);margin:14px 0 0">Illustrative profiles and uplift, drawn from the way the engine scores and measures.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center;max-width:760px;margin:clamp(56px,7vw,92px) auto 0">
+      <span style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.55)">What it adds up to</span>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;color:#FCFBF9;font-size:clamp(24px,3vw,40px);letter-spacing:-.03em;line-height:1.05;margin:14px 0 0">Personal conversations are what <span style="background:linear-gradient(115deg,#B79DE8,#D9605A 55%,#E2683E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#D9605A;padding-bottom:.12em;margin-bottom:-.12em">move the numbers.</span></h2>
+      <p style="color:rgba(255,255,255,.66);font-size:clamp(14.5px,1.25vw,17px);line-height:1.6;margin:16px auto 0;max-width:66ch;text-wrap:pretty">Two things move at the same time. Conversations that used to end nowhere now complete, which is revenue you had already earned but never collected. And because each one finishes in a single contact rather than three, the cost of running the front line falls instead of rising with the volume.</p>
+    </div>
+
+    <div ref="{{ refChart }}" style="will-change:transform;margin-top:clamp(28px,3.6vw,44px);border-radius:22px;background:rgba(252,251,249,.04);box-shadow:inset 0 0 0 1px rgba(252,251,249,.1);padding:clamp(18px,2.4vw,26px)">
+      <div style="display:flex;flex-wrap:wrap;gap:8px 18px;padding-bottom:14px;border-bottom:1px solid rgba(252,251,249,.09)">
+        <span style="display:flex;align-items:center;gap:7px;font-size:12px;color:rgba(255,255,255,.6)"><i style="width:14px;height:3px;border-radius:2px;background:#B79DE8;display:inline-block"></i>Engagement Intelligence</span>
+        <span style="display:flex;align-items:center;gap:7px;font-size:12px;color:rgba(255,255,255,.6)"><i style="width:14px;height:2px;background:rgba(252,251,249,.35);display:inline-block"></i>Comparator</span>
+        <span style="display:flex;align-items:center;gap:7px;font-size:12px;color:rgba(255,255,255,.6)"><i style="width:14px;height:9px;border-radius:2px;background:rgba(183,157,232,.2);display:inline-block"></i>95% CI, four-week rolling</span>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:26px;margin-top:16px;align-items:center">
+        <div style="flex:999 1 380px;min-width:0">
+          <svg viewBox="0 0 660 302" role="img" aria-label="Objectives completed per hundred conversations across twelve weeks. The Engagement Intelligence group climbs from 22.6 to 30.4 with a dip in week seven where a change was rolled back. The comparator stays near 22.4." style="display:block;width:100%;height:auto;overflow:visible">
+            <defs><linearGradient id="gbd" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#B79DE8" stop-opacity=".2"></stop><stop offset="100%" stop-color="#B79DE8" stop-opacity=".05"></stop></linearGradient></defs>
+            <line x1="54" y1="240.2" x2="634" y2="240.2" stroke="rgba(252,251,249,.08)"></line><text x="45" y="243.7" text-anchor="end" font-size="10" fill="rgba(255,255,255,.4)">16</text>
+            <line x1="54" y1="200.5" x2="634" y2="200.5" stroke="rgba(252,251,249,.08)"></line><text x="45" y="204.0" text-anchor="end" font-size="10" fill="rgba(255,255,255,.4)">20</text>
+            <line x1="54" y1="160.9" x2="634" y2="160.9" stroke="rgba(252,251,249,.08)"></line><text x="45" y="164.4" text-anchor="end" font-size="10" fill="rgba(255,255,255,.4)">24</text>
+            <line x1="54" y1="121.3" x2="634" y2="121.3" stroke="rgba(252,251,249,.08)"></line><text x="45" y="124.8" text-anchor="end" font-size="10" fill="rgba(255,255,255,.4)">28</text>
+            <line x1="54" y1="81.6" x2="634" y2="81.6" stroke="rgba(252,251,249,.08)"></line><text x="45" y="85.1" text-anchor="end" font-size="10" fill="rgba(255,255,255,.4)">32</text>
+            <line x1="54" y1="42.0" x2="634" y2="42.0" stroke="rgba(252,251,249,.08)"></line><text x="45" y="45.5" text-anchor="end" font-size="10" fill="rgba(255,255,255,.4)">36</text>
+            <text x="54" y="280" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.4)">0</text><text x="150.7" y="280" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.4)">2</text><text x="247.3" y="280" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.4)">4</text><text x="344" y="280" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.4)">6</text><text x="440.7" y="280" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.4)">8</text><text x="537.3" y="280" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.4)">10</text><text x="634" y="280" text-anchor="middle" font-size="10" fill="rgba(255,255,255,.4)">12</text><text x="634" y="294" text-anchor="end" font-size="10" fill="rgba(255,255,255,.3)">Weeks</text>
+            <path d="M54.0,114.2 L102.3,129.9 L150.7,139.6 L199.0,130.5 L247.3,124.7 L295.7,114.6 L344.0,103.5 L392.3,112.0 L440.7,99.8 L489.0,93.5 L537.3,81.6 L585.7,85.4 L634.0,76.7 L634.0,118.3 L585.7,127.5 L537.3,125.2 L489.0,137.2 L440.7,144.7 L392.3,158.2 L344.0,151.0 L295.7,163.6 L247.3,175.3 L199.0,183.4 L150.7,202.0 L102.3,209.8 L54.0,235.3 Z" fill="url(#gbd)" style="opacity:{{ bandO }};transition:opacity .9s ease .7s"></path>
+            <polyline points="54.0,171.8 102.3,182.7 150.7,173.8 199.0,179.7 247.3,168.8 295.7,180.7 344.0,174.8 392.3,183.7 440.7,171.8 489.0,178.7 537.3,172.8 585.7,177.8 634.0,175.8" fill="none" stroke="rgba(252,251,249,.35)" stroke-width="1.6" stroke-dasharray="4 4"></polyline>
+            <polyline points="54.0,174.8 102.3,169.8 150.7,170.8 199.0,156.9 247.3,150.0 295.7,139.1 344.0,127.2 392.3,135.1 440.7,122.3 489.0,115.3 537.3,103.4 585.7,106.4 634.0,97.5" fill="none" stroke="#B79DE8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1400" stroke-dashoffset="{{ lineOff }}" style="transition:stroke-dashoffset 2s cubic-bezier(.35,.75,.2,1)"></polyline>
+            <circle cx="634" cy="97.5" r="4.5" fill="#B79DE8" stroke="#000" stroke-width="2" style="opacity:{{ ptO }};transition:opacity .5s ease 1.7s"></circle>
+            <text x="627" y="84.5" text-anchor="end" style="font-family:'Bricolage Grotesque',sans-serif;font-size:14px;font-weight:600;opacity:{{ ptO }};transition:opacity .5s ease 1.8s" fill="#B79DE8">30.4</text>
+            <text x="627" y="192.8" text-anchor="end" style="font-family:'Bricolage Grotesque',sans-serif;font-size:12.5px;opacity:{{ ptO }};transition:opacity .5s ease 1.8s" fill="rgba(255,255,255,.5)">22.5</text>
+          </svg>
+        </div>
+        <div style="flex:1 1 220px;display:grid;gap:1px;background:rgba(252,251,249,.09);border-radius:14px;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(252,251,249,.09)">
+          <sc-for list="{{ stats }}" as="st" hint-placeholder-count="5">
+            <div style="background:#0A0A0A;padding:13px 16px"><span style="font-family:'Bricolage Grotesque',sans-serif;font-size:19px;font-weight:600;color:{{ st.c }}">{{ st.v }}</span><p style="margin:3px 0 0;font-size:12px;line-height:1.45;color:rgba(255,255,255,.5)">{{ st.l }}</p></div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { p:0, held:false, paused:false, chartIn:false };
+  PROFILES(){ return [
+    {ini:'01',row:'Enquired, then went quiet',rs:'Score 64',score:64,dir:'Inbound',title:'Enquired, then went quiet',obj:'Objective: get the decision made',sig:[['Last interaction','9 days ago'],['Contacts so far','1, they started it'],['Engages on','Voice, midday'],['Active at','Lunchtime']],barrier:'Confusion',quote:'"I am not totally sure what this involves, or if I even qualify."',ch:'Voice, then a written summary',tm:'Afternoon, weekday',tn:'Plain spoken, unhurried',ap:'Proof-led',out:'Decided, same conversation',up:'Up 21%'},
+    {ini:'02',row:'Two contacts, no response',rs:'Score 41',score:41,dir:'Outbound',title:'Two contacts, no response',obj:'Objective: get the outstanding action completed',sig:[['Last interaction','34 days ago'],['Contacts so far','2, both daytime'],['Engages on','Mobile, not landline'],['Active at','Early evening']],barrier:'Logistics',quote:'"I keep meaning to, but I never get round to it."',ch:'RCS',tm:'Evening, 6pm local',tn:'Local accent, brisk and warm',ap:'Momentum',out:'Completed, same interaction',up:'Up 34%'},
+    {ini:'03',row:'Asking about cost',rs:'Score 58',score:58,dir:'Inbound',title:'Asking about cost',obj:'Objective: get the decision made',sig:[['Last interaction','Yesterday'],['Contacts so far','3, all theirs'],['Engages on','Email, then voice'],['Active at','Mid afternoon']],barrier:'Cost',quote:'"I am worried about what this is going to cost me."',ch:'Email, then voice',tm:'Afternoon, weekday',tn:'Measured, no pressure',ap:'Proof-led',out:'Decided, cost agreed up front',up:'Up 26%'},
+    {ini:'04',row:'Started, did not finish',rs:'Score 72',score:72,dir:'Outbound',title:'Started, did not finish',obj:'Objective: get it finished',sig:[['Dropped at','Step 4 of 7'],['Contacts so far','3, no follow through'],['Engages on','Text, never voice'],['Active at','After 8pm']],barrier:'Logistics',quote:'"I did start it, I just never got to the end."',ch:'Text, with a resume link',tm:'Evening, after 8pm',tn:'Short and direct',ap:'Momentum',out:'Finished in one exchange',up:'Up 29%'},
+    {ini:'05',row:'Left after a poor experience',rs:'Score 33',score:33,dir:'Outbound',title:'Left after a poor experience',obj:'Objective: earn the relationship back',sig:[['On file','One complaint, resolved'],['Contacts so far','0 in 6 months'],['Engages on','Voice, mornings'],['Active at','Before 11am']],barrier:'Trust',quote:'"I have had a bad experience with this kind of thing before."',ch:'Voice, a person one step away',tm:'Morning, single touch',tn:'Softer, slower, more pauses',ap:'Relationship-led',out:'Came back, and stayed',up:'Up 18%'},
+    {ini:'06',row:'Books late, cancels often',rs:'Score 55',score:55,dir:'Outbound',title:'Books late, cancels often',obj:'Objective: get a time that actually holds',sig:[['Pattern','Two cancellations'],['Contacts so far','4 across 3 months'],['Engages on','SMS, mornings'],['Active at','Before 9am']],barrier:'Scheduling',quote:'"Yeah I want to, I just have not picked a time yet."',ch:'SMS, two exact times',tm:'Morning, day before',tn:'Short and specific',ap:'Momentum',out:'Confirmed, and it held',up:'Up 24%'},
+    {ini:'07',row:'No activity in weeks',rs:'Score 26',score:26,dir:'Outbound',title:'No activity in weeks',obj:'Objective: get the first step taken',sig:[['Last interaction','None in 3 weeks'],['Contacts so far','1, automated'],['Engages on','Voice, unknown'],['Active at','Not yet known']],barrier:'Confusion',quote:'"I do not really know what I would be signing up for."',ch:'Voice, plain explainer first',tm:'Midweek, afternoon',tn:'Warm, slower, no jargon',ap:'Proof-led',out:'First step taken',up:'Up 19%'}
+  ];}
+  componentDidMount(){
+    this._t=setInterval(()=>{ if(!this.state.held&&!this.state.paused) this.setState(s=>({p:(s.p+1)%7})); },5200);
+    this._io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){this.setState({chartIn:true});this._io.disconnect();}})},{threshold:.35});
+    setTimeout(()=>{ if(this._chart) this._io.observe(this._chart); },300);
+    this._onScroll=()=>{ if(this._sraf) return; this._sraf=requestAnimationFrame(()=>{ this._sraf=0;
+      const vh=innerHeight||1;
+      const par=(el,f)=>{ if(!el) return; const r=el.getBoundingClientRect();
+        const p=Math.max(-1,Math.min(1,(r.top+r.height/2-vh/2)/(vh/2+r.height/2)));
+        el.style.transform='translateY('+(p*f).toFixed(1)+'px)'; };
+      par(this._panel,16); par(this._chart,-12);
+    });};
+    addEventListener('scroll',this._onScroll,{passive:true});
+  }
+  componentWillUnmount(){ clearInterval(this._t); this._io&&this._io.disconnect(); removeEventListener('scroll',this._onScroll); cancelAnimationFrame(this._sraf); }
+  renderVals(){
+    const P=this.PROFILES(), a=this.state.p, p=P[a], held=this.state.held, paused=this.state.paused;
+    const rows=P.map((q,i)=>({ ini:q.ini, row:q.row, rs:q.rs,
+      pick:()=>this.setState({p:i,held:true}),
+      bg:i===a?'rgba(252,251,249,.08)':'transparent',
+      fg:i===a?'#FCFBF9':'rgba(255,255,255,.55)',
+      prog:(i===a&&!held)?'100%':'0%',
+      progT:(i===a&&!held&&!paused)?'width 5.2s linear':'none' }));
+    return { rows, dir:p.dir, title:p.title, obj:p.obj, barrier:p.barrier, quote:p.quote,
+      ch:p.ch, tm:p.tm, tn:p.tn, ap:p.ap, out:p.out, up:p.up, score:String(p.score),
+      gOff:(194.8*(1-p.score/100)).toFixed(1),
+      sigs:p.sig.map(s=>({k:s[0],v:s[1]})),
+      pPause:()=>this.setState({paused:true}), pResume:()=>this.setState({paused:false}),
+      chartIn:this.state.chartIn, bandO:this.state.chartIn?1:0, ptO:this.state.chartIn?1:0,
+      lineOff:this.state.chartIn?'0':'1400',
+      refChart:(el)=>{this._chart=el;}, refPanel:(el)=>{this._panel=el;},
+      stats:[{v:'$980',l:'revenue generated per 1,000 conversations',c:'#B79DE8'},
+        {v:'$540',l:'cost removed per 1,000 conversations',c:'#E2683E'},
+        {v:'Up 34%',l:'objectives completed, against the comparator',c:'#FCFBF9'},
+        {v:'61.4%',l:'reached on the first attempt, from 50.2%',c:'#FCFBF9'},
+        {v:'2.4',l:'contacts needed per completion, from 3.4',c:'#FCFBF9'}] };
+  }
+}
+</script>
+</body>
+</html>

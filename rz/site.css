@@ -1,0 +1,926 @@
+*{box-sizing:border-box}
+@font-face{font-family:'Bricolage Fallback';src:local('Arial');size-adjust:104%;ascent-override:89%;descent-override:24%;line-gap-override:0%}
+@font-face{font-family:'OpenSans Fallback';src:local('Arial');size-adjust:103%;ascent-override:101%;descent-override:28%;line-gap-override:0%}
+:root{
+  --bg:#F4F3F0; --panel:#ECEBE7; --ink:#1A1510; --ink-2:#75726D; --ink-3:#A9A7A2;
+  --dark:#0E0D0B; --warm1:#2A2110; --warm2:#5A4516; --amber:#FFB24D;
+  --line-d:rgba(255,255,255,.08); --gd:rgba(255,255,255,.08);
+  --sans:'Bricolage Grotesque','Bricolage Fallback',system-ui,sans-serif; --serif:'Bricolage Grotesque','Bricolage Fallback',sans-serif;
+  --body:'Bricolage Grotesque','Bricolage Fallback',system-ui,sans-serif; --r:44px; --rc:22px; --rs:16px; --ri:12px; --grad:linear-gradient(115deg,#B79DE8,#D9605A 42%,#E2683E 70%,#EFA12E);
+}
+html{scroll-behavior:auto;scrollbar-gutter:stable;overflow-x:clip}
+body{margin:0;scrollbar-gutter:stable;background:var(--dark);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+::selection{background:rgba(140,110,225,.26);color:inherit}
+h1,h2,h3,h4{margin:0;font-family:var(--sans);font-weight:600;letter-spacing:-.035em;line-height:.98;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+.serif-i{font-family:var(--serif);font-weight:400;letter-spacing:-.005em}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--ink-2);background:rgba(0,0,0,.05);padding:7px 14px;border-radius:11px}
+.eyebrow.on-d{color:rgba(255,255,255,.7);background:rgba(255,255,255,.08)}
+.hl{background:#fff;border-radius:13px;padding:.02em .34em;box-shadow:0 2px 14px rgba(0,0,0,.07);white-space:nowrap}
+.hl-soft{background:rgba(0,0,0,.06);border-radius:13px;padding:.02em .34em;white-space:nowrap}
+.hl-d{background:rgba(255,255,255,.14);border-radius:13px;padding:.02em .34em;white-space:nowrap}
+.tabular{font-variant-numeric:tabular-nums lining-nums}
+.btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;border-radius:999px;font-family:var(--sans);font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:transform .5s cubic-bezier(.22,.9,.28,1),box-shadow .5s cubic-bezier(.22,.9,.28,1),background .35s ease,color .22s}
+/* universal glow halo on hover (any CTA) */
+.btn::after{content:"";position:absolute;inset:-6px;border-radius:999px;z-index:-1;background:conic-gradient(from var(--btna),#EFA12E,#E2683E,#D9605A,#B79DE8,#EFA12E);filter:blur(13px);opacity:0;transform:scale(.86);transition:opacity .42s ease,transform .42s ease;pointer-events:none}
+.btn:hover::after{opacity:.72;transform:scale(1);animation:btnring 4.5s linear infinite}
+@media(prefers-reduced-motion:reduce){.btn:hover::after{animation:none}}
+.btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{background:#2A2620}
+.btn-white{position:relative;background:#fff;color:var(--ink);box-shadow:0 8px 24px -10px rgba(0,0,0,.4)}
+.btn-white::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.6px;background:rgba(255,255,255,.16);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}.btn-white:hover{transform:translateY(-2px) scale(1.02)}
+.btn-glass{background:rgba(255,255,255,.14);color:#fff;border:1px solid var(--line-d);backdrop-filter:blur(20px) saturate(160%);-webkit-backdrop-filter:blur(20px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.3)}
+.btn-glass:hover{background:rgba(255,255,255,.22)}
+.btn .c{transition:transform .25s}.btn:hover .c{transform:translateX(4px)}
+/* uniform, sleek hero CTA sizing - identical on every page */
+.btn-hero{height:48px;min-width:178px;padding:0 26px;font-size:14.5px;letter-spacing:-.01em}
+@media(max-width:560px){.btn-hero{min-width:0;width:100%}}
+@property --btna{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes btnring{to{--btna:360deg}}
+@keyframes btnbreath{0%,100%{box-shadow:0 8px 26px -14px rgba(240,140,60,.5)}50%{box-shadow:0 0 19px 1px rgba(176,106,217,.4),0 10px 30px -12px rgba(240,140,60,.62)}}
+.btn-glow{position:relative;color:#fff !important;border:1.5px solid transparent;border-radius:999px;background:linear-gradient(#161310,#161310) padding-box,conic-gradient(from 140deg,#EFA12E,#E2683E,#D9605A,#B79DE8,#EFA12E) border-box;animation:btnbreath 2.8s ease-in-out infinite;box-shadow:0 8px 26px -14px rgba(240,140,60,.5)}
+.btn-glow:hover{animation:btnbreath 1.2s ease-in-out infinite;box-shadow:0 0 24px 3px rgba(176,106,217,.5),0 12px 32px -10px rgba(240,140,60,.75)}
+@media(prefers-reduced-motion:reduce){.btn-glow{animation:none}}
+.lg{position:relative;background:rgba(255,255,255,.12);backdrop-filter:blur(40px) saturate(200%);-webkit-backdrop-filter:blur(40px) saturate(200%);border:1px solid var(--line-d);box-shadow:inset 0 1px 0 rgba(255,255,255,.5),0 30px 70px -30px rgba(0,0,0,.7)}
+.lg::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background:linear-gradient(155deg,rgba(255,255,255,.26),rgba(255,255,255,0) 44%)}
+.lg>*{position:relative;z-index:1}
+.nav-wrap{position:fixed;top:15px;left:0;right:0;margin:0 auto;z-index:100;width:calc(100% - 28px);max-width:660px}
+@keyframes cineword{from{opacity:0;transform:translateY(12px)}to{opacity:1 !important;transform:none !important}}
+@keyframes curtainfade{to{opacity:0;visibility:hidden}}
+@keyframes cbar{0%,100%{transform:scaleY(.28)}50%{transform:scaleY(1)}}
+.cine-card{will-change:transform,opacity}
+.indbar{position:fixed;top:65px;left:50%;transform:translateX(-50%);z-index:99;display:flex;gap:2px;align-items:center;padding:3px 4px;border-radius:999px;background:rgba(13,14,17,.5);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 30px -16px rgba(0,0,0,.6)}
+.indbar>*{position:relative;z-index:1}
+.indlink{position:relative;font-size:12.5px;font-weight:500;color:rgba(255,255,255,.8);text-decoration:none;padding:6px 13px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s,transform .3s cubic-bezier(.2,.85,.3,1)}
+.indlink+.indlink::before{content:"";position:absolute;left:-1px;top:50%;transform:translateY(-50%);height:15px;width:1px;background:rgba(0,0,0,.1)}
+.indlink:hover{background:rgba(255,255,255,.1);color:#fff}
+.indlink:hover::before,.indlink.cur::before,.indlink.cur+.indlink::before{opacity:0}
+.indlink.cur{background:#fff;color:#111;box-shadow:0 6px 16px -10px rgba(0,0,0,.45)}
+@media(max-width:820px){.indbar{display:flex;left:50%;right:auto;max-width:calc(100vw - 20px);justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}.indbar::-webkit-scrollbar{display:none}.indlink{flex:0 0 auto}}
+@media(max-width:860px){#cinestage{transform:scale(.6)}}
+@media(max-width:560px){#cinestage{transform:scale(.46)}}
+.nav-bar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:8px;border-radius:999px;padding:3px 3px 3px 15px;background:rgba(13,14,17,.72);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);border:1px solid rgba(255,255,255,.08);box-shadow:0 12px 36px -16px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.07)}
+.nav-bar::before{content:"";display:none}
+.nav-bar::after{content:"";display:none}
+.nav-bar>*{position:relative;z-index:1}
+.nav-links{display:flex;align-items:center;gap:2px}
+@media(min-width:861px){.nav-bar{width:max-content;max-width:100%;margin-left:auto;margin-right:auto}}
+.navitem{position:relative}
+.navlink{display:inline-flex;align-items:center;gap:5px;white-space:nowrap;color:rgba(255,255,255,.82);text-decoration:none;font-size:13.5px;font-weight:500;padding:6px 12px;border-radius:999px;opacity:1;transition:opacity .2s,background .2s,color .2s;cursor:pointer;background:transparent;border:none;font-family:var(--sans)}
+.navlink:hover{opacity:1;color:#fff;background:transparent}
+.navchev{width:12px;height:12px;transition:transform .25s;opacity:.6}
+.navitem:hover .navchev{transform:rotate(180deg)}
+.navdrop{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;transition:opacity .24s,transform .24s;padding-top:14px;min-width:320px}
+.navitem:hover .navdrop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.navdrop-in{position:relative;overflow:hidden;background:rgba(13,14,17,.5);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:8px;box-shadow:0 30px 70px -30px rgba(0,0,0,.7)}
+.navdrop-in .drop-link span span:last-child{color:rgba(255,255,255,.5) !important}
+.droplabel{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#C98A2E;padding:8px 14px 6px}
+.drop-link{display:block;padding:12px 16px;border-radius:var(--rs);text-decoration:none;color:rgba(255,255,255,.92);transition:background .2s}
+.drop-link:hover{background:rgba(255,255,255,.07)}
+.nav-cta-d{position:relative;background:#fff;color:#111;border:none;box-shadow:0 8px 20px -10px rgba(0,0,0,.5);transition:transform .22s cubic-bezier(.2,.8,.3,1),background .25s,box-shadow .25s}
+.nav-cta-d::before{content:"";display:none}
+.nav-cta-d:hover{background:#f1f1f1}
+.drop-ic{flex:0 0 auto;width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:#fff}
+.nav-toggle{display:none;flex-direction:column;gap:5px;width:44px;height:44px;border-radius:12px;background:transparent;border:none;cursor:pointer;align-items:center;justify-content:center}
+.nav-toggle span{display:block;width:19px;height:2.5px;border-radius:2px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.55);transition:transform .3s,opacity .3s}
+.nav-sheet{display:none;margin-top:10px;border-radius:var(--rc);padding:12px;background:rgba(13,14,17,.86);backdrop-filter:blur(34px) saturate(160%);-webkit-backdrop-filter:blur(34px) saturate(160%);border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 70px -22px rgba(0,0,0,.6)}
+.nav-sheet[data-open="1"]{display:block;animation:up .4s ease}
+.sheet-link{display:block;padding:13px 16px;border-radius:var(--rs);text-decoration:none;color:#fff;font-weight:600;font-size:16px}
+.sheet-link:hover{background:rgba(255,255,255,.07)}
+.sheet-sub{padding:6px 16px 4px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.42)}
+/* Industries sub-links inside the markup menu sheet (homepage/About/etc.) */
+.sheet-link.sheet-ind{padding-top:11px;padding-bottom:11px;padding-left:30px;font-size:15px;font-weight:500;color:rgba(255,255,255,.78)}
+.sheet-link.sheet-ind.cur{color:#fff;background:rgba(255,255,255,.08)}
+@keyframes up{from{opacity:0;transform:translateY(30px)}to{opacity:1 !important;transform:none !important}}
+@keyframes rvIn{from{opacity:0;transform:translateY(26px);filter:blur(7px)}to{opacity:1;transform:none;filter:blur(0)}}
+[data-rv]{opacity:0;transform:translateY(26px);filter:blur(7px);will-change:opacity,transform,filter}[data-rv][data-in="1"]{animation:rvIn 1s cubic-bezier(.16,.84,.44,1) both}
+[data-d="1"]{animation-delay:.08s}[data-d="2"]{animation-delay:.16s}[data-d="3"]{animation-delay:.24s}[data-d="4"]{animation-delay:.34s}
+/* mobile: lighter reveal (no blur filter cost, shorter travel) */
+@media(max-width:860px){
+  [data-rv]{transform:translateY(14px);filter:none;will-change:opacity,transform}
+  @keyframes rvIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+/* reduced motion: content must never stay hidden */
+@media(prefers-reduced-motion:reduce){
+  [data-rv]{opacity:1;transform:none;filter:none}
+  [data-rv][data-in="1"]{animation:none}
+}
+@keyframes wb{0%,100%{transform:scaleY(.22)}50%{transform:scaleY(1)}}
+.wf{display:inline-flex;align-items:center;gap:3px;height:18px}
+.wf i{display:block;width:3px;height:100%;border-radius:9px;background:currentColor;transform-origin:center;animation:wb 1.15s ease-in-out infinite}
+@keyframes slowzoom{from{transform:scale(1.02)}to{transform:scale(1.08)}}
+.kenburns{animation:slowzoom 32s ease-out forwards}
+.faq{border-radius:0;background:transparent;margin-bottom:0;overflow:hidden;border:0;border-bottom:1px solid rgba(0,0,0,.09)}
+.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 2px;font-weight:600;font-size:clamp(16px,1.3vw,19px);letter-spacing:-.02em}
+.faq summary::-webkit-details-marker{display:none}
+.faq .chev{flex:0 0 auto;width:30px;height:30px;border-radius:99px;background:rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;transition:transform .3s}
+.faq[open] .chev{transform:rotate(180deg)}
+.faq-more>summary::-webkit-details-marker{display:none}
+.faq-more>summary{transition:background .2s}
+.faq-more>summary:hover{background:rgba(0,0,0,.07)!important}
+.faq-more[open]>summary .chev{transform:rotate(180deg)}
+/* ---- subtle premium hover (Apple-style) ---- */
+@media(hover:hover){
+  .team-card,.buyer-card,.cscard,.bcard,.tilt,.lqcard,.gtile,.indrow,.team-card{transition:transform .45s cubic-bezier(.16,.84,.44,1),box-shadow .45s cubic-bezier(.16,.84,.44,1)}
+  .team-card:hover,.buyer-card:hover,.cscard:hover,.lqcard:hover{transform:translateY(-5px)}
+  .team-card:hover{box-shadow:0 22px 50px -28px rgba(0,0,0,.5)}
+  a:not(.btn){transition:opacity .25s ease,color .25s ease}
+  a:not(.btn):hover{opacity:.7}
+  .eyebrow,.foot-link{transition:color .25s ease,opacity .25s ease}
+}
+.faq .fb{padding:0 2px 24px;max-width:64ch;color:var(--ink-2);font-size:16px;line-height:1.62}
+.foot-link{display:block;color:rgba(255,255,255,.6);text-decoration:none;font-size:16px;padding:7px 0;transition:color .2s}.foot-link:hover{color:#fff}
+.foot-head{color:rgba(255,255,255,.38);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.14em;margin:0 0 10px}
+.foot-top{display:grid;grid-template-columns:1.7fr 1fr 1fr 1.3fr;gap:40px;align-items:start}
+.foot-offices{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+@media(max-width:820px){.foot-top{grid-template-columns:1fr 1fr;gap:36px 28px}}
+@media(max-width:560px){.foot-top{grid-template-columns:1fr}.foot-offices{grid-template-columns:1fr;gap:24px}}
+.usecase{display:flex;gap:18px;align-items:flex-start;padding:26px 0;border-top:1px solid rgba(0,0,0,.055)}
+.usecase .n{flex:0 0 auto;font-family:var(--serif);font-size:30px;color:var(--ink-3);min-width:46px;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.ftab{display:flex;align-items:center;width:fit-content;font-family:var(--sans);font-weight:600;font-size:clamp(16px,1.3vw,19px);letter-spacing:-.02em;padding:12px 18px;border-radius:var(--rs);border:none;cursor:pointer;background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);transition:all .25s}
+.ftab:hover{color:rgba(255,255,255,.82)}
+.ftab[data-on="1"]{background:rgba(255,255,255,.14);color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.2)}
+.acc{border-radius:var(--rc);background:linear-gradient(135deg,rgba(183,157,232,.10),rgba(255,255,255,.04) 45%,rgba(239,161,46,.08));border:1px solid var(--gd);overflow:hidden;transition:background .25s}
+.acc[data-on="1"]{background:rgba(255,255,255,.09)}
+.acc-h{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;cursor:pointer;font-weight:600;font-size:clamp(17px,1.4vw,20px);color:#fff;letter-spacing:-.02em}
+.acc-b{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+.acc[data-on="1"] .acc-b{max-height:220px}
+.acc-bi{padding:0 24px 24px;color:rgba(255,255,255,.62);font-size:15.5px;line-height:1.6}
+@keyframes wb2{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1)}}
+.wchip{font-family:var(--sans);font-weight:600;font-size:13.5px;white-space:nowrap;padding:9px 15px;border-radius:999px;border:1px solid rgba(0,0,0,.07);background:transparent;color:var(--ink-2);cursor:pointer;transition:all .2s}
+.wchip:hover{color:var(--ink);border-color:var(--ink)}
+.wchip[data-on="1"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+@media(max-width:860px){.nav-links{gap:0}.navlink{padding:8px 9px;font-size:12.5px}.two{grid-template-columns:1fr !important}.feat3{grid-template-columns:1fr !important}.phones{display:none !important}}
+@media(max-width:560px){.h-hero{font-size:clamp(32px,9.6vw,42px) !important;line-height:1.06 !important}.h-big{font-size:clamp(29px,8.6vw,38px) !important;line-height:1.08 !important}.sec-pad{padding-left:18px !important;padding-right:18px !important}section[data-screen-label]{padding-left:0 !important;padding-right:0 !important}.nav-cta-d{display:none}.navlink{font-size:11.5px;padding:7px 7px}}
+
+/*navfx*/
+.nav-bar{position:relative;transition:transform .4s cubic-bezier(.2,.85,.3,1),box-shadow .4s,background .4s}
+.nav-bar:hover{box-shadow:0 16px 44px -16px rgba(0,0,0,.72)}
+.navlink{position:relative;transition:color .2s,background .2s,transform .25s cubic-bezier(.2,.8,.3,1) !important}
+.navlink:hover{transform:none;background:transparent}
+.navlink:active{transform:scale(.96)}
+.navlink::after{content:none}
+.navlink:hover::after{transform:scaleX(1)}
+.nav-cta-d{transition:transform .45s cubic-bezier(.22,.9,.28,1),box-shadow .45s !important}
+.nav-cta-d:hover{transform:none}
+.indlink{transition:background .2s,color .2s,transform .25s cubic-bezier(.2,.8,.3,1) !important}
+.indlink:hover{transform:scale(1.04)}
+.indlink:active{transform:scale(.95)}
+.indbar{transition:box-shadow .4s,background .4s}
+
+@keyframes waveflow{to{background-position-x:-480px}}
+@keyframes flow{0%{background-position:0% 0%}33%{background-position:100% 50%}66%{background-position:50% 100%}100%{background-position:0% 0%}}
+@keyframes floaty{0%,100%{transform:translate(0,0)}50%{transform:translate(3%,-5%)}}
+@keyframes wflow{to{transform:translateX(-1200px)}}
+@keyframes wavepulse{0%,100%{transform:scaleY(.82)}50%{transform:scaleY(1.28)}}
+@keyframes borderflow{to{background-position:200% 0}}
+.wavewrap{position:relative;width:100%;max-width:860px;margin:0 auto;height:clamp(120px,17vh,180px);overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.waveline{position:absolute;inset:0;background-repeat:repeat-x;background-position:0 50%;background-size:480px 64%;animation:waveflow 7s linear infinite;transition:transform .55s cubic-bezier(.2,.8,.3,1),opacity .55s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='150'%3E%3Cpath d='M0,75 C60,18 180,18 240,75 S420,132 480,75' fill='none' stroke='%23141414' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E")}
+.waveline.w2{background-size:480px 42%;opacity:.28;animation-duration:11s;animation-direction:reverse;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='150'%3E%3Cpath d='M0,75 C80,46 160,104 240,75 S400,46 480,75' fill='none' stroke='%23141414' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E")}
+.wavewrap[data-live="1"] .waveline{animation-duration:3.2s;transform:scaleY(1.32)}
+.wavewrap[data-live="1"] .waveline.w2{animation-duration:4.6s;opacity:.4}
+.ucchip{font-family:var(--sans);font-weight:500;font-size:13.5px;white-space:nowrap;padding:8px 14px;border-radius:999px;border:1px solid rgba(0,0,0,.055);background:rgba(0,0,0,.03);color:var(--ink-2);cursor:pointer;transition:all .2s}
+.ucchip:hover{color:var(--ink);border-color:rgba(0,0,0,.13)}
+.ucchip[data-on="1"]{background:#fff;color:var(--ink);border-color:var(--ink);box-shadow:0 2px 10px rgba(0,0,0,.06)}
+
+.wavewrap2 svg{transition:transform .6s cubic-bezier(.2,.8,.3,1)}
+.wavewrap2[data-live="1"] svg{transform:scaleY(1.35)}
+.wavewrap2[data-live="1"] .wg1{animation-duration:5.5s !important}
+.wavewrap2[data-live="1"] .wg2{animation-duration:8s !important}
+/* liquid glass hero cards */
+.lqcard{position:relative;overflow:hidden;border-radius:24px;padding:18px 20px;background:linear-gradient(160deg,rgba(9,9,12,.64),rgba(9,9,12,.48));backdrop-filter:blur(22px) saturate(140%);-webkit-backdrop-filter:blur(22px) saturate(140%);box-shadow:0 60px 120px -54px rgba(0,0,0,.9)}
+.cine-card::before{content:"";position:absolute;top:-14px;right:-14px;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle,rgba(217,96,90,.42),rgba(183,157,232,.2) 55%,transparent 74%);filter:blur(8px);pointer-events:none}
+.lqcard::before{content:none}
+.lqcard>*{position:relative;z-index:1}
+.lqcard p{text-shadow:0 1px 9px rgba(0,0,0,.34)}
+
+/* PolyAI-inspired capability cards - light, living bento */
+@keyframes pmesh1{0%,100%{transform:translate(-6%,-4%) scale(1)}50%{transform:translate(12%,9%) scale(1.22)}}
+@keyframes pmesh2{0%,100%{transform:translate(8%,7%) scale(1.06)}50%{transform:translate(-9%,-8%) scale(.8)}}
+@keyframes pfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.pcard{position:relative;overflow:hidden;isolation:isolate;border-radius:var(--rc);padding:26px;min-height:452px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;background:linear-gradient(168deg,#FCFBF8,#F0EEE7);border:1px solid rgba(0,0,0,.03);box-shadow:0 30px 60px -38px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.8);transition:transform .5s cubic-bezier(.2,.8,.3,1),box-shadow .5s}
+.pcard:hover{transform:translateY(-5px);box-shadow:0 50px 95px -42px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.9)}
+.pcard .pmesh{position:absolute;z-index:0;border-radius:50%;filter:blur(46px);pointer-events:none}
+.pcard .pmesh.m1{width:74%;height:58%;left:-8%;top:-14%;opacity:.55;animation:pmesh1 18s ease-in-out infinite}
+.pcard .pmesh.m2{width:62%;height:52%;right:-12%;bottom:-16%;opacity:.42;animation:pmesh2 23s ease-in-out infinite}
+.pcard>*:not(.pmesh){position:relative;z-index:1}
+.pcard .pcat{font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3)}
+.pcard .pnum{display:flex;align-items:baseline;gap:.08em;font-weight:600;letter-spacing:-.045em;line-height:.84;font-size:clamp(54px,5.4vw,84px);color:var(--ink)}
+.pcard .pnum .u{font-size:.34em;font-weight:600;letter-spacing:-.02em;color:var(--ink-2)}
+.pcard .phl{margin-top:12px;font-size:15px;font-weight:600;letter-spacing:-.01em;color:#0E9E76}
+.pcard .pbody{margin-top:9px;font-size:14.5px;line-height:1.55;color:var(--ink-2);max-width:32ch}
+/* live glass status panel */
+.plive{position:relative;border-radius:var(--rs);padding:14px;background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.85);box-shadow:0 16px 34px -22px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.9);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);animation:pfloat 6.5s ease-in-out infinite}
+.plive .ph{display:flex;align-items:center;gap:9px}
+.plive .pi2{flex:0 0 auto;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;color:#fff}
+.plive .pname{font-size:13px;font-weight:600;color:var(--ink)}
+.plive .ptag{margin-left:auto;font-size:10.5px;font-weight:600;color:var(--ink-3);background:rgba(0,0,0,.05);padding:3px 9px;border-radius:999px}
+.plive .pmsg{margin-top:10px;font-size:12.5px;line-height:1.5;color:var(--ink-2)}
+.pwave{display:flex;align-items:center;gap:3px;height:22px;margin-top:11px;color:#0E9E76}
+.pwave .pp{flex:0 0 auto;width:18px;height:18px;border-radius:50%;background:#0E9E76;display:grid;place-items:center;margin-right:5px;color:#fff}
+.pwave i{display:block;width:3px;height:18px;border-radius:2px;background:currentColor;transform-origin:center;transform:scaleY(.22);animation:wb 1.1s ease-in-out infinite}
+.pwave i:nth-child(3n){animation-delay:.12s}.pwave i:nth-child(3n+1){animation-delay:.34s}.pwave i:nth-child(3n+2){animation-delay:.56s}
+.pwt{margin-left:auto;font-size:11px;font-weight:600;color:var(--ink-3)}
+.ppulse{position:relative;width:38px;height:38px;display:grid;place-items:center;margin-top:8px}
+.ppulse .dot{width:11px;height:11px;border-radius:50%;background:#0E9E76;z-index:1}
+.ppulse .rg{position:absolute;inset:0;margin:auto;width:11px;height:11px;border-radius:50%;border:2px solid rgba(14,158,118,.5);animation:pring 2.4s ease-out infinite}
+.ppulse .rg.r2{animation-delay:1.2s}
+@keyframes pring{0%{transform:scale(1);opacity:.7}100%{transform:scale(3.6);opacity:0}}
+.ekg{display:block;width:100%;height:30px;margin-top:6px;overflow:visible}
+.ekg path{fill:none;stroke:#0E9E76;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:90 300;animation:ekgmove 2.4s linear infinite}
+@keyframes ekgmove{from{stroke-dashoffset:300}to{stroke-dashoffset:-90}}
+/* industry-specific live signals (themed by --acc on .gtile) */
+.sigbars{display:flex;align-items:flex-end;gap:3px;height:30px;margin-top:7px}
+.sigbars i{height:100%;flex:1 1 0;border-radius:2px;background:var(--acc,#0E9E76);transform-origin:bottom;transform:scaleY(.28);animation:sbar 1s ease-in-out infinite}
+.sigbars i:nth-child(2n){animation-duration:.82s}.sigbars i:nth-child(3n){animation-delay:.18s}.sigbars i:nth-child(3n+1){animation-delay:.42s}.sigbars i:nth-child(4n){animation-duration:1.18s}.sigbars i:nth-child(5n){animation-delay:.6s}
+@keyframes sbar{0%,100%{transform:scaleY(.28)}50%{transform:scaleY(1)}}
+.spark{display:block;width:100%;height:30px;margin-top:6px;overflow:visible}
+.spark .ln{fill:none;stroke:var(--acc,#2F6FE0);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:240;stroke-dashoffset:240;animation:sparkdraw 2.8s cubic-bezier(.5,0,.2,1) infinite}
+.spark .dot2{fill:var(--acc,#2F6FE0);animation:sparkdot 2.8s cubic-bezier(.5,0,.2,1) infinite}
+@keyframes sparkdraw{0%{stroke-dashoffset:240}55%{stroke-dashoffset:0}100%{stroke-dashoffset:0}}
+@keyframes sparkdot{0%,48%{opacity:0}60%{opacity:1}92%{opacity:1}100%{opacity:0}}
+.route{display:block;width:100%;height:30px;margin-top:6px;overflow:visible}
+.route .pth{fill:none;stroke:var(--acc,#E2630F);stroke-width:2;stroke-linecap:round;stroke-dasharray:3 7;animation:routeflow 1.3s linear infinite}
+.route .pin{fill:var(--acc,#E2630F)}
+@keyframes routeflow{to{stroke-dashoffset:-20}}
+.chans{display:flex;flex-wrap:nowrap;gap:5px;margin-top:11px}
+.chan{font-size:10.5px;font-weight:600;padding:5px 8px;border-radius:999px;background:rgba(0,0,0,.045);color:var(--ink-2);border:1px solid rgba(0,0,0,.03);white-space:nowrap}
+.chan.cy{animation:none}
+@keyframes chpop{0%,18%{background:var(--ink);color:#fff;border-color:var(--ink)}28%,100%{background:rgba(0,0,0,.045);color:var(--ink-2);border-color:rgba(0,0,0,.05)}}
+.pstatus{margin-top:12px;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;padding:6px 11px;border-radius:999px;background:rgba(14,158,118,.13);color:#0b6b4f}
+.pstatus .ck{display:inline-grid;place-items:center;width:15px;height:15px;border-radius:50%;background:#0E9E76;color:#fff;animation:ckpop 4.5s ease-in-out infinite}
+@keyframes ckpop{0%,30%{transform:scale(0);opacity:0}42%,92%{transform:scale(1);opacity:1}100%{transform:scale(0);opacity:0}}
+
+/* ===== PREMIUM LIQUID-GLASS BENTO (Option A) ===== */
+.gsect{--acc:#0E9E76;--acc2:#1F8A5B;position:relative;overflow:visible;padding:0}
+.gsect .gbloom{opacity:.48}
+/* animated premium section tint */
+@keyframes tintfloat{0%{transform:scale(1.06) translate(0,0)}30%{transform:scale(1.14) translate(2.6%,-2.2%)}60%{transform:scale(1.09) translate(-2.6%,2%)}100%{transform:scale(1.06) translate(0,0)}}
+.tintsec{position:relative}
+.tintsec::before{content:"";position:absolute;inset:-16%;z-index:0;pointer-events:none;opacity:.6;background:var(--tint);will-change:transform;animation:tintfloat 26s ease-in-out infinite}
+.tintsec>*{position:relative;z-index:1}
+.gbloom{position:absolute;border-radius:50%;filter:blur(66px);pointer-events:none;z-index:0}
+.gbloom.bf{animation:pmesh1 19s ease-in-out infinite}.gbloom.bf2{animation:pmesh2 24s ease-in-out infinite}
+.gcontent{position:relative;z-index:1}
+.gbento{display:grid;grid-template-columns:1.55fr 1fr 1fr;grid-auto-rows:1fr;gap:16px;min-height:360px}
+.gfeature{grid-row:span 2}
+.gwide{grid-column:2 / span 2}
+.gtile{position:relative;overflow:hidden;isolation:isolate;border-radius:26px;background:linear-gradient(152deg,rgba(255,255,255,.6),rgba(255,255,255,.28)),linear-gradient(135deg,rgba(183,157,232,.14),rgba(217,96,90,.08) 45%,rgba(239,161,46,.13));-webkit-backdrop-filter:blur(26px) saturate(175%);backdrop-filter:blur(26px) saturate(175%);border:1px solid rgba(255,255,255,.55);box-shadow:0 22px 44px -40px rgba(20,45,32,.26),inset 0 1.5px 1px rgba(255,255,255,.9),inset 0 -32px 48px -40px rgba(255,255,255,.42);transition:transform .42s cubic-bezier(.2,.8,.3,1),box-shadow .42s}
+.gtile:hover{transform:translateY(-4px);box-shadow:0 32px 58px -42px rgba(20,45,32,.32),inset 0 1.5px 1px rgba(255,255,255,1),inset 0 -32px 48px -40px rgba(255,255,255,.5)}
+.gspec{position:absolute;left:0;top:0;right:0;height:62%;border-radius:26px 26px 42% 42%/26px 26px 22% 22%;background:linear-gradient(150deg,rgba(255,255,255,.52) 0%,rgba(255,255,255,.09) 34%,rgba(255,255,255,0) 60%);pointer-events:none;z-index:2}
+.grim{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:4;box-shadow:inset 0 0 0 1px rgba(255,255,255,.42),inset 0 0 26px -10px rgba(255,255,255,.7)}
+.gtile>.gc{position:relative;z-index:3}
+.gcat{font-size:12px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-3)}
+.gnum{display:flex;align-items:baseline;gap:.08em;font-weight:600;letter-spacing:-.045em;line-height:.84;color:var(--ink);margin-top:6px}
+.gnum .u{font-size:.34em;font-weight:600;letter-spacing:-.02em;color:var(--ink-2)}
+.gthl{font-size:14px;font-weight:600;background:linear-gradient(90deg,var(--acc),var(--acc2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.gbody{margin-top:8px;font-size:14px;line-height:1.55;color:var(--ink-2)}
+/* accent-tint the live elements per industry */
+.gtile .pi2{background:var(--acc)}
+.gtile .pwave{color:var(--acc)}.gtile .pwave .pp{background:var(--acc);color:#fff}
+.gtile .ekg path{stroke:var(--acc)}
+.gtile .pstatus{background:rgba(0,0,0,.05);color:var(--acc2)}.gtile .pstatus .ck{background:var(--acc)}
+.gtile .ppulse .dot{background:var(--acc)}.gtile .ppulse .rg{border-color:var(--acc)}
+@media(max-width:860px){.gbento{grid-template-columns:1fr !important;min-height:0;grid-auto-rows:auto !important}.gfeature{grid-row:auto !important}.gwide{grid-column:auto !important}}
+
+/* ===== MOBILE CONVERSION LAYER (phones only - desktop untouched) ===== */
+/* Persistent thumb-zone CTA bar, injected by rz/mobile.js, shown only <=560px */
+.mcta{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:160;display:none;align-items:center;gap:12px;height:56px;padding:0 10px 0 20px;border-radius:999px;background:rgba(13,14,17,.84);-webkit-backdrop-filter:blur(22px) saturate(150%);backdrop-filter:blur(22px) saturate(150%);border:1px solid rgba(255,255,255,.09);box-shadow:0 18px 46px -14px rgba(0,0,0,.72);text-decoration:none;-webkit-tap-highlight-color:transparent;transition:transform .2s cubic-bezier(.2,.8,.3,1)}
+.mcta:active{transform:scale(.985)}
+.mcta-dot{flex:0 0 auto;width:9px;height:9px;border-radius:50%;background:#3ED27E;box-shadow:0 0 10px #3ED27E;animation:mctapulse 2.4s ease-in-out infinite}
+@keyframes mctapulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.82)}}
+.mcta-l{flex:1 1 auto;min-width:0;color:#fff;font-family:var(--sans);font-weight:600;font-size:15px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mcta-go{flex:0 0 auto;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#fff;color:#141414}
+.mcta-fab{right:78px}
+@media(max-width:560px){.mcta{display:flex}}
+
+/* Desktop: the industry sub-bar is aligned under the nav links by rz/mobile.js
+   (measured per page so it tracks each page's CTA width). Links stay in their
+   natural position so the wordmark isn't stranded at the far left. */
+
+/* Mobile hamburger menu (built by rz/mobile.js from the inline nav links).
+   Desktop (>=861px) hides both; tablet/phone (<=860px) hides the cramped inline
+   links and shows the button + dropdown. */
+.rzmenu-btn{display:none;flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:transparent;border:none;cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;margin-left:2px;-webkit-tap-highlight-color:transparent}
+.rzmenu-btn span{display:block;width:19px;height:2.5px;border-radius:2px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.55);transition:transform .3s,opacity .3s}
+.rzmenu-btn[data-open="1"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.rzmenu-btn[data-open="1"] span:nth-child(2){opacity:0}
+.rzmenu-btn[data-open="1"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+.rzmenu{position:absolute;top:calc(100% + 10px);left:0;right:0;z-index:120;display:none;flex-direction:column;gap:2px;padding:12px;border-radius:24px;background:rgba(13,14,17,.88);-webkit-backdrop-filter:blur(28px) saturate(150%);backdrop-filter:blur(28px) saturate(150%);border:1px solid rgba(255,255,255,.08);box-shadow:0 30px 70px -22px rgba(0,0,0,.7)}
+.rzmenu[data-open="1"]{display:flex;animation:rzmdown .34s cubic-bezier(.2,.85,.3,1)}
+@keyframes rzmdown{from{opacity:0;transform:translateY(-10px)}to{opacity:1 !important;transform:none !important}}
+.rzmenu a{display:block;padding:14px 16px;border-radius:14px;color:#fff;text-decoration:none;font-weight:600;font-size:16px;font-family:var(--sans,system-ui),sans-serif}
+.rzmenu a:active{background:rgba(255,255,255,.08)}
+.rzmenu .rzmenu-cta{margin-top:6px;background:#fff;color:#141414;text-align:center}
+/* Industries sub-group inside the injected mobile menu */
+.rzmenu-label{padding:13px 16px 5px;font-size:11px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.42);font-family:var(--sans,system-ui),sans-serif}
+.rzmenu a.rzmenu-sub{padding:11px 16px 11px 30px;font-size:15px;font-weight:500;color:rgba(255,255,255,.82)}
+.rzmenu a.rzmenu-sub.cur{color:#fff;background:rgba(255,255,255,.1)}
+@media(min-width:861px){.rzmenu,.rzmenu-btn{display:none !important}}
+@media(max-width:860px){.nav-bar .nav-links{display:none !important}.nav-toggle{display:flex !important}.nav-bar .nav-cta-d{display:none !important}.rzmenu-btn{display:flex !important}}
+/* One nav on mobile: the floating industry sub-bar folds into the menu under
+   "Industries", so it's hidden below the hamburger breakpoint. */
+@media(max-width:860px){.indbar{display:none !important}.nav-bar{min-height:50px}}
+
+/* "Industries" glow (handler in rz/mobile.js) - was homepage-only, now site-wide */
+.indbar.glow{animation:indbarpulse 1.3s ease 1}
+@keyframes indbarpulse{0%{box-shadow:0 0 0 0 rgba(226,104,62,0)}30%{box-shadow:0 0 0 1px rgba(217,96,90,.6),0 10px 34px -8px rgba(226,104,62,.65)}100%{box-shadow:0 0 0 0 rgba(226,104,62,0)}}
+.indlink.lit{animation:indlit .66s ease 1}
+@keyframes indlit{0%{box-shadow:0 0 0 0 rgba(226,104,62,0)}38%{box-shadow:0 0 16px 2px rgba(226,104,62,.8),inset 0 0 0 1px rgba(255,255,255,.18);color:#fff}100%{box-shadow:0 0 0 0 rgba(226,104,62,0)}}
+
+/* Mobile bento: tiles stack 1-col (rule above); tighten padding, numbers and
+   gaps so a stacked tile reads as an intentional mobile card, not a blown-up
+   desktop tile. */
+@media(max-width:560px){
+  .gbento{gap:12px !important;grid-auto-rows:auto !important}
+  .gtile{padding:22px !important;border-radius:24px}
+  /* each tile hugs its own content - no equal-height stretching that leaves
+     short tiles half-empty */
+  .gtile.gfeature{grid-row:auto !important}
+  .gnum{font-size:clamp(44px,12.5vw,54px) !important}
+  .gbody{font-size:13.5px;max-width:none !important}
+  .gsect{margin-top:30px !important}
+  .pcard{min-height:0 !important;padding:22px !important}
+}
+
+/* Tap-target + type floors on phones (a11y / fat-finger safety) */
+@media(max-width:560px){
+  .navlink,.indlink,.wchip,.ucchip,.ftab{min-height:44px;display:inline-flex;align-items:center}
+  .sheet-link,.foot-link{min-height:44px;display:flex;align-items:center}
+  .foot-link{min-height:40px}
+  body{font-size:16px}
+  /* keep the bottom CTA bar from hiding page-end content */
+  body{padding-bottom:0}
+  .gbody,.acc-bi,.faq .fb{font-size:15px}
+}
+
+
+/* iPad: industry cards 2-up so titles/copy never crowd or clip */
+@media(min-width:861px) and (max-width:1080px){#industries .feat3{grid-template-columns:1fr 1fr !important}#industries .feat3 a{grid-column:auto !important;min-height:300px}}
+
+
+/* industry sub-nav auto-hide */
+.indbar{transition:transform .45s cubic-bezier(.16,.84,.44,1),opacity .4s ease,box-shadow .4s,background .4s}
+.indbar.ind-hidden{transform:translate(-50%,-62px) !important;opacity:0;pointer-events:none}
+
+/* lively hover layer */
+@media(hover:hover){
+  .btn{transition:transform .5s cubic-bezier(.22,.9,.28,1),box-shadow .5s cubic-bezier(.22,.9,.28,1),background .35s ease,color .35s ease}
+  .btn:hover{transform:scale(1.035)}
+  .btn:active{transform:scale(.985)}
+  .indlink{transition:transform .25s cubic-bezier(.2,.8,.3,1),background .2s,color .2s}
+  .indlink:hover{transform:scale(1.04)}
+  .team-card,.buyer-card,.cscard,.bcard,.tilt,.lqcard,.gtile{transition:transform .42s cubic-bezier(.16,.84,.44,1),box-shadow .42s cubic-bezier(.16,.84,.44,1)}
+  a:not(.btn):not(.indlink){transition:color .25s ease,opacity .25s ease}
+}
+
+/* ============================================================
+   IPAD / TABLET ENRICHMENT  (561–860px)
+   The single 860px breakpoint above flattens every .feat3 grid
+   (stat rows, card grids, channel grids) to ONE column and hides
+   the phone mockups - far too sparse on an iPad. Restore a 2-up
+   rhythm and bring the phones back across the whole site.
+   Desktop (≥861px) is never touched.
+   ============================================================ */
+@media(min-width:561px) and (max-width:860px){
+  .feat3{grid-template-columns:repeat(2,1fr) !important}
+  .phones{display:flex !important}
+}
+/* Phones: clear the persistent bottom CTA bar so the footer / page-end
+   content is never hidden behind it. */
+@media(max-width:560px){
+  body{padding-bottom:84px}
+  /* Phone-mockup rows: the 860px rule hides them with display:none. On phones
+     show them instead, restacked vertically & centered, so neither device is
+     cut. (This lives in site.css so it wins over the earlier hide rule and
+     applies on every page — homepage, Solutions, etc.) */
+  .phones{display:flex !important;flex-direction:column !important;align-items:center !important;gap:24px !important;height:auto !important}
+  .phones > div{align-self:center !important;margin-top:0 !important}
+}
+
+/* Proof stat rows (3 short figures) read better as a single row than the
+   generic 2-up: 3-up on tablet, and 3-up on phones with a number-size cap
+   so the largest figure (e.g. "↓49%") never clips at 360px. */
+@media(min-width:561px) and (max-width:860px){
+  .statrow{grid-template-columns:repeat(3,1fr) !important}
+}
+@media(max-width:560px){
+  .statrow{grid-template-columns:repeat(3,1fr) !important;gap:18px 8px !important}
+  .statrow > div > div:first-child{font-size:clamp(28px,8vw,40px) !important;white-space:nowrap}
+  .statrow p{font-size:12px !important;margin-top:8px !important}
+}
+
+/* About: stakeholder Q&A rows (role/question | answer) stack on phones so
+   neither column is squeezed. */
+@media(max-width:560px){
+  .stkrow{grid-template-columns:1fr !important;gap:6px !important}
+}
+
+/* Leadership team cards: FULL-WIDTH on phones. Bios are long paragraphs and a
+   2-up grid squeezes them to one word per line. One readable card per row. */
+@media(max-width:560px){
+  .feat3:has(.team-card){grid-template-columns:1fr !important;gap:16px !important}
+}
+
+/* CaseStudy hero: title + meta table stack on small screens so the meta
+   column isn't squeezed. */
+@media(max-width:640px){
+  .cshero-grid{grid-template-columns:1fr !important;gap:24px !important}
+}
+
+/* "Who it's for" buyer cards are 4 image tiles: on phones the generic 1fr is
+   correct (big imagery), but give them a touch more breathing room. */
+@media(max-width:560px){
+  .buyer-card{min-height:clamp(300px,72vw,420px) !important}
+}
+
+/* ============================================================
+   PHONE VISUAL FIXES (from on-device review)
+   ============================================================ */
+
+/* ============================================================
+   PHONE + TABLET-PORTRAIT HERO  (<=900px, matches cine.js isMobile)
+   The animated scroll choreography does not belong on touch. The tall
+   #cinehero (300-480vh with a pinned stage) collapses to a SINGLE static
+   screen: just the autoplaying video + heading. The next section flows
+   right after it. cine.js plays the video but skips all scroll morphing.
+   Text is bottom-anchored over a scrim so it never sits on a face.
+   ============================================================ */
+@media(max-width:1024px){
+  #cinehero{height:auto !important;min-height:100svh !important;padding:0 !important}
+  #cinehero > div{position:relative !important;height:auto !important;min-height:100svh !important;top:0 !important}
+  /* every choreography layer off - only the video + #cinehead remain */
+  #cinestage,#cineclose,#cinecue{display:none !important}
+  .cine-card,.cine-beat{display:none !important}
+  /* even wash so white copy stays legible whether the hero centers (home) or bottom-anchors (industry) */
+  #cinescrim2{background:linear-gradient(180deg,rgba(6,7,10,.30) 0%,rgba(6,7,10,.14) 32%,rgba(6,7,10,.58) 100%) !important}
+  /* KEEP each hero's own inline justify/align (home = center, industry = flex-end). Overriding it
+     caused the title to jump on load - it flashed centered (inline) then dropped when the stylesheet
+     applied flex-end. Only normalize opacity + phone padding here. */
+  #cinehead{position:absolute !important;inset:0 !important;opacity:1 !important;transform:none !important;
+    padding:calc(86px + env(safe-area-inset-top,0px)) 22px calc(48px + env(safe-area-inset-bottom,0px)) !important}
+  #cinehead h1{max-width:24ch !important}
+  #cinehead h1 .serif-i{white-space:nowrap !important;font-size:clamp(34px,9.5vw,46px) !important}
+  /* mobile hero = headline + waveform ONLY (subs hidden), centered over the video */
+  #cinehead .hwave{display:none !important}
+  #cinesubs{display:none !important;position:static !important;left:auto !important;right:auto !important;bottom:auto !important;
+    flex-direction:column !important;align-items:center !important;gap:10px !important;margin-top:22px !important}
+  #cinesubs p{text-align:center !important;max-width:100% !important}
+}
+/* Homepage motto/ setup sizing on the smallest screens */
+@media(max-width:560px){
+  #cinehead h1{font-size:clamp(17px,4.6vw,22px) !important;line-height:1.12 !important}
+  #cinehead p{font-size:14px !important;line-height:1.5 !important;max-width:40ch !important;margin-top:clamp(18px,2.6vh,26px) !important;text-wrap:pretty}
+  #cinesubs p:first-child{font-size:15.5px !important}
+  #cinesubs p:last-child{font-size:13.5px !important}
+}
+
+/* About: evolution timeline (KeyReply / taught us / Rezonate) - 3-up grid must
+   never overflow. Stack to one column on phones + tablet-portrait so no card is
+   clipped at the screen edge. */
+@media(max-width:900px){
+  .abt-tl{grid-template-columns:1fr !important;gap:12px !important}
+  .abt-tl>div{text-align:left !important}
+}
+
+/* Logo walls: a flex-wrap row collapses to ONE logo per line on phones, which
+   looks empty. Force a tidy 3-up grid with smaller marks. Handles both the
+   homepage (direct <img> children) and Customers (.logomark wrappers). */
+@media(max-width:560px){
+  .logowall{display:grid !important;grid-template-columns:repeat(3,1fr) !important;gap:22px 12px !important;place-items:center}
+  .logowall > img{max-height:40px !important;max-width:100% !important;height:auto !important}
+  .logowall .logomark{width:100%;display:flex;justify-content:center}
+  .logowall .logomark img{max-height:40px !important;max-width:100% !important}
+}
+
+/* Footer "Get in touch": email + button are inline and sit cramped side-by-side
+   when the column goes full-width on phones; stack them. */
+@media(max-width:560px){
+  .footcta{display:flex !important;flex-direction:column !important;align-items:flex-start !important;gap:14px !important}
+  .footcta a{margin-bottom:0 !important}
+}
+
+/* Scroll-aware CTA bar (toggled by rz/mobile.js): slide it out of the way so it
+   never permanently covers hero stats, demo quotes or bios. */
+.mcta{transition:transform .34s cubic-bezier(.4,0,.2,1),opacity .28s ease}
+.mcta.mcta-hidden{transform:translateY(180%) !important;opacity:0 !important;pointer-events:none !important}
+/* Chat widget: smaller FAB lifted clear of the bottom CTA bar, and a panel that
+   never exceeds the phone. */
+@media(max-width:560px){
+  /* chat FAB sits in the bottom-right corner, level with the persistent CTA bar
+     (which shortens to leave room) - not floating above it */
+  .mcta{right:74px !important}
+  .rzfab{width:52px !important;height:52px !important;right:12px !important;bottom:calc(14px + env(safe-area-inset-bottom)) !important}
+  .rzfab .rzfab-wave{height:26px !important}
+  .rzchat{width:calc(100vw - 24px) !important;max-width:360px !important;height:min(60vh,420px) !important;right:12px !important;left:auto !important;bottom:calc(82px + env(safe-area-inset-bottom)) !important}
+}
+
+/* ============================================================
+   APPLE-GRADE MOBILE PROPORTION PASS  (phones only)
+   ============================================================ */
+
+/* Over-long photo sections: an 84-92vh image with a few lines of text reads as
+   a half-empty, endlessly-scrolling screen on a phone. Bring them to an
+   immersive-but-tight height with the copy anchored at the bottom. */
+@media(max-width:560px){
+  .proof-sec{min-height:60vh !important}
+  .proof-sec > .sec-pad{padding-bottom:48px !important}
+  .cta-emot{min-height:66vh !important}
+  .cta-emot > .sec-pad{padding-top:56px !important;padding-bottom:56px !important}
+}
+
+/* Mayo Clinic banner: on phones the long legal note was out-weighing the brand
+   card. Make the blue card the confident hero and let the disclaimer recede to
+   genuine fine-print. */
+@media(max-width:560px){
+  .mayo-card{min-height:auto !important;padding:22px 20px !important;gap:26px}
+  .mayo-card h2{font-size:15px !important;line-height:1.3 !important;min-width:0}
+  .mayo-card img[src*="mcp-lockup"]{height:48px !important;max-width:46% !important}
+  .mayo-card p{font-size:12.5px !important;margin-top:0 !important}
+  .mayo-note{font-size:10px !important;line-height:1.5 !important;color:#AEABA4 !important;letter-spacing:0 !important;margin-top:20px !important}
+}
+
+/* Glass nav must clear the notch / Dynamic Island. env() resolves to the real
+   safe-area inset on notched iOS (and 0 elsewhere, so desktop is unchanged). */
+@media(max-width:860px){
+  .nav-wrap{top:calc(env(safe-area-inset-top, 0px) + 14px) !important}
+  /* framed preview: no real inset available, use a device-notch fallback */
+  html.rz-framed .nav-wrap{top:61px !important}
+  html.rz-framed .indbar{margin-top:47px !important}
+}
+/* the industry sub-bar sits just under the nav; nudge it down in step so it
+   never tucks under the notch either. */
+@media(max-width:560px){
+  .indbar{margin-top:calc(env(safe-area-inset-top, 0px)) !important}
+}
+
+/* ============================================================
+   CALMER MOBILE SCALE  ("less in-your-face": dial type & numbers
+   back ~10% so sections breathe instead of feeling zoomed-in)
+   ============================================================ */
+@media(max-width:560px){
+  body{font-size:14.5px}
+  .h-hero{font-size:clamp(27px,8vw,33px) !important;line-height:1.08 !important}
+  .h-big{font-size:clamp(23px,6.8vw,29px) !important;line-height:1.12 !important}
+  .feat3 .cnum{font-size:clamp(30px,8.2vw,37px) !important}
+  .gnum{font-size:clamp(33px,9.6vw,42px) !important}
+  .spxbig{font-size:28px !important}
+  .statrow > div > div:first-child{font-size:clamp(24px,7vw,33px) !important}
+}
+
+/* Collapsible "Industries" group inside the mobile menu (tap to expand) */
+.rzmenu-acc,.sheet-acc{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:13px 16px;border-radius:16px;background:transparent;border:none;cursor:pointer;color:#fff;font-weight:600;font-size:16px;font-family:var(--sans,system-ui),sans-serif;text-align:left;-webkit-tap-highlight-color:transparent}
+.rzmenu-acc:active,.sheet-acc:active{background:rgba(255,255,255,.07)}
+.rzmenu-chev{width:12px;height:8px;flex:0 0 auto;transition:transform .28s;opacity:.65;color:#fff}
+.rzmenu-acc[data-open="1"] .rzmenu-chev,.sheet-acc[data-open="1"] .rzmenu-chev{transform:rotate(180deg)}
+.rzmenu-subwrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s cubic-bezier(.2,.85,.3,1)}
+.rzmenu-subwrap[data-open="1"]{grid-template-rows:1fr}
+.rzmenu-subinner{overflow:hidden;min-height:0}
+
+/* CTA "Start with one workflow" chips: on phones drop the label to its own line
+   so the chips wrap tidily within the padding instead of clipping at the edge. */
+@media(max-width:560px){
+  .wfrow{align-items:flex-start !important;gap:8px 8px !important}
+  .wfrow > span:first-child{flex-basis:100%;margin-bottom:2px}
+  .wfrow > a{font-size:12.5px !important}
+}
+
+/* ============================================================
+   CALMER DESKTOP SCALE  (Apple-like restraint: the biggest type
+   was running hot on wide screens - cap it so the page reads
+   composed and roomy, not zoomed-in. >=861px only.)
+   ============================================================ */
+@media(min-width:861px){
+  .h-hero{font-size:clamp(42px,4.6vw,64px) !important;line-height:1.05 !important}
+  .h-big{font-size:clamp(36px,4.1vw,58px) !important;line-height:1.08 !important}
+  #cineclose h2{font-size:54px !important}
+  #cinelabelwrap h2{font-size:72px !important}
+  .feat3 .cnum{font-size:clamp(40px,3.4vw,56px) !important}
+  .gnum{font-size:clamp(33px,2.9vw,44px) !important}
+}
+
+/* Brand logos & cert badges: greyscale at rest, true brand colour on hover */
+.logowall img,.certwall img{transition:filter .35s ease,opacity .35s ease,transform .35s ease}
+.logowall img:hover,.certwall img:hover{filter:none !important;opacity:1 !important}
+
+/* Industry sub-bar is now hidden by default in markup (inline display:none) so
+   it can't flash under the nav on refresh; it's shown only on desktop here. */
+@media(min-width:861px){.indbar{display:flex !important}}
+
+/* footer voice bars (option 2a) */
+@keyframes fobar{0%,100%{transform:scaleY(.22)}50%{transform:scaleY(1)}}
+.fowave{display:inline-flex;align-items:center;justify-content:center;gap:clamp(3px,.5vw,6px);flex:0 0 auto}
+.fowave i{display:block;width:clamp(3px,.45vw,6px);height:100%;border-radius:9px;background:linear-gradient(180deg,#B79DE8,#D9605A 45%,#EFA12E);transform-origin:center;transform:scaleY(.22);animation:fobar 1.6s ease-in-out infinite}
+.fowave i:nth-child(4n){animation-delay:.14s}.fowave i:nth-child(4n+1){animation-delay:.38s}.fowave i:nth-child(4n+2){animation-delay:.61s}.fowave i:nth-child(4n+3){animation-delay:.85s}
+@media(prefers-reduced-motion:reduce){.fowave i{animation:none;transform:scaleY(.6)}}
+
+/* launch polish */
+h1,h2,h3{text-wrap:balance}
+p,blockquote{text-wrap:pretty}
+@media(max-width:700px){
+  /* collapse any inline multi-column grids that lack their own mobile rules */
+  [style*="grid-template-columns:1fr 1fr 1fr"],[style*="grid-template-columns: 1fr 1fr 1fr"]{grid-template-columns:1fr !important}
+  [style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr !important}
+  [style*="grid-template-columns:repeat(3,1fr)"],[style*="grid-template-columns: repeat(3, 1fr)"]{grid-template-columns:1fr !important}
+  [style*="grid-template-columns:repeat(2,1fr)"],[style*="grid-template-columns: repeat(2, 1fr)"]{grid-template-columns:1fr !important}
+  [style*="grid-template-columns:auto 1fr"],[style*="grid-template-columns: auto 1fr"]{grid-template-columns:1fr !important}
+  [style*="grid-template-columns:.85fr 1.5fr"],[style*="grid-template-columns: 0.85fr 1.5fr"],[style*="grid-template-columns:0.85fr 1fr"],[style*="grid-template-columns: 0.85fr 1fr"]{grid-template-columns:1fr !important}
+  [style*="grid-template-columns:1.15fr 1fr"],[style*="grid-template-columns: 1.15fr 1fr"],[style*="grid-template-columns:1.45fr 1fr 1fr"],[style*="grid-template-columns: 1.45fr 1fr 1fr"],[style*="grid-template-columns:1.4fr 1fr 1fr"],[style*="grid-template-columns: 1.4fr 1fr 1fr"]{grid-template-columns:1fr !important}
+  /* oversize display text safety */
+  .h-hero{font-size:clamp(30px,9vw,42px) !important}
+}
+
+/* mobile hardening v2 */
+html{background:#0E0D0B}
+body{overflow-x:clip}
+.nav-wrap{top:calc(12px + env(safe-area-inset-top,0px))}
+@media(max-width:700px){.nav-wrap{top:max(calc(8px + env(safe-area-inset-top,0px)),56px)}.mcta{bottom:calc(14px + env(safe-area-inset-bottom,0px))}}
+@media(max-width:700px){
+  /* featured story card: photo on top, text below — no half-cut */
+  .fs-img{left:0 !important;right:0 !important;top:0 !important;bottom:auto !important;width:100% !important;height:44% !important}
+  .fs-scrim{background:linear-gradient(180deg,rgba(245,243,239,0) 26%,#F5F3EF 46%) !important}
+  .fs-txt{top:auto !important;bottom:0 !important;left:0 !important;width:100% !important;height:auto !important;max-height:62% !important;padding:22px 22px 54px !important;justify-content:flex-end !important}
+  /* proof photo: keep the subject clear of the copy */
+  .proof-sec > img{object-position:47% 34% !important}
+}
+
+/* tablet + spacing normalize */
+@media(max-width:1024px){
+  /* sections sit flush on mobile (margin-top:0), so their rounded top corners expose
+     the page background at every junction. Body goes cream so those notches read as
+     the page, not black. html stays dark: overscroll above the dark hero / below the
+     dark footer keeps matching. */
+  body{background:#F4F3F0}
+  /* <main> carries inline background:var(--dark) on dark-hero pages; on mobile the
+     flush sections' rounded corners expose it at every junction ("black sides").
+     Cream page behind the cards; dark heroes/footers paint their own backgrounds. */
+  main{background:#FBF8EF !important}
+  /* corner radius must not exceed the -28px card tuck, or the corner cutaway digs
+     past the previous card and exposes the page (white/cream crescents "on the sides") */
+  body{--r:28px}
+  /* uniform section rhythm on phone + tablet (keeps each section's horizontal padding) */
+  section[style*="padding:clamp("],section[style*="padding: clamp("]{padding-top:clamp(52px,7vw,76px) !important;padding-bottom:clamp(52px,7vw,76px) !important}
+  #cinehero{padding:0 !important}
+  /* 3-col inline grids → 2-col on tablet */
+  [style*="grid-template-columns:1fr 1fr 1fr"],[style*="grid-template-columns: 1fr 1fr 1fr"],[style*="grid-template-columns:repeat(3,1fr)"],[style*="grid-template-columns: repeat(3, 1fr)"]{grid-template-columns:1fr 1fr !important}
+}
+@media(max-width:900px){
+  /* featured story card: photo top, text below (tablet portrait + phones) */
+  .fs-img{left:0 !important;right:0 !important;top:0 !important;bottom:auto !important;width:100% !important;height:44% !important}
+  .fs-scrim{background:linear-gradient(180deg,rgba(245,243,239,0) 26%,#F5F3EF 46%) !important}
+  .fs-txt{top:auto !important;bottom:0 !important;left:0 !important;width:100% !important;height:auto !important;max-height:62% !important;padding:22px 22px 54px !important;justify-content:flex-end !important}
+}
+@media(max-width:700px){
+  /* phones: single column everywhere */
+  [style*="grid-template-columns:1fr 1fr 1fr"],[style*="grid-template-columns: 1fr 1fr 1fr"],[style*="grid-template-columns:repeat(3,1fr)"],[style*="grid-template-columns: repeat(3, 1fr)"],[style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns: 1fr 1fr"],[style*="grid-template-columns:repeat(2,1fr)"],[style*="grid-template-columns: repeat(2, 1fr)"]{grid-template-columns:1fr !important}
+}
+
+/* phone final overrides */
+@media(max-width:700px){
+  [style*="grid-template-columns:1fr 1fr 1fr"],[style*="grid-template-columns: 1fr 1fr 1fr"],[style*="grid-template-columns:repeat(3,1fr)"],[style*="grid-template-columns: repeat(3, 1fr)"],[style*="grid-template-columns:1fr 1fr"],[style*="grid-template-columns: 1fr 1fr"],[style*="grid-template-columns:repeat(2,1fr)"],[style*="grid-template-columns: repeat(2, 1fr)"]{grid-template-columns:1fr !important}
+}
+@media(max-width:1025px){
+  ::-webkit-scrollbar{width:0;height:0}
+  html{scrollbar-width:none}
+}
+/* kira out loud: photo banner on phones, panels below on solid ground */
+@media(max-width:700px){
+  /* Backstop color while the photo loads; the pre-boxed template image
+     (110%/120% box) fully covers the section - no height cap, no band. */
+  #kiravoice{background:#17130F !important}
+  #kiravoice .kv-acc{background:rgba(42,38,36,.78) !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important}
+}
+
+
+/* ---- Notch / safe-area hardening (all widths, portrait + landscape) ---- */
+.nav-wrap{left:env(safe-area-inset-left,0px);right:env(safe-area-inset-right,0px);width:calc(100% - 28px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px))}
+.indbar{max-width:calc(100vw - 24px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px))}
+#cinecue{bottom:calc(28px + env(safe-area-inset-bottom,0px)) !important}
+@media(max-width:860px){html.rz-framed .nav-wrap{top:64px !important}}
+
+/* ============================================================
+   MOBILE LOGO WALLS  (customer / integration / trust badges)
+   These sit on light cream sections. Kill any baked-in white box
+   with multiply, lay every ragged flex row out as an even 3-up
+   grid, and give every mark ONE modest uniform size so nothing is
+   oversized or misaligned.
+   ============================================================ */
+@media(max-width:1024px){
+  img[style*="grayscale"]{mix-blend-mode:multiply !important;height:42px !important;width:auto !important}
+  .logowall, div:has(> img[style*="grayscale"]){display:flex !important;flex-wrap:wrap !important;justify-content:center !important;align-items:center !important;gap:26px 30px !important;max-width:560px !important;margin-left:auto !important;margin-right:auto !important;grid-template-columns:none !important}
+  .logowall > img{max-height:44px !important;height:44px !important}
+}
+/* channel "Every channel, one Kira" card: the tagline was jammed against the
+   chat bubbles. Give it clear air below the conversation on phones. */
+@media(max-width:1024px){
+  .chan-tag{margin-top:0 !important;padding-top:clamp(18px,5vw,28px) !important}
+}
+/* tighten section rhythm on phones - no oversized empty gaps between sections */
+@media(max-width:700px){
+  body section[style*="padding:clamp("],body section[style*="padding: clamp("]{padding-top:clamp(44px,11vw,60px) !important;padding-bottom:clamp(60px,15vw,84px) !important}
+  .two{margin-bottom:22px !important}
+  /* speed-race rows: keep label · bar · time on ONE line (exempt from the generic auto-1fr collapse) */
+  #speedrace [style*="grid-template-columns:auto 1fr auto"],#speedrace [style*="grid-template-columns: auto 1fr auto"]{grid-template-columns:auto 1fr auto !important;gap:12px !important}
+  #speedrace span[style*="min-width:108px"],#speedrace span[style*="min-width: 108px"]{min-width:0 !important}
+  #speedrace .scbig{font-size:17px !important}
+  #speedrace .scwave{display:none !important}
+}
+/* proof section: keep the person clear of the headline + a scrim for legibility */
+@media(max-width:700px){
+  .proof-sec > img{object-position:47% 34% !important}
+  .proof-sec::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(6,7,10,.52),rgba(6,7,10,.2) 42%,rgba(6,7,10,.6))}
+  .proof-sec > *:not(img){position:relative;z-index:1}
+}
+/* On phones the desktop -44px "card lifts over the previous section" overlap makes
+   sections collide (e.g. a cream card riding up over the hero's subtitle). Flatten
+   it so every section starts cleanly at the previous one's edge - the rounded top
+   corners still soften the seam. */
+@media(max-width:1024px){
+  /* card-on-card: each section tucks OVER the previous one (like desktop's -44px),
+     so rounded corners overlap the card below — never the page background. Bottom
+     padding is compensated below so no content hides under the next card. */
+  section[style*="margin-top:-44px"],section[style*="margin-top: -44px"],footer[style*="margin-top:-44px"],footer[style*="margin-top: -44px"]{margin-top:-28px !important}
+}
+/* Parallax is disabled on touch/small screens (see parallax.js), but a stale
+   engine state can leave a shrunken box or translate behind - e.g. the Kira
+   field image cut off mid-section with content spilling past it. These beat
+   inline styles, guaranteeing full-bleed imagery covers its section and
+   content columns sit where the layout put them. */
+/* Parallax is disabled on touch/small screens (see parallax.js). Full-bleed
+   [data-par] imagery is pre-boxed in the templates (110%/120% box) so it always
+   over-covers its section; on mobile we only need transforms gone. These beat
+   any inline transform left behind by a stale engine state. */
+@media(max-width:1024px){
+  [data-py]{transform:none !important}
+}
+/* ---- mobile motion pass: cinematic drift (phones/tablets) ----
+   NOTE: the old rzHeroInM heading/hwave entrance was removed on purpose. site.css
+   loads AFTER first paint, so a late-applied entrance animation made the hero
+   heading disappear and fade back in ~1-3s after load ("two headings"). The
+   heading now renders once, statically, at its final size. Do not re-add. */
+@media(max-width:1024px){
+  @keyframes rzKenBurns{0%{transform:scale(1.05)}100%{transform:scale(1.16) translateY(-1.8%)}}
+  #cinehero video{animation:rzKenBurns 17s ease-in-out infinite alternate;will-change:transform}
+}
+/* Tablet-portrait (iPad): 2-up card grids (stakeholder Q&A, who-it's-for, channel
+   pairs) stay cramped with one-word-per-line text. Collapse them to a single
+   readable column through iPad-portrait width. */
+@media(max-width:820px){
+  [style*="grid-template-columns:1fr 1fr;"],[style*="grid-template-columns: 1fr 1fr;"],[style*="grid-template-columns:repeat(2,1fr)"],[style*="grid-template-columns: repeat(2, 1fr)"]{grid-template-columns:1fr !important}
+}
+/* Who-it's-for gallery: the desktop horizontal-EXPAND row (cards grow/shrink via
+   flex) collapses to unreadable slivers on touch - the narrow items don't even
+   render their image (looked "broken"). Stack it: every card full width with a
+   fixed aspect, image filling, and its text always shown. */
+}
+
+/* team bios: pin LinkedIn buttons to equal height */
+.team-card{display:flex;flex-direction:column;align-items:flex-start}
+.team-card>a{margin-top:auto !important;padding-top:16px}
+
+@media(max-width:860px){.wkd-bub{max-width:200px}}
+
+/* colored logo marquee */
+.logotrack{display:flex;align-items:center;width:max-content;animation:logoscroll 30s linear infinite}
+.logotrack:hover{animation-play-state:paused}
+@keyframes logoscroll{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.logotrack{animation:none;flex-wrap:wrap;width:auto;justify-content:center}}
+/* suppress nav transitions until first paint settles (refresh shrink glitch) */
+html:not(.nav-ready) .nav-wrap,html:not(.nav-ready) .nav-wrap *{transition:none !important}
+
+/* static mobile-nav rules — first paint correct on refresh (JS injectNavCSS remains as fallback) */
+@media(min-width:861px){.rzmenu,.rzmenu-btn{display:none!important}}
+@media(max-width:860px){
+  .nav-bar .nav-links{display:none!important}
+  .nav-toggle{display:none!important}
+  .nav-bar .nav-cta-d{display:none!important}
+  .rzmenu-btn{display:flex!important;flex:0 0 auto;width:44px;height:44px;background:transparent!important;border:none!important;border-radius:12px;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:0;cursor:pointer}
+  .rzmenu-btn span{display:block!important;width:18px;height:2px;background:#fff!important;border-radius:2px;transition:transform .3s,opacity .3s}
+  .rzmenu-btn[data-open="1"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .rzmenu-btn[data-open="1"] span:nth-child(2){opacity:0}
+  .rzmenu-btn[data-open="1"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .rzmenu[data-open="1"]{display:flex!important}
+}
+
+.logomark img[src*="asahi"],.logotrack img[src*="asahi"]{padding:8px 16px;box-sizing:border-box}
+/* Global logo/badge sizing — bigger & full-colour on every page (recurring feedback) */
+.logotrack img,.logomark img{height:48px !important;max-height:none !important;width:auto !important;max-width:180px !important;object-fit:contain;filter:none !important;opacity:1 !important;mix-blend-mode:normal !important}
+.certwall img{height:56px !important;max-height:none !important;width:auto !important;max-width:172px !important;object-fit:contain;filter:none !important;opacity:1 !important;mix-blend-mode:normal !important}
+@media(max-width:1024px){.logotrack img,.logomark img{height:44px !important}.certwall img{height:50px !important}}
+@media(max-width:560px){.logotrack img,.logomark img{height:40px !important}.certwall img{height:44px !important}}
+.logowall img{filter:none !important;opacity:1 !important}
+/* integration marquee: contain each logo in its equal cell so gaps stay even */
+.logotrack .ilmark img{height:auto !important;max-height:38px !important;max-width:100% !important;width:auto !important}
+
+/* mobile type calm: Apple-scale headings + breathing line-height (heroes included) */
+@media(max-width:680px){
+  .sec-pad h2:where(:not(.mayo-card *)){font-size:clamp(23px,6.8vw,28px) !important;line-height:1.14 !important;letter-spacing:-.025em !important}
+  .sec-pad h3{font-size:clamp(16.5px,4.8vw,19px) !important;line-height:1.28 !important}
+  .h-hero{font-size:clamp(28px,8.4vw,36px) !important;line-height:1.1 !important}
+  .h-big{font-size:clamp(26px,7.8vw,33px) !important;line-height:1.12 !important}
+  .eyebrow{font-size:12px !important;padding:6px 12px !important}
+}
+
+@keyframes nwtshift{from{background-position:0% 50%}to{background-position:100% 50%}}
+@media(prefers-reduced-motion:reduce){[style*="nwtshift"]{animation:none !important}}
+
+/* industries dropdown */
+.navitem{position:relative}
+.navchev{width:12px;height:12px;transition:transform .25s;opacity:.6}
+.navitem:hover .navchev{transform:rotate(180deg)}
+.navdrop{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);opacity:0;visibility:hidden;transition:opacity .24s,transform .24s;padding-top:14px;min-width:236px;z-index:220}
+.navitem:hover .navdrop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+.navdrop-in{position:relative;overflow:hidden;background:rgba(17,18,22,.78);backdrop-filter:blur(28px) saturate(150%);-webkit-backdrop-filter:blur(28px) saturate(150%);border:1px solid rgba(255,255,255,.14);border-radius:20px;padding:8px;box-shadow:0 30px 70px -30px rgba(0,0,0,.7)}
+.drop-link{display:block;padding:11px 16px;border-radius:13px;text-decoration:none;color:rgba(255,255,255,.92);font-size:14px;font-weight:600;transition:background .2s}
+.drop-link:hover{background:rgba(255,255,255,.1);color:#fff}
+.drop-link.cur{background:rgba(255,255,255,.13);color:#fff}
+@media(max-width:860px){.navdrop{display:none}}
+
+/* standardized hero tagline — premium 29b */
+@keyframes nwtpan{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@keyframes nwtwv{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+.nwt-pan{background:linear-gradient(100deg,#fff 18%,#CBB2FF 38%,#FF8A7A 50%,#FF9D50 60%,#fff 82%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#fff;animation:nwtpan 8.5s linear infinite;filter:drop-shadow(0 2px 18px rgba(8,10,14,.4))}
+.nwt-wf{display:inline-flex;align-items:center;gap:3px;height:1em;opacity:.9}
+.nwt-wf i{display:block;width:2px;border-radius:9px;background:#fff;transform-origin:center;animation:nwtwv 1.3s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){.nwt-pan,.nwt-wf i{animation:none !important}}
+
+@keyframes nwteq{0%,100%{transform:scaleY(.68)}50%{transform:scaleY(1.06)}}
+@media(prefers-reduced-motion:reduce){[data-nwt-bars] i{animation:none !important}}
+
+/* mobile: center section headers */
+@media(max-width:680px){
+  .two{justify-items:center;text-align:center}
+  .two .eyebrow{margin-left:auto;margin-right:auto}
+  .two h2,.two p{margin-left:auto !important;margin-right:auto !important}
+  /* eyebrow wrapper direct in flow: center it and its following heading/copy */
+  .sec-pad div:has(>.eyebrow){text-align:center}
+  .sec-pad div:has(>.eyebrow)+h2,.sec-pad div:has(>.eyebrow)+h2+p{text-align:center;margin-left:auto !important;margin-right:auto !important}
+  /* header block with an intermediate wrapper (eyebrow one level down) */
+  .sec-pad div:has(>div>.eyebrow){text-align:center}
+  .sec-pad div:has(>div>.eyebrow)>h2,.sec-pad div:has(>div>.eyebrow)>p{text-align:center;margin-left:auto !important;margin-right:auto !important}
+  /* captioned card blocks (Every channel, one Kira etc.) */
+  .chx{text-align:center !important;justify-content:center !important;margin-left:auto;margin-right:auto}
+  .chx+p.chx,p.chx{margin-left:auto;margin-right:auto}
+}
+
+/* integrations row: calm scale on phones */
+@media(max-width:680px){
+  .intlogos{gap:20px 28px !important;max-width:320px !important}
+  .intlogos img{height:22px !important;max-width:92px !important}
+  .intlogos span{font-size:13.5px !important}
+}
+
+@keyframes nwtflow{to{stroke-dashoffset:-160}}
+@keyframes nwtflow2{to{stroke-dashoffset:-280}}
+@media(prefers-reduced-motion:reduce){footer svg path{animation:none !important}}
+/* mobile: proof ledger rows center-stack */
+@media(max-width:680px){
+  .ledger>div{flex-direction:column !important;align-items:center !important;text-align:center;gap:10px !important}
+  /* live-demo picker: chips as centered wrap row */
+  .kvx .kvx-chips{flex-direction:row !important;flex-wrap:wrap !important;justify-content:center !important;gap:8px !important}
+  .kvx .kvx-chip{font-size:13px !important;padding:8px 14px !important}
+  .kvx .kvx-name,.kvx .kvx-foot{text-align:center !important}
+}
+
+@keyframes cuearrow{0%{transform:translateY(-5px);opacity:0}35%{opacity:.95}70%{transform:translateY(5px);opacity:.95}100%{transform:translateY(9px);opacity:0}}
+@media(prefers-reduced-motion:reduce){#cinecue svg{animation:none !important}}
+
+@keyframes nwtdrift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.nwt-ripples svg{animation:none !important}}
+/* Chat FAB temporarily removed site-wide */
+.rzfab,.rzchat{display:none !important}
+html{background:#0E0D0B}
+@media(max-width:640px){#cinehero,#cinehero>div{background-color:var(--dark) !important}}
+/* Scroll reveals are DISABLED here: content paints visible immediately and never
+   gates on JS. The reveal-on/IntersectionObserver entrance system leaves [data-rv]
+   stuck at opacity:0 on the cinematic pages (home/sports/healthcare/business), whose
+   elements sit inside cine.js-transformed sticky containers the observer never marks
+   in-view — so we force everything visible. Motion stays via parallax, hover, hero
+   scrub, counters and marquees. !important beats per-page inline [data-rv] rules. */
+[data-rv]{opacity:1 !important;transform:none !important;filter:none !important;will-change:auto !important}
+[data-rv][data-in="1"]{animation:none !important}
+/* Center all parallax hero/CTA photos on tablet & mobile (parallax is desktop-only;
+   the desktop -5%/110% offset otherwise crops the subject off to one side). */
+@media(max-width:1024px){
+  [data-par-box]{inset:0 !important;left:0 !important;top:0 !important;width:100% !important;height:100% !important;transform:none !important;object-position:center !important}
+}
+
+
+/* ---- premium hover pass (desktop pointers only) ---- */
+.team-card{transition:transform .4s cubic-bezier(.2,.8,.3,1),box-shadow .4s ease}
+.cscard{transition:transform .4s cubic-bezier(.2,.8,.3,1)}
+.certwall img{transition:transform .35s ease}
+@media(hover:hover){
+  .team-card:hover{transform:translateY(-8px);box-shadow:0 34px 64px -40px rgba(20,18,14,.4)}
+  .cscard:hover{transform:translateY(-6px)}
+  .certwall img:hover{transform:translateY(-4px) scale(1.06)}
+  .faq summary:hover{background:transparent}
+}
+
+/* Keyboard-focus ring — on-brand, only for :focus-visible so mouse/touch users
+   never see it. Subtle premium + accessibility. */
+a:focus-visible,button:focus-visible,[role="button"]:focus-visible{outline:2px solid rgba(226,104,62,.85);outline-offset:3px;border-radius:10px}
+
+.nav-links .navitem{display:inline-flex;align-items:center;margin:0;padding:0}
+.nav-links .navitem>.navlink{padding-right:7px;gap:3px}
+
+.btn.nav-cta-d:hover{box-shadow:0 0 16px 2px rgba(176,106,217,.5),0 6px 20px -6px rgba(240,140,60,.65)}

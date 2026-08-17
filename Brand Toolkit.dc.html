@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:'Bricolage Grotesque',system-ui,sans-serif;background:#FBF8F3;color:#26211F}
+a{color:#26211F}a:hover{color:#D9605A}
+</style>
+</helmet>
+
+<div style="max-width:1120px;margin:0 auto;padding:70px 32px 120px">
+
+  <header style="margin-bottom:64px">
+    <div style="width:100%;height:220px;border-radius:24px;overflow:hidden;position:relative;box-shadow:0 30px 60px -42px rgba(60,30,20,.45)">
+      <img src="rz/brand/mesh-light.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+      <img src="rz/brand/wordmark-cream.png" alt="Rezonate" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:340px">
+    </div>
+    <h1 style="margin:40px 0 0;font-size:44px;font-weight:600;letter-spacing:-.03em">Rezonate — Brand Toolkit</h1>
+    <p style="margin:14px 0 0;max-width:66ch;font-size:17px;line-height:1.6;color:#75726D">Working reference for everything designed in this project. Formerly KeyReply · the product is <b style="color:#26211F">Kira</b>, the brand is <b style="color:#26211F">Rezonate</b>. Tagline: <b style="color:#26211F">Now we&rsquo;re talking.</b> Value proposition: <b style="color:#26211F">We reach humans better.</b></p>
+  </header>
+
+  <section style="margin-bottom:64px">
+    <h2 style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#A9A7A2;margin:0 0 22px">01 · Logo system</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <div style="border-radius:18px;overflow:hidden;border:1px solid rgba(38,33,31,.1)">
+        <div style="height:150px;background:#1B1714;display:flex;align-items:center;justify-content:center;padding:0 26px"><img src="rz/brand/wordmark-cream.png" alt="" style="width:100%;max-width:250px"></div>
+        <div style="padding:14px 16px;font-size:13px;line-height:1.5;background:#fff"><b>Cream wordmark</b> — dark & mesh backgrounds only. Never on light surfaces.<br><span style="color:#A9A7A2">rz/brand/wordmark-cream.png</span></div>
+      </div>
+      <div style="border-radius:18px;overflow:hidden;border:1px solid rgba(38,33,31,.1)">
+        <div style="height:150px;background:#FBF8F3;display:flex;align-items:center;justify-content:center"><img src="rz/brand/mark-gradient.png" alt="" style="height:92px"></div>
+        <div style="padding:14px 16px;font-size:13px;line-height:1.5;background:#fff"><b>Five-lens mark</b> — the waveform &ldquo;◉&rdquo;. Standalone signature on light surfaces; never recolor it.<br><span style="color:#A9A7A2">rz/brand/mark-gradient.png</span></div>
+      </div>
+      <div style="border-radius:18px;overflow:hidden;border:1px solid rgba(38,33,31,.1)">
+        <div style="height:150px;background:#0E0D0B;display:flex;align-items:center;justify-content:center;padding:0 26px"><img src="rz/wordmark-white2.webp" alt="" style="width:100%;max-width:230px"></div>
+        <div style="padding:14px 16px;font-size:13px;line-height:1.5;background:#fff"><b>Site nav wordmark</b> — compact white version used in the product site header.<br><span style="color:#A9A7A2">rz/wordmark-white2.webp</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:64px">
+    <h2 style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#A9A7A2;margin:0 0 22px">02 · Color</h2>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:12px">
+      <div style="border-radius:16px;background:#0E0D0B;height:110px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end"><span style="color:#fff;font-weight:600;font-size:14px">Ink black</span><span style="color:rgba(255,255,255,.6);font-size:12px">#0E0D0B · --dark · dark sections</span></div>
+      <div style="border-radius:16px;background:#26211F;height:110px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end"><span style="color:#fff;font-weight:600;font-size:14px">Charcoal type</span><span style="color:rgba(255,255,255,.6);font-size:12px">#26211F · headlines on light/mesh</span></div>
+      <div style="border-radius:16px;background:#1A1510;height:110px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end"><span style="color:#fff;font-weight:600;font-size:14px">Ink</span><span style="color:rgba(255,255,255,.6);font-size:12px">#1A1510 · --ink · body headings</span></div>
+      <div style="border-radius:16px;background:#75726D;height:110px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end"><span style="color:#fff;font-weight:600;font-size:14px">Ink 2</span><span style="color:rgba(255,255,255,.75);font-size:12px">#75726D · --ink-2 · body copy</span></div>
+      <div style="border-radius:16px;background:#FCFBF9;height:110px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid rgba(38,33,31,.1)"><span style="font-weight:600;font-size:14px">Paper</span><span style="color:#75726D;font-size:12px">#FCFBF9 · light sections</span></div>
+      <div style="border-radius:16px;background:#F4F2ED;height:110px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid rgba(38,33,31,.1)"><span style="font-weight:600;font-size:14px">Warm cream</span><span style="color:#75726D;font-size:12px">#F4F2ED · alt surface</span></div>
+      <div style="border-radius:16px;background:#EEEDE9;height:110px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end;border:1px solid rgba(38,33,31,.1)"><span style="font-weight:600;font-size:14px">Stone</span><span style="color:#75726D;font-size:12px">#EEEDE9 · cards, wells</span></div>
+      <div style="border-radius:16px;background:#EFA12E;height:110px;padding:14px;display:flex;flex-direction:column;justify-content:flex-end"><span style="color:#26211F;font-weight:600;font-size:14px">Amber</span><span style="color:rgba(38,33,31,.7);font-size:12px">#EFA12E · --amber · CTAs, accents</span></div>
+    </div>
+    <div style="border-radius:16px;height:84px;background:linear-gradient(115deg,#B79DE8,#D9605A 55%,#E2683E);padding:14px;display:flex;flex-direction:column;justify-content:flex-end;margin-bottom:12px"><span style="color:#fff;font-weight:600;font-size:14px">Brand gradient</span><span style="color:rgba(255,255,255,.8);font-size:12px">linear-gradient(115deg, #B79DE8 → #D9605A 55% → #E2683E) · gradient text, icon chips, live accents</span></div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+      <div style="border-radius:16px;background:#5FD7A0;height:76px;padding:12px;display:flex;flex-direction:column;justify-content:flex-end"><span style="color:#0E0D0B;font-weight:600;font-size:13px">Healthcare #5FD7A0</span></div>
+      <div style="border-radius:16px;background:#F4CE7A;height:76px;padding:12px;display:flex;flex-direction:column;justify-content:flex-end"><span style="color:#0E0D0B;font-weight:600;font-size:13px">Finance #F4CE7A</span></div>
+      <div style="border-radius:16px;background:#F0876A;height:76px;padding:12px;display:flex;flex-direction:column;justify-content:flex-end"><span style="color:#0E0D0B;font-weight:600;font-size:13px">Live events #F0876A</span></div>
+      <div style="border-radius:16px;background:#7FB4EC;height:76px;padding:12px;display:flex;flex-direction:column;justify-content:flex-end"><span style="color:#0E0D0B;font-weight:600;font-size:13px">Travel / business #7FB4EC</span></div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:64px">
+    <h2 style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#A9A7A2;margin:0 0 22px">03 · The mesh</h2>
+    <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px;align-items:stretch">
+      <div style="border-radius:18px;overflow:hidden;min-height:210px;position:relative"><img src="rz/brand/mesh-light.png" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></div>
+      <div style="border-radius:18px;background:#fff;border:1px solid rgba(38,33,31,.1);padding:22px;font-size:14.5px;line-height:1.65;color:#4A453F">
+        The signature backdrop: a soft violet <b style="color:#26211F">#B9A8E8</b> field with an ember core (<b style="color:#26211F">#E2683E → #D9605A → #EFA12E</b>). Use light, airy crops with charcoal type for social/marketing; the wordmark goes cream when sitting on the saturated core. Site UI uses the darker equivalents (grad-*.webp) inside orbs and cards, never as full-page backgrounds.
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:64px">
+    <h2 style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#A9A7A2;margin:0 0 22px">04 · Type</h2>
+    <div style="border-radius:18px;background:#fff;border:1px solid rgba(38,33,31,.1);padding:30px">
+      <div style="font-size:56px;font-weight:600;letter-spacing:-.03em;line-height:1.02">Bricolage Grotesque carries everything.</div>
+      <div style="margin-top:18px;font-size:24px;font-weight:500;letter-spacing:-.01em;color:#4A453F">Weights 400–700 only. Display at 600, −0.03em tracking. No second family on the site; system-ui fallback.</div>
+      <div style="margin-top:18px;font-size:16px;line-height:1.65;color:#75726D">Body runs 15–17px at #75726D on paper surfaces. Eyebrows are 12–13px, 700, letter-spacing .14–.18em, uppercase. Voice: confident, not corporate — clear without being clinical, warm without trying too hard. Sentences end with a period, even taglines. Now we&rsquo;re talking.</div>
+    </div>
+  </section>
+
+  <section style="margin-bottom:64px">
+    <h2 style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#A9A7A2;margin:0 0 22px">05 · Motifs &amp; geometry</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+      <div style="border-radius:18px;background:#0E0D0B;padding:22px;min-height:150px;display:flex;flex-direction:column;justify-content:space-between">
+        <div style="display:flex;align-items:center;gap:6px;height:44px"><span style="display:block;width:6px;height:38%;border-radius:99px;background:#B79DE8"></span><span style="display:block;width:6px;height:70%;border-radius:99px;background:#D9605A"></span><span style="display:block;width:6px;height:100%;border-radius:99px;background:#E2683E"></span><span style="display:block;width:6px;height:64%;border-radius:99px;background:#EFA12E"></span><span style="display:block;width:6px;height:34%;border-radius:99px;background:#F4CE7A"></span></div>
+        <div style="color:rgba(255,255,255,.85);font-size:13.5px;line-height:1.5"><b style="color:#fff">Waveform bars</b> — voice made visible; used in heroes, players, the chat FAB.</div>
+      </div>
+      <div style="border-radius:18px;background:#fff;border:1px solid rgba(38,33,31,.1);padding:22px;min-height:150px;display:flex;flex-direction:column;justify-content:space-between">
+        <div style="display:flex;gap:10px"><span style="width:64px;height:40px;border-radius:44px;background:#EEEDE9;border:1px solid rgba(38,33,31,.12)"></span><span style="width:64px;height:40px;border-radius:22px;background:#EEEDE9;border:1px solid rgba(38,33,31,.12)"></span><span style="width:64px;height:40px;border-radius:999px;background:#26211F"></span></div>
+        <div style="font-size:13.5px;line-height:1.5;color:#4A453F"><b style="color:#26211F">Radii</b> — sections 44px (--r), cards 22px (--rc), buttons/pills 999px. Nothing square.</div>
+      </div>
+      <div style="border-radius:18px;background:#fff;border:1px solid rgba(38,33,31,.1);padding:22px;min-height:150px;display:flex;flex-direction:column;justify-content:space-between">
+        <div style="display:flex;align-items:center;justify-content:center;gap:10px;height:52px"><span style="width:52px;height:52px;border-radius:50%;background:url(rz/grad-spray3.webp) center/cover"></span><span style="width:44px;height:44px;border-radius:50%;background:url(rz/grad-prism2.webp) center/cover;opacity:.55"></span><span style="width:44px;height:44px;border-radius:50%;background:url(rz/grad-navy2.webp) center/cover;opacity:.55"></span></div>
+        <div style="font-size:13.5px;line-height:1.5;color:#4A453F"><b style="color:#26211F">Gradient orbs</b> — agents are orbs, not avatars: grad-*.webp textures, ripple rings when live, side orbs dimmed.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 style="font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#A9A7A2;margin:0 0 22px">06 · Rules of thumb</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div style="border-radius:18px;background:#fff;border:1px solid rgba(38,33,31,.1);padding:24px;font-size:14.5px;line-height:1.8;color:#4A453F">
+        <b style="color:#1F8A5B">Do</b><br>
+        &bull; Cream/paper surfaces with charcoal type as the default<br>
+        &bull; One gradient moment per screen — orb, text highlight, or mesh<br>
+        &bull; Rounded everything; pill CTAs; soft long-throw shadows<br>
+        &bull; Sentence-case copy that ends in a period<br>
+        &bull; Reveals + gentle parallax; motion breathes, never bounces
+      </div>
+      <div style="border-radius:18px;background:#fff;border:1px solid rgba(38,33,31,.1);padding:24px;font-size:14.5px;line-height:1.8;color:#4A453F">
+        <b style="color:#D9605A">Don&rsquo;t</b><br>
+        &bull; No cream wordmark on light surfaces; no recolored mark<br>
+        &bull; No full-page mesh behind UI — it&rsquo;s a brand-moment texture<br>
+        &bull; No second typeface, no weight 800, no emoji<br>
+        &bull; No stacked gradients competing on one screen<br>
+        &bull; Never &ldquo;chatbot&rdquo; — Kira is an AI agent platform
+      </div>
+    </div>
+  </section>
+
+</div>
+</x-dc>
+</body>
+</html>

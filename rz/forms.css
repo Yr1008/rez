@@ -1,0 +1,86 @@
+/* Styles for the Request-a-demo / Contact modal built by forms.js.
+   These cannot live as style="" attributes: the site policy's
+   style-src-attr 'none' refuses attributes that arrive via innerHTML, which
+   left the dialog as bare text on the backdrop. forms.js only toggles
+   element.style.display (CSSOM), which the directive permits. */
+
+#rzModal .rzm-card {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  background: #fff;
+  border-radius: 24px;
+  padding: 38px 30px 30px;
+  box-shadow: 0 40px 110px -30px rgba(0, 0, 0, .6);
+  font-family: Open Sans, system-ui, sans-serif;
+}
+#rzModal .rzm-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #f0eee9;
+  color: #141414;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+}
+#rzModal .rzm-title {
+  font-family: Bricolage Grotesque, Open Sans, sans-serif;
+  font-weight: 600;
+  font-size: 23px;
+  letter-spacing: -.02em;
+  margin: 0 0 4px;
+  color: #141414;
+}
+#rzModal .rzm-sub {
+  margin: 0 0 18px;
+  color: #75726D;
+  font-size: 14px;
+}
+#rzModal [data-rzform-consent] {
+  display: none;
+  background: #f5f2ed;
+  border: 1px solid #e2ddd5;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+#rzModal [data-rzform-consent] p {
+  margin: 0 0 12px;
+  color: #5f5952;
+  font-size: 13px;
+  line-height: 1.5;
+}
+#rzModal [data-rzenableforms] {
+  border: 0;
+  border-radius: 999px;
+  background: #181511;
+  color: #fff;
+  padding: 11px 17px;
+  font-weight: 600;
+  cursor: pointer;
+}
+#rzModal .rzm-fine {
+  margin: 14px 0 0;
+  color: #827b73;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+#rzModal .rzm-link { color: #6651a8; }
+#rzModal .rzm-link-strong { color: #6651a8; font-weight: 600; }
+#rzModal [data-rzpane="contact"] { display: none; }
+
+/* The HubSpot standard embed lives in /embed/form and creates its own hosted
+   iframe. The outer frame follows the hosted form as its height changes. */
+#rzModal .rzm-embed { min-height: 60px; }
+#rzModal .rzm-frame {
+  display: block;
+  width: 100%;
+  height: 300px;
+  border: 0;
+  overflow: hidden;
+}

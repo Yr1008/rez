@@ -1,0 +1,18 @@
+:root{
+  /* radii — nothing square */
+  --r:44px;   /* section shells */
+  --rc:22px;  /* cards, FAQ rows */
+  --rs:16px;  /* small cards, inputs */
+  --ri:12px;  /* inner elements, eyebrow pills 11px */
+  --r-pill:999px; /* buttons, chips, pills */
+  /* shadows — long-throw, warm, soft */
+  --shadow-card:0 30px 60px -46px rgba(20,18,14,.5);
+  --shadow-pop:0 34px 64px -32px rgba(20,16,12,.5);
+  --shadow-section:0 -24px 46px -30px rgba(0,0,0,.22); /* section shells overlap upward */
+  --shadow-btn:0 8px 24px -10px rgba(0,0,0,.4);
+  /* spacing rhythm */
+  --sec-pad-y:clamp(84px,9vw,132px); --sec-pad-x:24px; --content-max:1180px;
+  /* motion */
+  --ease-out:cubic-bezier(.16,.84,.44,1); --ease-btn:cubic-bezier(.22,.9,.28,1);
+  --t-hover:.4s; --t-reveal:.7s;
+}
