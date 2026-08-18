@@ -875,7 +875,7 @@ html:not(.nav-ready) .nav-wrap,html:not(.nav-ready) .nav-wrap *{transition:none 
 /* standardized hero tagline — premium 29b */
 @keyframes nwtpan{0%{background-position:0% 50%}100%{background-position:200% 50%}}
 @keyframes nwtwv{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
-.nwt-pan{background:linear-gradient(100deg,#fff 18%,#CBB2FF 38%,#FF8A7A 50%,#FF9D50 60%,#fff 82%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#fff;animation:nwtpan 8.5s linear infinite;filter:drop-shadow(0 2px 18px rgba(8,10,14,.4))}
+.nwt-pan{background:linear-gradient(100deg,#fff 16%,#B79DE8 36%,#D9605A 50%,#E2683E 64%,#fff 84%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#fff;animation:nwtpan 8.5s linear infinite;filter:drop-shadow(0 2px 18px rgba(8,10,14,.4))}
 .nwt-wf{display:inline-flex;align-items:center;gap:3px;height:1em;opacity:.9}
 .nwt-wf i{display:block;width:2px;border-radius:9px;background:#fff;transform-origin:center;animation:nwtwv 1.3s ease-in-out infinite}
 @media(prefers-reduced-motion:reduce){.nwt-pan,.nwt-wf i{animation:none !important}}
@@ -1131,13 +1131,16 @@ html.rv-on [data-rv][data-split][data-in="1"]{animation:none !important}
    The global .logotrack / .logowall rules force full-colour 48px marks; this
    wall is a static ink-normalized grid, so it needs its own, more specific,
    selectors. Color returns on hover. ---- */
-.trustwall{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:40px 60px;max-width:820px;margin:0 auto}
-@media(max-width:560px){.trustwall{gap:28px 36px}}
+.trustwall{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:44px 64px;max-width:840px;margin:0 auto}
+@media(max-width:560px){.trustwall{gap:30px 38px}}
 .trustwall img{width:auto !important;max-width:140px !important;max-height:none !important;object-fit:contain;filter:grayscale(1) brightness(.32) sepia(.14) contrast(1.1) !important;opacity:.82 !important;mix-blend-mode:normal !important;transition:filter .35s var(--ease),opacity .35s var(--ease)}
 @media(hover:hover) and (pointer:fine){
   .trustwall img:hover{filter:none !important;opacity:1 !important}
 }
 .faq-mark{background:linear-gradient(var(--amber),var(--amber)) left 100% / 100% .09em no-repeat;padding-bottom:.06em}
+.ink-link{color:var(--ink);text-decoration:none;background:linear-gradient(var(--ink),var(--ink)) left 100% / 0 .09em no-repeat;padding-bottom:.04em;transition:background-size .35s var(--ease)}
+.ink-link:hover{background-size:100% .09em}
+.lift-from-dark{box-shadow:0 -36px 72px -28px rgba(14,13,11,.48) !important}
 
 /* ---- 12. Small consistency fixes ---- */
 /* Keyboard focus already had a ring; give it the pill radius on pill elements so it
@@ -1146,9 +1149,12 @@ html.rv-on [data-rv][data-split][data-in="1"]{animation:none !important}
 /* Pause the customer-logo marquee on hover so a reader can actually look at it. */
 @media(hover:hover){.logotrack:hover{animation-play-state:paused}}
 /* Give closed FAQ rows a hover response, so they read as interactive. */
-.faq summary{transition:background var(--t-fast) var(--ease),box-shadow var(--t-mid) var(--ease),transform var(--t-mid) var(--ease-out)}
+details.faq > summary{transition:color var(--t-fast) var(--ease),background var(--t-fast) var(--ease)}
+details.faq > summary .chev{background:rgba(26,21,16,.05);color:var(--ink-2)}
+details.faq[open] > summary .chev{background:rgba(26,21,16,.08);color:var(--ink)}
 @media(hover:hover) and (pointer:fine){
-  .faq details:not([open])>summary:hover{box-shadow:var(--e-2);transform:translate3d(0,-1px,0)}
+  details.faq:not([open])>summary:hover{color:var(--ink)}
+  details.faq:not([open])>summary:hover .chev{background:rgba(26,21,16,.08)}
 }
 
 /* ---- 14. Kinetic signature: waveform, reveal variety, living product.
@@ -1164,8 +1170,10 @@ html.rv-on [data-rv="scale"][data-in="1"]{animation-name:rvInScale !important}
 @keyframes rvInRight{from{opacity:0;transform:translate3d(22px,0,0);filter:blur(6px)}to{opacity:1;transform:none;filter:none}}
 @keyframes rvInScale{from{opacity:0;transform:translate3d(0,10px,0) scale(.97)}to{opacity:1;transform:none}}
 
-.hear-kira{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 13px 0 11px;border-radius:999px;color:rgba(255,255,255,.9);text-decoration:none;font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:-.01em;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);white-space:nowrap;transition:background .25s var(--ease),border-color .25s var(--ease),color .25s var(--ease)}
-.hear-kira:hover{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.22);color:#fff}
+.hear-kira{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 13px 0 11px;border-radius:999px;color:#fff;text-decoration:none;font-family:var(--sans);font-size:12.5px;font-weight:600;letter-spacing:-.01em;border:1px solid transparent;background:linear-gradient(180deg,rgba(26,21,16,.62),rgba(14,13,11,.78)) padding-box,var(--grad) border-box;white-space:nowrap;box-shadow:0 0 0 0 rgba(226,104,62,0);transition:background .25s var(--ease),color .25s var(--ease),box-shadow .35s var(--ease)}
+.hear-kira:hover{color:#fff;box-shadow:0 0 20px -4px rgba(226,104,62,.55)}
+.hear-kira-ink{color:var(--ink);background:linear-gradient(#FCFBF9,#FCFBF9) padding-box,var(--grad) border-box}
+.hear-kira-ink:hover{color:var(--ink);box-shadow:0 10px 24px -14px rgba(26,21,16,.4)}
 .hear-kira-wf{display:inline-flex;align-items:flex-end;gap:2px;height:12px}
 .hear-kira-wf i{display:block;width:2px;border-radius:9px;background:var(--amber);transform-origin:bottom;animation:wb 1.1s ease-in-out infinite}
 .hear-kira-wf i:nth-child(1){height:38%;animation-delay:.05s}

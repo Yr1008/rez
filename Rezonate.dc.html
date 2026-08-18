@@ -6,7 +6,7 @@
 <script src="./support.js"></script>
 </head>
 <body>
-<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0E0D0B"/><g transform="translate(30,38)"><rect x="0" y="14" width="4" height="8" rx="2" fill="#FFB24D"/><rect x="7" y="8" width="4" height="20" rx="2" fill="#FFB24D"/><rect x="14" y="2" width="4" height="32" rx="2" fill="#fff"/><rect x="21" y="10" width="4" height="16" rx="2" fill="#FFB24D"/><rect x="28" y="14" width="4" height="8" rx="2" fill="#FFB24D"/><rect x="35" y="6" width="4" height="24" rx="2" fill="#fff"/></g></svg></template>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0E0D0B"/><g transform="translate(30,38)"><rect x="0" y="14" width="4" height="8" rx="2" fill="#EFA12E"/><rect x="7" y="8" width="4" height="20" rx="2" fill="#EFA12E"/><rect x="14" y="2" width="4" height="32" rx="2" fill="#fff"/><rect x="21" y="10" width="4" height="16" rx="2" fill="#EFA12E"/><rect x="28" y="14" width="4" height="8" rx="2" fill="#EFA12E"/><rect x="35" y="6" width="4" height="24" rx="2" fill="#fff"/></g></svg></template>
 <x-dc>
 <helmet>
 <script src="rz/consent.js?v=20260812c"></script>
@@ -43,7 +43,7 @@
      demo component helmet; removing that section took the whole sheet with it and
      left every [data-rv] block below the hero at opacity:0. Linked explicitly. -->
 <link rel="preload" as="font" type="font/woff2" href="rz/fonts/bricolage-grotesque-latin.woff2" crossorigin>
-<link rel="stylesheet" href="rz/site.css?v=56">
+<link rel="stylesheet" href="rz/site.css?v=57">
 <script defer src="rz/premium.js?v=2"></script>
 <style>
 *{box-sizing:border-box}
@@ -113,10 +113,10 @@ p{margin:0}
 @keyframes glasssheen{0%{background-position:160% 0}45%{background-position:-60% 0}100%{background-position:-60% 0}}.indlink{font-size:12.5px;font-weight:600;color:var(--ink);text-decoration:none;padding:7px 14px;border-radius:999px;white-space:nowrap;transition:background .2s,color .2s}.indlink:hover{background:rgba(255,255,255,.1);color:#fff}.indlink.cur{background:var(--ink);color:#fff}@media(max-width:820px){.indbar{display:flex;left:50%;right:auto;max-width:calc(100vw - 20px);justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}.indbar::-webkit-scrollbar{display:none}.indlink{flex:0 0 auto}}
 .mcta{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:160;display:none;align-items:center;gap:12px;height:56px;padding:0 10px 0 20px;border-radius:999px;background:rgba(13,14,17,.84);-webkit-backdrop-filter:blur(22px) saturate(150%);backdrop-filter:blur(22px) saturate(150%);border:1px solid rgba(255,255,255,.09);box-shadow:0 18px 46px -14px rgba(0,0,0,.72);text-decoration:none;-webkit-tap-highlight-color:transparent;transition:transform .2s cubic-bezier(.2,.8,.3,1)}
 .mcta:active{transform:scale(.985)}
-.mcta-dot{flex:0 0 auto;width:9px;height:9px;border-radius:50%;background:#3ED27E;box-shadow:0 0 10px #3ED27E;animation:mctapulse 2.4s ease-in-out infinite}
+.mcta-dot{flex:0 0 auto;width:9px;height:9px;border-radius:50%;background:#5FD7A0;box-shadow:0 0 10px #5FD7A0;animation:mctapulse 2.4s ease-in-out infinite}
 @keyframes mctapulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.82)}}
 .mcta-l{flex:1 1 auto;min-width:0;color:#fff;font-family:var(--sans);font-weight:600;font-size:15px;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mcta-go{flex:0 0 auto;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#fff;color:#141414}
+.mcta-go{flex:0 0 auto;display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#fff;color:#1A1510}
 .mcta-fab{right:78px}
 @media(max-width:560px){.mcta{display:flex}.navlink,.indlink{min-height:44px;display:inline-flex;align-items:center}}
 @keyframes curtainfade{to{opacity:0;visibility:hidden}}@keyframes cineword{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
@@ -157,7 +157,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 @property --btna{syntax:"<angle>";inherits:false;initial-value:0deg}
 @keyframes btnring{to{--btna:360deg}}
 .btn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap;border-radius:999px;font-family:var(--sans);font-weight:600;text-decoration:none;cursor:pointer;border:none;transition:transform .26s cubic-bezier(.2,.8,.3,1),box-shadow .26s,background .22s,color .22s}
-.btn::after{content:"";position:absolute;inset:-6px;border-radius:999px;z-index:-1;background:conic-gradient(from var(--btna),#FFB24D,#F0793C,#B06AD9,#6AA6E8,#FFB24D);filter:blur(13px);opacity:0;transform:scale(.86);transition:opacity .42s ease,transform .42s ease;pointer-events:none}
+.btn::after{content:"";position:absolute;inset:-6px;border-radius:999px;z-index:-1;background:conic-gradient(from var(--btna),#B79DE8,#D9605A,#E2683E,#EFA12E,#B79DE8);filter:blur(13px);opacity:0;transform:scale(.86);transition:opacity .42s ease,transform .42s ease;pointer-events:none}
 .btn:hover::after{opacity:.72;transform:scale(1);animation:btnring 4.5s linear infinite}
 .btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{background:#2A2620}
 .btn.nav-cta-d:hover{box-shadow:0 0 16px 2px rgba(176,106,217,.5),0 6px 20px -6px rgba(240,140,60,.65)}
@@ -167,10 +167,10 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 .btn .c{transition:transform .25s}.btn:hover .c{transform:translateX(4px)}
 .btn-hero{height:48px;min-width:178px;padding:0 26px;font-size:14.5px;letter-spacing:-.01em}
 @media(max-width:560px){.btn-hero{min-width:0;width:100%}}
-@keyframes glowpulse{0%,100%{box-shadow:0 0 0 0 rgba(255,178,77,.55),0 10px 28px -8px rgba(255,178,77,.55)}50%{box-shadow:0 0 0 9px rgba(255,178,77,0),0 12px 34px -6px rgba(255,178,77,.85)}}
+@keyframes glowpulse{0%,100%{box-shadow:0 0 0 0 rgba(239,161,46,.45),0 10px 28px -8px rgba(226,104,62,.45)}50%{box-shadow:0 0 0 9px rgba(239,161,46,0),0 12px 34px -6px rgba(226,104,62,.7)}}
 @keyframes shimmer{0%{transform:translateX(-130%)}55%,100%{transform:translateX(130%)}}
-@keyframes btnbreath{0%,100%{box-shadow:0 8px 26px -14px rgba(240,140,60,.5)}50%{box-shadow:0 0 19px 1px rgba(176,106,217,.4),0 10px 30px -12px rgba(240,140,60,.62)}}
-.btn-glow{position:relative;color:#fff;border:1.5px solid transparent;border-radius:999px;background:linear-gradient(var(--ink),var(--ink)) padding-box,conic-gradient(from 140deg,#FFB24D,#F0793C,#B06AD9,#6AA6E8,#FFB24D) border-box;animation:btnbreath 2.6s ease-in-out infinite;transition:transform .4s cubic-bezier(.2,.8,.3,1)}
+@keyframes btnbreath{0%,100%{box-shadow:0 8px 26px -14px rgba(226,104,62,.45)}50%{box-shadow:0 0 19px 1px rgba(183,157,232,.38),0 10px 30px -12px rgba(226,104,62,.55)}}
+.btn-glow{position:relative;color:#fff;border:1.5px solid transparent;border-radius:999px;background:linear-gradient(var(--ink),var(--ink)) padding-box,conic-gradient(from 140deg,#B79DE8,#D9605A,#E2683E,#EFA12E,#B79DE8) border-box;animation:btnbreath 2.6s ease-in-out infinite;transition:transform .4s cubic-bezier(.2,.8,.3,1)}
 .btn-glow:hover{transform:translateY(-2px);animation:none}
 .btn-glow:active{transform:translateY(0)}
 @media(prefers-reduced-motion:reduce){.btn-glow{animation:none}.btn:hover::after{animation:none}}
@@ -181,7 +181,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 .lg>*{position:relative;z-index:1}
 
 /* ===== GLASS NAV ===== */
-.nav-wrap{position:fixed;top:15px;left:0;right:0;margin:0 auto;z-index:100;width:calc(100% - 28px);max-width:660px}
+.nav-wrap{position:fixed;top:15px;left:0;right:0;margin:0 auto;z-index:100;width:calc(100% - 28px);max-width:780px}
 .nav-bar{position:relative;display:flex;align-items:center;justify-content:space-between;gap:8px;border-radius:999px;padding:3px 3px 3px 15px;background:rgba(13,14,17,.72);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);border:1px solid rgba(255,255,255,.08);box-shadow:0 12px 36px -16px rgba(0,0,0,.65),inset 0 1px 0 rgba(255,255,255,.07)}
 .nav-bar::before{content:"";position:absolute;left:0;top:0;height:0;display:none}
 .nav-bar::after{content:"";position:absolute;left:0;top:0;height:0;display:none}
@@ -210,7 +210,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 .navitem:hover .navdrop{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
 .navdrop-in{position:relative;overflow:hidden;background:rgba(13,14,17,.5);backdrop-filter:blur(24px) saturate(150%);-webkit-backdrop-filter:blur(24px) saturate(150%);border:1px solid rgba(255,255,255,.08);border-radius:22px;padding:10px;box-shadow:0 30px 70px -22px rgba(0,0,0,.65)}
 .navdrop-in .drop-link span span:last-child{color:rgba(255,255,255,.62) !important}
-.droplabel{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#E2630F;padding:8px 14px 6px}
+.droplabel{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#C98A2E;padding:8px 14px 6px}
 .drop-link{display:block;padding:12px 16px;border-radius:14px;text-decoration:none;color:rgba(255,255,255,.92);transition:background .2s}
 .drop-link:hover{background:rgba(255,255,255,.07)}
 .nav-cta-d{position:relative;overflow:hidden;background:#fff;color:#111;border:none;transition:transform .22s cubic-bezier(.2,.8,.3,1),background .25s,box-shadow .25s}
@@ -273,7 +273,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 @keyframes rzmdown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
 .rzmenu a{display:block;padding:14px 16px;border-radius:14px;color:#fff;text-decoration:none;font-weight:600;font-size:16px;font-family:var(--sans),sans-serif}
 .rzmenu a:active{background:rgba(255,255,255,.08)}
-.rzmenu .rzmenu-cta{margin-top:6px;background:#fff;color:#141414;text-align:center}
+.rzmenu .rzmenu-cta{margin-top:6px;background:#fff;color:#1A1510;text-align:center}
 @media(min-width:861px){.rzmenu,.rzmenu-btn{display:none !important}}
 @media(max-width:860px){.nav-bar .nav-links{display:none !important}.nav-toggle{display:flex !important}.nav-bar .nav-cta-d{display:none !important}.rzmenu-btn,.rzmenu{display:none !important}}
 @keyframes indlit{0%{box-shadow:0 0 0 0 rgba(226,104,62,0)}38%{box-shadow:0 0 16px 2px rgba(226,104,62,.8),inset 0 0 0 1px rgba(255,255,255,.18);color:#fff}100%{box-shadow:0 0 0 0 rgba(226,104,62,0)}}
@@ -616,7 +616,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 @media(hover:none){#capabilities .capcard:hover{transform:none;box-shadow:none}}
 #capabilities .capcard{position:relative;border-radius:22px;overflow:hidden;min-height:clamp(360px,52vh,460px);display:flex;flex-direction:column;justify-content:space-between;padding:20px}
 #capabilities .capchip{align-self:flex-start;font-size:12px;font-weight:600;color:#fff;background:rgba(0,0,0,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:7px 12px;border-radius:999px}
-#capabilities .capnum{color:#fff;font-family:var(--sans);font-size:clamp(30px,2.6vw,40px);font-weight:600;letter-spacing:-.03em;text-shadow:0 1px 14px rgba(0,0,0,.3)}
+#capabilities .capnum{color:#fff;font-family:var(--sans);font-size:clamp(44px,4vw,62px);font-weight:600;letter-spacing:-.045em;line-height:.9;text-shadow:0 2px 18px rgba(0,0,0,.35)}
 #capabilities .capsub{color:rgba(255,255,255,.94);font-size:13.5px;line-height:1.45;margin-top:5px;text-shadow:0 1px 12px rgba(0,0,0,.3)}
 #capabilities .capk{font-size:12px;font-weight:600;padding:7px 12px;border-radius:999px;background:rgba(26,21,16,.06);color:var(--ink-2)}
 @media(max-width:900px){#capabilities .capsplit{grid-template-columns:1fr}#capabilities .capcards{grid-template-columns:1fr}#capabilities .capcard{min-height:340px;margin-top:0 !important}#capabilities .capsplit>div:first-child{text-align:center}#capabilities .capsplit>div:first-child>p{margin-left:auto;margin-right:auto}#capabilities .capsplit>div:first-child>div[data-d="2"],#capabilities .capsplit>div:first-child>div[data-d="4"]{justify-content:center}#capabilities .capsplit>div:first-child>div[data-d="3"]{margin-left:auto;margin-right:auto}}
@@ -631,8 +631,8 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
           <p style="color:var(--ink-2);font-size:14px;line-height:1.5;font-weight:500;margin:0">Full context carried between channels, enabling a seamless user experience.</p>
         </div>
         <div data-rv="" data-d="4" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px">
-          <a href="#demo" class="btn btn-glow" style="height:48px;padding:0 24px;font-size:14.5px">Book a live demo</a>
-          <a href="#demo" style="display:inline-flex;align-items:center;height:48px;padding:0 24px;border-radius:999px;background:rgba(20,16,12,.07);color:var(--ink);font-weight:600;font-size:14.5px;text-decoration:none">Request a demo</a>
+          <a href="#kiravoice" class="hear-kira hear-kira-ink" style="height:48px;padding:0 18px"><span class="hear-kira-wf" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Hear Kira</a>
+          <a href="#demo" class="btn btn-glow" style="height:48px;padding:0 24px;font-size:14.5px">Request a demo</a>
         </div>
       </div>
       <div class="capcards" data-rv="scale" data-d="2" data-py="0.05">
@@ -717,7 +717,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 
 
 <!-- ===== 6 · KIRA VOICE ===== -->
-<section data-screen-label="Kira voice" id="kiravoice" style="position:relative;z-index:9;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:#E9E3D8;overflow:hidden">
+<section data-screen-label="Kira voice" id="kiravoice" style="position:relative;z-index:9;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:#F4F2ED;overflow:hidden">
   <style>
   #kiravoice .kv-acc{background:rgba(42,38,36,.34);backdrop-filter:blur(26px) saturate(160%);-webkit-backdrop-filter:blur(26px) saturate(160%);border:none}
   #kiravoice .kv-acc[data-on="1"]{background:rgba(48,44,42,.48)}
@@ -736,7 +736,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
   #kiravoice .kv-acc .acc-h span:last-child{width:25px !important;height:25px !important}
   #kiravoice .kv-acc .acc-bi{font-size:13px !important;padding:0 15px 13px !important}
   #kiravoice .fx-eyebrow{font-size:11px !important;padding:6px 12px !important}
-  #kiravoice{background:#141216}
+  #kiravoice{background:#0E0D0B}
   #kiravoice > img[data-par-box]{inset:0 0 auto 0 !important;width:100% !important;height:34vh !important;transform:none !important;object-position:center 12% !important;-webkit-mask-image:linear-gradient(180deg,#000 72%,transparent);mask-image:linear-gradient(180deg,#000 72%,transparent)}
   #kiravoice .kvstage{padding-top:32vh !important}}
   @media(max-width:900px){#kiravoice .kvphones{position:static !important;transform:none !important;margin:36px auto 0;justify-content:center}#kiravoice .kvtext{max-width:100% !important;text-align:center}#kiravoice .kvtext > p{margin-left:auto !important;margin-right:auto !important}#kiravoice .kv-acc{text-align:left}#kiravoice .kvstage{min-height:0 !important;padding-bottom:44px !important}}
@@ -808,14 +808,14 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 </section>
 
 <!-- ===== FEATURED STORY ===== -->
-<section data-screen-label="Featured story" data-aurora="light" style="position:relative;z-index:10;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:#FAF9F7;overflow:hidden;padding:clamp(72px,8vw,116px) 24px">
+<section data-screen-label="Featured story" data-aurora="light" class="lift-from-dark" style="position:relative;z-index:10;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;background:var(--paper);overflow:hidden;padding:clamp(80px,9vw,128px) 24px">
   <dc-import name="FeaturedStories" hint-size="100%,780px"></dc-import>
 </section>
 
 <!-- ===== 1.5 · TRUSTED BY ===== -->
-<section data-screen-label="Trusted by" data-seam="wave" style="position:relative;z-index:11;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:#F4F2ED;padding:clamp(54px,6vw,86px) 24px clamp(74px,9vw,112px)">
+<section data-screen-label="Trusted by" data-seam="wave" style="position:relative;z-index:11;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:#F4F2ED;padding:clamp(64px,7vw,96px) 24px clamp(80px,9vw,120px)">
   <div class="sec-pad" data-py="0.09" style="max-width:1080px;margin:0 auto;text-align:center">
-    <h2 data-rv="" data-in="1" style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 54px">Used by leading organizations worldwide</h2>
+    <h2 data-rv="" data-in="1" style="font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);margin:0 0 60px">Used by leading organizations worldwide</h2>
     <div data-rv="" data-in="1" class="trustwall">
       <img loading="lazy" decoding="async" src="rz/clogos/singhealth.png" alt="SingHealth" style="height:40px">
       <img loading="lazy" decoding="async" src="rz/clogos/nhg2.png" alt="NHG Health" style="height:44px">
@@ -834,9 +834,9 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 <!-- ===== 8 · FAQ ===== -->
 <section id="faq" data-screen-label="FAQ" data-seam style="position:relative;z-index:13;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:var(--bg);padding:clamp(72px,8vw,116px) 24px">
   <div class="sec-pad" data-py="0.09" style="max-width:1180px;margin:0 auto">
-    <div class="two" style="display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,56px);align-items:start;margin-bottom:30px">
+    <div class="two" style="display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,56px);align-items:start;margin-bottom:48px">
       <div data-rv=""><span class="eyebrow">FAQ</span></div>
-      <h2 data-rv="left" data-d="1" style="font-family:var(--sans);font-weight:600;letter-spacing:-.035em;font-size:clamp(28px,4.2vw,55px);max-width:19ch;color:var(--ink);line-height:1.06">Questions, <span class="faq-mark">answered.</span> Still curious? <a href="#" data-rzform="contact" style="color:var(--ink);text-decoration:none;cursor:pointer">Talk to us</a> anytime.</h2>
+      <h2 data-rv="left" data-d="1" style="font-family:var(--sans);font-weight:600;letter-spacing:-.03em;font-size:clamp(28px,4.2vw,55px);max-width:19ch;color:var(--ink);line-height:1.08">Questions, <span class="faq-mark">answered.</span> Still curious? <a href="#" data-rzform="contact" class="ink-link" style="cursor:pointer">Talk to us</a> anytime.</h2>
     </div>
     <div data-rv="" data-d="1" style="max-width:740px;margin:0 auto">
       <details class="faq" open=""><summary>How do you protect our data?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary><div class="fb">Your data stays on your infrastructure. Rezonate is ISO 27001 and SOC 2 Type II certified, and Kira is built to HIPAA, PDPA and GDPR standards, with the full security detail shared before launch.</div></details>
@@ -882,7 +882,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 <!-- ===== 10 · FOOTER (Fixa) ===== -->
 <footer style="position:relative;z-index:14;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:var(--dark);overflow:hidden">
   <div style="text-align:center;padding:clamp(36px,5vw,76px) 12px clamp(26px,3.4vw,48px);overflow:hidden">
-    <div aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.18em;font-family:var(--sans);font-weight:600;letter-spacing:-.052em;line-height:1.04;font-size:clamp(32px,7vw,96px);padding:0 8px"><span style="white-space:nowrap;background:linear-gradient(100deg,#fff 18%,#CBB2FF 38%,#FF8A7A 50%,#FF9D50 60%,#fff 82%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#fff;animation:nwtpan 6s linear infinite;padding-bottom:.22em;margin-bottom:-.22em">Now we're talking.</span><canvas ref="{{ nwtCanvas }}" id="nwt-wave" aria-hidden="true" style="display:block;width:min(760px,92%);height:clamp(62px,8.5vw,104px);margin:clamp(6px,1vw,14px) auto 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)"></canvas></div>
+    <div aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.18em;font-family:var(--sans);font-weight:600;letter-spacing:-.052em;line-height:1.04;font-size:clamp(32px,7vw,96px);padding:0 8px"><span class="nwt-pan" style="white-space:nowrap;padding-bottom:.22em;margin-bottom:-.22em">Now we're talking.</span><canvas ref="{{ nwtCanvas }}" id="nwt-wave" aria-hidden="true" style="display:block;width:min(760px,92%);height:clamp(62px,8.5vw,104px);margin:clamp(6px,1vw,14px) auto 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)"></canvas></div>
   </div>
   <div style="max-width:1280px;margin:0 auto;padding:clamp(16px,2vw,32px) 24px clamp(28px,3vw,44px)">
     <div class="foot-grid" style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:clamp(24px,3vw,52px);align-items:start">
@@ -936,7 +936,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
     <span style="width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.09);flex:0 0 auto"><img decoding="async" loading="lazy" src="rz/chat-mark-white.png" alt="" style="width:19px;height:19px;object-fit:contain"></span>
     <div style="flex:1;min-width:0">
       <div style="color:#fff;font-weight:600;font-size:15px;letter-spacing:-.01em">Kira</div>
-      <div style="display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#3ED27E;box-shadow:0 0 8px #3ED27E"></span>Online · replies in seconds</div>
+      <div style="display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:12px"><span style="width:6px;height:6px;border-radius:50%;background:#5FD7A0;box-shadow:0 0 8px #5FD7A0"></span>Online · replies in seconds</div>
     </div>
     <button onClick="{{ toggleChat }}" aria-label="Close chat" style="width:30px;height:30px;flex:0 0 auto;border-radius:50%;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;font-size:17px;line-height:1;display:flex;align-items:center;justify-content:center">×</button>
   </div>
@@ -1038,7 +1038,7 @@ class Component extends DCLogic {
 
   applyTweaks(){
     var root=document.documentElement;
-    var grads={Signature:'linear-gradient(115deg,#B79DE8,#D9605A 42%,#E2683E 70%,#EFA12E)',Sunset:'linear-gradient(115deg,#F0A24E,#E2683E 42%,#D9605A 72%,#B0568F)',Cool:'linear-gradient(115deg,#7C6BD0,#5B8DEF 42%,#3FB9C9 72%,#8ED0B0)',Mono:'linear-gradient(115deg,#4a4a52,#26262b)'};
+    var grads={Signature:'linear-gradient(115deg,#B79DE8,#D9605A 55%,#E2683E)',Sunset:'linear-gradient(115deg,#F0A24E,#E2683E 42%,#D9605A 72%,#B0568F)',Cool:'linear-gradient(115deg,#7C6BD0,#5B8DEF 42%,#3FB9C9 72%,#8ED0B0)',Mono:'linear-gradient(115deg,#4a4a52,#26262b)'};
     root.style.setProperty('--grad', grads[this.props.accent]||grads.Signature);
     var radii={Rounded:['44px','22px','16px','12px'],Soft:['64px','34px','24px','18px'],Sharp:['14px','12px','10px','8px']}[this.props.corner]||['44px','22px','16px','12px'];
     root.style.setProperty('--r',radii[0]);root.style.setProperty('--rc',radii[1]);root.style.setProperty('--rs',radii[2]);root.style.setProperty('--ri',radii[3]);
@@ -1053,8 +1053,8 @@ class Component extends DCLogic {
     const f=this.feats(), active=f[this.state.tab];
     const badgeBase='display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;padding:5px 12px;border-radius:99px;margin-bottom:14px;letter-spacing:-.01em';
     const own=active.owner
-      ? {ownerLabel:'Your team takes over here', ownerStyle:badgeBase+';color:#FFB24D;background:rgba(255,178,77,.13);border:1px solid rgba(255,178,77,.32)'}
-      : {ownerLabel:'Kira handles this end to end', ownerStyle:badgeBase+';color:#46d98a;background:rgba(70,217,138,.12);border:1px solid rgba(70,217,138,.26)'};
+      ? {ownerLabel:'Your team takes over here', ownerStyle:badgeBase+';color:#EFA12E;background:rgba(239,161,46,.13);border:1px solid rgba(239,161,46,.32)'}
+      : {ownerLabel:'Kira handles this end to end', ownerStyle:badgeBase+';color:#5FD7A0;background:rgba(95,215,160,.12);border:1px solid rgba(95,215,160,.26)'};
     return {
       tabs:f.map((t,i)=>({label:t.label,on:i===this.state.tab?'1':'0',onClick:()=>this.setTab(i)})),
       prog:f.map((t,i)=>({bg:i<=this.state.tab?'var(--amber)':'rgba(255,255,255,.18)'})),
