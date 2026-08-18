@@ -19,6 +19,7 @@ rsync -a \
   "$ROOT_DIR"/llms.txt \
   "$ROOT_DIR"/sitemap.xml \
   "$ROOT_DIR"/robots.txt \
+  "$ROOT_DIR"/favicon.ico \
   "$ROOT_DIR"/_redirects \
   "$DIST_DIR"/
 
