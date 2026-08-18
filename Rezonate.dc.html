@@ -38,27 +38,31 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Rezonate?","acceptedAnswer":{"@type":"Answer","text":"Rezonate is an AI-powered customer engagement platform for regulated, high-volume industries. Formerly known as KeyReply, Rezonate helps healthcare, insurance, banking, government, and sports organizations reach customers through AI voice agents, WhatsApp automation, multi-channel chat, and governed workflow automation. The platform is SOC 2 Type II certified and HIPAA compliant, a WhatsApp Global Business Solution Provider, and Gartner-recognized."}},{"@type":"Question","name":"What is Kira?","acceptedAnswer":{"@type":"Answer","text":"Kira is Rezonate's AI customer operations platform. Kira unifies AI voice agents, 10 messaging channels (WhatsApp, Microsoft Teams, Slack, Telegram, Facebook Messenger, and more), visual workflow automation, human-in-the-loop inbox, knowledge management, and compliance controls into one governed system."}},{"@type":"Question","name":"Is Rezonate HIPAA compliant?","acceptedAnswer":{"@type":"Answer","text":"Yes. Rezonate is HIPAA compliant and SOC 2 Type II certified. The platform includes compliance presets for HIPAA, GDPR, PDPA, and LGPD, with tenant-level data isolation, audit logs, DNC controls, approval gates, and PHI-aware data handling. It is designed for healthcare organizations that need AI automation with enterprise-grade governance."}},{"@type":"Question","name":"What industries does Rezonate serve?","acceptedAnswer":{"@type":"Answer","text":"Rezonate serves healthcare, insurance, banking and financial services, government, and sports and entertainment organizations. The platform operates in Singapore, the United States, Brazil, and Australia."}},{"@type":"Question","name":"What was Rezonate previously called?","acceptedAnswer":{"@type":"Answer","text":"Rezonate was formerly known as KeyReply. The company rebranded to Rezonate in 2026. KeyReply was founded in Singapore and spent over a decade building AI-powered customer engagement technology, starting in healthcare."}},{"@type":"Question","name":"How long does it take to deploy Rezonate?","acceptedAnswer":{"@type":"Answer","text":"Rezonate's Kira platform is designed to be implementable within approximately 4 weeks for standard deployments. The platform uses a configuration-first approach, agents, knowledge bases, workflows, and channels are set up through the workspace rather than requiring custom code."}}]}</script>
 <script>document.title="Rezonate, AI Customer Engagement for Regulated Industries";</script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="preload" as="image" href="rz/poster-home-lite.webp" fetchpriority="high">
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&amp;display=optional" rel="stylesheet">
 <!-- Site stylesheet. This page previously received it only via the embedded Kira
      demo component helmet; removing that section took the whole sheet with it and
      left every [data-rv] block below the hero at opacity:0. Linked explicitly. -->
-<link rel="stylesheet" href="rz/site.css?v=53">
+<link rel="preload" as="font" type="font/woff2" href="rz/fonts/bricolage-grotesque-latin.woff2" crossorigin>
+<link rel="stylesheet" href="rz/site.css?v=54">
+<script defer src="rz/premium.js?v=1"></script>
 <style>
 *{box-sizing:border-box}
+/* This block sits after rz/site.css, so anything it redeclares wins. It used to
+   reintroduce off-brand values the shared tokens had already fixed: --ink:#141414
+   (a cold near-black rather than the brand's warm #1A1510), --amber:#FFB24D (not
+   the brand amber), and 'Open Sans' in the font stack, which the brand reserves for
+   nothing — Bricolage Grotesque is the only face. Open Sans was never loaded either,
+   so text fell through to system-ui on any font failure instead of the
+   metric-matched fallback. Only the two deeper paper surfaces this page composes
+   with are kept, and they now come from the shared scale. */
 :root{
-  --bg:#ECEAE5; --panel:#E4E2DD; --ink:#141414; --ink-2:#75726D; --ink-3:#A9A7A2;
-  --dark:#0E0D0B; --warm1:#2A2110; --warm2:#5A4516; --amber:#FFB24D;
-  --line-d:rgba(255,255,255,.08); --gd:rgba(255,255,255,.08);
-  --sans:'Bricolage Grotesque','Open Sans',system-ui,sans-serif; --serif:'Bricolage Grotesque','Open Sans',sans-serif;
-  --body:'Bricolage Grotesque','Open Sans',system-ui,sans-serif; --r:44px; --rc:22px;
+  --bg:var(--panel-2); --panel:var(--stone);
+  --r:44px; --rc:22px;
 }
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--dark);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 ::selection{background:rgba(140,110,225,.26);color:inherit}
-h1,h2,h3,h4{margin:0;font-family:var(--sans);font-weight:600;letter-spacing:-.035em;line-height:.98}
+h1,h2,h3,h4{margin:0;font-family:var(--sans);font-weight:600;letter-spacing:-.03em;line-height:.98}
 p{margin:0}
 .serif-i{font-family:var(--serif);font-weight:400;letter-spacing:-.005em}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:var(--ink-2);background:rgba(0,0,0,.05);padding:7px 14px;border-radius:11px}
@@ -558,7 +562,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 </style>
   <div class="sec-pad" data-py="0.09" style="position:relative;z-index:1;max-width:1180px;margin:0 auto">
     <div data-rv="" style="text-align:center"><span class="eyebrow on-d">The Kira Platform</span></div>
-    <h2 data-rv="" data-d="1" style="font-family:var(--sans);font-weight:600;letter-spacing:-.04em;font-size:clamp(28px,4.2vw,55px);line-height:1.03;color:#fff;text-align:center;max-width:22ch;margin:16px auto 0">Every channel, every hour, <span style="background:linear-gradient(115deg,#B79DE8,#D9605A 55%,#E2683E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-bottom:.14em;margin-bottom:-.14em;color:#D9605A">one front line.</span></h2>
+    <h2 data-rv="" data-d="1" data-split style="font-family:var(--sans);font-weight:600;letter-spacing:-.04em;font-size:clamp(28px,4.2vw,55px);line-height:1.03;color:#fff;text-align:center;max-width:22ch;margin:16px auto 0">Every channel, every hour, <span style="background:linear-gradient(115deg,#B79DE8,#D9605A 55%,#E2683E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-bottom:.14em;margin-bottom:-.14em;color:#D9605A">one front line.</span></h2>
     <div class="plxgrid" data-rv="" data-d="2" style="max-width:960px;margin:clamp(26px,3.4vw,44px) auto 0">
       <div class="plxchips">
         <span style="font-size:11.5px;font-weight:700;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);padding:6px 12px;border-radius:99px;white-space:nowrap">Voice</span>
@@ -600,7 +604,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
   </div>
 </section>
 
-<section id="capabilities" data-screen-label="Capabilities" style="position:relative;z-index:8;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);overflow:hidden;background:#F4F2ED;padding:clamp(84px,9vw,132px) 24px">
+<section id="capabilities" data-screen-label="Capabilities" data-aurora="light" style="position:relative;z-index:8;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);overflow:hidden;background:#F4F2ED;padding:clamp(84px,9vw,132px) 24px">
   <div class="sec-pad" data-py="0.08" style="max-width:1180px;margin:0 auto">
 <style>
 #capabilities .capsplit{display:grid;grid-template-columns:.85fr 1.5fr;gap:clamp(32px,4.5vw,56px);align-items:start}
@@ -618,7 +622,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
     <div class="capsplit">
       <div>
         <span class="eyebrow" data-rv="" style="display:inline-flex;margin-bottom:16px">Capabilities</span>
-      <h2 data-rv="" data-d="1" class="fx-display" style="margin-top:clamp(12px,1.4vw,18px)">Kira is built for engagement</h2>
+      <h2 data-rv="" data-d="1" data-split class="fx-display" style="margin-top:clamp(12px,1.4vw,18px)">Kira is built for engagement</h2>
         
         <div data-rv="" data-d="2" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px"><span class="capk" style="background:rgba(217,96,90,.1);color:#A4544E">24/7/365</span><span class="capk" style="background:rgba(217,96,90,.1);color:#A4544E">First-ring pickup</span><span class="capk" style="background:rgba(217,96,90,.1);color:#A4544E">No queue, no voicemail</span></div>
         <div data-rv="" data-d="3" style="margin-top:18px;padding:16px 18px;border-radius:18px;background:rgba(0,0,0,.04);max-width:420px">
@@ -741,7 +745,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
   <div class="sec-pad kvstage" data-py="0.07" style="position:relative;z-index:2;max-width:1280px;margin:0 auto;min-height:clamp(560px,76vh,800px);padding:clamp(92px,11vh,144px) clamp(24px,5vw,72px) clamp(68px,8vw,108px);display:flex;flex-direction:column">
     <div class="kvtext" data-rv="" style="max-width:min(440px,46%)">
       <span class="fx-eyebrow on-d" style="color:#fff;background:rgba(255,255,255,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)">Kira, out loud</span>
-      <h2 data-rv="" data-d="1" style="color:#fff;font-family:var(--sans);font-weight:600;letter-spacing:-.045em;font-size:clamp(28px,4.2vw,55px);line-height:.98;margin-top:16px;text-shadow:0 2px 22px rgba(0,0,0,.22);transition-duration:1.6s">Warm. Fast. <span style="color:#fff">Everywhere.</span></h2>
+      <h2 data-rv="" data-d="1" data-split style="color:#fff;font-family:var(--sans);font-weight:600;letter-spacing:-.045em;font-size:clamp(28px,4.2vw,55px);line-height:.98;margin-top:16px;text-shadow:0 2px 22px rgba(0,0,0,.22);transition-duration:1.6s">Warm. Fast. <span style="color:#fff">Everywhere.</span></h2>
       <p data-rv="" data-d="2" style="color:rgba(255,255,255,.97);font-size:clamp(15px,1.3vw,18px);line-height:1.5;margin-top:16px;max-width:38ch;text-shadow:0 1px 3px rgba(0,0,0,.55),0 2px 22px rgba(0,0,0,.65)">Real conversations on every channel. Kira carries full context from a call to a chat without missing a beat.</p>
       <div style="margin-top:clamp(24px,3vw,34px);display:flex;flex-direction:column;gap:10px">
         <sc-for list="{{ accs }}" as="a" hint-placeholder-count="3">
@@ -795,12 +799,12 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 </section>
 
 <!-- ===== FEATURED STORY ===== -->
-<section data-screen-label="Featured story" style="position:relative;z-index:10;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:#FAF9F7;overflow:hidden;padding:clamp(72px,8vw,116px) 24px">
+<section data-screen-label="Featured story" data-aurora="light" style="position:relative;z-index:10;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:#FAF9F7;overflow:hidden;padding:clamp(72px,8vw,116px) 24px">
   <dc-import name="FeaturedStories" hint-size="100%,780px"></dc-import>
 </section>
 
 <!-- ===== 1.5 · TRUSTED BY ===== -->
-<section data-screen-label="Trusted by" style="position:relative;z-index:11;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:#F4F2ED;padding:clamp(54px,6vw,86px) 24px clamp(74px,9vw,112px)">
+<section data-screen-label="Trusted by" data-seam style="position:relative;z-index:11;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:#F4F2ED;padding:clamp(54px,6vw,86px) 24px clamp(74px,9vw,112px)">
   <div class="sec-pad" data-py="0.09" style="max-width:1080px;margin:0 auto;text-align:center">
     <p data-rv="" data-in="1" style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:54px">Used by leading organizations worldwide</p>
     <div data-rv="" data-in="1" style="overflow:hidden;max-width:1200px;margin:0 auto;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)">
@@ -829,7 +833,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 
 
 <!-- ===== 8 · FAQ ===== -->
-<section id="faq" data-screen-label="FAQ" style="position:relative;z-index:13;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:var(--bg);padding:clamp(72px,8vw,116px) 24px">
+<section id="faq" data-screen-label="FAQ" data-seam style="position:relative;z-index:13;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:var(--bg);padding:clamp(72px,8vw,116px) 24px">
   <div class="sec-pad" data-py="0.09" style="max-width:1180px;margin:0 auto">
     <div class="two" style="display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,56px);align-items:start;margin-bottom:30px">
       <div data-rv=""><span class="eyebrow">FAQ</span></div>
@@ -865,11 +869,11 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 </section>
 
 <!-- ===== 9 · EMOTIONAL CTA (clean photo) ===== -->
-<section id="demo" class="cta-emot" data-screen-label="CTA" style="background:#0E0D0B;position:relative;z-index:14;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);overflow:hidden;min-height:92vh;display:flex">
+<section id="demo" class="cta-emot" data-screen-label="CTA" data-seam style="background:#0E0D0B;position:relative;z-index:14;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);overflow:hidden;min-height:92vh;display:flex">
   <img data-par-box="1" decoding="async" loading="lazy" data-par="-0.05" src="rz/cta-home3.webp" alt="A person at ease mid-conversation at home" style="position:absolute;inset:-10% auto auto -5%;width:110%;height:120%;object-fit:cover;object-position:center 30%;transform:scale(1.06)">
   <div class="sec-pad" data-py="0.09" style="position: relative; width: 100%; max-width: 1320px; margin: 0 auto; padding: clamp(120px,12vw,160px) 24px clamp(48px,6vw,72px); display: flex; flex-direction: column; justify-content: flex-end">
     <div data-rv="" style="max-width:600px">
-      <h2 style="color:#fff;font-size:clamp(28px,4.2vw,55px);line-height:1.0;max-width:11ch;text-shadow:0 2px 20px rgba(0,0,0,.4)">For every call that can't wait.</h2>
+      <h2 data-split style="color:#fff;font-size:clamp(28px,4.2vw,55px);line-height:1.0;max-width:11ch;text-shadow:0 2px 20px rgba(0,0,0,.4)">For every call that can't wait.</h2>
       <p style="color:rgba(255,255,255,.9);font-size:clamp(16px,1.4vw,20px);line-height:1.5;margin-top:18px;max-width:52ch;text-wrap:balance;text-shadow:0 1px 12px rgba(0,0,0,.45)">Start wherever it hurts most, Kira proves herself on one workflow, then scales across your whole front line.</p>
       <div style="margin-top:26px"><div style="display:flex;flex-wrap:wrap;gap:12px"><a href="#demo" class="btn btn-glow btn-hero">Request a demo</a><a href="Solutions.dc.html" class="btn btn-white btn-hero">Explore the platform <span class="c">→</span></a></div></div>
     </div>
