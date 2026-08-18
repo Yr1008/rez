@@ -371,9 +371,13 @@
   /* Start every load at the top so the hero opens on frame 0 instead of the browser
      restoring a mid-scroll position and the canvas snapping to a mid-clip frame. */
   try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(_){}
+  /* In-page hashes (#kiravoice, #demo, …) are a real destination. Pinning scroll
+     to 0 would make those links look broken — Hear Kira in the nav is one of them. */
+  var hashId=(location.hash||'').replace(/^#/,'');
+  var hashJump=hashId && /^(kiravoice|demo|faq|platform|capabilities)$/.test(hashId);
   /* Force the top on load/refresh so the hero always opens on its main heading (frame 0),
      not a browser-restored mid-scroll position that would show a later choreography heading. */
-  try{ window.scrollTo(0,0); }catch(_){}
+  if(!hashJump){ try{ window.scrollTo(0,0); }catch(_){} }
   /* Anti-flash guard: even with scrollRestoration=manual, the browser (or host) can
      re-apply a saved scroll position a beat after our scrollTo(0,0). The hero then
      renders a mid-scroll choreography state for a few frames (opening heading gone,
@@ -387,6 +391,7 @@
      longer fade the title out-and-in. Released only on a REAL user interaction. */
   try{ document.documentElement.classList.add('cine-lock'); }catch(_){}
   var releaseLock=function(){ userIn=true; try{ document.documentElement.classList.remove('cine-lock'); }catch(_){} };
+  if(hashJump) releaseLock();
   ['wheel','touchstart','keydown','pointerdown'].forEach(function(ev){ window.addEventListener(ev, releaseLock, {passive:true, capture:true, once:true}); });
   /* Until the user actually interacts, pin the page to the top so a late browser
      scroll-restore can't leave the hero mid-scroll. No time limit - the lock owns

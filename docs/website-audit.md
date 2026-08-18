@@ -326,6 +326,16 @@ most-enterprise option in each group that does not fight the toolkit:
 - **✅ `--grad` aligned to the toolkit recipe** (`115deg, #B79DE8, #D9605A 55%, #E2683E`). Amber
   remains a named token for single-hue use; it is no longer a fourth stop on the brand ramp.
 
+**Motion pack, this pass.** The site still coasts after the hero unless motion *explains* something. Added:
+
+- Capability cards are one family, three hues walking the brand gradient, with a live waveform on each card. The three unrelated textures are gone.
+- `#kiravoice` phones run: the call timer ticks, the last iMessage arrives, the "Kira is on the line" bars move, and a five-line transcript types itself as the section is scrolled.
+- The platform diagram draws in on entry; "Loop closed" lights when the stroke finishes.
+- A Hear Kira waveform pill sits in the nav (and the mobile sheet) and jumps to `#kiravoice`. `cine.js` no longer pins `scrollY` to 0 when that hash is the destination.
+- Reveal direction now varies (`left` / `right` / `scale`) instead of one fade everywhere.
+- The Trusted-by seam is a thin animated wave — the footer motif, reused small.
+- Mobile keeps the call phone (it used to hide both) and the hero type floor is 32–40px, not 17–22.
+
 Not done, because they are product decisions or need a pick:
 
 - Remounting the live demo as homepage act two (`KiraVoiceDemo` is excluded from publish; the

@@ -41,6 +41,16 @@
   /* ------------------------------------------------------------------ *
    * 0. Document-level fixes that belong on every page
    * ------------------------------------------------------------------ */
+  function honorHash() {
+    if (root.getAttribute('data-hash-honored') === '1') return;
+    var id = (location.hash || '').replace(/^#/, '');
+    if (!id || !/^(kiravoice|demo|faq|platform|capabilities)$/.test(id)) return;
+    var el = doc.getElementById(id);
+    if (!el) return;
+    root.setAttribute('data-hash-honored', '1');
+    try { el.scrollIntoView({ block: 'start' }); } catch (e) {}
+  }
+
   function documentBasics() {
     if (!root.getAttribute('lang')) root.setAttribute('lang', 'en');
 
@@ -533,12 +543,108 @@
   /* ------------------------------------------------------------------ *
    * 7. Run, and keep running as the runtime mounts content
    * ------------------------------------------------------------------ */
+  /* ------------------------------------------------------------------ *
+   * 6b. Product-in-motion: the phones and the transcript
+   *
+   * The "out loud" section used to be a pair of frozen screenshots. A call
+   * timer that actually ticks, a message that arrives, and a short transcript
+   * that types itself as the section is scrolled is the cheapest way to make
+   * the product feel audible without remounting the live demo.
+   * ------------------------------------------------------------------ */
+  function livePhones(scope) {
+    var rootEl = (scope && scope.querySelector) ? scope : doc;
+    var kv = doc.getElementById('kiravoice');
+    if (kv && kv.getAttribute('data-kv-live') !== '1') {
+      kv.setAttribute('data-kv-live', '1');
+      if (window.IntersectionObserver) {
+        var kio = new IntersectionObserver(function (es) {
+          if (es[0] && es[0].isIntersecting) kv.setAttribute('data-on', '1');
+        }, { threshold: 0.18 });
+        kio.observe(kv);
+      } else {
+        kv.setAttribute('data-on', '1');
+      }
+    }
+
+    var timers = rootEl.querySelectorAll('[data-call-timer]:not([data-live])');
+    for (var i = 0; i < timers.length; i++) {
+      (function (el) {
+        el.setAttribute('data-live', '1');
+        var start = parseInt(el.getAttribute('data-call-timer'), 10) || 0;
+        var t0 = Date.now();
+        var id = null;
+        function fmt(s) {
+          var m = Math.floor(s / 60);
+          var r = s % 60;
+          return (m < 10 ? '0' : '') + m + ':' + (r < 10 ? '0' : '') + r;
+        }
+        function tick() {
+          el.textContent = fmt(start + Math.floor((Date.now() - t0) / 1000));
+        }
+        function play() {
+          if (id || reduce) return;
+          tick();
+          id = setInterval(tick, 1000);
+        }
+        function pause() {
+          if (id) { clearInterval(id); id = null; }
+        }
+        if (reduce) {
+          el.textContent = fmt(start);
+          return;
+        }
+        if (window.IntersectionObserver) {
+          var tio = new IntersectionObserver(function (es) {
+            if (es[0] && es[0].isIntersecting) play();
+            else pause();
+          }, { threshold: 0.2 });
+          tio.observe(el);
+        } else {
+          play();
+        }
+      })(timers[i]);
+    }
+
+    var scripts = rootEl.querySelectorAll('[data-transcript]:not([data-live])');
+    for (var s = 0; s < scripts.length; s++) {
+      (function (host) {
+        host.setAttribute('data-live', '1');
+        var lines = host.querySelectorAll('li');
+        if (!lines.length) return;
+        var queued = false;
+        function update() {
+          queued = false;
+          var sec = host.closest('section') || host;
+          var r;
+          try { r = sec.getBoundingClientRect(); } catch (e) { return; }
+          var vh = window.innerHeight || 800;
+          var p = (vh * 0.7 - r.top) / Math.max(r.height, 1);
+          p = Math.min(1, Math.max(0, p));
+          var n = Math.round(p * (lines.length - 1));
+          if (reduce) n = lines.length - 1;
+          for (var j = 0; j < lines.length; j++) {
+            if (j <= n) lines[j].setAttribute('data-on', '1');
+            else lines[j].removeAttribute('data-on');
+          }
+        }
+        window.addEventListener('scroll', function () {
+          if (queued) return;
+          queued = true;
+          requestAnimationFrame(update);
+        }, { passive: true });
+        update();
+      })(scripts[s]);
+    }
+  }
+
   function pass(scope) {
     try { documentBasics(); } catch (e) {}
+    try { honorHash(); } catch (e) {}
     try { enhance(scope); } catch (e) {}
     try { splitAll(scope); } catch (e) {}
     try { accessibleAccordions(scope); } catch (e) {}
     try { collect(scope); } catch (e) {}
+    try { livePhones(scope); } catch (e) {}
   }
 
   function boot() {
