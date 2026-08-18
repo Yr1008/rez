@@ -1131,9 +1131,9 @@ html.rv-on [data-rv][data-split][data-in="1"]{animation:none !important}
    The global .logotrack / .logowall rules force full-colour 48px marks; this
    wall is a static ink-normalized grid, so it needs its own, more specific,
    selectors. Color returns on hover. ---- */
-.trustwall{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:44px 64px;max-width:840px;margin:0 auto}
-@media(max-width:560px){.trustwall{gap:30px 38px}}
-.trustwall img{width:auto !important;max-width:140px !important;max-height:none !important;object-fit:contain;filter:grayscale(1) brightness(.32) sepia(.14) contrast(1.1) !important;opacity:.82 !important;mix-blend-mode:normal !important;transition:filter .35s var(--ease),opacity .35s var(--ease)}
+.trustwall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));justify-items:center;align-items:center;gap:44px 36px;max-width:880px;margin:0 auto}
+@media(max-width:720px){.trustwall{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 28px}}
+.trustwall img{width:auto !important;max-width:140px !important;max-height:44px !important;object-fit:contain;filter:grayscale(1) brightness(.32) sepia(.14) contrast(1.1) !important;opacity:.82 !important;mix-blend-mode:normal !important;transition:filter .35s var(--ease),opacity .35s var(--ease)}
 @media(hover:hover) and (pointer:fine){
   .trustwall img:hover{filter:none !important;opacity:1 !important}
 }
