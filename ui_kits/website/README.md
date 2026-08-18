@@ -1,0 +1,2 @@
+# Website UI kit
+Static recreation of the getrezonate.com marketing site (source: Rezonate.dc.html + rz/site.css in this project). One scrollable index screen: pill nav, video-hero stand-in (poster + glass channel cards), platform metrics, capability cards, story quote, FAQ, CTA. Interactions: FAQ accordion, chip filters, hover states. The live DC pages remain the production source of truth; this kit is the composable JSX reference.

@@ -1,0 +1,13 @@
+.DS_Store
+.env
+.env.*
+.dev.vars
+.wrangler/
+backup/
+dist/
+node_modules/
+screenshots/
+uploads/
+npm-debug.log*
+rz/rev-asian-man.png
+rz/rev-blue-man.png

@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "scripts": {
+    "prepare:deploy": "bash scripts/prepare-deploy.sh",
+    "test:csp": "node scripts/check-csp.mjs dist",
+    "deploy:dry-run": "npm run prepare:deploy && wrangler deploy --dry-run",
+    "deploy": "npm run prepare:deploy && wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.106.0"
+  }
+}
