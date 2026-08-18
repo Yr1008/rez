@@ -129,12 +129,41 @@
     markDone(el);
   }
 
-  function revealEverything() {
+  // Last resort only. Disarming drops the hidden state for the whole document, so
+  // nothing below the fold can animate afterwards — it is reserved for the case where
+  // something is demonstrably stuck.
+  function disarm() {
     revealedAll = true;
     pendingSet = [];
     root.classList.remove('rv-on');
     var all = doc.querySelectorAll('[data-rv]:not([data-in]),[data-split]:not([data-in])');
     for (var i = 0; i < all.length; i++) all[i].setAttribute('data-in', '1');
+  }
+
+  // Reveals anything that is hidden while on screen — i.e. anything the observer and
+  // the scroll sweep both missed. Runs on a short schedule after arming, on load, and
+  // on resize. Elements still below the fold are left alone so they keep their
+  // entrance for when the reader reaches them.
+  function watchdog() {
+    if (revealedAll) return 0;
+    var vh = window.innerHeight || 800;
+    var stuck = doc.querySelectorAll('[data-rv]:not([data-in]),[data-split]:not([data-in])');
+    var n = 0;
+    for (var i = 0; i < stuck.length; i++) {
+      var r;
+      try {
+        r = stuck[i].getBoundingClientRect();
+      } catch (e) {
+        reveal(stuck[i], true);
+        n++;
+        continue;
+      }
+      if (r.bottom > -80 && r.top < vh + 80) {
+        reveal(stuck[i], true);
+        n++;
+      }
+    }
+    return n;
   }
 
   function observer() {
@@ -232,8 +261,17 @@
     if (!armed) {
       armed = true;
       root.classList.add('rv-on');
-      // Defence (c): whatever happens, nothing stays hidden.
-      setTimeout(revealEverything, 4500);
+      // Defence (c): sweep anything that is hidden while on screen. Staggered rather
+      // than one-shot, so late layout (web fonts, images settling, the runtime
+      // mounting a section) cannot leave something behind.
+      [900, 2200, 5000].forEach(function (t) { setTimeout(watchdog, t); });
+      window.addEventListener('load', function () { setTimeout(watchdog, 150); });
+      window.addEventListener('resize', function () { setTimeout(watchdog, 250); }, { passive: true });
+      // Absolute backstop: if anything is still hidden on screen this late, the
+      // system is not working on this page and is switched off entirely.
+      setTimeout(function () {
+        if (watchdog() > 0) disarm();
+      }, 10000);
     }
 
     var ob = observer();
@@ -510,7 +548,7 @@
 
     if (!window.MutationObserver) {
       // No observer: make sure late content is never left hidden.
-      setTimeout(revealEverything, 2500);
+      setTimeout(disarm, 2500);
       return;
     }
 
