@@ -1565,9 +1565,15 @@
   }
 
   // src/index.ts
-  var REACT_URL = "https://unpkg.com/react@18.3.1/umd/react.production.min.js";
+  // React is served from our own origin. The byte-identical UMD builds were already
+  // committed at rz/react-*.min.js but nothing referenced them, so every page still
+  // made two blocking third-party requests to unpkg.com before it could render
+  // anything — and the deploy's own CSP (script-src 'self' …) does not allow unpkg,
+  // so a CSP-enforcing host would have served a permanently blank page.
+  // The integrity hashes are unchanged and still verified.
+  var REACT_URL = "/rz/react-18.3.1.min.js";
   var REACT_SRI = "sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z";
-  var REACT_DOM_URL = "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js";
+  var REACT_DOM_URL = "/rz/react-dom-18.3.1.min.js";
   var REACT_DOM_SRI = "sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1";
   function hideRawTemplate() {
     const s = document.createElement("style");
