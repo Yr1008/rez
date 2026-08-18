@@ -43,7 +43,7 @@
      demo component helmet; removing that section took the whole sheet with it and
      left every [data-rv] block below the hero at opacity:0. Linked explicitly. -->
 <link rel="preload" as="font" type="font/woff2" href="rz/fonts/bricolage-grotesque-latin.woff2" crossorigin>
-<link rel="stylesheet" href="rz/site.css?v=54">
+<link rel="stylesheet" href="rz/site.css?v=55">
 <script defer src="rz/premium.js?v=1"></script>
 <style>
 *{box-sizing:border-box}
@@ -367,7 +367,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 </style>
 <script>(function(){var done=false;function r(){if(done)return;done=true;document.documentElement.classList.add('fonts-ready');}function reveal(){requestAnimationFrame(function(){requestAnimationFrame(r);});}function go(){if(document.fonts&&document.fonts.load){Promise.all([document.fonts.load('600 60px "Bricolage Grotesque"'),document.fonts.load('500 60px "Bricolage Grotesque"'),document.fonts.load('400 60px "Bricolage Grotesque"'),document.fonts.load('700 60px "Bricolage Grotesque"')]).then(reveal).catch(reveal);}else{reveal();}}if(document.readyState==='loading'){window.addEventListener('DOMContentLoaded',go);}else{go();}setTimeout(r,3000);})();</script>
 <script>if('scrollRestoration' in history){history.scrollRestoration='manual';}try{window.scrollTo(0,0);}catch(e){}</script>
-<link rel="preload" as="image" href="rz/poster-home-lite.webp" fetchpriority="high"><script>(function(){if((window.matchMedia&&window.matchMedia('(max-width:1024px)').matches)||window.innerWidth<=1024)return;function P(){var v=document.querySelector('#cinevid-wrap video');if(!v)return;try{v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.playsInline=true;v.setAttribute('playsinline','');}catch(e){}var p=v.play();if(p&&p.catch)p.catch(function(){});}function start(){var t=setInterval(function(){P();var v=document.querySelector('#cinevid-wrap video');if(v&&!v.paused)clearInterval(t);},60);setTimeout(function(){clearInterval(t);},8000);}if(document.readyState==='complete')setTimeout(start,180);else addEventListener('load',function(){setTimeout(start,180);});['touchstart','pointerdown','click','scroll','keydown'].forEach(function(e){addEventListener(e,P,{passive:true,once:true});});document.addEventListener('visibilitychange',P);})();</script><script defer="" src="rz/cine.js?v=69"></script><script defer src="rz/parallax.js?v=11"></script><script defer src="rz/hero-video.js?v=5"></script><script defer="" src="rz/smooth.js"></script><script defer="" src="rz/mobile.js?v=2"></script><style>a{color:inherit;text-decoration:none}a:hover{color:inherit}</style>
+<link rel="preload" as="image" href="rz/poster-home-lite.webp" fetchpriority="high"><script>(function(){if((window.matchMedia&&window.matchMedia('(max-width:1024px)').matches)||window.innerWidth<=1024)return;function P(){var v=document.querySelector('#cinevid-wrap video');if(!v)return;try{v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.playsInline=true;v.setAttribute('playsinline','');}catch(e){}var p=v.play();if(p&&p.catch)p.catch(function(){});}function start(){var t=setInterval(function(){P();var v=document.querySelector('#cinevid-wrap video');if(v&&!v.paused)clearInterval(t);},60);setTimeout(function(){clearInterval(t);},8000);}if(document.readyState==='complete')setTimeout(start,180);else addEventListener('load',function(){setTimeout(start,180);});['touchstart','pointerdown','click','scroll','keydown'].forEach(function(e){addEventListener(e,P,{passive:true,once:true});});document.addEventListener('visibilitychange',P);})();</script><script defer="" src="rz/cine.js?v=69"></script><script defer src="rz/parallax.js?v=12"></script><script defer src="rz/hero-video.js?v=5"></script><script defer="" src="rz/smooth.js"></script><script defer="" src="rz/mobile.js?v=2"></script><style>a{color:inherit;text-decoration:none}a:hover{color:inherit}</style>
 <style>
 @keyframes kcEq{0%,100%{transform:scaleY(.35)}50%{transform:scaleY(1)}}
 @keyframes chatring{0%{transform:scale(1);opacity:.55}70%{transform:scale(1.55);opacity:0}100%{opacity:0}}
@@ -616,7 +616,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 #capabilities .capchip{align-self:flex-start;font-size:12px;font-weight:600;color:#fff;background:rgba(0,0,0,.22);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:7px 12px;border-radius:999px}
 #capabilities .capnum{color:#fff;font-family:var(--sans);font-size:clamp(30px,2.6vw,40px);font-weight:600;letter-spacing:-.03em;text-shadow:0 1px 14px rgba(0,0,0,.3)}
 #capabilities .capsub{color:rgba(255,255,255,.94);font-size:13.5px;line-height:1.45;margin-top:5px;text-shadow:0 1px 12px rgba(0,0,0,.3)}
-#capabilities .capk{font-size:12px;font-weight:600;padding:7px 12px;border-radius:999px;background:rgba(0,0,0,.05);color:var(--ink-2)}
+#capabilities .capk{font-size:12px;font-weight:600;padding:7px 12px;border-radius:999px;background:rgba(26,21,16,.06);color:var(--ink-2)}
 @media(max-width:900px){#capabilities .capsplit{grid-template-columns:1fr}#capabilities .capcards{grid-template-columns:1fr}#capabilities .capcard{min-height:340px;margin-top:0 !important}#capabilities .capsplit>div:first-child{text-align:center}#capabilities .capsplit>div:first-child>p{margin-left:auto;margin-right:auto}#capabilities .capsplit>div:first-child>div[data-d="2"],#capabilities .capsplit>div:first-child>div[data-d="4"]{justify-content:center}#capabilities .capsplit>div:first-child>div[data-d="3"]{margin-left:auto;margin-right:auto}}
 </style>
     <div class="capsplit">
@@ -624,7 +624,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
         <span class="eyebrow" data-rv="" style="display:inline-flex;margin-bottom:16px">Capabilities</span>
       <h2 data-rv="" data-d="1" data-split class="fx-display" style="margin-top:clamp(12px,1.4vw,18px)">Kira is built for engagement</h2>
         
-        <div data-rv="" data-d="2" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px"><span class="capk" style="background:rgba(217,96,90,.1);color:#A4544E">24/7/365</span><span class="capk" style="background:rgba(217,96,90,.1);color:#A4544E">First-ring pickup</span><span class="capk" style="background:rgba(217,96,90,.1);color:#A4544E">No queue, no voicemail</span></div>
+        <div data-rv="" data-d="2" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:8px"><span class="capk">24/7/365</span><span class="capk">First-ring pickup</span><span class="capk">No queue, no voicemail</span></div>
         <div data-rv="" data-d="3" style="margin-top:18px;padding:16px 18px;border-radius:18px;background:rgba(0,0,0,.04);max-width:420px">
           <p style="color:var(--ink-2);font-size:14px;line-height:1.5;font-weight:500;margin:0">Full context carried between channels, enabling a seamless user experience.</p>
         </div>
@@ -634,9 +634,9 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
         </div>
       </div>
       <div class="capcards" data-rv="" data-d="2" data-py="0.05">
-        <div class="capcard" style="background-image:url('rz/grad-terra2.webp')"><span class="capchip">Triages with care</span><div><div class="capnum">82%</div><div class="capsub">resolved without a human, never a diagnosis</div></div></div>
-        <div class="capcard" style="background-image:url('rz/grad-violet2.webp');margin-top:34px"><span class="capchip">Books &amp; reschedules</span><div><div class="capnum">49%</div><div class="capsub">fewer no-shows, booked in a 12-second call</div></div></div>
-        <div class="capcard" style="background-image:url('rz/grad-navy2.webp')"><span class="capchip">Speaks every channel</span><div><div class="capnum">60+</div><div class="capsub">languages from day one, on voice and text</div></div></div>
+        <div class="capcard" style="background-image:url('rz/grad-terra2.webp')"><span class="capchip">Triages with care</span><div><div class="capnum cnum" data-val="82" data-suf="%">82%</div><div class="capsub">resolved without a human, never a diagnosis</div></div></div>
+        <div class="capcard" style="background-image:url('rz/grad-violet2.webp');margin-top:34px"><span class="capchip">Books &amp; reschedules</span><div><div class="capnum cnum" data-val="49" data-suf="%">49%</div><div class="capsub">fewer no-shows, booked in a 12-second call</div></div></div>
+        <div class="capcard" style="background-image:url('rz/grad-navy2.webp')"><span class="capchip">Speaks every channel</span><div><div class="capnum cnum" data-val="60" data-suf="+">60+</div><div class="capsub">languages from day one, on voice and text</div></div></div>
       </div>
     </div>
     <div style="display:none">
@@ -806,26 +806,16 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 <!-- ===== 1.5 · TRUSTED BY ===== -->
 <section data-screen-label="Trusted by" data-seam style="position:relative;z-index:11;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:#F4F2ED;padding:clamp(54px,6vw,86px) 24px clamp(74px,9vw,112px)">
   <div class="sec-pad" data-py="0.09" style="max-width:1080px;margin:0 auto;text-align:center">
-    <p data-rv="" data-in="1" style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:54px">Used by leading organizations worldwide</p>
-    <div data-rv="" data-in="1" style="overflow:hidden;max-width:1200px;margin:0 auto;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)">
-      <div class="logotrack" style="gap:clamp(44px,5.5vw,84px);padding-right:clamp(44px,5.5vw,84px)">
-        <img loading="lazy" decoding="async" src="rz/clogos/singhealth.png" alt="SingHealth" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/c2-t.png" alt="Pondok Indah Group" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/c3-t.png" alt="AIA" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/c4-t.png" alt="PaninBank" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/nhg2.png" alt="NHG Health" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/c6-t.png" alt="Institut Jantung Negara" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/mom.png" alt="Ministry of Manpower" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/asahi.png" alt="Asahi" style="width:132px;height:46px;object-fit:contain"><img loading="lazy" decoding="async" src="rz/clogos/c1.png" alt="Client logo" style="width:132px;height:46px;object-fit:contain"><img loading="lazy" decoding="async" src="rz/clogos/c5.png" alt="Client logo" style="width:132px;height:46px;object-fit:contain"><img loading="lazy" decoding="async" src="rz/clogos/c8.png" alt="Client logo" style="width:132px;height:46px;object-fit:contain"><img loading="lazy" decoding="async" src="rz/clogos/c9.png" alt="Client logo" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/singhealth.png" alt="" aria-hidden="true" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/c2-t.png" alt="" aria-hidden="true" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/c3-t.png" alt="" aria-hidden="true" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/c4-t.png" alt="" aria-hidden="true" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/nhg2.png" alt="" aria-hidden="true" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/c6-t.png" alt="" aria-hidden="true" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/mom.png" alt="" aria-hidden="true" style="width:132px;height:46px;object-fit:contain">
-        <img loading="lazy" decoding="async" src="rz/clogos/asahi.png" alt="" aria-hidden="true" style="width:132px;height:46px;object-fit:contain"><img loading="lazy" decoding="async" src="rz/clogos/c1.png" alt="" aria-hidden="true" style="width:132px;height:46px;object-fit:contain"><img loading="lazy" decoding="async" src="rz/clogos/c5.png" alt="" aria-hidden="true" style="width:132px;height:46px;object-fit:contain"><img loading="lazy" decoding="async" src="rz/clogos/c8.png" alt="" aria-hidden="true" style="width:132px;height:46px;object-fit:contain"><img loading="lazy" decoding="async" src="rz/clogos/c9.png" alt="" aria-hidden="true" style="width:132px;height:46px;object-fit:contain">
-      </div>
+    <h2 data-rv="" data-in="1" style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin:0 0 54px">Used by leading organizations worldwide</h2>
+    <div data-rv="" data-in="1" class="trustwall">
+      <img loading="lazy" decoding="async" src="rz/clogos/singhealth.png" alt="SingHealth" style="height:40px">
+      <img loading="lazy" decoding="async" src="rz/clogos/nhg2.png" alt="NHG Health" style="height:44px">
+      <img loading="lazy" decoding="async" src="rz/clogos/c3-t.png" alt="AIA" style="height:36px">
+      <img loading="lazy" decoding="async" src="rz/clogos/c4-t.png" alt="PaninBank" style="height:31px">
+      <img loading="lazy" decoding="async" src="rz/clogos/mom.png" alt="Ministry of Manpower" style="height:46px">
+      <img loading="lazy" decoding="async" src="rz/clogos/asahi.png" alt="Asahi" style="height:33px">
+      <img loading="lazy" decoding="async" src="rz/clogos/c2-t.png" alt="Pondok Indah Group" style="height:44px">
+      <img loading="lazy" decoding="async" src="rz/clogos/c6-t.png" alt="Institut Jantung Negara" style="height:44px">
     </div>
   </div>
 </section>
@@ -837,7 +827,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
   <div class="sec-pad" data-py="0.09" style="max-width:1180px;margin:0 auto">
     <div class="two" style="display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,56px);align-items:start;margin-bottom:30px">
       <div data-rv=""><span class="eyebrow">FAQ</span></div>
-      <h2 data-rv="" data-d="1" style="font-family:var(--sans);font-weight:600;letter-spacing:-.035em;font-size:clamp(28px,4.2vw,55px);max-width:19ch;color:var(--ink-3);line-height:1.06"><span style="background:linear-gradient(115deg,#B79DE8,#D9605A 46%,#E2683E 72%,#EFA12E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;padding-bottom:.14em;margin-bottom:-.14em">Questions, answered.</span> Still curious? <a href="#" data-rzform="contact" style="color:var(--ink);text-decoration:none;cursor:pointer">Talk to us</a> anytime.</h2>
+      <h2 data-rv="" data-d="1" style="font-family:var(--sans);font-weight:600;letter-spacing:-.035em;font-size:clamp(28px,4.2vw,55px);max-width:19ch;color:var(--ink);line-height:1.06">Questions, <span class="faq-mark">answered.</span> Still curious? <a href="#" data-rzform="contact" style="color:var(--ink);text-decoration:none;cursor:pointer">Talk to us</a> anytime.</h2>
     </div>
     <div data-rv="" data-d="1" style="max-width:740px;margin:0 auto">
       <details class="faq" open=""><summary>How do you protect our data?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></span></summary><div class="fb">Your data stays on your infrastructure. Rezonate is ISO 27001 and SOC 2 Type II certified, and Kira is built to HIPAA, PDPA and GDPR standards, with the full security detail shared before launch.</div></details>
@@ -883,7 +873,7 @@ html.cine-lock #cinelabelwrap,html.cine-lock #cinestat,html.cine-lock .cine-card
 <!-- ===== 10 · FOOTER (Fixa) ===== -->
 <footer style="position:relative;z-index:14;margin-top:-44px;border-radius:var(--r) var(--r) 0 0;box-shadow:0 -14px 34px -30px rgba(0,0,0,.09);background:var(--dark);overflow:hidden">
   <div style="text-align:center;padding:clamp(36px,5vw,76px) 12px clamp(26px,3.4vw,48px);overflow:hidden">
-    <div aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.18em;font-family:var(--sans);font-weight:600;letter-spacing:-.052em;line-height:1.04;font-size:clamp(32px,7vw,96px);padding:0 8px"><span style="white-space:nowrap;background:linear-gradient(100deg,#fff 18%,#CBB2FF 38%,#FF8A7A 50%,#FF9D50 60%,#fff 82%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#fff;animation:nwtpan 6s linear infinite;padding-bottom:.22em;margin-bottom:-.22em">Now we're talking</span><canvas ref="{{ nwtCanvas }}" id="nwt-wave" aria-hidden="true" style="display:block;width:min(760px,92%);height:clamp(62px,8.5vw,104px);margin:clamp(6px,1vw,14px) auto 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)"></canvas></div>
+    <div aria-hidden="true" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.18em;font-family:var(--sans);font-weight:600;letter-spacing:-.052em;line-height:1.04;font-size:clamp(32px,7vw,96px);padding:0 8px"><span style="white-space:nowrap;background:linear-gradient(100deg,#fff 18%,#CBB2FF 38%,#FF8A7A 50%,#FF9D50 60%,#fff 82%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#fff;animation:nwtpan 6s linear infinite;padding-bottom:.22em;margin-bottom:-.22em">Now we're talking.</span><canvas ref="{{ nwtCanvas }}" id="nwt-wave" aria-hidden="true" style="display:block;width:min(760px,92%);height:clamp(62px,8.5vw,104px);margin:clamp(6px,1vw,14px) auto 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)"></canvas></div>
   </div>
   <div style="max-width:1280px;margin:0 auto;padding:clamp(16px,2vw,32px) 24px clamp(28px,3vw,44px)">
     <div class="foot-grid" style="display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:clamp(24px,3vw,52px);align-items:start">

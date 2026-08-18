@@ -22,7 +22,7 @@
   /* ---- the brand gradient, plus each stop on its own so a component can take
      one hue without redeclaring the whole ramp ---- */
   --g-violet:#B79DE8; --g-coral:#D9605A; --g-ember:#E2683E; --g-amber:#EFA12E;
-  --grad:linear-gradient(115deg,var(--g-violet),var(--g-coral) 42%,var(--g-ember) 70%,var(--g-amber));
+  --grad:linear-gradient(115deg,var(--g-violet),var(--g-coral) 55%,var(--g-ember));
   /* ---- industry accents ---- */
   --acc-health:#5FD7A0; --acc-finance:#F4CE7A; --acc-events:#F0876A; --acc-travel:#7FB4EC;
   /* ---- hairlines: never a hard border on light ---- */
@@ -1127,7 +1127,19 @@ html.rv-on [data-rv][data-split][data-in="1"]{animation:none !important}
 @keyframes rzVtDrift{from{transform:translate3d(0,18px,0)}to{transform:translate3d(0,-18px,0)}}
 @keyframes rzVtSettle{from{transform:scale(.985);filter:saturate(.9)}to{transform:none;filter:none}}
 
-/* ---- 11. Small consistency fixes ---- */
+/* ---- 11. Trusted-by wall (homepage option 1a) and FAQ accent underline.
+   The global .logotrack / .logowall rules force full-colour 48px marks; this
+   wall is a static ink-normalized grid, so it needs its own, more specific,
+   selectors. Color returns on hover. ---- */
+.trustwall{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:40px 60px;max-width:820px;margin:0 auto}
+@media(max-width:560px){.trustwall{gap:28px 36px}}
+.trustwall img{width:auto !important;max-width:140px !important;max-height:none !important;object-fit:contain;filter:grayscale(1) brightness(.32) sepia(.14) contrast(1.1) !important;opacity:.82 !important;mix-blend-mode:normal !important;transition:filter .35s var(--ease),opacity .35s var(--ease)}
+@media(hover:hover) and (pointer:fine){
+  .trustwall img:hover{filter:none !important;opacity:1 !important}
+}
+.faq-mark{background:linear-gradient(var(--amber),var(--amber)) left 100% / 100% .09em no-repeat;padding-bottom:.06em}
+
+/* ---- 12. Small consistency fixes ---- */
 /* Keyboard focus already had a ring; give it the pill radius on pill elements so it
    traces the shape instead of cutting the corners. */
 .btn:focus-visible,.eyebrow:focus-visible{border-radius:var(--rp)}
@@ -1139,7 +1151,7 @@ html.rv-on [data-rv][data-split][data-in="1"]{animation:none !important}
   .faq details:not([open])>summary:hover{box-shadow:var(--e-2);transform:translate3d(0,-1px,0)}
 }
 
-/* ---- 12. Reduced motion: one umbrella.
+/* ---- 13. Reduced motion: one umbrella.
    This sheet guards a number of animations individually, but many of the older
    decorative ones were never covered. Anything that loops forever is atmosphere,
    not information, so none of it should run when the reader has asked for less. ---- */

@@ -1,9 +1,11 @@
 # Website audit — aesthetics, motion, brand consistency, performance
 
-Audited against the code that is actually live: `origin/claude/rezonate-8-10` (`1dd2b94`),
-which is byte-identical to what `https://rez-hazel.vercel.app/Rezonate.dc.html` serves. The
-repository default branch (`claude/exciting-galileo-d1k2zn`) is a month behind that and was
-**not** used.
+Audited against the code that is actually live: `origin/main` (`d14d928`, Claude Design
+export: rezonate 8 (11)), whose homepage is still byte-identical to
+`https://rez-hazel.vercel.app/Rezonate.dc.html` and to the earlier `claude/rezonate-8-10`
+export. The new files on that push are the companion briefs `Design Audit.dc.html` and
+`Homepage Options.dc.html`. The older default branch (`claude/exciting-galileo-d1k2zn`) is
+a month behind and was **not** used.
 
 Everything below is measured rather than estimated: byte sizes from the files on disk, runtime
 numbers from headless Chrome against a local server at 1440×900 and 390×844, and the security
@@ -70,7 +72,7 @@ Measured after the change, across all 14 sitemap pages: elements hidden while on
 | travel/business `#7FB4EC` | absent | ✅ token added, ▲ call sites open |
 | ink `#1A1510` | correct in `site.css`, but `#141414` in the homepage's inline `:root` | ✅ fixed |
 | display tracking `-0.03em` | `-0.035em` | ✅ fixed |
-| Bricolage Grotesque only | homepage and `Solutions` listed `'Open Sans'` in the stack | ✅ fixed on homepage |
+| Bricolage Grotesque only | homepage and `Solutions` listed `'Open Sans'` in the stack | ✅ fixed on homepage. See the Open Sans note below. |
 
 Quantitatively: **107 hex literals against 78 `var()` references** — roughly 42% of colour usage
 bypassed the token layer, while `--bg`, `--panel`, `--amber`, `--warm1`, `--warm2` and `--ri`
@@ -79,6 +81,12 @@ were declared and **never read through `var()` even once**.
 The `'Open Sans'` fallback deserves a note: it was never loaded, so on any font failure text fell
 through to `system-ui` rather than to the metric-matched `Bricolage Fallback` — a layout-shift
 risk as well as a brand-rule violation.
+
+**Disagreement with `Design Audit.dc.html`.** That brief says body copy should be Open Sans and
+asks to load it site-wide. `Brand Toolkit.dc.html` is explicit: "Bricolage Grotesque carries
+everything" and "No second typeface." `CLAUDE.md` and `readme.md` say the same, weights 400–700
+only. The unused `tokens/typography.css` listing `--body:'Open Sans'` is the drift, not the spec.
+This branch does **not** reintroduce Open Sans. A human override is required before that changes.
 
 **Also fixed: 21 Unicode glyphs used as icons.** Every FAQ row and the "More about Rezonate"
 toggle rendered `U+25BE BLACK DOWN-POINTING SMALL TRIANGLE` inside `<span class="chev">`. The
@@ -284,8 +292,8 @@ Several items were already fixed before this audit: `lang="en"` is present on ev
 - **▲ `<nav>` has no accessible name** in markup (added at runtime for the same reason).
 - **▲ The nav links to `Rezonate.dc.html#industries`** and no element on the page has
   `id="industries"`.
-- **▲ "Used by leading organizations worldwide"** is a styled `<p>`, not a heading, so the logo
-  section is absent from the document outline.
+- **✅ "Used by leading organizations worldwide"** is now an `<h2>` (visually unchanged), so the
+  logo section is in the document outline.
 - **▲ The decorative hero `<video>`** is not `aria-hidden` in markup.
 
 ## 8. Two pre-existing console errors on `Solutions`
@@ -297,6 +305,35 @@ Confirmed present on the live site, so not introduced here, and both cosmetic:
   442-byte JPEG), so this is constructed at runtime, most likely a background-image built from an
   empty interpolated value.
 - A `404` for `/favicon.ico`, despite the page declaring two `rel="icon"` links.
+
+---
+
+## Applied from `Design Audit.dc.html` / `Homepage Options.dc.html`
+
+Rule-compliance items the new brief said to apply regardless of option picks, plus the
+most-enterprise option in each group that does not fight the toolkit:
+
+- **✅ Footer / hero tagline period.** The giant "Now we're talking" (and the industry `.nwt-pan`
+  lockups) now end with a period, site-wide.
+- **✅ FAQ headline, option 1g.** All ink, one amber underline under "answered." The four-color
+  gradient is gone, so that screen no longer has a second gradient moment.
+- **✅ Logo wall, option 1a.** Static ink-normalized grid of the eight named logos; color returns
+  on hover. The unnamed `c1/c5/c8/c9` duplicates and the marquee are gone.
+- **✅ Capability chips on the palette.** The dusty-rose `#A4544E` chips are now ink on a paper
+  wash.
+- **✅ Capability numbers count up** via the existing `.cnum` path (`82%`, `49%`, `60+`), skipped
+  under `prefers-reduced-motion`.
+- **✅ `--grad` aligned to the toolkit recipe** (`115deg, #B79DE8, #D9605A 55%, #E2683E`). Amber
+  remains a named token for single-hue use; it is no longer a fourth stop on the brand ramp.
+
+Not done, because they are product decisions or need a pick:
+
+- Remounting the live demo as homepage act two (`KiraVoiceDemo` is excluded from publish; the
+  widget has known bugs).
+- "Hear Kira" nav pill and micro-players in the capability cards.
+- Capability-card texture restyle (options 1d / 1e / 1f).
+- Waveform as a site-wide kinetic signature, platform-diagram draw-in, animated phones.
+- Deploy-time prerender.
 
 ---
 

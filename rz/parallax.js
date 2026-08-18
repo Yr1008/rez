@@ -71,7 +71,9 @@
     for (var i=0;i<els.length;i++){ (function(el){
       if (el.getBoundingClientRect().top < vh*0.94){
         el.setAttribute('data-done','1');
-        var pre = el.getAttribute('data-pre')||'', suf = el.getAttribute('data-suf')||'', val = parseFloat(el.getAttribute('data-val'))||0, t0 = performance.now();
+        var pre = el.getAttribute('data-pre')||'', suf = el.getAttribute('data-suf')||'', val = parseFloat(el.getAttribute('data-val'))||0;
+        if (reduce){ el.textContent = pre + Math.round(val) + suf; return; }
+        var t0 = performance.now();
         function step(t){ var p = Math.min(1,(t-t0)/1100); p = 1-Math.pow(1-p,3); el.textContent = pre + Math.round(val*p) + suf; if(p<1) requestAnimationFrame(step); }
         requestAnimationFrame(step);
       }
