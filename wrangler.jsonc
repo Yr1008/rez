@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "getrezonate-com",
+  "account_id": "2e25a3c929c0317b8c569a9e7491cf78",
+  "compatibility_date": "2026-07-01",
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes": [
+    {
+      "pattern": "getrezonate.com/*",
+      "zone_name": "getrezonate.com"
+    },
+    {
+      "pattern": "www.getrezonate.com/*",
+      "zone_name": "getrezonate.com"
+    }
+  ],
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

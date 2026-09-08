@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#FCFBF9;overflow:hidden}
+svg{display:block;width:100%;height:auto}
+.city-ring{fill:none;stroke:#E2683E;stroke-width:1.4;transform-origin:center;transform-box:fill-box;animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.4);opacity:.9}70%{transform:scale(2.6);opacity:0}100%{transform:scale(2.6);opacity:0}}
+.city-label{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:16px}
+@media(max-width:700px){.city-label{font-size:24px !important}.city-sub{font-size:17px !important}}
+.city-label{font-size:16px;fill:#1A1510;paint-order:stroke;stroke:#FCFBF9;stroke-width:5px;stroke-linejoin:round}
+.city-sub{font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-size:11.5px;letter-spacing:.06em;fill:#75726D;paint-order:stroke;stroke:#FCFBF9;stroke-width:4px;stroke-linejoin:round}
+@media(prefers-reduced-motion:reduce){.city-ring{animation:none}.city-ring{opacity:0}}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+const narrow=matchMedia('(max-width:700px)').matches;
+const W=narrow?760:1180,H=narrow?680:560;
+const HQ={name:'Singapore',sub:'HEADQUARTERS',lon:103.85,lat:1.29,dx:14,dy:-10,anchor:'start'};
+const cities=[
+  {name:'New York',sub:'UNITED STATES',lon:-74.01,lat:40.71,dx:-14,dy:-10,anchor:'end'},
+  {name:'S\u00e3o Paulo',sub:'BRAZIL',lon:-46.63,lat:-23.55,dx:-14,dy:22,anchor:'end'},
+  {name:'Sydney',sub:'AUSTRALIA',lon:151.21,lat:-33.87,dx:14,dy:22,anchor:'start'}
+];
+d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json').then(topo=>{
+  const land=topojson.feature(topo,topo.objects.countries);
+  land.features=land.features.filter(f=>f.properties.name!=='Antarctica');
+  const proj=d3.geoNaturalEarth1();
+  proj.fitExtent([[10,26],[W-10,H-10]],land);
+  const path=d3.geoPath(proj);
+  const svg=d3.select('#map').append('svg').attr('viewBox',`0 0 ${W} ${H}`).attr('role','img')
+    .attr('aria-label','World map showing Rezonate offices in Singapore, New York, Sao Paulo and Sydney, connected to headquarters');
+  svg.append('g').selectAll('path').data(land.features).join('path')
+    .attr('d',path).attr('fill','rgba(26,21,16,.07)').attr('stroke','rgba(26,21,16,.12)').attr('stroke-width',.5);
+  const g=svg.append('g');
+  [HQ,...cities].forEach((c,i)=>{
+    const [x,y]=proj([c.lon,c.lat]);
+    const grp=g.append('g');
+    grp.append('circle').attr('class','city-ring').attr('cx',x).attr('cy',y).attr('r',7).style('animation-delay',(i*0.55)+'s');
+    grp.append('circle').attr('cx',x).attr('cy',y).attr('r',c===HQ?6.5:5.5).attr('fill','#E2683E');
+    grp.append('circle').attr('cx',x).attr('cy',y).attr('r',2.2).attr('fill','#FCFBF9');
+    grp.append('text').attr('class','city-label').attr('x',x+c.dx).attr('y',y+c.dy).attr('text-anchor',c.anchor).text(c.name);
+    grp.append('text').attr('class','city-sub').attr('x',x+c.dx).attr('y',y+c.dy+16).attr('text-anchor',c.anchor).text(c.sub);
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+:root{
+  /* ink scale */
+  --dark:#0E0D0B; --charcoal:#26211F; --ink:#1A1510; --ink-2:#75726D; --ink-3:#A9A7A2;
+  /* paper scale */
+  --paper:#FCFBF9; --cream:#F4F2ED; --stone:#EEEDE9; --bg:#F4F3F0; --panel:#ECEBE7;
+  /* accents */
+  --amber:#EFA12E; --amber-warm:#FFB24D; --violet:#B79DE8; --coral:#D9605A; --ember:#E2683E;
+  /* the brand gradient — one moment per screen */
+  --grad:linear-gradient(115deg,#B79DE8,#D9605A 42%,#E2683E 70%,#EFA12E);
+  --grad-text:linear-gradient(115deg,#B79DE8,#D9605A 55%,#E2683E);
+  /* industry accents */
+  --acc-healthcare:#5FD7A0; --acc-finance:#F4CE7A; --acc-events:#F0876A; --acc-travel:#7FB4EC;
+  /* lines on dark */
+  --line-d:rgba(255,255,255,.08);
+  /* semantic aliases */
+  --text-heading:var(--ink); --text-body:var(--ink-2); --text-faint:var(--ink-3);
+  --surface-page:var(--paper); --surface-alt:var(--cream); --surface-card:#fff; --surface-dark:var(--dark);
+  --cta-bg:var(--ink); --cta-fg:#fff;
+}

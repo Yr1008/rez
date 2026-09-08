@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Kira, the platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#000;font-family:'Open Sans',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#FCFBF9}a:hover{color:rgba(252,251,249,.72)}
+@property --shbtna{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes shbtnring{to{--shbtna:360deg}}
+#sohero .shbtn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;border-radius:999px;transition:transform .26s cubic-bezier(.2,.8,.3,1),background .22s}
+#sohero .shbtn::before{content:"";position:absolute;inset:0;border-radius:999px;background:inherit;z-index:-1;pointer-events:none}
+#sohero .shbtn::after{content:"";position:absolute;inset:-7px;border-radius:999px;z-index:-2;background:conic-gradient(from var(--shbtna),#FFB24D,#F0793C,#D9605A,#B06AD9,#6AA6E8,#B06AD9,#F0793C,#FFB24D);filter:blur(11px) saturate(1.35);opacity:0;transform:scale(.86);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1);pointer-events:none;will-change:transform,opacity}
+#sohero .shbtn:hover::after{opacity:.6;transform:scale(1.04);animation:shbtnring 3s linear infinite}
+#sohero .shbtn:hover{transform:translateY(-2px)}
+#sohero h1.shh{font-size:clamp(46px,7.6vw,96px);white-space:nowrap}
+@media(max-width:700px){
+ #sohero h1.shh{font-size:clamp(40px,12vw,56px);white-space:normal;line-height:.96}
+ #sohero .shstmt{font-size:17px !important}
+ #sohero .shcv{height:260px !important}
+}
+</style>
+</helmet>
+<section id="sohero" data-screen-label="Solutions Hero" style="position:relative;background:#000;padding:clamp(130px,16vh,180px) 24px clamp(56px,6vw,88px);color:#FCFBF9;overflow:hidden;isolation:isolate">
+  <div style="position:relative;max-width:1180px;margin:0 auto;text-align:center">
+   <div style="{{ stackStyle }}">
+    <div>
+    <span style="display:inline-block;font-family:'Bricolage Grotesque',sans-serif;font-size:12.5px;font-weight:500;color:rgba(252,251,249,.72);background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.13);border-radius:99px;padding:6px 14px">The Kira platform</span>
+
+    <h1 class="shh" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;letter-spacing:-.045em;line-height:.98;margin:20px 0 0">Every channel. <span style="background:linear-gradient(115deg,#B79DE8,#D9605A 55%,#E2683E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#D9605A">One system.</span></h1>
+
+    <p class="shstmt" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;letter-spacing:-.03em;font-size:clamp(17px,2.1vw,26px);line-height:1.2;margin:clamp(18px,2.2vw,28px) auto 0;max-width:44ch;color:rgba(252,251,249,.55)">Voice agents, ten chat channels, visual workflows, human handoff and compliance controls. <span style="color:#FCFBF9">Working as one.</span></p>
+
+    <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:clamp(22px,2.6vw,32px)">
+      <a href="#" data-rzform="demo" class="shbtn" style="height:48px;padding:0 26px;background:#FCFBF9;color:#141414;font-weight:600;font-size:14.5px;text-decoration:none">Request a demo</a>
+      <a href="#product" class="shbtn" style="height:48px;padding:0 26px;background:rgba(255,255,255,.1);color:#FCFBF9;font-weight:600;font-size:14.5px;text-decoration:none;box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)">Explore the platform</a>
+    </div>
+    </div>
+
+    <div style="position:relative;max-width:1020px;margin:clamp(6px,1.6vw,18px) auto 0">
+      <canvas ref="{{ refCanvas }}" class="shcv" role="img" aria-label="Thousands of scattered points keep assembling into the words One voice" style="display:block;width:100%;height:clamp(260px,36vw,380px);cursor:crosshair"></canvas>
+      <p aria-hidden="true" dc-props="{{ capExtra }}" style="position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:100%;opacity:1;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(11.5px,1.2vw,14px);font-weight:500;color:rgba(252,251,249,.45);margin:0;pointer-events:none;transition:opacity .3s">{{ caption }}</p>
+    </div>
+   </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: {&quot;width&quot;: 1440, &quot;height&quot;: 820},
+  &quot;heroWord&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;One voice.&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Particle word&quot;},
+  &quot;cycleSpeed&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 1, &quot;min&quot;: 0.4, &quot;max&quot;: 2, &quot;step&quot;: 0.1, &quot;unit&quot;: &quot;x&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Particle word&quot;},
+  &quot;particleDensity&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;default&quot;: &quot;normal&quot;, &quot;options&quot;: [&quot;sparse&quot;, &quot;normal&quot;, &quot;dense&quot;], &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Particle word&quot;},
+  &quot;scatterOnHover&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Particle word&quot;},
+  &quot;showCaption&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Layout&quot;},
+  &quot;canvasAboveCopy&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: false, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Layout&quot;}
+}">
+class Component extends DCLogic {
+  state = { beat: 0 };
+  _start(){
+    if (this._started) return;
+    this._started = true; this._run = true; this._last = performance.now(); this._t = 0;
+    const step = (now) => {
+      if (!this._run) return;
+      requestAnimationFrame(step);
+      if (document.hidden) return;
+      const dt = Math.min(50, now - this._last); this._last = now;
+      this._t += dt*0.001;
+      this._draw(dt);
+    };
+    requestAnimationFrame(step);
+  }
+  componentDidMount(){ if (this._cv) this._start(); }
+  componentWillUnmount(){ this._run = false; this._started = false; }
+  _targets(w, h){
+    const oc = document.createElement('canvas'); oc.width = w; oc.height = h;
+    const o = oc.getContext('2d');
+    o.fillStyle = '#fff'; o.textAlign = 'center'; o.textBaseline = 'middle';
+    o.font = '600 ' + Math.round(Math.min(w/5.6, h*0.62)) + 'px "Bricolage Grotesque",sans-serif';
+    o.fillText(this.props.heroWord ?? 'One voice.', w/2, h/2);
+    const d = o.getImageData(0, 0, w, h).data, pts = [];
+    for (let y=0; y<h; y+=3) for (let X=0; X<w; X+=3)
+      if (d[(y*w+X)*4+3] > 128) pts.push([X, y]);
+    return pts;
+  }
+  _draw(dt){
+    const cv = this._cv; if (!cv) return;
+    const dpr = Math.min(2, devicePixelRatio || 1);
+    const w = cv.clientWidth, h = cv.clientHeight; if (!w) return;
+    if (cv.width !== Math.round(w*dpr)){ cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr); this._pa = null; }
+    const x = cv.getContext('2d'); x.setTransform(dpr,0,0,dpr,0,0);
+    if (!this._pa){
+      const T = this._targets(w, h);
+      if (!T.length) return;
+      const dens = { sparse: 700, normal: 1200, dense: 1900 }[this.props.particleDensity ?? 'normal'] || 1200;
+      const n = Math.min(dens, T.length);
+      this._pa = Array.from({length: n}, (_, i) => {
+        const tp = T[Math.floor(i*T.length/n)];
+        return { tx0: tp[0], ty0: tp[1],
+          hx: Math.random()*w, hy: Math.random()*h,
+          dxv:(Math.random()-.5)*.03, dyv:(Math.random()-.5)*.03,
+          x: Math.random()*w, y: Math.random()*h, sp:.6+Math.random()*.8 };
+      });
+      x.fillStyle = '#000'; x.fillRect(0,0,w,h);
+    }
+    x.fillStyle = 'rgba(0,0,0,.28)'; x.fillRect(0,0,w,h);
+    const m = (this.props.scatterOnHover ?? true) ? this._m : null;
+    const t = this._t;
+    const cyc = (t*0.11*(this.props.cycleSpeed ?? 1))%1;
+    const ease = (u) => u*u*(3-2*u);
+    const F = cyc<0.16 ? ease(cyc/0.16) : (cyc<0.78 ? 1 : 1-ease((cyc-0.78)/0.22));
+    const beat = cyc<0.13 ? 1 : (cyc<0.72 ? 2 : 0);
+    if (beat !== this.state.beat) this.setState({ beat });
+    for (const p of this._pa){
+      p.hx += p.dxv*dt; p.hy += p.dyv*dt;
+      if (p.hx<0||p.hx>w) p.dxv*=-1;
+      if (p.hy<0||p.hy>h) p.dyv*=-1;
+      let tx = p.tx0*F + p.hx*(1-F), ty = p.ty0*F + p.hy*(1-F);
+      if (m){ const dx=p.x-m[0], dy=p.y-m[1], q=dx*dx+dy*dy;
+        if (q<6400){ const L=Math.sqrt(q)||1, f=(6400-q)/6400*36; tx+=dx/L*f; ty+=dy/L*f; } }
+      p.x += (tx-p.x)*0.075; p.y += (ty-p.y)*0.075;
+      const g = p.tx0/w;
+      const al = 0.38 + F*0.55;
+      x.fillStyle = g<0.42 ? 'rgba(183,157,232,'+al+')' : (g<0.6 ? 'rgba(217,96,90,'+al+')' : 'rgba(226,104,62,'+al+')');
+      x.fillRect(p.x, p.y, 1.8, 1.8);
+    }
+  }
+  componentDidUpdate(prev){
+    if (prev.heroWord !== this.props.heroWord || prev.particleDensity !== this.props.particleDensity) this._pa = null;
+  }
+  renderVals(){
+    return {
+      capExtra: (this.props.showCaption ?? true) ? {} : { hidden: true },
+      caption: [
+        'Ten channels. Thousands of conversations. No two alike.',
+        'Kira listens, and the noise starts to organize.',
+        'Until every conversation speaks as one. Move through it.'
+      ][this.state.beat],
+      stackStyle: { display: 'flex', flexDirection: (this.props.canvasAboveCopy ?? false) ? 'column-reverse' : 'column' },
+      refCanvas: (el) => {
+        this._cv = el;
+        if (el) this._start();
+        if (el && !el._wired){ el._wired = 1;
+          el.addEventListener('pointermove', (e) => { const r = el.getBoundingClientRect(); this._m = [e.clientX-r.left, e.clientY-r.top]; });
+          el.addEventListener('pointerleave', () => { this._m = null; });
+        }
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

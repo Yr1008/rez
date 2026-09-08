@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="robots" content="noindex, nofollow"><!-- embedded fragment, not a page -->
+<script src="rz/consent.js?v=20260827c"></script>
+<script defer src="rz/track.js?v=3"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&display=swap" rel="stylesheet">
+<style>
+:root{--sans:'Bricolage Grotesque',system-ui,sans-serif;--ink:#1A1510;--ink-2:#75726D;--ink-3:#A9A7A2}
+#fstorycard .fs-dot{position:relative;overflow:hidden;cursor:pointer;border:none;padding:0;height:4px;width:34px;border-radius:99px;background:rgba(20,16,11,.16);transition:background .4s,width .4s}
+#fstorycard .fs-dot[data-on="1"]{width:48px;background:rgba(20,16,11,.2)}
+@keyframes fsswap{0%{opacity:0;transform:translateY(10px)}100%{opacity:1;transform:none}}
+.fsswap{animation:fsswap .6s cubic-bezier(.16,.84,.44,1)}
+#fstorycard .fs-photo.fsswap{animation:fsswap .6s cubic-bezier(.16,.84,.44,1)}
+#fstorycard .fs-logobox{display:flex;align-items:center}
+@media(max-width:760px){
+  #fstorycard{grid-template-columns:1fr !important;padding:22px !important;gap:0 !important}
+  /* photo rides next to the name as a round avatar on phones; big photo hidden */
+  #fstorycard .fs-photo{display:none !important}
+  #fstorycard .fs-ava{display:block !important}
+  #fstorycard .fs-quote{font-size:15px !important;line-height:1.4 !important}
+  #fstorycard .fs-logobox{height:34px !important;width:150px !important}
+  #fstorycard .fs-logobox img{max-height:100%}
+  
+  #fstorycard .fs-name-role{margin-top:18px !important;padding-top:0 !important}
+}
+</style>
+</helmet>
+
+  <div class="sec-pad" data-py="0.09" style="position:relative;z-index:1;max-width:1180px;margin:0 auto">
+    <div class="two" style="display:grid;grid-template-columns:auto 1fr;gap:clamp(20px,4vw,56px);align-items:end;margin-bottom:40px">
+      <div data-rv=""><span class="eyebrow">Customer stories</span></div>
+      <h2 data-rv="" data-d="1" style="font-family:var(--sans);font-weight:600;letter-spacing:-.04em;font-size:clamp(28px,4.2vw,55px);max-width:15ch;line-height:1.0;color:var(--ink)">Trusted by the teams on the <span style="white-space:nowrap;background:linear-gradient(115deg,#B79DE8,#D9605A 46%,#E2683E 72%,#EFA12E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#D9605A">front line.</span></h2>
+    </div>
+
+    <div data-rv="" data-d="2" style="position:relative">
+      <div aria-hidden="true" style="position:absolute;inset:-5% -2%;z-index:0;pointer-events:none;border-radius:36px;background:radial-gradient(58% 82% at 18% 24%,rgba(183,157,232,.55),transparent 62%),radial-gradient(56% 84% at 86% 80%,rgba(226,104,62,.46),transparent 64%),radial-gradient(52% 72% at 62% 6%,rgba(239,161,46,.4),transparent 64%);filter:blur(48px);opacity:.66"></div>
+      <div id="fstorycard" style="position:relative;z-index:1;display:grid;grid-template-columns:1fr minmax(300px,392px);gap:clamp(28px,4vw,64px);align-items:stretch;min-height:clamp(384px,34vw,452px);border-radius:30px;background:rgba(255,255,255,.62);backdrop-filter:blur(26px) saturate(160%);-webkit-backdrop-filter:blur(26px) saturate(160%);box-shadow:0 40px 90px -52px rgba(20,16,11,.3),inset 0 1px 0 rgba(255,255,255,.82),inset 0 0 0 1px rgba(255,255,255,.44);padding:clamp(34px,4vw,56px)">
+        <div id="fs-fade" style="display:flex;flex-direction:column;min-width:0;height:100%">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:clamp(26px,3vw,40px);height:46px">
+            <sc-if value="{{ hasLogo }}" hint-placeholder-val="{{ true }}"><span class="fs-logobox" style="display:block;height:46px;width:190px;flex:0 0 auto"><img decoding="async" loading="lazy" src="{{ storyLogo }}" alt="{{ storyOrg }}" style="height:{{ storyLogoH }};width:auto;max-width:100%;object-fit:contain;object-position:left center"></span></sc-if>
+            <sc-if value="{{ noLogo }}" hint-placeholder-val="{{ false }}"><span style="font-family:var(--sans);font-weight:700;font-size:21px;letter-spacing:-.015em;color:#191512">{{ storyOrg }}</span></sc-if>
+          </div>
+          <blockquote class="fs-quote" style="margin:0;font-family:var(--sans);font-weight:500;font-size:clamp(20px,2vw,28px);line-height:1.36;letter-spacing:-.02em;color:#191512;max-width:38ch;min-height:clamp(104px,11vw,150px);text-wrap:pretty">&ldquo;{{ storyQuote }}&rdquo;</blockquote>
+          <div class="fs-name-role" style="margin-top:auto;padding-top:clamp(24px,3vw,36px);display:flex;align-items:center;gap:13px">
+            <span class="fs-ava" aria-hidden="true" style="display:none;flex:0 0 auto;width:54px;height:54px;border-radius:99px;background-image:url({{ storyAv }});background-size:cover;background-position:{{ storyAvPos }};box-shadow:0 10px 22px -12px rgba(20,16,11,.45),inset 0 0 0 1px rgba(20,16,11,.08)"></span>
+            <div style="min-width:0">
+              <div style="font-weight:700;font-size:15px;color:#191512">{{ storyName }}</div>
+              <div style="font-size:13px;color:#75726D;margin-top:3px">{{ storyRole }}</div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:6px;margin-top:26px">
+            <sc-for list="{{ storyDots }}" as="d" hint-placeholder-count="3">
+              <button class="fs-dot" data-on="{{ d.on }}" onClick="{{ d.onClick }}" aria-label="Show story"><span data-fill style="position:absolute;left:0;top:0;bottom:0;width:0%;background:#fff;border-radius:99px"></span></button>
+            </sc-for>
+          </div>
+        </div>
+        <div class="fs-photo" style="width:100%;height:clamp(320px,30vw,392px);border-radius:20px;background-image:url({{ storyAv }});background-size:cover;background-position:{{ storyAvPos }};box-shadow:0 24px 50px -30px rgba(20,16,11,.4),inset 0 0 0 1px rgba(20,16,11,.08)"></div>
+      </div>
+    </div>
+
+    <sc-if value="{{ showMoreLink }}" hint-placeholder-val="{{ true }}">
+      <div data-rv="" data-d="5" style="margin-top:30px;display:flex;justify-content:center">
+        <a href="Customers.dc.html" class="btn" style="height:48px;padding:0 26px;font-size:14.5px;background:#fff;color:var(--ink)">See more customer stories <span class="c">&rarr;</span></a>
+      </div>
+    </sc-if>
+  </div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { story: 0 };
+  stories(){return [
+    {av:'rz/team/asahi-suresh.jpg', avPos:'center 30%', org:'Asahi Beverages', logo:'rz/clogos/asahi.png', logoH:'26px', quote:'Nothing came close on voice quality \u2013 natural, human-like conversations with near-instant response times that genuinely surprised us. Honestly, we wouldn\u2019t be moving this fast, or this confidently, with anyone else.', name:'Suresh Bhaskaran', role:'Head of Data & Analytics, Asahi Beverages'},
+    {av:'rz/team/nhg-kevinkok.jpg', avPos:'center 18%', org:'NHG Health', logo:'rz/clogos/nhg2.png', logoH:'44px', quote:'What we needed was not just a chatbot, but a platform that could grow with us. Working with Rezonate, we were able to add new services and functions as our needs evolved, without compromising on the governance standards that healthcare demands.', name:'Dr Kevin Kok', role:'Deputy Director (Digital Services), NHG Population Health'},
+    {av:'rz/team/somma-ulysses.jpg', avPos:'center 22%', org:'Somma', logo:'rz/clogos/somma-t.png', logoH:'26px', quote:'We can now call prospects at a scale no human team could match, and they all hear a natural, warm Brazilian voice. Kira reaches leads in seconds, not hours, hands the interested ones straight to a broker, and lets our people spend their time where it actually converts. For a finance team, that is the rare project where the cost line and the growth line move the right way at once.', name:'Ulysses Delgado', role:'CFO, Somma'},
+  ];}
+  goStory(i){const n=this.stories().length;this.setState({story:((i%n)+n)%n});this._restart();}
+  _restart(){this._t0=performance.now();this._dur=6500;cancelAnimationFrame(this._raf);var tick=(now)=>{var p=Math.min(1,(now-this._t0)/this._dur);var fl=document.querySelectorAll('#fstorycard [data-fill]');for(var i=0;i<fl.length;i++){fl[i].style.width=(i===this.state.story?(p*100):0)+'%';}if(p>=1){this.setState(s=>({story:(s.story+1)%this.stories().length}));this._t0=now;}this._raf=requestAnimationFrame(tick);};this._raf=requestAnimationFrame(tick);}
+  componentDidMount(){ this._pfi=this.state.story; this._restart(); }
+  componentDidUpdate(){ if(this._pfi!==this.state.story){ this._pfi=this.state.story; var els=document.querySelectorAll('#fstorycard #fs-fade, #fstorycard .fs-photo'); els.forEach(function(el){ el.classList.remove('fsswap'); void el.offsetWidth; el.classList.add('fsswap'); }); } }
+  componentWillUnmount(){ if (this._raf) cancelAnimationFrame(this._raf); }
+  renderVals(){
+    const cur=this.stories()[this.state.story]||{};
+    return {
+      showMoreLink:this.props.showMoreLink ?? true,
+      storyOrg:cur.org, storyQuote:cur.quote, storyName:cur.name, storyRole:cur.role,
+      storyAv:cur.av, storyAvPos:cur.avPos||'center 20%',
+      storyLogo:cur.logo||'', hasLogo:!!cur.logo, noLogo:!cur.logo, storyLogoH:cur.logoH||'30px',
+      storyDots:this.stories().map((s,i)=>({on:i===this.state.story?'1':'0',onClick:()=>this.goStory(i)}))
+    };
+  }
+}
+</script>
+</body>
+</html>

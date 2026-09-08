@@ -1,0 +1,69 @@
+<!-- @dsCard group="Components" viewport="700x560" subtitle="Button · Eyebrow · Chip · Stat · Waveform · Orb · GlassCard" name="Core components" -->
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<style>body{margin:0;font-family:var(--sans);background:#fff;padding:18px}</style>
+</head><body><div id="root"></div>
+<script>
+window.__dsReady = new Promise(function(res){ var s = document.createElement('script'); s.src = '../../_ds_bundle.js'; s.onload = res; s.onerror = res; document.head.appendChild(s); });
+</script>
+<script type="text/plain" id="__appsrc">
+function findNS(){
+  try { if (window.Rezonate && window.Rezonate.Button) return window.Rezonate; } catch(e){}
+  for (const k in window){ try { const v = window[k]; if (v && typeof v === 'object' && v.Button && v.Waveform && v.Orb) return v; } catch(e){} }
+  return {};
+}
+function Demo(){
+  const { Button, Eyebrow, Chip, Stat, Waveform, Orb, GlassCard } = findNS();
+  if (!Button) return <div style={{fontSize:13,color:'#75726D'}}>Bundle not built yet — components live in components/core/.</div>;
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:16}}>
+      <div style={{display:'flex',gap:10,alignItems:'center',flexWrap:'wrap'}}>
+        <Button variant="glow" size="hero">Request a demo</Button>
+        <Button variant="dark">Meet Kira</Button>
+        <Button variant="white" arrow>Customer stories</Button>
+        <span style={{background:'var(--dark)',borderRadius:12,padding:'8px 10px'}}><Button variant="glass" size="sm">Hear a call</Button></span>
+      </div>
+      <div style={{display:'flex',gap:12,alignItems:'center',flexWrap:'wrap'}}>
+        <Eyebrow>The Kira Platform</Eyebrow>
+        <Eyebrow kicker>Trusted worldwide</Eyebrow>
+        <Chip on>All</Chip><Chip>Healthcare</Chip><Chip>Finance</Chip>
+      </div>
+      <div style={{display:'flex',gap:26,alignItems:'flex-end'}}>
+        <Stat value="82%" label="resolved without a human" />
+        <Stat value="24/7" label="secure, verified support" />
+        <span style={{background:'var(--dark)',borderRadius:14,padding:'10px 16px'}}><Waveform bars={11} height={38} /></span>
+      </div>
+      <div style={{display:'flex',gap:22,alignItems:'center'}}>
+        <div style={{display:'flex',alignItems:'center',gap:10}}>
+          <Orb src="../../assets/orb-prism.webp" size={52} dim />
+          <Orb src="../../assets/orb-spray.webp" size={92} live call />
+          <Orb src="../../assets/orb-navy.webp" size={52} dim />
+        </div>
+        <div style={{background:'var(--dark)',borderRadius:18,padding:14}}>
+          <GlassCard label="Payment reminders" meta="SMS" width={270}>
+            <div style={{background:'rgba(255,255,255,.09)',padding:'9px 12px',borderRadius:'15px 15px 15px 5px',fontSize:13,lineHeight:1.4}}>Hey! Just a friendly heads up, your payment's due Friday.</div>
+          </GlassCard>
+        </div>
+      </div>
+    </div>
+  );
+}
+const __root = ReactDOM.createRoot(document.getElementById('root'));
+const __paint = () => __root.render(<Demo/>);
+__paint();
+if (window.__dsReady && window.__dsReady.then) window.__dsReady.then(__paint);
+</script>
+<script>
+(function(){
+  var src = document.getElementById('__appsrc').textContent;
+  try {
+    var code = Babel.transform(src, { presets: [['react', { runtime: 'classic' }]] }).code;
+    (0, eval)(code);
+  } catch (e) {
+    document.getElementById('root').innerHTML = '<pre style="color:#75726D;padding:16px;font:12px monospace;white-space:pre-wrap">BOOTSTRAP ERROR: ' + (e && e.message) + '</pre>';
+  }
+})();
+</script></body></html>

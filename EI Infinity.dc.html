@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Engagement Intelligence</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;padding:0;background:#EEEDE9;font-family:'Open Sans',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#1A1510}a:hover{color:#75726D}
+#ei h2.eih{font-size:clamp(44px,7vw,86px);white-space:nowrap}
+@keyframes eisheen{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+@property --btna{syntax:"<angle>";inherits:false;initial-value:0deg}
+@keyframes eibtnring{to{--btna:360deg}}
+#ei .eibtn{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;border-radius:999px;transition:transform .26s cubic-bezier(.2,.8,.3,1),background .22s}
+#ei .eibtn::before{content:"";position:absolute;inset:0;border-radius:999px;background:inherit;z-index:-1;pointer-events:none}
+#ei .eibtn::after{content:"";position:absolute;inset:-7px;border-radius:999px;z-index:-2;background:conic-gradient(from var(--btna),#FFB24D,#F0793C,#D9605A,#B06AD9,#6AA6E8,#B06AD9,#F0793C,#FFB24D);filter:blur(11px) saturate(1.35);will-change:transform,opacity;opacity:0;transform:scale(.86);transition:opacity .6s cubic-bezier(.2,.7,.2,1),transform .6s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+#ei .eibtn:hover::after{opacity:.6;transform:scale(1.04);animation:eibtnring 3s linear infinite}
+#ei .eibtn::before{content:"";position:absolute;inset:0;border-radius:999px;background:inherit;z-index:-1;pointer-events:none}
+#ei .eibtn{border:1.5px solid transparent}
+#ei .eibtn:hover{transform:translateY(-2px)}
+#ei .eibtn:not(.eibtn-soft){text-shadow:0 1px 2px rgba(0,0,0,.35)}
+#ei .eibtn:not(.eibtn-soft):hover{background:linear-gradient(#1A1510,#1A1510) padding-box,conic-gradient(from var(--btna),#FFB24D,#F0793C,#B06AD9,#6AA6E8,#FFB24D) border-box !important;animation:eibtnring 3s linear infinite}
+@property --p{syntax:"<percentage>";inherits:false;initial-value:0%}
+@keyframes eirailrun{0%{left:0}100%{left:100%}}
+@keyframes eirailfill{0%{--p:0%}100%{--p:100%}}
+#ei .eirailfill{animation:eirailfill 7s linear infinite}
+#ei .eiraildot{animation:eirailrun 7s linear infinite}
+
+@media(max-width:700px){
+ #ei h2.eih{font-size:clamp(36px,11vw,52px);white-space:normal;line-height:.96;letter-spacing:-.045em}
+ #ei .eistmt{font-size:19px !important}
+ #ei .eisub{font-size:14.5px !important}
+ #ei .eiclose{font-size:19px !important}
+ #ei .eicv{height:320px !important}
+}
+@media(max-width:900px){
+ #ei .eirail>[aria-hidden]{display:none}
+ #ei .eirow{grid-template-columns:1fr 1fr !important;gap:18px 12px !important}
+ #ei .eirow>div{padding-top:0 !important}
+ #ei .eirow>div>span{display:none !important}
+ #ei .eirow>div>span+span{display:none !important}
+}
+@media(max-width:560px){#ei .eirow{grid-template-columns:1fr !important;max-width:420px !important}}
+</style>
+</helmet>
+<section id="ei" data-screen-label="Engagement Intelligence" style="position:relative;background:#F4F2ED;padding:clamp(84px,10vw,148px) 24px clamp(76px,8vw,124px);color:#1A1510;overflow:hidden;isolation:isolate">
+
+
+  <div style="position:relative;max-width:1180px;margin:0 auto;text-align:center">
+
+    <h2 class="eih" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;letter-spacing:-.04em;line-height:.98;margin:0;background:linear-gradient(115deg,#B79DE8,#D9605A 55%,#E2683E);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#B4453F">Engagement Intelligence</h2>
+
+    <p class="eistmt" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;letter-spacing:-.033em;font-size:clamp(19px,2.4vw,31px);line-height:1.18;margin:clamp(18px,2.2vw,28px) auto 0;max-width:56ch">Every person gets the conversation most likely to move them.<br><span style="color:#75726D">That is how more of them book, pay, renew and show up.</span></p>
+
+    <div ref="{{ refWrap }}" style="position:relative;max-width:1020px;margin:clamp(18px,2.6vw,34px) auto 0">
+      <canvas ref="{{ refCanvas }}" class="eicv" role="img" aria-label="Thousands of scattered points flock together into an infinity loop" style="display:block;width:100%;height:clamp(320px,46vw,480px);cursor:crosshair"></canvas>
+      <p aria-hidden="true" style="position:absolute;left:50%;bottom:6px;transform:translateX(-50%);width:100%;font-family:'Bricolage Grotesque',sans-serif;font-size:clamp(12px,1.3vw,15px);font-weight:500;letter-spacing:.02em;color:#75726D;margin:0;pointer-events:none;transition:opacity .5s">{{ caption }}</p>
+    </div>
+
+    <p class="eisub" style="font-size:16.5px;line-height:1.55;color:#6F665B;margin:clamp(18px,2.4vw,30px) auto 0;max-width:64ch;text-wrap:pretty">Our Engagement Intelligence layer informs our agents how to best engage: it understands who it is speaking to, decides the channel, timing, and message, completes the work behind the conversation, and learns from every outcome.</p>
+
+    <p style="font-family:'Bricolage Grotesque',sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#9A948C;margin:clamp(44px,5.4vw,72px) 0 0">The closed action loop</p>
+    <div class="eirail" style="position:relative;max-width:1020px;margin:26px auto 0;padding-top:14px;text-align:left">
+      <div aria-hidden="true" style="position:absolute;left:8.33%;right:8.33%;top:34px;height:2px;border-radius:2px;background:rgba(26,21,16,.12)">
+        <span class="eirailfill" style="position:absolute;inset:0;border-radius:2px;background:linear-gradient(90deg,#B79DE8,#D9605A 55%,#E2683E);mask-image:linear-gradient(90deg,#000 0,#000 var(--p,100%),transparent var(--p,100%));-webkit-mask-image:linear-gradient(90deg,#000 0,#000 var(--p,100%),transparent var(--p,100%))"></span>
+        <span class="eiraildot" style="position:absolute;top:50%;left:0;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:radial-gradient(circle,#FFE9D6 0 25%,#E2683E 60%,transparent 72%);box-shadow:0 0 18px 4px rgba(226,104,62,.5)"></span>
+      </div>
+      <div class="eirow" style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="6">
+          <div style="text-align:center;position:relative;padding-top:36px">
+            <span style="position:absolute;left:50%;top:0;transform:translateX(-50%);font-family:'Bricolage Grotesque',sans-serif;font-variant-numeric:tabular-nums;font-size:10.5px;font-weight:700;letter-spacing:.14em;color:{{ s.kc }}">{{ s.k }}</span>
+            <span style="position:absolute;left:50%;top:14px;transform:translateX(-50%);width:13px;height:13px;border-radius:50%;background:#F4F2ED;border:2.5px solid #1A1510;box-shadow:0 0 0 4px #F4F2ED"></span>
+            <div style="font-family:'Bricolage Grotesque',sans-serif;font-size:16px;font-weight:600;letter-spacing:-.02em;color:#1A1510;margin-top:8px">{{ s.name }}</div>
+            <p style="font-size:12px;line-height:1.45;color:#75726D;margin:5px 0 0;padding:0 8px">{{ s.p }}</p>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <p class="eiclose" style="font-family:'Bricolage Grotesque',sans-serif;font-weight:600;letter-spacing:-.035em;font-size:clamp(19px,2.6vw,34px);line-height:1.18;margin:clamp(46px,5.6vw,74px) auto 0;max-width:46ch;color:#75726D">Bots answer. CRMs record. Analytics predicts.<br><span style="color:#1A1510">Rezonate acts, completes, and learns.</span></p>
+
+    <div style="display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-top:clamp(24px,3vw,36px)">
+      <a href="Solutions.dc.html" class="eibtn" style="height:48px;padding:0 24px;background:#1A1510;color:#FCFBF9;font-weight:600;font-size:14.5px;text-decoration:none">Learn more</a>
+      <a href="Rezonate.dc.html#demo" class="eibtn eibtn-soft" style="height:48px;padding:0 24px;background:rgba(20,16,12,.07);color:#1A1510;font-weight:600;font-size:14.5px;text-decoration:none">Request a demo</a>
+    </div>
+  </div>
+</section>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { formed: false };
+  _start(){
+    if (this._started) return;
+    this._started = true;
+    this._run = true; this._last = performance.now();
+    this._form = 0; this._target = 0;
+    const step = (now) => {
+      if (!this._run) return;
+      requestAnimationFrame(step);
+      if (document.hidden) return;
+      const dt = Math.min(50, now - this._last); this._last = now;
+      if (!this._target && this._cv){
+        const r = this._cv.getBoundingClientRect(), vh = innerHeight || 1;
+        if (r.top < vh * 0.92 && r.bottom > 0){
+          this._target = 1;
+          setTimeout(() => this.setState({formed:true}), 800);
+        }
+      }
+      this._form += (this._target - this._form) * Math.min(1, dt*0.0026);
+      this._draw(dt);
+    };
+    requestAnimationFrame(step);
+  }
+  componentDidMount(){ if (this._cv) this._start(); }
+  componentWillUnmount(){ this._run = false; this._started = false; }
+  _lem(t, w, h, s){
+    const d = 1 + Math.sin(t)*Math.sin(t);
+    return [w/2 + s*Math.cos(t)/d, h/2 + s*Math.sin(t)*Math.cos(t)/d*1.18];
+  }
+  _draw(dt){
+    const cv = this._cv; if (!cv) return;
+    const dpr = Math.min(2, devicePixelRatio || 1);
+    const w = cv.clientWidth, h = cv.clientHeight; if (!w) return;
+    if (cv.width !== Math.round(w*dpr)){ cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr); this._pa = null; }
+    const x = cv.getContext('2d'); x.setTransform(dpr,0,0,dpr,0,0);
+    if (!this._pa){
+      this._pa = Array.from({length: 1100}, () => ({
+        u: Math.random()*Math.PI*2,
+        ox: (Math.random()-.5)*26, oy: (Math.random()-.5)*26,
+        hx: Math.random()*w, hy: Math.random()*h,
+        dxv: (Math.random()-.5)*.02, dyv: (Math.random()-.5)*.02,
+        x: Math.random()*w, y: Math.random()*h,
+        sp: .6 + Math.random()*.9
+      }));
+      x.fillStyle = '#F4F2ED'; x.fillRect(0,0,w,h);
+    }
+    x.fillStyle = 'rgba(244,242,237,.3)'; x.fillRect(0,0,w,h);
+    const m = this._m, F = this._form, s = Math.min(w*0.4, h*0.92);
+    for (const p of this._pa){
+      p.u += dt*0.00032*p.sp;
+      p.hx += p.dxv*dt; p.hy += p.dyv*dt;
+      if (p.hx < 0 || p.hx > w) p.dxv *= -1;
+      if (p.hy < 0 || p.hy > h) p.dyv *= -1;
+      const g = this._lem(p.u, w, h, s);
+      let tx = (g[0]+p.ox)*F + p.hx*(1-F);
+      let ty = (g[1]+p.oy)*F + p.hy*(1-F);
+      if (m){ const dx = p.x-m[0], dy = p.y-m[1], q = dx*dx+dy*dy;
+        if (q < 6400){ const L = Math.sqrt(q)||1, f = (6400-q)/6400*40; tx += dx/L*f; ty += dy/L*f; } }
+      p.x += (tx-p.x)*0.085; p.y += (ty-p.y)*0.085;
+      const cos = Math.cos(p.u);
+      const a = 0.4 + F*0.45;
+      x.fillStyle = cos > 0 ? 'rgba(217,96,90,'+a+')' : 'rgba(79,58,155,'+(a*0.85)+')';
+      x.fillRect(p.x, p.y, 1.7, 1.7);
+    }
+  }
+  renderVals(){
+    return {
+      caption: this.state.formed
+        ? 'One intelligence, carried across all of them. Move through it.'
+        : 'Thousands of conversations, each starting from zero.',
+      refCanvas: (el) => {
+        this._cv = el;
+        if (el) this._start();
+        if (el && !el._wired){ el._wired = 1;
+          el.addEventListener('pointermove', (e) => { const r = el.getBoundingClientRect(); this._m = [e.clientX-r.left, e.clientY-r.top]; });
+          el.addEventListener('pointerleave', () => { this._m = null; });
+        }
+      },
+      refWrap: (el) => { this._wrap = el; },
+      steps: [
+        {k:'01',name:'Understand',kc:'#4F3A9B',p:'Each person\u2019s context, not just their record.'},
+        {k:'02',name:'Decide',kc:'#4F3A9B',p:'The best channel, timing, and message.'},
+        {k:'03',name:'Engage',kc:'#B4453F',p:'The conversation itself, in your approved voice.'},
+        {k:'04',name:'Complete',kc:'#B4453F',p:'The appointment kept, the loan repaid, the renewal done.'},
+        {k:'05',name:'Capture',kc:'#4F3A9B',p:'What actually moved this person to act.'},
+        {k:'06',name:'Improve',kc:'#4F3A9B',p:'Every outcome makes the next conversation better.'}
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
